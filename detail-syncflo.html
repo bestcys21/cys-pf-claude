@@ -10,6 +10,7 @@
   <link rel="stylesheet"
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/mockup.css" />
 
   <style>
     /* ── Detail page entry animations ── */
@@ -403,26 +404,7 @@
 <body>
 
   <!-- ════════════════ NAVIGATION ════════════════ -->
-  <nav class="nav" role="navigation">
-    <div class="nav__inner">
-      <a href="index.html" class="nav__logo">수<span>진</span></a>
-
-      <div class="nav__menu" id="nav-menu">
-        <a href="index.html"         class="nav__link">홈</a>
-        <a href="index.html#works"   class="nav__link is-active">작업물</a>
-        <a href="index.html#skills"  class="nav__link">스킬</a>
-        <a href="index.html#about"   class="nav__link">소개</a>
-        <a href="index.html#contact" class="nav__link">연락</a>
-      </div>
-
-      <div style="display:flex;align-items:center;gap:var(--space-3);">
-        <button class="nav__toggle" id="nav-toggle"
-          aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
+  <common-header></common-header>
 
 
   <!-- ════════════════ HERO ════════════════ -->
@@ -780,21 +762,9 @@
 
 
   <!-- ════════════════ FOOTER ════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <a href="index.html" class="footer__logo">수<span>진</span></a>
-        <p class="footer__copy">© 2025 차윤수. All rights reserved.</p>
-        <nav class="footer__links">
-          <a href="index.html#works"   class="footer__link">작업물</a>
-          <a href="index.html#skills"  class="footer__link">스킬</a>
-          <a href="index.html#about"   class="footer__link">소개</a>
-          <a href="index.html#contact" class="footer__link">연락</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
+  <common-footer></common-footer>
 
+  <script src="js/components.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

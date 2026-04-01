@@ -12,6 +12,7 @@
     href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
 
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/mockup.css" />
   <!-- Three.js for WebGL hero -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
 </head>
@@ -20,27 +21,7 @@
   <!-- ════════════════════════════════════════
        NAVIGATION
   ════════════════════════════════════════ -->
-  <nav class="nav" role="navigation" aria-label="메인 네비게이션">
-    <div class="nav__inner">
-      <a href="/" class="nav__logo">수<span>진</span></a>
-
-      <div class="nav__menu" id="nav-menu">
-        <a href="#hero"         class="nav__link is-active">홈</a>
-        <a href="#works"        class="nav__link">작업물</a>
-        <a href="#skills"       class="nav__link">스킬</a>
-        <a href="#about"        class="nav__link">소개</a>
-        <a href="#contact"      class="nav__link">연락</a>
-        <a href="detail.html"   class="nav__link">케이스 스터디</a>
-      </div>
-
-      <div style="display:flex;align-items:center;gap:var(--space-3);">
-        <button class="nav__toggle" id="nav-toggle"
-          aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </div>
-  </nav>
+  <common-header></common-header>
 
   <!-- ════════════════════════════════════════
        HERO SECTION — WebGL Dark
@@ -142,21 +123,21 @@
             <div class="mockup-phone">
               <div class="mockup-phone__screen">
                 <div class="mockup-phone__inner">
-                  <div class="ui-row ui-row--short" style="margin-bottom:var(--space-3);"></div>
-                  <div class="ui-row--card" style="background:rgba(255,255,255,0.25);border-radius:12px;margin-bottom:var(--space-3);"></div>
-                  <div class="ui-row" style="margin-bottom:var(--space-2);"></div>
-                  <div class="ui-row ui-row--medium" style="margin-bottom:var(--space-2);"></div>
-                  <div class="ui-row ui-row--short" style="margin-bottom:var(--space-4);"></div>
+                  <div class="ui-row ui-row--short mk-mb-3"></div>
+                  <div class="ui-row--card mk-bg-glass-25 mk-rounded-xl mk-mb-3"></div>
+                  <div class="ui-row mk-mb-2"></div>
+                  <div class="ui-row ui-row--medium mk-mb-2"></div>
+                  <div class="ui-row ui-row--short mk-mb-4"></div>
                   <div class="ui-row--chart"></div>
                 </div>
               </div>
             </div>
             <div class="mockup-float">
               <div class="mockup-float__screen">
-                <div class="mockup-float__inner" style="background:linear-gradient(145deg,#764BA2,#667EEA);padding:var(--space-3);">
-                  <div class="ui-row ui-row--short" style="margin-bottom:var(--space-2);height:6px;"></div>
-                  <div class="ui-row" style="height:6px;margin-bottom:var(--space-2);"></div>
-                  <div class="ui-row ui-row--medium" style="height:6px;"></div>
+                <div class="mockup-float__inner mk-grad-finance mk-p-3">
+                  <div class="ui-row ui-row--short mk-mb-2 mk-h-2"></div>
+                  <div class="ui-row mk-h-2 mk-mb-2"></div>
+                  <div class="ui-row ui-row--medium mk-h-2"></div>
                 </div>
               </div>
             </div>
@@ -195,18 +176,18 @@
             <div class="mockup-phone">
               <div class="mockup-phone__screen">
                 <div class="mockup-phone__inner">
-                  <div style="display:flex;gap:6px;margin-bottom:var(--space-3);">
-                    <div style="flex:1;height:48px;border-radius:10px;background:rgba(255,255,255,0.2);"></div>
-                    <div style="flex:1;height:48px;border-radius:10px;background:rgba(255,255,255,0.2);"></div>
+                  <div class="mk-flex mk-gap-2 mk-mb-3">
+                    <div class="mk-flex-1 mk-h-16 mk-rounded-lg mk-bg-glass-20"></div>
+                    <div class="mk-flex-1 mk-h-16 mk-rounded-lg mk-bg-glass-20"></div>
                   </div>
-                  <div style="height:80px;border-radius:14px;background:rgba(255,255,255,0.15);margin-bottom:var(--space-3);display:flex;align-items:center;justify-content:center;">
-                    <span style="font-size:32px;">🌿</span>
+                  <div class="mk-h-32 mk-rounded-2xl mk-bg-glass-15 mk-mb-3 mk-center">
+                    <span class="mk-text-2xl">🌿</span>
                   </div>
-                  <div class="ui-row ui-row--medium" style="margin-bottom:var(--space-2);height:6px;"></div>
-                  <div class="ui-row ui-row--short" style="margin-bottom:var(--space-4);height:6px;"></div>
-                  <div style="display:flex;gap:6px;">
-                    <div style="flex:1;height:36px;border-radius:10px;background:rgba(255,255,255,0.25);"></div>
-                    <div style="flex:1;height:36px;border-radius:10px;background:rgba(255,255,255,0.12);"></div>
+                  <div class="ui-row ui-row--medium mk-mb-2 mk-h-2"></div>
+                  <div class="ui-row ui-row--short mk-mb-4 mk-h-2"></div>
+                  <div class="mk-flex mk-gap-2">
+                    <div class="mk-flex-1 mk-h-12 mk-rounded-lg mk-bg-glass-25"></div>
+                    <div class="mk-flex-1 mk-h-12 mk-rounded-lg mk-bg-glass-12"></div>
                   </div>
                 </div>
               </div>
@@ -850,21 +831,9 @@
   <!-- ════════════════════════════════════════
        FOOTER
   ════════════════════════════════════════ -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__inner">
-        <a href="/" class="footer__logo">수<span>진</span></a>
-        <p class="footer__copy">© 2025 차윤수. All rights reserved.</p>
-        <nav class="footer__links" aria-label="푸터 링크">
-          <a href="#works"   class="footer__link">작업물</a>
-          <a href="#skills"  class="footer__link">스킬</a>
-          <a href="#about"   class="footer__link">소개</a>
-          <a href="#contact" class="footer__link">연락</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
+  <common-footer></common-footer>
 
+  <script src="js/components.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
