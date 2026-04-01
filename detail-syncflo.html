@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SyncFlo 케이스 스터디 — 구매정보 통합 관리 SaaS 플랫폼" />
+  <title>SyncFlo 케이스 스터디 — 이수진</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <style>
+    /* ── Detail page entry animations ── */
+    .anim-enter {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: hero-fade-up var(--duration-slowest) var(--ease-out) forwards;
+    }
+    .anim-enter-1 { animation-delay: 0.10s; }
+    .anim-enter-2 { animation-delay: 0.22s; }
+    .anim-enter-3 { animation-delay: 0.34s; }
+    .anim-enter-4 { animation-delay: 0.46s; }
+    .anim-enter-5 { animation-delay: 0.58s; }
+
+    /* ── Hero ── */
+    .sf-hero {
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: 0;
+      background-color: var(--color-surface-primary);
+    }
+
+    .sf-hero__top {
+      padding-bottom: var(--space-16);
+    }
+
+    .sf-hero__kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: var(--space-5);
+    }
+
+    .sf-hero__title {
+      font-size: clamp(var(--text-4xl), 6vw, var(--text-7xl));
+      font-weight: var(--weight-extrabold);
+      letter-spacing: var(--tracking-tighter);
+      line-height: var(--leading-tight);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .sf-hero__desc {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-medium);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      max-width: 680px;
+      margin-bottom: var(--space-10);
+    }
+
+    .sf-hero__tags {
+      display: flex;
+      gap: var(--space-2);
+      flex-wrap: wrap;
+    }
+
+    /* ── Cover image ── */
+    .sf-cover {
+      width: 100%;
+      border-radius: var(--radius-3xl) var(--radius-3xl) 0 0;
+      overflow: hidden;
+      background-color: var(--color-surface-secondary);
+      border: 1px solid var(--color-border-default);
+      border-bottom: none;
+      box-shadow: var(--shadow-xl);
+    }
+
+    .sf-cover img {
+      width: 100%;
+      display: block;
+      transition: transform var(--duration-slowest) var(--ease-out);
+    }
+
+    /* ── Meta bar ── */
+    .sf-meta {
+      background-color: var(--color-surface-inverse);
+      padding-block: var(--space-10);
+    }
+
+    .sf-meta__grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--space-8);
+    }
+
+    .sf-meta__item {}
+    .sf-meta__label {
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: var(--space-2);
+    }
+    .sf-meta__value {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-inverse);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ── Section layout ── */
+    .sf-section {
+      padding-block: var(--space-24);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+    .sf-section:last-of-type { border-bottom: none; }
+
+    .sf-section__label {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: var(--space-4);
+    }
+
+    .sf-section__title {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-extrabold);
+      letter-spacing: var(--tracking-tight);
+      line-height: var(--leading-tight);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-6);
+    }
+
+    .sf-section__body {
+      font-size: var(--text-base);
+      line-height: var(--leading-loose);
+      color: var(--color-text-secondary);
+    }
+
+    /* Two-col layout */
+    .sf-2col {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: var(--space-20);
+      align-items: start;
+    }
+
+    /* ── Full-width image block ── */
+    .sf-img-block {
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border-default);
+      background-color: var(--color-surface-secondary);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .sf-img-block img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── Insight cards ── */
+    .sf-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-10);
+    }
+
+    .sf-card {
+      padding: var(--space-7);
+      background-color: var(--color-surface-secondary);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-2xl);
+      transition: transform var(--transition-base), box-shadow var(--transition-base);
+    }
+    .sf-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .sf-card__icon {
+      font-size: var(--text-3xl);
+      margin-bottom: var(--space-4);
+      line-height: 1;
+    }
+
+    .sf-card__title {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+
+    .sf-card__desc {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Challenge / Solution pairs ── */
+    .sf-challenge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+      margin-top: var(--space-8);
+    }
+
+    .sf-challenge-item {
+      padding: var(--space-7);
+      border-radius: var(--radius-2xl);
+      border: 1px solid var(--color-border-default);
+    }
+
+    .sf-challenge-item--problem {
+      background-color: #FFF8F8;
+      border-color: #FFDDDD;
+    }
+    .sf-challenge-item--solution {
+      background-color: #F5F3FF;
+      border-color: var(--color-accent-muted);
+    }
+
+    .sf-challenge-item__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-2xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-widest);
+      text-transform: uppercase;
+      margin-bottom: var(--space-4);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+    }
+
+    .sf-challenge-item--problem .sf-challenge-item__badge {
+      background-color: #FFEEEE;
+      color: #CC2424;
+    }
+    .sf-challenge-item--solution .sf-challenge-item__badge {
+      background-color: var(--color-accent-subtle);
+      color: var(--color-accent);
+    }
+
+    .sf-challenge-item__title {
+      font-size: var(--text-lg);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-3);
+      line-height: var(--leading-snug);
+    }
+
+    .sf-challenge-item__desc {
+      font-size: var(--text-sm);
+      line-height: var(--leading-relaxed);
+      color: var(--color-text-secondary);
+    }
+
+    /* ── Result metrics ── */
+    .sf-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-10);
+    }
+
+    .sf-metric {
+      padding: var(--space-8);
+      border-radius: var(--radius-2xl);
+      background: linear-gradient(135deg, var(--color-accent) 0%, #7B61FF 100%);
+      text-align: center;
+    }
+
+    .sf-metric__num {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-extrabold);
+      color: var(--color-text-inverse);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+
+    .sf-metric__label {
+      font-size: var(--text-xs);
+      color: rgba(255,255,255,0.7);
+      font-weight: var(--weight-medium);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* ── Screen gallery: scrollable row ── */
+    .sf-scroll-gallery {
+      display: flex;
+      gap: var(--space-5);
+      overflow-x: auto;
+      padding-bottom: var(--space-4);
+      margin-top: var(--space-10);
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .sf-scroll-gallery::-webkit-scrollbar {
+      height: 4px;
+    }
+    .sf-scroll-gallery::-webkit-scrollbar-track {
+      background: var(--color-surface-tertiary);
+      border-radius: var(--radius-full);
+    }
+    .sf-scroll-gallery::-webkit-scrollbar-thumb {
+      background: var(--color-accent);
+      border-radius: var(--radius-full);
+    }
+
+    .sf-scroll-item {
+      flex-shrink: 0;
+      width: 320px;
+      border-radius: var(--radius-2xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border-default);
+      background-color: var(--color-surface-secondary);
+      scroll-snap-align: start;
+      box-shadow: var(--shadow-md);
+      transition: transform var(--transition-base);
+    }
+    .sf-scroll-item:hover { transform: translateY(-4px); }
+
+    .sf-scroll-item img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── Project nav ── */
+    .sf-nav {
+      padding-block: var(--space-16);
+    }
+    .sf-nav__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    .sf-nav__item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      padding: var(--space-8);
+      background-color: var(--color-surface-secondary);
+      border: 1px solid var(--color-border-default);
+      border-radius: var(--radius-2xl);
+      transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+    }
+    .sf-nav__item:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-border-strong);
+    }
+    .sf-nav__item--next { text-align: right; }
+
+    .sf-nav__dir {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      letter-spacing: var(--tracking-wider);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+    .sf-nav__name {
+      font-size: var(--text-xl);
+      font-weight: var(--weight-extrabold);
+      color: var(--color-text-primary);
+      letter-spacing: var(--tracking-tight);
+    }
+    .sf-nav__type {
+      font-size: var(--text-xs);
+      color: var(--color-text-tertiary);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .sf-2col { grid-template-columns: 1fr; gap: var(--space-10); }
+      .sf-cards { grid-template-columns: 1fr; }
+      .sf-challenge-grid { grid-template-columns: 1fr; }
+      .sf-metrics { grid-template-columns: repeat(2, 1fr); }
+      .sf-meta__grid { grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }
+      .sf-nav__inner { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .sf-metrics { grid-template-columns: 1fr; }
+      .sf-meta__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════ NAVIGATION ════════════════ -->
+  <nav class="nav" role="navigation">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">수<span>진</span></a>
+
+      <div class="nav__menu" id="nav-menu">
+        <a href="index.html"         class="nav__link">홈</a>
+        <a href="index.html#works"   class="nav__link is-active">작업물</a>
+        <a href="index.html#skills"  class="nav__link">스킬</a>
+        <a href="index.html#about"   class="nav__link">소개</a>
+        <a href="index.html#contact" class="nav__link">연락</a>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:var(--space-3);">
+        <a href="index.html#contact" class="btn btn--primary btn--sm nav__cta">채용 문의</a>
+        <button class="nav__toggle" id="nav-toggle"
+          aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="sf-hero">
+    <div class="container sf-hero__top">
+
+      <!-- Breadcrumb -->
+      <nav style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
+        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a href="index.html#works" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>SyncFlo</span>
+      </nav>
+
+      <p class="sf-hero__kicker anim-enter anim-enter-1">케이스 스터디 · B2B SaaS</p>
+
+      <h1 class="sf-hero__title anim-enter anim-enter-2">
+        SyncFlo
+      </h1>
+
+      <p class="sf-hero__desc anim-enter anim-enter-3">
+        내 구매정보를 손쉽게 확인하고 관리하는 최초의 방법.<br>
+        복잡한 구매·정산 프로세스를 하나의 플랫폼으로 통합한
+        B2B SaaS 서비스의 UX 디자인을 담당했습니다.
+      </p>
+
+      <div class="sf-hero__tags anim-enter anim-enter-4">
+        <span class="badge badge--accent">B2B SaaS</span>
+        <span class="badge badge--default">웹 대시보드</span>
+        <span class="badge badge--default">모바일 앱</span>
+        <span class="badge badge--default">디자인 시스템</span>
+      </div>
+
+    </div>
+
+    <!-- Cover image — full width, no side padding -->
+    <div class="container">
+      <div class="sf-cover anim-enter anim-enter-5">
+        <img src="images/main/syncflo/sync1.jpg" alt="SyncFlo 플랫폼 전체 화면" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════ META BAR ════════════════ -->
+  <div class="sf-meta">
+    <div class="container">
+      <div class="sf-meta__grid">
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">클라이언트</div>
+          <div class="sf-meta__value">SyncFlo (주)</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">기간</div>
+          <div class="sf-meta__value">5개월<br>2024. 01 — 05</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">역할</div>
+          <div class="sf-meta__value">Lead UX Designer<br>Design System</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">플랫폼</div>
+          <div class="sf-meta__value">Web · iOS<br>Android</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">사용 툴</div>
+          <div class="sf-meta__value">Figma · FigJam<br>Principle · Zeplin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <!-- ════════════════ OVERVIEW ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-2col">
+        <div>
+          <div class="sf-section__label">개요</div>
+          <h2 class="sf-section__title">프로젝트 소개</h2>
+        </div>
+        <div>
+          <p class="sf-section__body">
+            SyncFlo는 기업의 구매·정산 업무를 하나의 플랫폼에서 통합 관리할 수 있는
+            B2B SaaS 서비스입니다. 기존에 엑셀과 이메일로 처리하던 복잡한 구매 프로세스를
+            디지털화하고, 담당자 간 실시간 협업이 가능하도록 설계했습니다.
+            <br><br>
+            웹 대시보드와 모바일 앱을 동시에 설계하며, 다양한 사용자 역할(구매 담당자,
+            승인자, 회계팀)의 워크플로우를 하나의 일관된 경험으로 통합하는 것이
+            핵심 과제였습니다.
+          </p>
+
+          <div class="sf-metrics">
+            <div class="sf-metric">
+              <div class="sf-metric__num" data-count="60" data-count-suffix="%">60%</div>
+              <div class="sf-metric__label">업무 처리<br>시간 단축</div>
+            </div>
+            <div class="sf-metric">
+              <div class="sf-metric__num" data-count="92" data-count-suffix="%">92%</div>
+              <div class="sf-metric__label">사용자<br>만족도</div>
+            </div>
+            <div class="sf-metric">
+              <div class="sf-metric__num" data-count="3" data-count-suffix="x">3x</div>
+              <div class="sf-metric__label">온보딩<br>속도 향상</div>
+            </div>
+            <div class="sf-metric">
+              <div class="sf-metric__num" data-count="4" data-count-suffix=".9">4.9</div>
+              <div class="sf-metric__label">베타 사용자<br>평점</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════ CHALLENGE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">01 — 문제 정의</div>
+      <h2 class="sf-section__title">해결해야 할 문제</h2>
+      <p class="sf-section__body" style="max-width:680px;">
+        기업 구매 담당자와의 심층 인터뷰를 통해 현장의 핵심 불편함을 발굴했습니다.
+        대부분의 기업이 여전히 아날로그 방식에 의존하고 있었고,
+        디지털 전환의 니즈는 높지만 기존 솔루션의 복잡성 때문에 도입을 꺼리고 있었습니다.
+      </p>
+
+      <div class="sf-challenge-grid">
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">분산된 구매 정보,<br>파악이 어렵다</div>
+          <div class="sf-challenge-item__desc">
+            구매 요청, 승인 내역, 정산 현황이 이메일·엑셀·ERP에
+            분산되어 있어 현재 상태를 파악하는 데만 수시간이 걸립니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">통합 대시보드로<br>한눈에 파악</div>
+          <div class="sf-challenge-item__desc">
+            모든 구매 정보를 하나의 대시보드에 통합하고,
+            상태별 필터와 실시간 알림으로 즉각적인 현황 파악이 가능하도록 설계했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">승인 프로세스가<br>느리고 불투명하다</div>
+          <div class="sf-challenge-item__desc">
+            결재 라인이 복잡하고, 승인 진행 상황을 실시간으로
+            확인할 수 없어 불필요한 커뮤니케이션이 반복됩니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">투명한 결재 흐름과<br>모바일 빠른 승인</div>
+          <div class="sf-challenge-item__desc">
+            결재 현황을 타임라인으로 시각화하고, 모바일 앱에서
+            언제 어디서든 승인·반려 처리가 가능한 플로우를 구현했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">도입 장벽이 높고<br>학습 비용이 크다</div>
+          <div class="sf-challenge-item__desc">
+            기존 ERP 솔루션은 기능이 방대해 온보딩에 수 주일이 걸리고,
+            비IT 직군 직원들의 거부감이 큽니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">역할별 최적화된<br>간결한 인터페이스</div>
+          <div class="sf-challenge-item__desc">
+            사용자 역할(구매 담당자·승인자·회계팀)에 따라 필요한
+            기능만 보여주는 컨텍스추얼 UI로 학습 비용을 최소화했습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════ WEB DASHBOARD ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">02 — 웹 대시보드</div>
+      <h2 class="sf-section__title">데스크탑 경험 설계</h2>
+      <p class="sf-section__body" style="max-width:680px;margin-bottom:var(--space-10);">
+        구매 담당자와 회계팀이 주로 사용하는 웹 대시보드는 대량의 데이터를
+        효율적으로 탐색하고 처리하는 데 초점을 맞췄습니다. 복잡한 테이블 뷰와
+        분석 차트를 명확한 정보 계층으로 정리하고, 키보드 단축키와 일괄 처리
+        기능으로 파워 유저의 업무 효율을 높였습니다.
+      </p>
+
+      <div class="sf-img-block">
+        <img src="images/main/syncflo/sync2.jpg" alt="SyncFlo 웹 대시보드 화면" loading="lazy" />
+      </div>
+
+      <div class="sf-cards" style="margin-top:var(--space-10);">
+        <div class="sf-card reveal reveal-delay-1">
+          <div class="sf-card__icon">📊</div>
+          <div class="sf-card__title">통합 현황 대시보드</div>
+          <div class="sf-card__desc">
+            구매 요청, 진행 중, 완료, 반려 건수를 한눈에 파악하고
+            기간별 지출 트렌드를 차트로 확인할 수 있습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-2">
+          <div class="sf-card__icon">🔍</div>
+          <div class="sf-card__title">스마트 필터 & 검색</div>
+          <div class="sf-card__desc">
+            날짜, 금액, 담당자, 상태, 카테고리 등 다차원 필터로
+            수천 건의 데이터에서 원하는 정보를 즉시 찾을 수 있습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-3">
+          <div class="sf-card__icon">✅</div>
+          <div class="sf-card__title">일괄 승인 처리</div>
+          <div class="sf-card__desc">
+            여러 건을 동시에 선택하여 승인·반려·보류 처리가 가능해
+            반복 작업에 드는 시간을 대폭 절감했습니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════ MOBILE APP ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">03 — 모바일 앱 & 디자인 시스템</div>
+      <h2 class="sf-section__title">언제 어디서든, 그리고 일관된 경험</h2>
+
+      <div class="sf-2col" style="margin-bottom:var(--space-12);">
+        <div>
+          <p class="sf-section__body">
+            승인자(임원·팀장)를 위한 모바일 앱은 <strong>빠른 결재</strong>에
+            최적화되어 있습니다. 알림을 받는 즉시 요청 내역을 확인하고
+            한 탭으로 승인·반려가 가능합니다.
+            <br><br>
+            웹과 모바일을 아우르는 <strong>통합 디자인 시스템</strong>을 구축하여
+            어떤 플랫폼에서도 동일한 브랜드 경험을 제공하고,
+            향후 기능 확장 시에도 일관성을 유지할 수 있도록 했습니다.
+          </p>
+        </div>
+        <div>
+          <div class="insight-list">
+            <div class="insight-item">
+              <div class="insight-item__icon">📱</div>
+              <div>
+                <div class="insight-item__title">모바일 우선 알림 플로우</div>
+                <div class="insight-item__desc">
+                  푸시 알림 → 상세 화면 진입 → 승인/반려까지 3탭 이내로 완료.
+                  이동 중에도 업무 처리가 가능한 초간결 플로우를 설계했습니다.
+                </div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item__icon">🎨</div>
+              <div>
+                <div class="insight-item__title">컴포넌트 기반 디자인 시스템</div>
+                <div class="insight-item__desc">
+                  버튼, 폼, 테이블, 차트 등 80+ 컴포넌트를 정의하고
+                  라이트/다크 모드를 모두 지원하는 토큰 체계를 구축했습니다.
+                </div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item__icon">♿</div>
+              <div>
+                <div class="insight-item__title">접근성 WCAG AA 준수</div>
+                <div class="insight-item__desc">
+                  색상 대비, 포커스 인디케이터, 스크린 리더 지원 등
+                  기업 서비스에 요구되는 접근성 기준을 충족했습니다.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-block">
+        <img src="images/main/syncflo/sync3.jpg" alt="SyncFlo 모바일 앱 및 디자인 시스템" loading="lazy" />
+      </div>
+    </section>
+
+
+    <!-- ════════════════ RETROSPECTIVE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-2col">
+        <div>
+          <div class="sf-section__label">회고</div>
+          <h2 class="sf-section__title">배운 것들</h2>
+        </div>
+        <div>
+          <p class="sf-section__body" style="margin-bottom:var(--space-8);">
+            SyncFlo 프로젝트는 B2B 제품의 복잡성과 단순함 사이의 균형을 찾는
+            경험이었습니다. 기능이 많을수록 사용하기 어려워진다는 원칙을
+            몸소 느끼며, 역할별 인터페이스 분리와 프로그레시브 디스클로저의
+            중요성을 실감했습니다.
+          </p>
+          <div class="sf-cards" style="grid-template-columns:1fr 1fr;margin-top:0;">
+            <div class="sf-card">
+              <div class="sf-card__icon">🧩</div>
+              <div class="sf-card__title">역할 기반 UX</div>
+              <div class="sf-card__desc">같은 기능도 사용자 역할에 따라 다른 맥락으로 제공해야 한다는 걸 배웠습니다.</div>
+            </div>
+            <div class="sf-card">
+              <div class="sf-card__icon">🔄</div>
+              <div class="sf-card__title">빠른 이터레이션</div>
+              <div class="sf-card__desc">초기 와이어프레임 단계에서의 사용자 검증이 후반부 재작업을 크게 줄였습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+
+  <!-- ════════════════ PROJECT NAV ════════════════ -->
+  <div class="sf-nav">
+    <div class="container">
+      <div class="sf-nav__inner">
+        <a href="index.html#works" class="sf-nav__item">
+          <div class="sf-nav__dir">← 목록으로</div>
+          <div class="sf-nav__name">작업물 전체 보기</div>
+          <div class="sf-nav__type">포트폴리오 메인</div>
+        </a>
+        <a href="#" class="sf-nav__item sf-nav__item--next">
+          <div class="sf-nav__dir">다음 프로젝트 →</div>
+          <div class="sf-nav__name">다음 작업물</div>
+          <div class="sf-nav__type">준비 중</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════ CTA BANNER ════════════════ -->
+  <section class="cv-section">
+    <div class="container">
+      <div class="cv-section__inner reveal">
+        <div class="cv-section__text">
+          <div class="cv-section__label">함께 일해요</div>
+          <h2 class="cv-section__title">새로운 프로젝트가 있으신가요?</h2>
+          <p class="cv-section__sub">아이디어를 현실로 만들어 드릴게요. 편하게 연락주세요.</p>
+        </div>
+        <div class="cv-section__action">
+          <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
+          <a href="index.html" class="btn btn--outline btn--lg"
+            style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">
+            포트폴리오 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="index.html" class="footer__logo">수<span>진</span></a>
+        <p class="footer__copy">© 2025 이수진. All rights reserved.</p>
+        <nav class="footer__links">
+          <a href="index.html#works"   class="footer__link">작업물</a>
+          <a href="index.html#skills"  class="footer__link">스킬</a>
+          <a href="index.html#about"   class="footer__link">소개</a>
+          <a href="index.html#contact" class="footer__link">연락</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

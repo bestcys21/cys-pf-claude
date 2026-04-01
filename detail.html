@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="핀케어 케이스 스터디 — 이수진 UI/UX 디자이너 포트폴리오" />
+  <title>핀케어 케이스 스터디 — 이수진</title>
+
+  <!-- Pretendard Variable Font -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" />
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── Detail page specific animations ── */
+    .project-hero__kicker,
+    .project-hero__title,
+    .project-hero__sub,
+    .project-hero__desc,
+    .project-hero__header > * {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: hero-fade-up var(--duration-slowest) var(--ease-out) forwards;
+    }
+    .project-hero__kicker     { animation-delay: 0.1s; }
+    .project-hero__title      { animation-delay: 0.2s; }
+    .project-hero__sub        { animation-delay: 0.28s; }
+    .project-hero__header > *:last-child { animation-delay: 0.35s; }
+    .project-hero__desc       { animation-delay: 0.4s; }
+
+    .project-hero__cover {
+      margin-top: var(--space-16);
+      border-radius: var(--radius-3xl);
+      overflow: hidden;
+      height: 460px;
+      background: linear-gradient(145deg, #667EEA 0%, #764BA2 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      opacity: 0;
+      animation: hero-fade-up var(--duration-slowest) var(--ease-out) 0.5s forwards;
+      box-shadow: var(--shadow-2xl);
+    }
+
+    .project-hero__cover-inner {
+      display: flex;
+      gap: var(--space-8);
+      align-items: flex-end;
+      padding-bottom: var(--space-8);
+    }
+
+    /* Stat counters */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+      margin-top: var(--space-10);
+    }
+    .stat-item {
+      text-align: center;
+      padding: var(--space-6);
+      background: var(--color-surface-secondary);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border-default);
+    }
+    .stat-item__num {
+      font-size: var(--text-4xl);
+      font-weight: var(--weight-extrabold);
+      color: var(--color-accent);
+      letter-spacing: var(--tracking-tight);
+      line-height: 1;
+      margin-bottom: var(--space-2);
+    }
+    .stat-item__label {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+
+    /* Process steps */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-10);
+    }
+    .process-step {
+      position: relative;
+      padding: var(--space-6);
+      background: var(--color-surface-secondary);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-border-default);
+    }
+    .process-step::after {
+      content: '→';
+      position: absolute;
+      right: calc(-1 * var(--space-4) - 4px);
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-text-tertiary);
+      font-size: var(--text-lg);
+    }
+    .process-step:last-child::after { display: none; }
+    .process-step__num {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-bold);
+      color: var(--color-accent);
+      letter-spacing: var(--tracking-wider);
+      margin-bottom: var(--space-3);
+    }
+    .process-step__name {
+      font-size: var(--text-base);
+      font-weight: var(--weight-bold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-2);
+    }
+    .process-step__desc {
+      font-size: var(--text-xs);
+      color: var(--color-text-tertiary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Wireframe blocks */
+    .wireframe-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-5);
+      margin-top: var(--space-10);
+    }
+    .wireframe-item {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border-default);
+      background: var(--color-surface-secondary);
+    }
+    .wireframe-item__screen {
+      height: 200px;
+      background: var(--color-surface-tertiary);
+      padding: var(--space-4);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+    .wireframe-item__bar {
+      height: 8px;
+      border-radius: var(--radius-full);
+      background: var(--color-border-strong);
+    }
+    .wireframe-item__bar--short { width: 50%; }
+    .wireframe-item__bar--medium { width: 70%; }
+    .wireframe-item__block {
+      flex: 1;
+      border-radius: var(--radius-md);
+      background: var(--color-border-default);
+    }
+    .wireframe-item__label {
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-tertiary);
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-step::after { display: none; }
+      .wireframe-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-grid { grid-template-columns: 1fr; }
+      .project-hero__cover { height: 260px; }
+    }
+    @media (max-width: 480px) {
+      .wireframe-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       NAVIGATION (same as main page)
+  ════════════════════════════════════════ -->
+  <nav class="nav" role="navigation" aria-label="메인 네비게이션">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">수<span>진</span></a>
+
+      <div class="nav__menu" id="nav-menu">
+        <a href="index.html#hero"       class="nav__link">홈</a>
+        <a href="index.html#works"      class="nav__link is-active">작업물</a>
+        <a href="index.html#skills"     class="nav__link">스킬</a>
+        <a href="index.html#about"      class="nav__link">소개</a>
+        <a href="index.html#contact"    class="nav__link">연락</a>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:var(--space-3);">
+        <a href="index.html#contact" class="btn btn--primary btn--sm nav__cta">채용 문의</a>
+        <button class="nav__toggle" id="nav-toggle"
+          aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════
+       PROJECT HERO
+  ════════════════════════════════════════ -->
+  <section class="project-hero">
+    <div class="container">
+
+      <!-- Breadcrumb -->
+      <nav class="project-hero__breadcrumb" aria-label="브레드크럼">
+        <a href="index.html">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <a href="index.html#works">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>핀케어</span>
+      </nav>
+
+      <!-- Header -->
+      <div class="project-hero__header">
+        <div>
+          <p class="project-hero__kicker">케이스 스터디 · 01</p>
+          <h1 class="project-hero__title">핀케어</h1>
+          <p class="project-hero__sub">개인 금융 관리 앱 UX 디자인</p>
+        </div>
+        <p class="project-hero__desc">
+          복잡한 금융 데이터를 직관적인 인터페이스로 시각화하여 사용자가
+          자신의 재정 상태를 한눈에 파악하고 현명한 소비 결정을 내릴 수 있도록
+          돕는 핀테크 앱입니다. 6개월간의 리서치와 이터레이션을 거쳐
+          완성된 프로젝트로, 앱 출시 후 3개월 만에 DAU 40% 향상을 달성했습니다.
+        </p>
+      </div>
+
+      <!-- Cover Image -->
+      <div class="project-hero__cover">
+        <div class="project-hero__cover-inner">
+          <!-- Phone 1 (main) -->
+          <div class="mockup-phone" style="width:160px;">
+            <div class="mockup-phone__screen">
+              <div class="mockup-phone__inner" style="background:linear-gradient(160deg,#764BA2,#667EEA);">
+                <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.6);margin-bottom:var(--space-2);">잔액</div>
+                <div style="font-size:var(--text-2xl);font-weight:var(--weight-extrabold);color:#fff;margin-bottom:var(--space-4);">₩2,450,000</div>
+                <div style="height:48px;border-radius:10px;background:rgba(255,255,255,0.15);margin-bottom:var(--space-3);"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:var(--space-3);">
+                  <div style="height:36px;border-radius:8px;background:rgba(255,255,255,0.12);"></div>
+                  <div style="height:36px;border-radius:8px;background:rgba(255,255,255,0.12);"></div>
+                </div>
+                <div class="ui-row--chart"></div>
+              </div>
+            </div>
+          </div>
+          <!-- Phone 2 (offset) -->
+          <div class="mockup-phone" style="width:140px;margin-bottom:40px;">
+            <div class="mockup-phone__screen">
+              <div class="mockup-phone__inner" style="background:linear-gradient(160deg,#4776E6,#8E54E9);">
+                <div style="font-size:var(--text-xs);color:rgba(255,255,255,0.6);margin-bottom:var(--space-3);">이번 달 지출</div>
+                <div style="display:flex;flex-direction:column;gap:6px;">
+                  <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);border-radius:8px;padding:6px 8px;">
+                    <div style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.2);"></div>
+                    <div style="flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,0.3);"></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border-radius:8px;padding:6px 8px;">
+                    <div style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.15);"></div>
+                    <div style="flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,0.2);"></div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.08);border-radius:8px;padding:6px 8px;">
+                    <div style="width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.15);"></div>
+                    <div style="flex:1;height:6px;border-radius:3px;background:rgba(255,255,255,0.2);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Phone 3 (more offset) -->
+          <div class="mockup-phone" style="width:120px;margin-bottom:80px;">
+            <div class="mockup-phone__screen">
+              <div class="mockup-phone__inner" style="background:linear-gradient(160deg,#3a1c71,#d76d77);">
+                <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:var(--space-2);">투자 현황</div>
+                <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:var(--space-3);">+12.4%</div>
+                <div style="height:60px;background:rgba(255,255,255,0.1);border-radius:8px;position:relative;overflow:hidden;">
+                  <div style="position:absolute;bottom:0;left:0;right:0;height:60%;background:rgba(255,255,255,0.15);clip-path:polygon(0 100%,15% 50%,35% 65%,55% 20%,75% 40%,100% 10%,100% 100%);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       PROJECT META
+  ════════════════════════════════════════ -->
+  <div class="project-meta">
+    <div class="container">
+      <div class="project-meta__grid">
+        <div class="project-meta__item">
+          <div class="project-meta__label">클라이언트</div>
+          <div class="project-meta__value">핀케어 (주)</div>
+        </div>
+        <div class="project-meta__item">
+          <div class="project-meta__label">기간</div>
+          <div class="project-meta__value">6개월<br>(2024. 03 — 08)</div>
+        </div>
+        <div class="project-meta__item">
+          <div class="project-meta__label">역할</div>
+          <div class="project-meta__value">Lead UX Designer<br>Design System</div>
+        </div>
+        <div class="project-meta__item">
+          <div class="project-meta__label">플랫폼</div>
+          <div class="project-meta__value">iOS · Android<br>모바일 앱</div>
+        </div>
+        <div class="project-meta__item">
+          <div class="project-meta__label">사용 툴</div>
+          <div class="project-meta__value">Figma · FigJam<br>Principle · Zeplin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <!-- ════════════════════════════════════════
+         PROJECT OVERVIEW
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">개요</div>
+      <div class="project-section__grid">
+        <div>
+          <h2 class="project-section__title">프로젝트 개요</h2>
+        </div>
+        <div>
+          <p class="project-section__body">
+            핀케어는 20-30대 직장인들이 자신의 수입, 지출, 투자 현황을 하나의
+            앱에서 관리할 수 있는 올인원 금융 플랫폼입니다. 기존 금융 앱들이
+            복잡하고 어렵다는 인식을 깨고, 누구나 쉽게 자산을 관리할 수 있는
+            직관적인 경험을 목표로 했습니다.
+            <br><br>
+            프로젝트의 핵심 과제는 <strong>복잡한 금융 정보를 단순하게</strong>,
+            <strong>신뢰감 있으면서도 접근하기 쉽게</strong> 전달하는 것이었습니다.
+            6개월간 5회의 사용자 인터뷰, 3회의 사용성 테스트, 2회의 A/B 테스트를
+            거쳐 최종 디자인을 완성했습니다.
+          </p>
+          <div class="stat-grid">
+            <div class="stat-item">
+              <div class="stat-item__num">
+                <span data-count="40" data-count-suffix="%">40%</span>
+              </div>
+              <div class="stat-item__label">DAU 향상 (3개월)</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item__num">
+                <span data-count="4" data-count-suffix=".8">4.8</span>
+              </div>
+              <div class="stat-item__label">앱스토어 평점</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-item__num">
+                <span data-count="68" data-count-suffix="%">68%</span>
+              </div>
+              <div class="stat-item__label">리텐션율 향상</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         USER RESEARCH
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">01 — 사용자 리서치</div>
+      <div class="project-section__grid">
+        <div>
+          <h2 class="project-section__title">문제를 이해하는 것부터</h2>
+        </div>
+        <div>
+          <p class="project-section__body">
+            리서치 첫 단계에서 20명의 20-30대 직장인을 대상으로 심층 인터뷰를
+            진행했습니다. 대부분의 참여자가 현재 금융 앱에 불만을 가지고 있었고,
+            주요 불만 사항은 <strong>복잡한 UI</strong>, <strong>불명확한 정보 구조</strong>,
+            <strong>낮은 개인화 수준</strong>이었습니다.
+            <br><br>
+            경쟁사 분석과 서비스 이용 패턴 조사를 병행하여 시장 기회를 확인했으며,
+            핵심 사용자 니즈를 3가지로 압축할 수 있었습니다.
+          </p>
+          <div class="insight-list" style="margin-top:var(--space-8);">
+            <div class="insight-item">
+              <div class="insight-item__icon">😫</div>
+              <div>
+                <div class="insight-item__title">복잡성 문제</div>
+                <div class="insight-item__desc">
+                  "카드사 앱, 은행 앱, 증권 앱을 다 따로 봐야 해서 번거롭다.
+                  한 곳에서 다 볼 수 있었으면 좋겠다."
+                </div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item__icon">🤔</div>
+              <div>
+                <div class="insight-item__title">인사이트 부재</div>
+                <div class="insight-item__desc">
+                  "내가 돈을 어디에 쓰는지는 알겠는데, 잘 쓰고 있는 건지
+                  모르겠다. 기준이 없다."
+                </div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item__icon">🔒</div>
+              <div>
+                <div class="insight-item__title">신뢰와 보안 불안</div>
+                <div class="insight-item__desc">
+                  "금융 정보를 한 앱에 다 연동하는 게 불안하다.
+                  보안이 걱정된다."
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         USER PERSONA
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">02 — 사용자 페르소나</div>
+      <h2 class="project-section__title">우리의 핵심 사용자</h2>
+      <p class="project-section__body" style="margin-bottom:var(--space-10);">
+        리서치 결과를 바탕으로 핵심 타겟 페르소나를 정의했습니다.
+        두 가지 주요 페르소나를 설정하고 각자의 목표와 불편함을 명확히 했습니다.
+      </p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-6);">
+
+        <div class="persona-card">
+          <div class="persona-card__avatar">👩‍💼</div>
+          <div class="persona-card__name">김지현</div>
+          <div class="persona-card__role">직장인 · 29세 · 서울 마포구</div>
+          <div class="persona-card__info">
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">직업</span>
+              <span class="persona-info-item__value">마케팅 회사 대리</span>
+            </div>
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">목표</span>
+              <span class="persona-info-item__value">3년 안에 내 집 마련을 위한 저축 시작</span>
+            </div>
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">불편함</span>
+              <span class="persona-info-item__value">카드 3개, 은행 2개를 매월 따로 확인하는 게 귀찮음</span>
+            </div>
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">니즈</span>
+              <span class="persona-info-item__value">한눈에 보는 자산 현황, 스마트한 절약 팁</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-card__avatar">👨‍💻</div>
+          <div class="persona-card__name">이준호</div>
+          <div class="persona-card__role">IT 개발자 · 34세 · 서울 강남구</div>
+          <div class="persona-card__info">
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">직업</span>
+              <span class="persona-info-item__value">IT 기업 시니어 개발자</span>
+            </div>
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">목표</span>
+              <span class="persona-info-item__value">포트폴리오 다각화, 주식/ETF 투자 관리</span>
+            </div>
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">불편함</span>
+              <span class="persona-info-item__value">투자 앱과 은행 앱이 분리되어 전체 자산 파악이 어려움</span>
+            </div>
+            <div class="persona-info-item">
+              <span class="persona-info-item__label">니즈</span>
+              <span class="persona-info-item__value">통합 자산 현황, 투자 분석 리포트</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         USER JOURNEY MAP
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">03 — 사용자 여정 지도</div>
+      <h2 class="project-section__title">사용자의 경험 흐름</h2>
+      <p class="project-section__body" style="margin-bottom:var(--space-10);">
+        김지현 페르소나를 기준으로 앱 최초 사용부터 정착까지의 여정을 분석하고,
+        각 단계에서의 감정과 개선 기회를 도출했습니다.
+      </p>
+
+      <div style="overflow-x:auto;">
+        <table class="journey-table">
+          <thead>
+            <tr>
+              <th>단계</th>
+              <th>행동</th>
+              <th>생각</th>
+              <th>감정</th>
+              <th>기회</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>인지</td>
+              <td>SNS 광고 또는 지인 추천으로 앱 발견</td>
+              <td>"금융 앱 하나로 다 본다고? 믿어도 되나?"</td>
+              <td>😐 보통</td>
+              <td>신뢰감 있는 온보딩 메시지, 보안 강조</td>
+            </tr>
+            <tr>
+              <td>탐색</td>
+              <td>앱스토어에서 리뷰 확인 후 설치</td>
+              <td>"리뷰가 좋네. 한번 써볼까?"</td>
+              <td>🤔 궁금</td>
+              <td>소셜 프루프 강화, 직관적인 스크린샷</td>
+            </tr>
+            <tr>
+              <td>온보딩</td>
+              <td>계정 생성, 카드/은행 연동</td>
+              <td>"연동이 이렇게 간단해? 보안은 괜찮겠지?"</td>
+              <td>😊 기대</td>
+              <td>단계별 진행 표시, 보안 배지 노출</td>
+            </tr>
+            <tr>
+              <td>첫 사용</td>
+              <td>대시보드 확인, 지출 내역 탐색</td>
+              <td>"오, 한눈에 보이네. 이거 계속 쓸 것 같다."</td>
+              <td>😄 만족</td>
+              <td>Aha moment 조기 달성, 개인화 첫 추천</td>
+            </tr>
+            <tr>
+              <td>정착</td>
+              <td>월별 리포트 확인, 목표 설정</td>
+              <td>"이렇게 쓰고 있었구나. 다음 달엔 절약해야겠다."</td>
+              <td>💡 인사이트</td>
+              <td>주간 요약 푸시, 목표 달성 알림</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         DESIGN PROCESS
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">04 — 디자인 프로세스</div>
+      <h2 class="project-section__title">어떻게 설계했나</h2>
+      <p class="project-section__body" style="margin-bottom:var(--space-8);">
+        Double Diamond 방법론을 기반으로 발산-수렴 과정을 반복하며
+        단계별로 문제를 정의하고 해결책을 검증했습니다.
+      </p>
+
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step__num">01</div>
+          <div class="process-step__name">리서치</div>
+          <div class="process-step__desc">인터뷰 · 설문 · 경쟁사 분석으로 문제 발견</div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">02</div>
+          <div class="process-step__name">정의</div>
+          <div class="process-step__desc">페르소나 · HMW · 핵심 문제 정의</div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">03</div>
+          <div class="process-step__name">설계</div>
+          <div class="process-step__desc">아이디어 발산 · IA · 와이어프레임</div>
+        </div>
+        <div class="process-step">
+          <div class="process-step__num">04</div>
+          <div class="process-step__name">검증</div>
+          <div class="process-step__desc">프로토타입 · 사용성 테스트 · 반복</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         WIREFRAMES
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">05 — 와이어프레임</div>
+      <h2 class="project-section__title">구조를 먼저, 시각은 나중에</h2>
+      <p class="project-section__body" style="margin-bottom:var(--space-8);">
+        Lo-fi 와이어프레임으로 정보 구조와 핵심 플로우를 먼저 검증했습니다.
+        총 3회의 팀 리뷰와 2회의 사용성 테스트를 거쳐 구조를 확정했습니다.
+      </p>
+
+      <div class="wireframe-grid">
+        <div class="wireframe-item">
+          <div class="wireframe-item__screen">
+            <div class="wireframe-item__bar wireframe-item__bar--short"></div>
+            <div style="display:flex;gap:var(--space-2);margin-block:var(--space-2);">
+              <div style="flex:1;height:48px;border-radius:8px;background:var(--color-border-strong);"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-2);">
+              <div style="height:32px;border-radius:6px;background:var(--color-border-default);"></div>
+              <div style="height:32px;border-radius:6px;background:var(--color-border-default);"></div>
+            </div>
+            <div class="wireframe-item__block" style="margin-top:var(--space-2);"></div>
+          </div>
+          <div class="wireframe-item__label">홈 대시보드</div>
+        </div>
+        <div class="wireframe-item">
+          <div class="wireframe-item__screen">
+            <div class="wireframe-item__bar" style="margin-bottom:var(--space-3);"></div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+              <div style="height:36px;border-radius:8px;background:var(--color-border-strong);"></div>
+              <div style="height:36px;border-radius:8px;background:var(--color-border-default);"></div>
+              <div style="height:36px;border-radius:8px;background:var(--color-border-default);"></div>
+              <div style="height:36px;border-radius:8px;background:var(--color-border-default);"></div>
+            </div>
+          </div>
+          <div class="wireframe-item__label">지출 내역</div>
+        </div>
+        <div class="wireframe-item">
+          <div class="wireframe-item__screen">
+            <div class="wireframe-item__bar wireframe-item__bar--medium" style="margin-bottom:var(--space-2);"></div>
+            <div style="height:80px;border-radius:10px;background:var(--color-border-strong);margin-bottom:var(--space-2);"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-1);">
+              <div style="height:28px;border-radius:6px;background:var(--color-border-default);"></div>
+              <div style="height:28px;border-radius:6px;background:var(--color-border-default);"></div>
+              <div style="height:28px;border-radius:6px;background:var(--color-border-default);"></div>
+            </div>
+          </div>
+          <div class="wireframe-item__label">투자 현황</div>
+        </div>
+        <div class="wireframe-item">
+          <div class="wireframe-item__screen">
+            <div class="wireframe-item__bar wireframe-item__bar--short" style="margin-bottom:var(--space-3);"></div>
+            <div style="height:60px;border-radius:10px;background:var(--color-border-strong);margin-bottom:var(--space-3);display:flex;align-items:center;justify-content:center;">
+              <div style="font-size:var(--text-xs);color:var(--color-text-tertiary);">목표 달성률</div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+              <div style="height:8px;border-radius:4px;background:var(--color-border-strong);"></div>
+              <div style="height:8px;border-radius:4px;background:var(--color-border-default);width:60%;"></div>
+            </div>
+          </div>
+          <div class="wireframe-item__label">저축 목표</div>
+        </div>
+        <div class="wireframe-item">
+          <div class="wireframe-item__screen">
+            <div class="wireframe-item__bar" style="margin-bottom:var(--space-3);"></div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+              <div style="display:flex;align-items:center;gap:var(--space-2);">
+                <div style="width:32px;height:32px;border-radius:50%;background:var(--color-border-strong);flex-shrink:0;"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+                  <div style="height:8px;border-radius:4px;background:var(--color-border-strong);"></div>
+                  <div style="height:6px;border-radius:4px;background:var(--color-border-default);width:60%;"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--space-2);">
+                <div style="width:32px;height:32px;border-radius:50%;background:var(--color-border-default);flex-shrink:0;"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+                  <div style="height:8px;border-radius:4px;background:var(--color-border-default);"></div>
+                  <div style="height:6px;border-radius:4px;background:var(--color-border-default);width:40%;"></div>
+                </div>
+              </div>
+              <div style="display:flex;align-items:center;gap:var(--space-2);">
+                <div style="width:32px;height:32px;border-radius:50%;background:var(--color-border-default);flex-shrink:0;"></div>
+                <div style="flex:1;display:flex;flex-direction:column;gap:4px;">
+                  <div style="height:8px;border-radius:4px;background:var(--color-border-default);"></div>
+                  <div style="height:6px;border-radius:4px;background:var(--color-border-default);width:75%;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="wireframe-item__label">알림 센터</div>
+        </div>
+        <div class="wireframe-item">
+          <div class="wireframe-item__screen">
+            <div style="width:48px;height:48px;border-radius:50%;background:var(--color-border-strong);margin:0 auto var(--space-3);"></div>
+            <div class="wireframe-item__bar wireframe-item__bar--medium" style="margin:0 auto var(--space-2);"></div>
+            <div class="wireframe-item__bar wireframe-item__bar--short" style="margin:0 auto var(--space-4);"></div>
+            <div style="display:flex;flex-direction:column;gap:var(--space-2);">
+              <div style="height:32px;border-radius:8px;background:var(--color-border-default);"></div>
+              <div style="height:32px;border-radius:8px;background:var(--color-border-default);"></div>
+            </div>
+          </div>
+          <div class="wireframe-item__label">마이 페이지</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         DESIGN SYSTEM
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">06 — 디자인 시스템</div>
+      <h2 class="project-section__title">일관된 경험을 위한 시스템</h2>
+      <p class="project-section__body" style="margin-bottom:var(--space-10);">
+        핀케어만의 디자인 언어를 정립하고, 개발팀과의 효율적인 협업을 위해
+        컴포넌트 라이브러리와 스타일 가이드를 구축했습니다.
+      </p>
+
+      <!-- Typography -->
+      <h3 style="font-size:var(--text-xl);font-weight:var(--weight-bold);margin-bottom:var(--space-6);">타이포그래피</h3>
+      <div class="type-specimen">
+        <div class="type-specimen__row">
+          <span class="type-specimen__label">Display</span>
+          <span style="font-size:var(--text-5xl);font-weight:var(--weight-extrabold);letter-spacing:var(--tracking-tighter);line-height:1;">₩2,450,000</span>
+        </div>
+        <div class="type-specimen__row">
+          <span class="type-specimen__label">Heading</span>
+          <span style="font-size:var(--text-3xl);font-weight:var(--weight-bold);letter-spacing:var(--tracking-tight);">이번 달 지출 요약</span>
+        </div>
+        <div class="type-specimen__row">
+          <span class="type-specimen__label">Body</span>
+          <span style="font-size:var(--text-base);font-weight:var(--weight-regular);line-height:var(--leading-relaxed);">식비 지출이 지난달보다 12% 증가했습니다. 절약 팁을 확인해보세요.</span>
+        </div>
+        <div class="type-specimen__row">
+          <span class="type-specimen__label">Caption</span>
+          <span style="font-size:var(--text-xs);font-weight:var(--weight-medium);color:var(--color-text-tertiary);letter-spacing:var(--tracking-wide);">2024년 8월 기준 · 실시간 업데이트</span>
+        </div>
+      </div>
+
+      <!-- Color System -->
+      <h3 style="font-size:var(--text-xl);font-weight:var(--weight-bold);margin-top:var(--space-12);margin-bottom:var(--space-6);">컬러 시스템</h3>
+      <div class="color-swatch-grid">
+        <div class="color-swatch">
+          <div class="color-swatch__block" style="background:#667EEA;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Primary</div>
+            <div class="color-swatch__hex">#667EEA</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__block" style="background:#764BA2;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Secondary</div>
+            <div class="color-swatch__hex">#764BA2</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__block" style="background:#4ADE80;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Success</div>
+            <div class="color-swatch__hex">#4ADE80</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__block" style="background:#F87171;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Danger</div>
+            <div class="color-swatch__hex">#F87171</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__block" style="background:#FACC15;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Warning</div>
+            <div class="color-swatch__hex">#FACC15</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__block" style="background:#111111;"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">Neutral</div>
+            <div class="color-swatch__hex">#111111</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ════════════════════════════════════════
+         FINAL MOCKUPS
+    ════════════════════════════════════════ -->
+    <section class="project-section reveal">
+      <div class="project-section__label">07 — 최종 디자인</div>
+      <h2 class="project-section__title">완성된 프로덕트</h2>
+      <p class="project-section__body">
+        6개월간의 리서치와 이터레이션을 거쳐 완성된 최종 디자인입니다.
+        모든 화면은 디자인 시스템을 기반으로 구성되었으며,
+        WCAG AA 기준의 접근성을 준수합니다.
+      </p>
+
+      <div class="mockup-gallery">
+        <div class="mockup-gallery__item" style="background:linear-gradient(145deg,#667EEA,#764BA2);">
+          <div style="display:flex;gap:var(--space-5);align-items:flex-end;">
+            <div class="mockup-phone" style="width:150px;">
+              <div class="mockup-phone__screen">
+                <div class="mockup-phone__inner" style="background:linear-gradient(160deg,#764BA2,#667EEA);">
+                  <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:6px;">잔액</div>
+                  <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;">₩2,450,000</div>
+                  <div class="ui-row--chart"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute;bottom:var(--space-5);left:var(--space-6);color:rgba(255,255,255,0.7);font-size:var(--text-sm);font-weight:var(--weight-semibold);">홈 대시보드</div>
+        </div>
+
+        <div class="mockup-gallery__item" style="background:linear-gradient(145deg,#4776E6,#8E54E9);">
+          <div style="display:flex;gap:var(--space-4);">
+            <div class="mockup-phone" style="width:140px;">
+              <div class="mockup-phone__screen">
+                <div class="mockup-phone__inner" style="background:linear-gradient(160deg,#4776E6,#8E54E9);">
+                  <div style="font-size:10px;color:rgba(255,255,255,0.6);margin-bottom:6px;">지출 분석</div>
+                  <div style="display:flex;flex-direction:column;gap:6px;">
+                    <div style="background:rgba(255,255,255,0.2);border-radius:8px;padding:8px;display:flex;align-items:center;gap:6px;">
+                      <div style="width:20px;height:20px;border-radius:4px;background:rgba(255,255,255,0.3);font-size:10px;display:flex;align-items:center;justify-content:center;">🍽</div>
+                      <div style="flex:1;"><div style="height:5px;border-radius:3px;background:rgba(255,255,255,0.5);"></div></div>
+                      <div style="font-size:10px;color:#fff;font-weight:700;">32%</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.12);border-radius:8px;padding:8px;display:flex;align-items:center;gap:6px;">
+                      <div style="width:20px;height:20px;border-radius:4px;background:rgba(255,255,255,0.15);font-size:10px;display:flex;align-items:center;justify-content:center;">🚗</div>
+                      <div style="flex:1;"><div style="height:5px;border-radius:3px;background:rgba(255,255,255,0.3);width:70%;"></div></div>
+                      <div style="font-size:10px;color:rgba(255,255,255,0.7);">18%</div>
+                    </div>
+                    <div style="background:rgba(255,255,255,0.08);border-radius:8px;padding:8px;display:flex;align-items:center;gap:6px;">
+                      <div style="width:20px;height:20px;border-radius:4px;background:rgba(255,255,255,0.12);font-size:10px;display:flex;align-items:center;justify-content:center;">🛍</div>
+                      <div style="flex:1;"><div style="height:5px;border-radius:3px;background:rgba(255,255,255,0.2);width:50%;"></div></div>
+                      <div style="font-size:10px;color:rgba(255,255,255,0.7);">12%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="position:absolute;bottom:var(--space-5);left:var(--space-6);color:rgba(255,255,255,0.7);font-size:var(--text-sm);font-weight:var(--weight-semibold);">지출 분석</div>
+        </div>
+
+        <div class="mockup-gallery__item mockup-gallery__item--wide" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);">
+          <div style="display:flex;gap:var(--space-8);align-items:center;">
+            <div class="mockup-phone" style="width:155px;">
+              <div class="mockup-phone__screen">
+                <div class="mockup-phone__inner" style="background:linear-gradient(160deg,#0f3460,#16213e);">
+                  <div style="font-size:10px;color:rgba(255,255,255,0.5);margin-bottom:6px;">투자 포트폴리오</div>
+                  <div style="font-size:18px;font-weight:800;color:#4ADE80;margin-bottom:4px;">+12.4%</div>
+                  <div style="font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:10px;">이번 달 수익률</div>
+                  <div style="height:70px;background:rgba(255,255,255,0.06);border-radius:8px;position:relative;overflow:hidden;margin-bottom:8px;">
+                    <div style="position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(180deg,rgba(74,222,128,0.4),rgba(74,222,128,0.05));clip-path:polygon(0 100%,15% 40%,35% 55%,55% 15%,75% 30%,100% 5%,100% 100%);"></div>
+                  </div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+                    <div style="height:32px;border-radius:6px;background:rgba(255,255,255,0.06);"></div>
+                    <div style="height:32px;border-radius:6px;background:rgba(255,255,255,0.06);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div style="color:rgba(255,255,255,0.9);font-size:var(--text-2xl);font-weight:var(--weight-extrabold);margin-bottom:var(--space-3);letter-spacing:var(--tracking-tight);">투자 현황 화면</div>
+              <div style="color:rgba(255,255,255,0.5);font-size:var(--text-sm);line-height:var(--leading-relaxed);max-width:320px;">
+                실시간 주가 데이터와 포트폴리오 수익률을 한눈에 확인할 수 있습니다.
+                다크 테마로 정보의 가독성을 최대화했습니다.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+
+  <!-- ════════════════════════════════════════
+       PROJECT NAVIGATION
+  ════════════════════════════════════════ -->
+  <div class="project-nav">
+    <div class="container">
+      <div class="project-nav__inner">
+        <a href="#" class="project-nav__item">
+          <div class="project-nav__dir">← 이전 프로젝트</div>
+          <div class="project-nav__name">데이터허브</div>
+          <div class="project-nav__type">B2B SaaS 대시보드</div>
+        </a>
+        <a href="#" class="project-nav__item project-nav__item--next">
+          <div class="project-nav__dir">다음 프로젝트 →</div>
+          <div class="project-nav__name">하모니</div>
+          <div class="project-nav__type">정신 건강 관리 앱</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════
+       CONTACT CTA
+  ════════════════════════════════════════ -->
+  <section class="cv-section">
+    <div class="container">
+      <div class="cv-section__inner reveal">
+        <div class="cv-section__text">
+          <div class="cv-section__label">함께 일해요</div>
+          <h2 class="cv-section__title">새로운 프로젝트가 있으신가요?</h2>
+          <p class="cv-section__sub">아이디어를 현실로 만들어 드릴게요. 편하게 연락주세요.</p>
+        </div>
+        <div class="cv-section__action">
+          <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
+          <a href="index.html" class="btn btn--outline btn--lg"
+            style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">
+            포트폴리오 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <a href="index.html" class="footer__logo">수<span>진</span></a>
+        <p class="footer__copy">© 2025 이수진. All rights reserved.</p>
+        <nav class="footer__links" aria-label="푸터 링크">
+          <a href="index.html#works"   class="footer__link">작업물</a>
+          <a href="index.html#skills"  class="footer__link">스킬</a>
+          <a href="index.html#about"   class="footer__link">소개</a>
+          <a href="index.html#contact" class="footer__link">연락</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

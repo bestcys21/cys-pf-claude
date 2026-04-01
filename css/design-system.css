@@ -1,0 +1,258 @@
+/* ============================================================
+   DESIGN SYSTEM — CSS Custom Properties (Design Tokens)
+   All values are tokenized — no hardcoding in component styles
+   ============================================================ */
+
+:root {
+
+  /* ──────────────────────────────────────────
+     COLOR PRIMITIVES
+  ────────────────────────────────────────── */
+  --primitive-red-50:  #EEECFE;
+  --primitive-red-100: #C9C3FC;
+  --primitive-red-500: #4A34F5;
+  --primitive-red-600: #3D29D4;
+  --primitive-red-700: #3020B0;
+
+  --primitive-black:    #0E0E0E;
+  --primitive-gray-900: #1A1A1A;
+  --primitive-gray-800: #2D2D2D;
+  --primitive-gray-700: #444444;
+  --primitive-gray-600: #5A5A5A;
+  --primitive-gray-500: #737373;
+  --primitive-gray-400: #9A9A9A;
+  --primitive-gray-300: #BEBEBE;
+  --primitive-gray-200: #D9D9D9;
+  --primitive-gray-100: #EBEBEB;
+  --primitive-gray-50:  #F7F7F7;
+  --primitive-white:    #FFFFFF;
+
+  /* ──────────────────────────────────────────
+     SEMANTIC COLOR TOKENS
+  ────────────────────────────────────────── */
+
+  /* Brand */
+  --color-accent:           var(--primitive-red-500);
+  --color-accent-hover:     var(--primitive-red-600);
+  --color-accent-active:    var(--primitive-red-700);
+  --color-accent-subtle:    var(--primitive-red-50);
+  --color-accent-muted:     var(--primitive-red-100);
+
+  /* Surface */
+  --color-surface-primary:   var(--primitive-white);
+  --color-surface-secondary: var(--primitive-gray-50);
+  --color-surface-tertiary:  var(--primitive-gray-100);
+  --color-surface-inverse:   var(--primitive-black);
+  --color-surface-card:      var(--primitive-white);
+
+  /* Text */
+  --color-text-primary:   var(--primitive-black);
+  --color-text-secondary: var(--primitive-gray-600);
+  --color-text-tertiary:  var(--primitive-gray-400);
+  --color-text-inverse:   var(--primitive-white);
+  --color-text-accent:    var(--primitive-red-500);
+  --color-text-disabled:  var(--primitive-gray-300);
+
+  /* Border */
+  --color-border-default: var(--primitive-gray-100);
+  --color-border-strong:  var(--primitive-gray-200);
+  --color-border-inverse: var(--primitive-gray-800);
+
+  /* ──────────────────────────────────────────
+     TYPOGRAPHY
+  ────────────────────────────────────────── */
+
+  /* Family */
+  --font-sans: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', 'Helvetica Neue', sans-serif;
+
+  /* Size Scale — 1.25 Major Third */
+  --text-2xs:  0.625rem;   /* 10px */
+  --text-xs:   0.75rem;    /* 12px */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg:   1.125rem;   /* 18px */
+  --text-xl:   1.25rem;    /* 20px */
+  --text-2xl:  1.5rem;     /* 24px */
+  --text-3xl:  1.875rem;   /* 30px */
+  --text-4xl:  2.25rem;    /* 36px */
+  --text-5xl:  3rem;       /* 48px */
+  --text-6xl:  3.75rem;    /* 60px */
+  --text-7xl:  4.5rem;     /* 72px */
+  --text-8xl:  6rem;       /* 96px */
+
+  /* Weight */
+  --weight-regular:   400;
+  --weight-medium:    500;
+  --weight-semibold:  600;
+  --weight-bold:      700;
+  --weight-extrabold: 800;
+
+  /* Line Height */
+  --leading-none:    1;
+  --leading-tight:   1.2;
+  --leading-snug:    1.35;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose:   1.8;
+
+  /* Letter Spacing */
+  --tracking-tighter: -0.04em;
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.04em;
+  --tracking-wider:    0.08em;
+  --tracking-widest:   0.14em;
+
+  /* ──────────────────────────────────────────
+     SPACING — 4px base unit
+  ────────────────────────────────────────── */
+  --space-0:  0;
+  --space-px: 1px;
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-7:  1.75rem;   /* 28px */
+  --space-8:  2rem;      /* 32px */
+  --space-9:  2.25rem;   /* 36px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-14: 3.5rem;    /* 56px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px */
+  --space-28: 7rem;      /* 112px */
+  --space-32: 8rem;      /* 128px */
+  --space-40: 10rem;     /* 160px */
+  --space-48: 12rem;     /* 192px */
+
+  /* ──────────────────────────────────────────
+     BORDER RADIUS
+  ────────────────────────────────────────── */
+  --radius-none: 0;
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:  12px;
+  --radius-xl:  16px;
+  --radius-2xl: 20px;
+  --radius-3xl: 28px;
+  --radius-4xl: 40px;
+  --radius-full: 9999px;
+
+  /* ──────────────────────────────────────────
+     SHADOWS
+  ────────────────────────────────────────── */
+  --shadow-xs:   0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm:   0 2px 6px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:   0 4px 16px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
+  --shadow-lg:   0 8px 32px rgba(0,0,0,0.10), 0 4px 12px rgba(0,0,0,0.06);
+  --shadow-xl:   0 16px 56px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.06);
+  --shadow-2xl:  0 24px 80px rgba(0,0,0,0.16);
+  --shadow-inset: inset 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-glow:  0 0 0 4px rgba(255,59,59,0.15);
+
+  /* ──────────────────────────────────────────
+     TRANSITIONS
+  ────────────────────────────────────────── */
+  --ease-linear:  linear;
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-bounce:  cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  --duration-instant: 75ms;
+  --duration-fast:   150ms;
+  --duration-base:   250ms;
+  --duration-slow:   400ms;
+  --duration-slower: 600ms;
+  --duration-slowest:900ms;
+
+  --transition-fast:   var(--duration-fast)  var(--ease-out);
+  --transition-base:   var(--duration-base)  var(--ease-out);
+  --transition-slow:   var(--duration-slow)  var(--ease-out);
+  --transition-spring: var(--duration-slow)  var(--ease-spring);
+
+  /* ──────────────────────────────────────────
+     LAYOUT
+  ────────────────────────────────────────── */
+  --container-max:         1200px;
+  --container-padding-x:   var(--space-8);
+  --section-padding-y:     var(--space-32);
+  --section-padding-y-sm:  var(--space-20);
+
+  /* ──────────────────────────────────────────
+     Z-INDEX SCALE
+  ────────────────────────────────────────── */
+  --z-below:    -1;
+  --z-base:      0;
+  --z-raised:   10;
+  --z-float:    20;
+  --z-dropdown: 50;
+  --z-sticky:  100;
+  --z-overlay: 200;
+  --z-modal:   300;
+  --z-toast:   400;
+
+  /* ──────────────────────────────────────────
+     COMPONENT TOKENS
+  ────────────────────────────────────────── */
+
+  /* Navigation */
+  --nav-height:       72px;
+  --nav-bg:           rgba(255,255,255,0.88);
+  --nav-bg-scrolled:  rgba(255,255,255,0.96);
+  --nav-backdrop:     blur(20px) saturate(180%);
+
+  /* Button */
+  --btn-height-sm:    36px;
+  --btn-height-md:    44px;
+  --btn-height-lg:    52px;
+  --btn-padding-sm:   0 var(--space-5);
+  --btn-padding-md:   0 var(--space-7);
+  --btn-padding-lg:   0 var(--space-8);
+  --btn-radius:       var(--radius-full);
+  --btn-font-size:    var(--text-sm);
+  --btn-font-weight:  var(--weight-semibold);
+  --btn-tracking:     var(--tracking-wide);
+
+  /* Card */
+  --card-radius:   var(--radius-3xl);
+  --card-padding:  var(--space-10);
+  --card-border:   1px solid var(--color-border-default);
+  --card-shadow:   var(--shadow-md);
+
+  /* Tag/Badge */
+  --badge-height:       26px;
+  --badge-padding-x:    var(--space-3);
+  --badge-radius:       var(--radius-full);
+  --badge-font-size:    var(--text-xs);
+  --badge-font-weight:  var(--weight-semibold);
+
+  /* Orbital Hero Animation */
+  --orbit-size:     520px;
+  --orbit-center:   72px;
+  --orbit-r1:       115px;
+  --orbit-r2:       178px;
+  --orbit-r3:       238px;
+  --orbit-dur-1:    18s;
+  --orbit-dur-2:    28s;
+  --orbit-dur-3:    42s;
+}
+
+/* ── Responsive Token Overrides ── */
+@media (max-width: 768px) {
+  :root {
+    --container-padding-x: var(--space-5);
+    --section-padding-y:   var(--space-20);
+    --orbit-size:          340px;
+    --orbit-r1:             75px;
+    --orbit-r2:            115px;
+    --orbit-r3:            154px;
+    --nav-height:           64px;
+  }
+}
