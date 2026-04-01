@@ -1,0 +1,104 @@
+/* ============================================================
+   MOCKUP & UTILITY CLASSES (Optimized to replace inline styles)
+   ============================================================ */
+
+/* Layout */
+.mk-flex { display: flex; }
+.mk-flex-col { display: flex; flex-direction: column; }
+.mk-center { display: flex; align-items: center; justify-content: center; }
+.mk-grid { display: grid; }
+.mk-grid-cols-2 { grid-template-columns: 1fr 1fr; }
+.mk-grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.mk-grid-cols-sidebar { grid-template-columns: 1fr 2fr; }
+.mk-grid-cols-dashboard { grid-template-columns: 60px 1fr; }
+.mk-flex-1 { flex: 1; }
+
+/* Gap */
+.mk-gap-1 { gap: 4px; }
+.mk-gap-2 { gap: 8px; }
+.mk-gap-3 { gap: 12px; }
+
+/* Spacing (Margin/Padding bottom) */
+.mk-mb-2 { margin-bottom: 8px; }
+.mk-mb-3 { margin-bottom: 12px; }
+.mk-mb-4 { margin-bottom: 16px; }
+.mk-p-3 { padding: 12px; }
+.mk-p-4 { padding: 16px; }
+.mk-p-5 { padding: 20px; }
+.mk-px-3 { padding-left: 12px; padding-right: 12px; }
+
+/* Radius */
+.mk-rounded-sm { border-radius: 6px; }
+.mk-rounded-md { border-radius: 8px; }
+.mk-rounded-lg { border-radius: 10px; }
+.mk-rounded-xl { border-radius: 12px; }
+.mk-rounded-2xl { border-radius: 14px; }
+.mk-rounded-full { border-radius: 9999px; }
+
+/* Heights & Sizes */
+.mk-h-full { height: 100%; }
+.mk-w-full { width: 100%; }
+.mk-h-1 { height: 4px; }
+.mk-h-2 { height: 6px; }
+.mk-h-3 { height: 10px; }
+.mk-h-4 { height: 12px; }
+.mk-h-8 { height: 28px; }
+.mk-h-10 { height: 32px; }
+.mk-h-12 { height: 36px; }
+.mk-h-14 { height: 44px; }
+.mk-h-16 { height: 48px; }
+.mk-h-20 { height: 50px; }
+.mk-h-24 { height: 60px; }
+.mk-h-32 { height: 80px; }
+.mk-h-36 { height: 90px; }
+.mk-h-40 { height: 100px; }
+.mk-w-8 { width: 32px; }
+.mk-h-8-sq { width: 32px; height: 32px; }
+.mk-sq-120 { width: 120px; height: 120px; }
+
+/* Width % */
+.mk-w-50 { width: 50%; }
+.mk-w-70 { width: 70%; }
+.mk-w-80px { width: 80px; }
+
+/* Background / Opacity (Glass) */
+.mk-bg-glass-5 { background: rgba(255,255,255,0.05); }
+.mk-bg-glass-10 { background: rgba(255,255,255,0.1); }
+.mk-bg-glass-12 { background: rgba(255,255,255,0.12); }
+.mk-bg-glass-15 { background: rgba(255,255,255,0.15); }
+.mk-bg-glass-18 { background: rgba(255,255,255,0.18); }
+.mk-bg-glass-20 { background: rgba(255,255,255,0.2); }
+.mk-bg-glass-25 { background: rgba(255,255,255,0.25); }
+.mk-bg-glass-35 { background: rgba(255,255,255,0.35); }
+.mk-bg-glass-40 { background: rgba(255,255,255,0.4); }
+
+.mk-bg-dark-900 { background: var(--primitive-gray-900); }
+.mk-bg-dark-800 { background: var(--primitive-gray-800); }
+
+/* Colors */
+.mk-bg-accent { background: var(--color-accent); }
+.mk-text-white-70 { color: rgba(255,255,255,0.7); }
+
+/* Typography */
+.mk-text-sm { font-size: 14px; }
+.mk-text-2xl { font-size: 32px; }
+.mk-text-3xl { font-size: 36px; }
+
+/* Specific gradients / complex styles mapped from inline */
+.mk-grad-finance { background: linear-gradient(145deg,#764BA2,#667EEA); }
+.mk-grad-edu { background: linear-gradient(145deg,#F093FB,#F5576C); }
+.mk-grad-medi { background: linear-gradient(145deg,#0ED2F7,#B2FEFA); }
+
+.mk-border-glass { border-color: rgba(255,255,255,0.08); }
+.mk-border-glass-light { border-color: rgba(255,255,255,0.1); }
+
+/* Special Charts */
+.mk-chart-polygon {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 70%;
+  background: linear-gradient(180deg,rgba(255,59,59,0.3),rgba(255,59,59,0.05));
+  clip-path: polygon(0 100%, 10% 50%, 25% 65%, 40% 25%, 55% 45%, 70% 15%, 85% 35%, 100% 5%, 100% 100%);
+}
+
+.mk-relative { position: relative; }
+.mk-overflow-hidden { overflow: hidden; }
+.mk-mt-auto { margin-top: auto; }
