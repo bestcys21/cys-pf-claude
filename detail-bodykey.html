@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="js/head.js"></script>
+  <meta name="description" content="Bodykey 케이스 스터디" />
+  <title>Bodykey 케이스 스터디 — 차윤수</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/detail.css" />
+</head>
+<body>
+  <common-header></common-header>
+
+  <!-- HERO -->
+  <section class="sf-hero">
+    <div class="container sf-hero__top">
+      <nav style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
+        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <a href="index.html#other-works" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Bodykey</span>
+      </nav>
+      <p class="sf-hero__kicker anim-enter anim-enter-1">브랜드 디자인</p>
+      <h1 class="sf-hero__title anim-enter anim-enter-2">Bodykey</h1>
+      <p class="sf-hero__desc anim-enter anim-enter-3">건강한 라이프스타일을 위한 Bodykey 브랜드 비주얼 아이덴티티 디자인. 건강·웰니스 브랜드의 정체성을 명확하게 전달하는 시각 시스템을 구축했습니다.</p>
+      <div class="sf-hero__tags anim-enter anim-enter-4">
+        <span class="badge">브랜드 디자인</span>
+        <span class="badge">비주얼 아이덴티티</span>
+        <span class="badge">Illustrator</span>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sf-cover anim-enter anim-enter-5">
+        <img src="images/other/bodykey/big_bodykey.jpg" alt="Bodykey 커버" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- META BAR -->
+  <div class="sf-meta">
+    <div class="container">
+      <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">클라이언트</div>
+          <div class="sf-meta__value">Bodykey</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">기간</div>
+          <div class="sf-meta__value">6주</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">역할</div>
+          <div class="sf-meta__value">Brand Designer</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">사용 툴</div>
+          <div class="sf-meta__value">Figma · Illustrator</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- SECTION 01: 프로젝트 소개 -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">01 — 프로젝트 소개</div>
+      <h2 class="sf-section__title">건강을 담은 브랜드 아이덴티티</h2>
+      <p class="sf-section__body" style="max-width:680px;">건강과 활력을 상징하는 컬러 시스템과 모던한 타이포그래피를 기반으로 신뢰감 있고 활동적인 브랜드 이미지를 구축했습니다. 디지털·인쇄 매체 모두에서 일관된 브랜드 경험을 제공합니다.</p>
+    </section>
+  </div>
+
+  <!-- PROJECT NAV -->
+  <div class="sf-nav">
+    <div class="container">
+      <div class="sf-nav__inner" style="grid-template-columns: 1fr;">
+        <a href="index.html#other-works" class="sf-nav__item">
+          <div class="sf-nav__dir">← 목록으로</div>
+          <div class="sf-nav__name">작업물 전체 보기</div>
+          <div class="sf-nav__type">포트폴리오 메인</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <section class="cv-section">
+    <div class="container">
+      <div class="cv-section__inner reveal">
+        <div class="cv-section__text">
+          <div class="cv-section__label">함께 일해요</div>
+          <h2 class="cv-section__title">새로운 프로젝트가 있으신가요?</h2>
+          <p class="cv-section__sub">아이디어를 현실로 만들어 드릴게요. 편하게 연락주세요.</p>
+        </div>
+        <div class="cv-section__action">
+          <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
+          <a href="index.html" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">포트폴리오 보기</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <common-footer></common-footer>
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

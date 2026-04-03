@@ -180,7 +180,7 @@
   /* ──────────────────────────────────────────
      LAYOUT
   ────────────────────────────────────────── */
-  --container-max:         1200px;
+  --container-max:         1280px;
   --container-padding-x:   var(--space-8);
   --section-padding-y:     var(--space-32);
   --section-padding-y-sm:  var(--space-20);
@@ -204,8 +204,8 @@
 
   /* Navigation */
   --nav-height:       72px;
-  --nav-bg:           rgba(255,255,255,0.88);
-  --nav-bg-scrolled:  rgba(255,255,255,0.96);
+  --nav-bg:           transparent;
+  --nav-bg-scrolled:  rgba(255,255,255,0.95);
   --nav-backdrop:     blur(20px) saturate(180%);
 
   /* Button */

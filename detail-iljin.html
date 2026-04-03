@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="js/head.js"></script>
+  <meta name="description" content="일진 케이스 스터디 — 기업 그룹웨어 UX 리뉴얼" />
+  <title>일진 케이스 스터디 — 차윤수</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/detail.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════ NAVIGATION ════════════════ -->
+  <common-header></common-header>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="sf-hero">
+    <div class="container sf-hero__top">
+
+      <!-- Breadcrumb -->
+      <nav
+        style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
+        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <a href="index.html#works" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <span>일진</span>
+      </nav>
+
+      <p class="sf-hero__kicker anim-enter anim-enter-1">기업 서비스</p>
+
+      <h1 class="sf-hero__title anim-enter anim-enter-2">
+        일진
+      </h1>
+
+      <p class="sf-hero__desc anim-enter anim-enter-3">
+        임직원 중심의 내부 업무 시스템을 사람 중심으로 재설계.<br>
+        노후화된 그룹웨어를 현대적인 UX로 전환하고 업무 효율을
+        높이는 기업 서비스 리뉴얼 프로젝트를 담당했습니다.
+      </p>
+
+      <div class="sf-hero__tags anim-enter anim-enter-4">
+        <span class="badge badge--accent">기업 서비스</span>
+        <span class="badge badge--default">그룹웨어</span>
+        <span class="badge badge--default">웹 앱</span>
+        <span class="badge badge--default">UX 리뉴얼</span>
+      </div>
+
+    </div>
+
+    <!-- Hero cover image -->
+    <div class="container">
+      <div class="sf-cover anim-enter anim-enter-5">
+        <img src="images/main/iljin/1.jpg" alt="일진 그룹웨어 전체 화면" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ META BAR ════════════════ -->
+  <div class="sf-meta">
+    <div class="container">
+      <div class="sf-meta__grid">
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">클라이언트</div>
+          <div class="sf-meta__value">일진그룹</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">기간</div>
+          <div class="sf-meta__value">6개월<br>2023. 01 — 06</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">역할</div>
+          <div class="sf-meta__value">Lead UX Designer<br>리서치 · UI 설계</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">플랫폼</div>
+          <div class="sf-meta__value">Web · 반응형<br>모바일 지원</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">사용 툴</div>
+          <div class="sf-meta__value">Figma · FigJam<br>Maze · Zeplin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ════════════════ CHALLENGE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">01 — 문제 정의</div>
+      <h2 class="sf-section__title">해결해야 할 문제</h2>
+      <p class="sf-section__body" style="max-width:680px;">
+        10년 이상 운영된 레거시 그룹웨어는 사용성이 크게 떨어져 임직원들의
+        만족도가 낮았습니다. 다양한 부서의 실무자 인터뷰와 사용성 테스트를 통해
+        핵심 불편 사항을 체계적으로 발굴하고 우선순위를 정립했습니다.
+      </p>
+
+      <div class="sf-challenge-grid">
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">정보 과부하로<br>핵심 파악이 어렵다</div>
+          <div class="sf-challenge-item__desc">
+            메인 화면에 모든 기능이 나열되어 있어 실제 업무에 필요한
+            정보를 빠르게 찾지 못하는 문제가 반복되고 있었습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">역할별 맞춤형<br>대시보드</div>
+          <div class="sf-challenge-item__desc">
+            직군과 직책에 따라 개인화된 홈 화면을 제공하고,
+            Today의 핵심 업무를 카드 형태로 우선 표시하도록 설계했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">결재 진행 상황을<br>알 수 없다</div>
+          <div class="sf-challenge-item__desc">
+            기안서 제출 후 결재가 어느 단계에 있는지 확인하려면
+            여러 화면을 이동해야 했고, 알림도 제때 오지 않았습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">실시간 결재 현황<br>타임라인</div>
+          <div class="sf-challenge-item__desc">
+            결재 흐름을 타임라인으로 시각화하고, 단계별 알림으로
+            담당자가 즉시 처리할 수 있는 환경을 구축했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">모바일 사용이<br>거의 불가능하다</div>
+          <div class="sf-challenge-item__desc">
+            PC 전용으로 설계된 UI가 모바일에서는 제대로 표시되지 않아
+            외근 중에는 업무 처리가 사실상 불가능했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">반응형 설계로<br>어디서든 업무 처리</div>
+          <div class="sf-challenge-item__desc">
+            모바일 우선 반응형 레이아웃을 적용하고 핵심 기능을
+            터치 친화적으로 재설계하여 이동 중에도 업무가 가능하도록 했습니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/2.jpg" alt="일진 현황 분석 및 사용성 테스트" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/3.jpg" alt="일진 유저 리서치 및 인터뷰" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/4.jpg" alt="일진 정보 구조 설계 및 와이어프레임" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ DESIGN ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">02 — 디자인 설계</div>
+      <h2 class="sf-section__title">업무 효율을 높이는 인터페이스</h2>
+      <p class="sf-section__body" style="max-width:680px;margin-bottom:var(--space-10);">
+        기업 서비스 특성상 수백 명의 임직원이 매일 사용하는 시스템인 만큼,
+        학습 비용을 최소화하면서도 업무 처리 속도를 높이는 것이 핵심 목표였습니다.
+        친숙한 패턴과 일관된 인터랙션으로 적응 부담 없이 자연스럽게 사용할 수 있도록 설계했습니다.
+      </p>
+
+      <div class="sf-cards" style="margin-bottom:var(--space-10);">
+        <div class="sf-card reveal reveal-delay-1">
+          <div class="sf-card__icon">🗂️</div>
+          <div class="sf-card__title">통합 전자결재 시스템</div>
+          <div class="sf-card__desc">
+            기안서 작성부터 결재 완료까지 모든 단계를 하나의 화면에서 처리하고
+            결재 라인을 시각적으로 확인할 수 있습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-2">
+          <div class="sf-card__icon">📬</div>
+          <div class="sf-card__title">스마트 알림 센터</div>
+          <div class="sf-card__desc">
+            결재 요청, 승인 완료, 반려 사유, 일정 변경 등 중요 알림을
+            우선순위에 따라 정리하여 한눈에 확인할 수 있습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-3">
+          <div class="sf-card__icon">📊</div>
+          <div class="sf-card__title">업무 현황 위젯</div>
+          <div class="sf-card__desc">
+            오늘의 일정, 미결재 건수, 공지사항 등 개인화된 위젯을
+            드래그로 배치하는 커스터마이징 홈 화면을 제공합니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/5.jpg" alt="일진 메인 대시보드 화면" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/6.jpg" alt="일진 전자결재 화면" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/7.jpg" alt="일진 모바일 반응형 화면" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ RETROSPECTIVE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-2col">
+        <div>
+          <div class="sf-section__label">회고</div>
+          <h2 class="sf-section__title">프로젝트 회고</h2>
+        </div>
+        <div>
+          <p class="sf-section__body" style="margin-bottom:var(--space-8);">
+            레거시 시스템의 리뉴얼은 단순한 UI 개선이 아닌, 오랜 기간
+            형성된 사용자 습관을 이해하고 그 안에서 변화를 이끄는 작업이었습니다.
+            저항을 최소화하면서도 경험을 개선하는 점진적 변화의 중요성을 배웠습니다.
+          </p>
+          <div class="sf-cards" style="grid-template-columns:1fr 1fr;margin-top:0;">
+            <div class="sf-card">
+              <div class="sf-card__icon">🔄</div>
+              <div class="sf-card__title">변화 관리</div>
+              <div class="sf-card__desc">오랜 사용자 습관을 존중하면서 새로운 경험으로 자연스럽게 유도하는 설계를 배웠습니다.</div>
+            </div>
+            <div class="sf-card">
+              <div class="sf-card__icon">👥</div>
+              <div class="sf-card__title">다중 이해관계자</div>
+              <div class="sf-card__desc">다양한 부서의 요구사항을 조율하고 우선순위를 합의해나가는 협업 역량을 키웠습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/8.jpg" alt="일진 최종 프로토타입 및 검증" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/iljin/9.jpg" alt="일진 최종 결과물 전체" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- ════════════════ PROJECT NAV ════════════════ -->
+  <div class="sf-nav">
+    <div class="container">
+      <div class="sf-nav__inner">
+        <a href="detail-golf.html" class="sf-nav__item">
+          <div class="sf-nav__dir">← 이전 프로젝트</div>
+          <div class="sf-nav__name">ClubD Golf</div>
+          <div class="sf-nav__type">멤버십 앱 · iOS/Android</div>
+        </a>
+        <a href="detail-oasis.html" class="sf-nav__item sf-nav__item--next">
+          <div class="sf-nav__dir">다음 프로젝트 →</div>
+          <div class="sf-nav__name">ClubD Oasis</div>
+          <div class="sf-nav__type">웰니스 예약 · 모바일 앱</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ CTA BANNER ════════════════ -->
+  <section class="cv-section">
+    <div class="container">
+      <div class="cv-section__inner reveal">
+        <div class="cv-section__text">
+          <div class="cv-section__label">함께 일해요</div>
+          <h2 class="cv-section__title">새로운 프로젝트가 있으신가요?</h2>
+          <p class="cv-section__sub">아이디어를 현실로 만들어 드릴게요. 편하게 연락주세요.</p>
+        </div>
+        <div class="cv-section__action">
+          <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
+          <a href="index.html" class="btn btn--outline btn--lg"
+            style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">
+            포트폴리오 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <common-footer></common-footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

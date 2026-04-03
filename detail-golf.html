@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="js/head.js"></script>
+  <meta name="description" content="ClubD Golf 케이스 스터디 — 골프 클럽 멤버십 예약 앱" />
+  <title>ClubD Golf 케이스 스터디 — 차윤수</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/detail.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════ NAVIGATION ════════════════ -->
+  <common-header></common-header>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="sf-hero">
+    <div class="container sf-hero__top">
+
+      <!-- Breadcrumb -->
+      <nav
+        style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
+        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <a href="index.html#works" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <span>ClubD Golf</span>
+      </nav>
+
+      <p class="sf-hero__kicker anim-enter anim-enter-1">멤버십 앱</p>
+
+      <h1 class="sf-hero__title anim-enter anim-enter-2">
+        ClubD Golf
+      </h1>
+
+      <p class="sf-hero__desc anim-enter anim-enter-3">
+        골프 클럽 멤버를 위한 프리미엄 예약·관리 앱.<br>
+        복잡한 골프장 예약 및 멤버십 관리를 하나의 앱으로 통합하여
+        회원 경험을 혁신한 모바일 서비스의 UX 디자인을 담당했습니다.
+      </p>
+
+      <div class="sf-hero__tags anim-enter anim-enter-4">
+        <span class="badge badge--accent">모바일 앱</span>
+        <span class="badge badge--default">멤버십 서비스</span>
+        <span class="badge badge--default">예약 시스템</span>
+        <span class="badge badge--default">iOS · Android</span>
+      </div>
+
+    </div>
+
+    <!-- Hero cover image -->
+    <div class="container">
+      <div class="sf-cover anim-enter anim-enter-5">
+        <img src="images/main/golf/1.jpg" alt="ClubD Golf 앱 전체 화면" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ META BAR ════════════════ -->
+  <div class="sf-meta">
+    <div class="container">
+      <div class="sf-meta__grid">
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">클라이언트</div>
+          <div class="sf-meta__value">ClubD (주)</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">기간</div>
+          <div class="sf-meta__value">4개월<br>2023. 06 — 09</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">역할</div>
+          <div class="sf-meta__value">UX/UI Designer<br>Interaction Design</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">플랫폼</div>
+          <div class="sf-meta__value">iOS · Android<br>모바일 앱</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">사용 툴</div>
+          <div class="sf-meta__value">Figma · FigJam<br>Principle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ════════════════ CHALLENGE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">01 — 문제 정의</div>
+      <h2 class="sf-section__title">해결해야 할 문제</h2>
+      <p class="sf-section__body" style="max-width:680px;">
+        골프 클럽 회원들은 예약, 멤버십 관리, 동반자 초대 등을 각각 다른 채널을 통해
+        처리해야 했습니다. 전화 예약에 의존하거나 웹사이트의 복잡한 UI를 거쳐야 하는
+        기존 방식은 프리미엄 서비스에 걸맞지 않는 경험을 제공하고 있었습니다.
+      </p>
+
+      <div class="sf-challenge-grid">
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">불편한 전화·웹 예약<br>프로세스</div>
+          <div class="sf-challenge-item__desc">
+            골프장 예약이 전화 또는 PC 웹에서만 가능해 모바일 사용자가
+            예약 과정에서 큰 불편을 겪고 있었습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">3탭으로 완료되는<br>모바일 예약 플로우</div>
+          <div class="sf-challenge-item__desc">
+            날짜 선택 → 티타임 확인 → 결제까지 최소한의 단계로
+            예약을 완료할 수 있는 직관적인 모바일 플로우를 설계했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">멤버십 혜택을<br>파악하기 어렵다</div>
+          <div class="sf-challenge-item__desc">
+            잔여 이용권, 할인 혜택, 포인트 현황이 분산되어 있어
+            회원이 자신의 혜택을 제대로 활용하지 못하는 문제가 있었습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">통합 멤버십<br>대시보드</div>
+          <div class="sf-challenge-item__desc">
+            잔여 이용권, 포인트, 쿠폰, 예약 내역을 한 화면에서 확인하고
+            혜택 사용을 유도하는 프로액티브 알림을 설계했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">동반자 초대 과정이<br>번거롭다</div>
+          <div class="sf-challenge-item__desc">
+            함께 라운딩할 동반자를 초대하고 예약을 공유하는 과정이
+            복잡하여 사용자들이 기능 사용을 포기하는 경우가 많았습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">링크 하나로<br>간편한 동반자 초대</div>
+          <div class="sf-challenge-item__desc">
+            카카오톡·문자로 공유 가능한 초대 링크와 앱 내 팀 관리 기능으로
+            동반자 초대를 단 한 번의 탭으로 해결했습니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/golf/2.jpg" alt="ClubD Golf 문제 정의 및 리서치" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/golf/3.jpg" alt="ClubD Golf 유저 플로우 및 와이어프레임" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ DESIGN ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">02 — 디자인</div>
+      <h2 class="sf-section__title">프리미엄 경험 설계</h2>
+      <p class="sf-section__body" style="max-width:680px;margin-bottom:var(--space-10);">
+        골프 클럽의 프리미엄 이미지를 디지털 경험으로 옮기는 것이 핵심 과제였습니다.
+        그린 계열의 브랜드 컬러와 여백을 활용한 고급스러운 레이아웃,
+        부드러운 애니메이션으로 브랜드 가치와 일치하는 UX를 구현했습니다.
+      </p>
+
+      <div class="sf-cards" style="margin-bottom:var(--space-10);">
+        <div class="sf-card reveal reveal-delay-1">
+          <div class="sf-card__icon">📅</div>
+          <div class="sf-card__title">직관적인 예약 캘린더</div>
+          <div class="sf-card__desc">
+            잔여 티타임과 가격을 캘린더에서 바로 확인하고
+            선호 코스 필터로 원하는 조건을 빠르게 찾을 수 있습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-2">
+          <div class="sf-card__icon">🏆</div>
+          <div class="sf-card__title">멤버십 등급 시스템</div>
+          <div class="sf-card__desc">
+            Silver · Gold · Platinum 등급별 혜택을 시각적으로 표현하고
+            등급 업그레이드 조건과 진행률을 명확하게 제공합니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-3">
+          <div class="sf-card__icon">🔔</div>
+          <div class="sf-card__title">스마트 알림 시스템</div>
+          <div class="sf-card__desc">
+            라운딩 전날 날씨 알림, 취소 가능 시간 안내, 포인트 만료 경고 등
+            맥락에 맞는 적시 알림으로 사용자 가치를 높였습니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/golf/4.jpg" alt="ClubD Golf 디자인 시스템 및 UI 컴포넌트" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/golf/5.jpg" alt="ClubD Golf 예약 화면 상세" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/golf/6.jpg" alt="ClubD Golf 멤버십 및 마이페이지" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ RETROSPECTIVE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-2col">
+        <div>
+          <div class="sf-section__label">회고</div>
+          <h2 class="sf-section__title">프로젝트 회고</h2>
+        </div>
+        <div>
+          <p class="sf-section__body" style="margin-bottom:var(--space-8);">
+            ClubD Golf 프로젝트를 통해 프리미엄 브랜드의 디지털 경험을
+            설계하는 방법을 깊이 배울 수 있었습니다. 기능적 편의성뿐 아니라
+            감성적 만족감까지 설계에 담아야 한다는 점이 가장 큰 교훈이었습니다.
+          </p>
+          <div class="sf-cards" style="grid-template-columns:1fr 1fr;margin-top:0;">
+            <div class="sf-card">
+              <div class="sf-card__icon">✨</div>
+              <div class="sf-card__title">감성적 UX</div>
+              <div class="sf-card__desc">프리미엄 서비스는 기능 이상의 감성적 경험을 설계해야 한다는 것을 배웠습니다.</div>
+            </div>
+            <div class="sf-card">
+              <div class="sf-card__icon">🎯</div>
+              <div class="sf-card__title">타겟 이해</div>
+              <div class="sf-card__desc">골프 유저의 특성을 깊이 이해하고 그에 맞는 UX 패턴을 적용하는 것이 중요했습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/golf/7.jpg" alt="ClubD Golf 최종 결과물" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- ════════════════ PROJECT NAV ════════════════ -->
+  <div class="sf-nav">
+    <div class="container">
+      <div class="sf-nav__inner">
+        <a href="detail-syncflo.html" class="sf-nav__item">
+          <div class="sf-nav__dir">← 이전 프로젝트</div>
+          <div class="sf-nav__name">SyncFlo</div>
+          <div class="sf-nav__type">B2B SaaS · 웹 대시보드</div>
+        </a>
+        <a href="detail-iljin.html" class="sf-nav__item sf-nav__item--next">
+          <div class="sf-nav__dir">다음 프로젝트 →</div>
+          <div class="sf-nav__name">일진</div>
+          <div class="sf-nav__type">기업 서비스 · UX 설계</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ CTA BANNER ════════════════ -->
+  <section class="cv-section">
+    <div class="container">
+      <div class="cv-section__inner reveal">
+        <div class="cv-section__text">
+          <div class="cv-section__label">함께 일해요</div>
+          <h2 class="cv-section__title">새로운 프로젝트가 있으신가요?</h2>
+          <p class="cv-section__sub">아이디어를 현실로 만들어 드릴게요. 편하게 연락주세요.</p>
+        </div>
+        <div class="cv-section__action">
+          <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
+          <a href="index.html" class="btn btn--outline btn--lg"
+            style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">
+            포트폴리오 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <common-footer></common-footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

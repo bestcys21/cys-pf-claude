@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:ais-pre-th3fkehc65t6lsl54nrtp2-298963646768.asia-northeast1.run.app)"
+      "WebFetch(domain:ais-pre-th3fkehc65t6lsl54nrtp2-298963646768.asia-northeast1.run.app)",
+      "Bash(ls C:/Users/IJMAIL/Downloads/pf-claude/*.html)",
+      "Bash(done)",
+      "Bash(sed -n '1,20p' C:/Users/IJMAIL/Downloads/pf-claude/index.html)",
+      "Bash(sed -n '1,20p' C:/Users/IJMAIL/Downloads/pf-claude/detail-syncflo.html)",
+      "Bash(sed -n '1,18p' C:/Users/IJMAIL/Downloads/pf-claude/detail-bodykey.html)"
     ]
   }
 }

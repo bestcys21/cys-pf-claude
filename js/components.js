@@ -6,23 +6,26 @@
 
 class CommonHeader extends HTMLElement {
   connectedCallback() {
+    // Use relative hash links on index page, full path on other pages
+    const isIndex = ['/', '/index.html', ''].some(p =>
+      window.location.pathname.endsWith(p)
+    ) || window.location.pathname === '/';
+    const base = isIndex ? '' : 'index.html';
+
     this.innerHTML = `
       <nav class="nav" role="navigation" aria-label="메인 네비게이션">
         <div class="nav__inner">
-          <a href="index.html" class="nav__logo">수<span>진</span></a>
+          <a href="index.html" class="nav__logo">logo<span>.</span></a>
           <div class="nav__menu" id="nav-menu">
-             <a href="index.html#hero" class="nav__link">홈</a>
-             <a href="index.html#works" class="nav__link">작업물</a>
-             <a href="index.html#skills" class="nav__link">스킬</a>
-             <a href="index.html#about" class="nav__link">소개</a>
-             <a href="index.html#contact" class="nav__link">연락</a>
-             <a href="detail.html" class="nav__link">케이스 스터디</a>
+            <a href="${base}#hero"    class="nav__link">홈</a>
+            <a href="${base}#works"   class="nav__link">작업물</a>
+            <a href="${base}#skills"  class="nav__link">스킬</a>
+            <a href="${base}#about"   class="nav__link">소개</a>
+            <a href="${base}#contact" class="nav__link">연락</a>
           </div>
-          <div class="mk-flex mk-center mk-gap-3">
-            <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
-              <span></span><span></span><span></span>
-            </button>
-          </div>
+          <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
+            <span></span><span></span><span></span>
+          </button>
         </div>
       </nav>
     `;

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="js/head.js"></script>
+  <meta name="description" content="이도 케이스 스터디 — 브랜드 서비스 UX 디자인" />
+  <title>이도 케이스 스터디 — 차윤수</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/detail.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════ NAVIGATION ════════════════ -->
+  <common-header></common-header>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="sf-hero">
+    <div class="container sf-hero__top">
+
+      <!-- Breadcrumb -->
+      <nav
+        style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
+        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <a href="index.html#works" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <span>이도</span>
+      </nav>
+
+      <p class="sf-hero__kicker anim-enter anim-enter-1">브랜드 서비스</p>
+
+      <h1 class="sf-hero__title anim-enter anim-enter-2">
+        이도
+      </h1>
+
+      <p class="sf-hero__desc anim-enter anim-enter-3">
+        브랜드 정체성을 담은 디지털 서비스 경험 설계.<br>
+        이도의 고유한 브랜드 가치를 디지털 채널에서 일관되게 전달하는
+        서비스 UX/UI 디자인 프로젝트를 담당했습니다.
+      </p>
+
+      <div class="sf-hero__tags anim-enter anim-enter-4">
+        <span class="badge badge--accent">브랜드 서비스</span>
+        <span class="badge badge--default">웹 · 앱</span>
+        <span class="badge badge--default">UX/UI 디자인</span>
+        <span class="badge badge--default">비주얼 아이덴티티</span>
+      </div>
+
+    </div>
+
+    <!-- Hero cover image -->
+    <div class="container">
+      <div class="sf-cover anim-enter anim-enter-5">
+        <img src="images/main/yido/1.png" alt="이도 서비스 전체 화면" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ META BAR ════════════════ -->
+  <div class="sf-meta">
+    <div class="container">
+      <div class="sf-meta__grid">
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">클라이언트</div>
+          <div class="sf-meta__value">이도</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">기간</div>
+          <div class="sf-meta__value">4개월<br>2023. 03 — 06</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">역할</div>
+          <div class="sf-meta__value">UX/UI Designer<br>Brand Design</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">플랫폼</div>
+          <div class="sf-meta__value">Web · App<br>반응형</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">사용 툴</div>
+          <div class="sf-meta__value">Figma · Illustrator<br>Principle</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ════════════════ CHALLENGE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">01 — 문제 정의</div>
+      <h2 class="sf-section__title">해결해야 할 문제</h2>
+      <p class="sf-section__body" style="max-width:680px;">
+        오프라인에서 쌓아온 브랜드 이미지가 디지털 채널에서 제대로 전달되지 못하고 있었습니다.
+        사용자 리서치와 브랜드 워크숍을 통해 디지털 경험에서 브랜드 일관성을 확보하고,
+        온·오프라인이 연결되는 통합적 고객 여정을 설계했습니다.
+      </p>
+
+      <div class="sf-challenge-grid">
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">디지털과 오프라인의<br>브랜드 경험 불일치</div>
+          <div class="sf-challenge-item__desc">
+            오프라인 공간에서 느끼는 브랜드 감성이 웹·앱에서는
+            전혀 전달되지 않아 디지털 유입 고객의 이탈률이 높았습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">브랜드 감성을 담은<br>디지털 비주얼 시스템</div>
+          <div class="sf-challenge-item__desc">
+            브랜드 컬러, 타이포그래피, 이미지 톤앤무드를 디지털 환경에 맞게
+            재해석하여 일관된 브랜드 경험을 제공하는 디자인 시스템을 구축했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">서비스·상품 정보<br>탐색이 어렵다</div>
+          <div class="sf-challenge-item__desc">
+            다양한 상품과 서비스가 체계 없이 나열되어 있어
+            원하는 정보를 찾는 데 시간이 걸리고 이탈 빈도가 높았습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">맥락 기반의<br>정보 구조 재설계</div>
+          <div class="sf-challenge-item__desc">
+            사용자의 목적과 상황에 맞게 정보를 그룹화하고,
+            자연스러운 탐색 흐름으로 원하는 콘텐츠에 빠르게 도달하도록 설계했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">온·오프라인 연결<br>경험이 없다</div>
+          <div class="sf-challenge-item__desc">
+            온라인에서 관심을 가진 고객이 오프라인 방문으로 이어지는
+            자연스러운 전환 경로가 없어 잠재 고객이 이탈합니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">O2O 연결<br>고객 여정 설계</div>
+          <div class="sf-challenge-item__desc">
+            온라인에서 체험 예약, 상담 신청, 방문 후 리뷰까지
+            이어지는 고객 여정을 앱과 웹으로 자연스럽게 연결했습니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/yido/2.png" alt="이도 브랜드 리서치 및 분석" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/yido/3.png" alt="이도 정보 구조 및 와이어프레임" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ DESIGN ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">02 — 디자인</div>
+      <h2 class="sf-section__title">브랜드와 경험의 통합</h2>
+      <p class="sf-section__body" style="max-width:680px;margin-bottom:var(--space-10);">
+        이도만의 고유한 감성을 디지털로 표현하기 위해 비주얼 레이아웃, 타이포그래피,
+        인터랙션 하나하나에 브랜드의 철학을 담았습니다. 시각적으로 일관되면서도
+        사용하기 편한 두 가지 목표를 동시에 달성하는 것이 핵심 과제였습니다.
+      </p>
+
+      <div class="sf-cards" style="margin-bottom:var(--space-10);">
+        <div class="sf-card reveal reveal-delay-1">
+          <div class="sf-card__icon">🎭</div>
+          <div class="sf-card__title">브랜드 비주얼 시스템</div>
+          <div class="sf-card__desc">
+            컬러 토큰, 타이포그래피 스케일, 이미지 스타일 가이드를 포함한
+            디지털 브랜드 아이덴티티 시스템을 구축했습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-2">
+          <div class="sf-card__icon">🗺️</div>
+          <div class="sf-card__title">콘텐츠 중심 탐색</div>
+          <div class="sf-card__desc">
+            스크롤을 내리면서 자연스럽게 브랜드 스토리를 경험하는
+            이머시브한 탐색 경험을 설계했습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-3">
+          <div class="sf-card__icon">📲</div>
+          <div class="sf-card__title">원터치 상담·예약</div>
+          <div class="sf-card__desc">
+            언제든 상담 신청과 방문 예약이 가능한 플로팅 CTA와
+            간소화된 예약 폼으로 전환율을 높였습니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/yido/4.png" alt="이도 메인 화면 및 브랜드 비주얼" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/yido/5.png" alt="이도 서비스 탐색 및 상세 화면" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/yido/6.png" alt="이도 예약 및 상담 플로우" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ RETROSPECTIVE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-2col">
+        <div>
+          <div class="sf-section__label">회고</div>
+          <h2 class="sf-section__title">프로젝트 회고</h2>
+        </div>
+        <div>
+          <p class="sf-section__body" style="margin-bottom:var(--space-8);">
+            이도 프로젝트를 통해 브랜드 디자인과 UX 디자인이 어떻게 유기적으로
+            연결되어야 하는지 배울 수 있었습니다. 비주얼 아이덴티티가 단순히
+            예쁜 화면을 만드는 것이 아니라 사용자 경험 전체를 이끄는 힘이라는 것을 깨달았습니다.
+          </p>
+          <div class="sf-cards" style="grid-template-columns:1fr 1fr;margin-top:0;">
+            <div class="sf-card">
+              <div class="sf-card__icon">🤝</div>
+              <div class="sf-card__title">브랜드 협업</div>
+              <div class="sf-card__desc">클라이언트의 브랜드 철학을 깊이 이해하고 디자인 언어로 번역하는 과정의 중요성을 배웠습니다.</div>
+            </div>
+            <div class="sf-card">
+              <div class="sf-card__icon">🔗</div>
+              <div class="sf-card__title">O2O 경험 설계</div>
+              <div class="sf-card__desc">온라인과 오프라인 경험을 하나의 고객 여정으로 연결하는 통합 UX 설계 역량을 키웠습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/yido/7.png" alt="이도 최종 결과물" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- ════════════════ PROJECT NAV ════════════════ -->
+  <div class="sf-nav">
+    <div class="container">
+      <div class="sf-nav__inner">
+        <a href="detail-oasis.html" class="sf-nav__item">
+          <div class="sf-nav__dir">← 이전 프로젝트</div>
+          <div class="sf-nav__name">ClubD Oasis</div>
+          <div class="sf-nav__type">웰니스 앱 · 프리미엄 UX</div>
+        </a>
+        <a href="detail-chuengdam.html" class="sf-nav__item sf-nav__item--next">
+          <div class="sf-nav__dir">다음 프로젝트 →</div>
+          <div class="sf-nav__name">ClubD 청담</div>
+          <div class="sf-nav__type">멤버십 클럽 · 모바일 앱</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ CTA BANNER ════════════════ -->
+  <section class="cv-section">
+    <div class="container">
+      <div class="cv-section__inner reveal">
+        <div class="cv-section__text">
+          <div class="cv-section__label">함께 일해요</div>
+          <h2 class="cv-section__title">새로운 프로젝트가 있으신가요?</h2>
+          <p class="cv-section__sub">아이디어를 현실로 만들어 드릴게요. 편하게 연락주세요.</p>
+        </div>
+        <div class="cv-section__action">
+          <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
+          <a href="index.html" class="btn btn--outline btn--lg"
+            style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">
+            포트폴리오 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <common-footer></common-footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

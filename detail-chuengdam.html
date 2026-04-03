@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="js/head.js"></script>
+  <meta name="description" content="ClubD 청담 케이스 스터디 — 프리미엄 멤버십 클럽 앱" />
+  <title>ClubD 청담 케이스 스터디 — 차윤수</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/detail.css" />
+</head>
+
+<body>
+
+  <!-- ════════════════ NAVIGATION ════════════════ -->
+  <common-header></common-header>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="sf-hero">
+    <div class="container sf-hero__top">
+
+      <!-- Breadcrumb -->
+      <nav
+        style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
+        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <a href="index.html#works" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <span>ClubD 청담</span>
+      </nav>
+
+      <p class="sf-hero__kicker anim-enter anim-enter-1">멤버십 앱</p>
+
+      <h1 class="sf-hero__title anim-enter anim-enter-2">
+        ClubD 청담
+      </h1>
+
+      <p class="sf-hero__desc anim-enter anim-enter-3">
+        청담의 품격을 앱 하나에 담다.<br>
+        프리미엄 멤버십 클럽 서비스의 디지털 경험을 설계하고,
+        VIP 회원에게 걸맞는 수준 높은 앱 UX를 구현한 프로젝트입니다.
+      </p>
+
+      <div class="sf-hero__tags anim-enter anim-enter-4">
+        <span class="badge badge--accent">멤버십 앱</span>
+        <span class="badge badge--default">VIP 서비스</span>
+        <span class="badge badge--default">iOS · Android</span>
+        <span class="badge badge--default">프리미엄 UX</span>
+      </div>
+
+    </div>
+
+    <!-- Hero cover image -->
+    <div class="container">
+      <div class="sf-cover anim-enter anim-enter-5">
+        <img src="images/main/chuengdam/1.jpg" alt="ClubD 청담 앱 전체 화면" loading="eager" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ META BAR ════════════════ -->
+  <div class="sf-meta">
+    <div class="container">
+      <div class="sf-meta__grid">
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">클라이언트</div>
+          <div class="sf-meta__value">ClubD (주)</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">기간</div>
+          <div class="sf-meta__value">5개월<br>2024. 06 — 10</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">역할</div>
+          <div class="sf-meta__value">Lead UX Designer<br>Visual Design</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">플랫폼</div>
+          <div class="sf-meta__value">iOS · Android<br>모바일 앱</div>
+        </div>
+        <div class="sf-meta__item">
+          <div class="sf-meta__label">사용 툴</div>
+          <div class="sf-meta__value">Figma · Principle<br>Lottie · Zeplin</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- ════════════════ CHALLENGE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">01 — 문제 정의</div>
+      <h2 class="sf-section__title">해결해야 할 문제</h2>
+      <p class="sf-section__body" style="max-width:680px;">
+        청담에 위치한 프리미엄 멤버십 클럽을 위한 전용 앱을 신규 개발하는 프로젝트였습니다.
+        VIP 회원들의 높은 기대 수준을 충족하면서도 디지털에 익숙하지 않은
+        일부 회원까지 편리하게 사용할 수 있는 앱을 설계해야 했습니다.
+      </p>
+
+      <div class="sf-challenge-grid">
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">VIP 회원의 높은<br>기대 수준</div>
+          <div class="sf-challenge-item__desc">
+            일반 예약 앱의 수준으로는 프리미엄 클럽 회원들의 기대를
+            충족하기 어려웠습니다. 경험 자체가 하나의 서비스여야 했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">고급 비주얼과<br>섬세한 인터랙션</div>
+          <div class="sf-challenge-item__desc">
+            다크 모드 기반의 럭셔리 비주얼, 유려한 화면 전환 애니메이션,
+            맞춤형 컨시어지 기능으로 앱 자체가 프리미엄 경험이 되도록 했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">다양한 연령대의<br>회원 접근성</div>
+          <div class="sf-challenge-item__desc">
+            40~70대 VIP 회원들이 많아 디지털 앱에 대한 친숙도 차이가 크고,
+            작은 텍스트나 복잡한 UI는 사용을 포기하게 만들었습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">큰 텍스트 & 단순화된<br>네비게이션</div>
+          <div class="sf-challenge-item__desc">
+            여유로운 레이아웃과 명확한 타이포그래피, 핵심 기능만 노출하는
+            심플한 구조로 디지털 친숙도에 관계없이 편리하게 사용할 수 있게 했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--problem">
+          <div class="sf-challenge-item__badge">😩 문제</div>
+          <div class="sf-challenge-item__title">클럽 이용 정보<br>사전 안내 부재</div>
+          <div class="sf-challenge-item__desc">
+            클럽 시설, 드레스 코드, 동반자 규정 등 방문 전에 알아야 할
+            정보를 사전에 확인할 방법이 없어 방문 시 불편함이 발생했습니다.
+          </div>
+        </div>
+        <div class="sf-challenge-item sf-challenge-item--solution">
+          <div class="sf-challenge-item__badge">✦ 해결</div>
+          <div class="sf-challenge-item__title">방문 준비 가이드<br>및 컨시어지</div>
+          <div class="sf-challenge-item__desc">
+            예약 확정 후 드레스 코드 안내, 시설 이용 가이드, 컨시어지 채팅을
+            통해 방문 전 모든 준비를 앱 안에서 완결할 수 있도록 했습니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/chuengdam/2.jpg" alt="ClubD 청담 리서치 및 페르소나" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/chuengdam/3.jpg" alt="ClubD 청담 유저 플로우 및 와이어프레임" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ DESIGN ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-section__label">02 — 디자인</div>
+      <h2 class="sf-section__title">럭셔리 디지털 경험</h2>
+      <p class="sf-section__body" style="max-width:680px;margin-bottom:var(--space-10);">
+        청담의 품격을 디지털로 옮기기 위해 다크 골드 팔레트, 세리프 타이포그래피,
+        사진 중심의 풀블리드 레이아웃을 사용했습니다. 고급 호텔 앱을 벤치마킹하여
+        모든 인터랙션이 부드럽고 절제된 느낌을 주도록 설계했습니다.
+      </p>
+
+      <div class="sf-cards" style="margin-bottom:var(--space-10);">
+        <div class="sf-card reveal reveal-delay-1">
+          <div class="sf-card__icon">🥂</div>
+          <div class="sf-card__title">VIP 컨시어지 채팅</div>
+          <div class="sf-card__desc">
+            전담 컨시어지 직원과 1:1 채팅으로 특별 요청,
+            동반자 안내, 이벤트 예약 등 맞춤 서비스를 제공합니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-2">
+          <div class="sf-card__icon">🍽️</div>
+          <div class="sf-card__title">다이닝 & 시설 예약</div>
+          <div class="sf-card__desc">
+            레스토랑, 프라이빗 룸, 스파, 피트니스 등 모든 시설을
+            하나의 앱에서 통합 예약할 수 있습니다.
+          </div>
+        </div>
+        <div class="sf-card reveal reveal-delay-3">
+          <div class="sf-card__icon">🎪</div>
+          <div class="sf-card__title">회원 전용 이벤트</div>
+          <div class="sf-card__desc">
+            회원 등급별 프라이빗 이벤트, 와인 테이스팅, 아트 전시 등
+            독점 혜택을 앱을 통해 우선 제공합니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/chuengdam/4.jpg" alt="ClubD 청담 메인 화면 및 홈" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/chuengdam/5.jpg" alt="ClubD 청담 예약 및 컨시어지 화면" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════ RETROSPECTIVE ════════════════ -->
+    <section class="sf-section reveal">
+      <div class="sf-2col">
+        <div>
+          <div class="sf-section__label">회고</div>
+          <h2 class="sf-section__title">프로젝트 회고</h2>
+        </div>
+        <div>
+          <p class="sf-section__body" style="margin-bottom:var(--space-8);">
+            ClubD 청담은 '덜어내는 디자인'의 가치를 가장 깊이 체감한 프로젝트였습니다.
+            기능을 추가하는 것보다 무엇을 빼야 하는지, 어떻게 여백으로 품격을
+            표현할 수 있는지 끊임없이 고민했습니다.
+          </p>
+          <div class="sf-cards" style="grid-template-columns:1fr 1fr;margin-top:0;">
+            <div class="sf-card">
+              <div class="sf-card__icon">🪶</div>
+              <div class="sf-card__title">절제의 디자인</div>
+              <div class="sf-card__desc">고급스러움은 더하는 것이 아니라 덜어내는 것에서 나온다는 것을 배웠습니다.</div>
+            </div>
+            <div class="sf-card">
+              <div class="sf-card__icon">👴</div>
+              <div class="sf-card__title">시니어 UX</div>
+              <div class="sf-card__desc">다양한 연령대를 아우르는 접근성 높은 UX 설계 방법을 깊이 이해하게 되었습니다.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sf-img-group">
+        <div class="sf-img-block reveal">
+          <img src="images/main/chuengdam/6.jpg" alt="ClubD 청담 최종 결과물" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+  </div><!-- /container -->
+
+  <!-- ════════════════ PROJECT NAV ════════════════ -->
+  <div class="sf-nav">
+    <div class="container">
+      <div class="sf-nav__inner">
+        <a href="detail-yido.html" class="sf-nav__item">
+          <div class="sf-nav__dir">← 이전 프로젝트</div>
+          <div class="sf-nav__name">이도</div>
+          <div class="sf-nav__type">브랜드 서비스 · UX/UI</div>
+        </a>
+        <a href="detail-syncflo.html" class="sf-nav__item sf-nav__item--next">
+          <div class="sf-nav__dir">다음 프로젝트 →</div>
+          <div class="sf-nav__name">SyncFlo</div>
+          <div class="sf-nav__type">B2B SaaS · 웹 대시보드</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════ CTA BANNER ════════════════ -->
+  <section class="cv-section">
+    <div class="container">
+      <div class="cv-section__inner reveal">
+        <div class="cv-section__text">
+          <div class="cv-section__label">함께 일해요</div>
+          <h2 class="cv-section__title">새로운 프로젝트가 있으신가요?</h2>
+          <p class="cv-section__sub">아이디어를 현실로 만들어 드릴게요. 편하게 연락주세요.</p>
+        </div>
+        <div class="cv-section__action">
+          <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
+          <a href="index.html" class="btn btn--outline btn--lg"
+            style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">
+            포트폴리오 보기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════ FOOTER ════════════════ -->
+  <common-footer></common-footer>
+
+  <script src="js/components.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
