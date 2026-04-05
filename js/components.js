@@ -35,23 +35,69 @@ class CommonHeader extends HTMLElement {
 class CommonFooter extends HTMLElement {
   connectedCallback() {
     this.innerHTML = `
-      <footer class="footer">
-        <div class="container">
-          <div class="footer__inner">
-            <a href="index.html" class="footer__logo">수<span>진</span></a>
-            <p class="footer__copy">© 2025 차윤수. All rights reserved.</p>
-            <nav class="footer__links" aria-label="푸터 링크">
-              <a href="index.html#works" class="footer__link">작업물</a>
-              <a href="index.html#skills" class="footer__link">스킬</a>
-              <a href="index.html#about" class="footer__link">소개</a>
-              <a href="index.html#contact" class="footer__link">연락</a>
-            </nav>
-          </div>
-        </div>
-      </footer>
+   
     `;
   }
 }
 
 customElements.define('common-header', CommonHeader);
 customElements.define('common-footer', CommonFooter);
+
+/* ── Top Button ── */
+(function initTopButton() {
+  // 버튼 생성
+  const btn = document.createElement('button');
+  btn.id = 'top-btn';
+  btn.setAttribute('aria-label', '맨 위로');
+  btn.innerHTML = `<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+    <path d="M10 14V6M10 6L6 10M10 6l4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>`;
+  btn.style.cssText = `
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    z-index: 900;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-border-strong);
+    background: var(--color-surface-primary);
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    pointer-events: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  `;
+  document.body.appendChild(btn);
+
+  // 스크롤에 따라 표시/숨김
+  const onScroll = () => {
+    const show = window.scrollY > 400;
+    btn.style.opacity = show ? '1' : '0';
+    btn.style.transform = show ? 'translateY(0)' : 'translateY(8px)';
+    btn.style.pointerEvents = show ? 'auto' : 'none';
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // hover
+  btn.addEventListener('mouseenter', () => {
+    btn.style.background = 'var(--color-accent)';
+    btn.style.color = '#fff';
+    btn.style.borderColor = 'var(--color-accent)';
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.background = 'var(--color-surface-primary)';
+    btn.style.color = 'var(--color-text-secondary)';
+    btn.style.borderColor = 'var(--color-border-strong)';
+  });
+
+  // 클릭 → 맨 위로
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();

@@ -73,6 +73,11 @@ select {
   width: 100%;
 }
 
+/* Other works 상세 페이지 — 이미지 원본(1000px) 기준 */
+.other-detail .container {
+  max-width: 1000px;
+}
+
 .section {
   padding-block: var(--section-padding-y);
 }
@@ -1078,16 +1083,22 @@ select {
   overflow: hidden;
   border: 1px solid var(--color-border-default);
   transition:
-    transform var(--transition-base),
-    box-shadow var(--transition-base),
-    border-color var(--transition-base);
-  will-change: transform;
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-lg);
   border-color: var(--color-border-strong);
+}
+
+/* 이미지 zoom — 카드 hover 시 이미지만 살짝 확대 */
+.project-card__visual img {
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+}
+.project-card:hover .project-card__visual img {
+  transform: scale(1.04);
 }
 
 .project-card--reverse {

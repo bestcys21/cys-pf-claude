@@ -5,16 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="js/head.js"></script>
   <meta name="description" content="대보 케이스 스터디" />
-  <title>대보 케이스 스터디 — 차윤수</title>
+  <title>대보 — 차윤수</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/detail.css" />
+  <style>
+    .pb-hero {
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: var(--space-16);
+      background-color: var(--color-surface-primary);
+    }
+    .pb-tabs {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-8);
+    }
+    .pb-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-secondary);
+      transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+      text-decoration: none;
+    }
+    .pb-tab:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: var(--color-accent-subtle);
+    }
+    .pb-project {
+      scroll-margin-top: calc(var(--nav-height) + 24px);
+    }
+    .pb-project-header {
+      padding-block: var(--space-16) var(--space-12);
+      background-color: var(--color-surface-secondary);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+    .pb-project-cover {
+      padding-top: var(--space-10);
+    }
+    .pb-divider {
+      height: 1px;
+      background: var(--color-border-default);
+    }
+  </style>
 </head>
-<body>
+<body class="other-detail">
   <common-header></common-header>
 
-  <!-- HERO -->
-  <section class="sf-hero">
-    <div class="container sf-hero__top">
+  <!-- PAGE HERO -->
+  <section class="pb-hero">
+    <div class="container">
       <nav style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
         <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -22,76 +68,179 @@
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>대보</span>
       </nav>
-      <p class="sf-hero__kicker anim-enter anim-enter-1">기업 브랜딩</p>
+      <p class="sf-hero__kicker anim-enter anim-enter-1">기업 브랜딩 · 이벤트</p>
       <h1 class="sf-hero__title anim-enter anim-enter-2">대보</h1>
-      <p class="sf-hero__desc anim-enter anim-enter-3">대보의 브랜드 가치를 담은 디지털 경험 설계. 기업의 신뢰감과 전문성을 효과적으로 전달하는 UI/UX 디자인 프로젝트를 담당했습니다.</p>
-      <div class="sf-hero__tags anim-enter anim-enter-4">
-        <span class="badge">기업 브랜딩</span>
-        <span class="badge">UI 디자인</span>
-        <span class="badge">Figma</span>
-      </div>
-    </div>
-    <div class="container">
-      <div class="sf-cover anim-enter anim-enter-5">
-        <img src="images/other/daebo/2.jpg" alt="대보 커버" loading="eager" />
+      <p class="sf-hero__desc anim-enter anim-enter-3">대보 코퍼레이트 사이트 및 분양 브랜드 Haus D, 그린콘서트 홍보 홈페이지까지 다양한 결과물을 담당했습니다.</p>
+      <div class="pb-tabs anim-enter anim-enter-4">
+        <a href="#corporate" class="pb-tab">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4"/></svg>
+          대보 코퍼레이트
+        </a>
+        <a href="#green" class="pb-tab">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4"/></svg>
+          그린콘서트
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- META BAR -->
-  <div class="sf-meta">
-    <div class="container">
-      <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">클라이언트</div>
-          <div class="sf-meta__value">대보</div>
-        </div>
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">기간</div>
-          <div class="sf-meta__value">3개월</div>
-        </div>
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">역할</div>
-          <div class="sf-meta__value">UX/UI Designer</div>
-        </div>
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">사용 툴</div>
-          <div class="sf-meta__value">Figma · Illustrator</div>
+  <!-- ══════════════════════════════════
+       PROJECT 01: 대보 코퍼레이트
+  ══════════════════════════════════ -->
+  <div id="corporate" class="pb-project">
+
+    <div class="pb-project-header">
+      <div class="container">
+        <p class="sf-hero__kicker">기업 브랜딩 · UI 디자인</p>
+        <h2 style="font-size:clamp(var(--text-2xl),2.5vw,var(--text-4xl));font-weight:var(--weight-extrabold);letter-spacing:var(--tracking-tight);color:var(--color-text-primary);margin-bottom:var(--space-4);">대보 코퍼레이트</h2>
+        <p style="font-size:var(--text-lg);color:var(--color-text-secondary);max-width:620px;line-height:var(--leading-relaxed);margin-bottom:var(--space-6);">대보의 브랜드 가치를 담은 코퍼레이트 사이트 및 분양 브랜드 Haus D 디자인. 오랜 업력의 신뢰감을 현대적인 디지털 경험으로 구현했습니다.</p>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
+          <span class="badge">기업 브랜딩</span>
+          <span class="badge">UI 디자인</span>
+          <span class="badge">분양 브랜드</span>
+          <span class="badge">Figma</span>
         </div>
       </div>
     </div>
+
+    <div class="container pb-project-cover">
+      <div class="sf-cover">
+        <img src="images/other/daebo/big_daeboc.jpg" alt="대보 코퍼레이트 커버" loading="eager" />
+      </div>
+    </div>
+
+    <div class="sf-meta">
+      <div class="container">
+        <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">클라이언트</div>
+            <div class="sf-meta__value">대보</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">기간</div>
+            <div class="sf-meta__value">3개월</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">역할</div>
+            <div class="sf-meta__value">UX/UI Designer</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">사용 툴</div>
+            <div class="sf-meta__value">Figma · Illustrator</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="sf-section reveal">
+        <div class="sf-section__label">01 — 코퍼레이트 사이트</div>
+        <h2 class="sf-section__title">신뢰를 전달하는 디자인</h2>
+        <p class="sf-section__body" style="max-width:680px;">오랜 업력의 기업이 현대적인 디지털 환경에서도 신뢰감을 전달할 수 있도록 브랜드의 본질을 유지하면서 시각적으로 현대화하는 작업을 진행했습니다.</p>
+        <div class="sf-img-group">
+          <div class="sf-img-grid sf-img-grid--2">
+            <div class="sf-img-block reveal">
+              <img src="images/other/daebo/big_daeboc_mobile.png" alt="대보 모바일" loading="lazy" />
+            </div>
+            <div class="sf-img-block reveal">
+              <img src="images/other/daebo/big_screen.jpg" alt="대보 스크린" loading="lazy" />
+            </div>
+          </div>
+          <div class="sf-img-grid sf-img-grid--2">
+            <div class="sf-img-block reveal">
+              <img src="images/other/daebo/3.png" alt="대보 디자인 작업 1" loading="lazy" />
+            </div>
+            <div class="sf-img-block reveal">
+              <img src="images/other/daebo/4.jpg" alt="대보 디자인 작업 2" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="sf-section reveal">
+        <div class="sf-section__label">02 — 분양 브랜드</div>
+        <h2 class="sf-section__title">Haus D</h2>
+        <p class="sf-section__body" style="max-width:680px;">대보건설의 분양 브랜드 Haus D의 비주얼 아이덴티티와 분양 홈페이지를 설계했습니다. 프리미엄 주거 브랜드로서의 격조와 신뢰감을 시각 언어로 담았습니다.</p>
+        <div class="sf-img-group">
+          <div class="sf-img-block reveal">
+            <img src="images/other/daebo/big_hausd.jpg" alt="Haus D 분양브랜드" loading="lazy" />
+          </div>
+          <div class="sf-img-grid sf-img-grid--2">
+            <div class="sf-img-block reveal">
+              <img src="images/other/daebo/5.jpg" alt="대보 UI 가이드라인 1" loading="lazy" />
+            </div>
+            <div class="sf-img-block reveal">
+              <img src="images/other/daebo/6.jpg" alt="대보 UI 가이드라인 2" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
   </div>
 
-  <div class="container">
-    <!-- SECTION 01: 프로젝트 소개 -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">01 — 프로젝트 소개</div>
-      <h2 class="sf-section__title">신뢰를 전달하는 디자인</h2>
-      <p class="sf-section__body" style="max-width:680px;">오랜 업력의 기업이 현대적인 디지털 환경에서도 신뢰감을 전달할 수 있도록 브랜드의 본질을 유지하면서 시각적으로 현대화하는 작업을 진행했습니다.</p>
-      <div class="sf-img-group">
-        <div class="sf-img-block reveal">
-          <img src="images/other/daebo/3.png" alt="대보 디자인 작업 1" loading="lazy" />
-        </div>
-        <div class="sf-img-block reveal">
-          <img src="images/other/daebo/4.jpg" alt="대보 디자인 작업 2" loading="lazy" />
-        </div>
-      </div>
-    </section>
+  <div class="pb-divider"></div>
 
-    <!-- SECTION 02: UI 설계 및 가이드라인 -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">02 — 디자인 결과물</div>
-      <h2 class="sf-section__title">UI 설계 및 가이드라인</h2>
-      <p class="sf-section__body" style="max-width:680px;">디지털 채널 전반에 적용 가능한 UI 컴포넌트와 스타일 가이드를 제작하여 일관된 브랜드 경험을 유지할 수 있도록 했습니다.</p>
-      <div class="sf-img-group">
-        <div class="sf-img-block reveal">
-          <img src="images/other/daebo/5.jpg" alt="대보 UI 가이드라인 1" loading="lazy" />
-        </div>
-        <div class="sf-img-block reveal">
-          <img src="images/other/daebo/6.jpg" alt="대보 UI 가이드라인 2" loading="lazy" />
+  <!-- ══════════════════════════════════
+       PROJECT 02: 그린콘서트
+  ══════════════════════════════════ -->
+  <div id="green" class="pb-project">
+
+    <div class="pb-project-header">
+      <div class="container">
+        <p class="sf-hero__kicker">이벤트 홍보 · 웹 디자인</p>
+        <h2 style="font-size:clamp(var(--text-2xl),2.5vw,var(--text-4xl));font-weight:var(--weight-extrabold);letter-spacing:var(--tracking-tight);color:var(--color-text-primary);margin-bottom:var(--space-4);">그린콘서트</h2>
+        <p style="font-size:var(--text-lg);color:var(--color-text-secondary);max-width:620px;line-height:var(--leading-relaxed);margin-bottom:var(--space-6);">대보에서 주최하는 그린콘서트 홍보 홈페이지 디자인. 이벤트의 생동감과 브랜드 일관성을 동시에 담아낸 캠페인 웹 경험을 설계했습니다.</p>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
+          <span class="badge">이벤트 홍보</span>
+          <span class="badge">웹 디자인</span>
+          <span class="badge">Figma</span>
         </div>
       </div>
-    </section>
+    </div>
+
+    <div class="container pb-project-cover">
+      <div class="sf-cover">
+        <img src="images/other/daebo/big_green.jpg" alt="그린콘서트 커버" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="sf-meta">
+      <div class="container">
+        <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">클라이언트</div>
+            <div class="sf-meta__value">대보</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">기간</div>
+            <div class="sf-meta__value">4주</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">역할</div>
+            <div class="sf-meta__value">Web Designer</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">사용 툴</div>
+            <div class="sf-meta__value">Figma · Illustrator</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="sf-section reveal">
+        <div class="sf-section__label">01 — 홍보 홈페이지</div>
+        <h2 class="sf-section__title">이벤트의 생동감을 웹으로</h2>
+        <p class="sf-section__body" style="max-width:680px;">공연·이벤트 특유의 활기와 에너지를 온라인 홍보 홈페이지에 담았습니다. 방문자가 콘서트 분위기를 미리 느낄 수 있는 비주얼 경험을 설계했습니다.</p>
+        <div class="sf-img-group">
+          <div class="sf-img-block reveal">
+            <img src="images/other/daebo/2.jpg" alt="그린콘서트 화면" loading="lazy" />
+          </div>
+        </div>
+      </section>
+    </div>
+
   </div>
 
   <!-- PROJECT NAV -->

@@ -1,79 +1,293 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="js/head.js"></script>
-  <meta name="description" content="InBody 케이스 스터디" />
-  <title>InBody 케이스 스터디 — 차윤수</title>
+  <meta name="description" content="InBody · Bodykey 케이스 스터디" />
+  <title>InBody · Bodykey — 차윤수</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/detail.css" />
+  <style>
+    .pb-hero {
+      padding-top: calc(var(--nav-height) + var(--space-16));
+      padding-bottom: var(--space-16);
+      background-color: var(--color-surface-primary);
+    }
+
+    .pb-tabs {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+      margin-top: var(--space-8);
+    }
+
+    .pb-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-5);
+      border: 1.5px solid var(--color-border-strong);
+      border-radius: var(--radius-full);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-secondary);
+      transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+      text-decoration: none;
+    }
+
+    .pb-tab:hover {
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+      background: var(--color-accent-subtle);
+    }
+
+    .pb-project {
+      scroll-margin-top: calc(var(--nav-height) + 24px);
+    }
+
+    .pb-project-header {
+      padding-block: var(--space-16) var(--space-12);
+      background-color: var(--color-surface-secondary);
+      border-bottom: 1px solid var(--color-border-default);
+    }
+
+    .pb-project-cover {
+      padding-top: var(--space-10);
+    }
+
+    .pb-divider {
+      height: 1px;
+      background: var(--color-border-default);
+    }
+  </style>
 </head>
-<body>
+
+<body class="other-detail">
   <common-header></common-header>
 
-  <!-- HERO -->
-  <section class="sf-hero">
-    <div class="container sf-hero__top">
-      <nav style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
-        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <a href="index.html#other-works" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);" onmouseover="this.style.color='var(--color-text-primary)'" onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span>InBody</span>
-      </nav>
-      <p class="sf-hero__kicker anim-enter anim-enter-1">서비스 UX 디자인</p>
-      <h1 class="sf-hero__title anim-enter anim-enter-2">InBody</h1>
-      <p class="sf-hero__desc anim-enter anim-enter-3">체성분 분석 전문 브랜드 InBody의 서비스 UX 디자인 프로젝트. 복잡한 건강 데이터를 사용자가 쉽게 이해하고 활용할 수 있는 직관적인 경험으로 설계했습니다.</p>
-      <div class="sf-hero__tags anim-enter anim-enter-4">
-        <span class="badge">서비스 UX</span>
-        <span class="badge">헬스케어</span>
-        <span class="badge">Figma</span>
-      </div>
-    </div>
+  <!-- PAGE HERO -->
+  <section class="pb-hero">
     <div class="container">
-      <div class="sf-cover anim-enter anim-enter-5">
-        <img src="images/other/inbody/2.jpg" alt="InBody 커버" loading="eager" />
+      <nav
+        style="display:flex;align-items:center;gap:var(--space-2);font-size:var(--text-sm);color:var(--color-text-tertiary);margin-bottom:var(--space-10);">
+        <a href="index.html" style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">홈</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <a href="index.html#other-works"
+          style="color:var(--color-text-tertiary);transition:color var(--transition-fast);"
+          onmouseover="this.style.color='var(--color-text-primary)'"
+          onmouseout="this.style.color='var(--color-text-tertiary)'">작업물</a>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+            stroke-linejoin="round" />
+        </svg>
+        <span>인바디 · Bodykey</span>
+      </nav>
+      <p class="sf-hero__kicker anim-enter anim-enter-1">2013–2016 · InBody</p>
+      <h1 class="sf-hero__title anim-enter anim-enter-2">InBody · Bodykey</h1>
+      <p class="sf-hero__desc anim-enter anim-enter-3">인바디 재직 기간(2013–2016) 동안 담당한 서비스 UX 및 브랜드 디자인 작업.</p>
+      <div class="pb-tabs anim-enter anim-enter-4">
+        <a href="#inbody" class="pb-tab">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4" />
+          </svg>
+          InBody · 서비스 UX
+        </a>
+        <a href="#bodykey" class="pb-tab">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.4" />
+          </svg>
+          Bodykey · 브랜드 디자인
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- META BAR -->
-  <div class="sf-meta">
-    <div class="container">
-      <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">클라이언트</div>
-          <div class="sf-meta__value">InBody</div>
-        </div>
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">기간</div>
-          <div class="sf-meta__value">2개월</div>
-        </div>
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">역할</div>
-          <div class="sf-meta__value">UX/UI Designer</div>
-        </div>
-        <div class="sf-meta__item">
-          <div class="sf-meta__label">사용 툴</div>
-          <div class="sf-meta__value">Figma · Principle</div>
+  <!-- ══════════════════════════════════
+       PROJECT 01: InBody
+  ══════════════════════════════════ -->
+  <div id="inbody" class="pb-project">
+
+    <div class="pb-project-header">
+      <div class="container">
+        <p class="sf-hero__kicker">서비스 UX 디자인</p>
+        <h2
+          style="font-size:clamp(var(--text-2xl),2.5vw,var(--text-4xl));font-weight:var(--weight-extrabold);letter-spacing:var(--tracking-tight);color:var(--color-text-primary);margin-bottom:var(--space-4);">
+          InBody</h2>
+        <p
+          style="font-size:var(--text-lg);color:var(--color-text-secondary);max-width:620px;line-height:var(--leading-relaxed);margin-bottom:var(--space-6);">
+          체성분 분석 전문 브랜드 InBody의 서비스 UX 디자인. 복잡한 건강 데이터를 사용자가 직관적으로 이해할 수 있는 경험으로 설계했습니다.</p>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
+          <span class="badge">서비스 UX</span>
+          <span class="badge">헬스케어</span>
+          <span class="badge">Figma</span>
+          <span class="badge">Principle</span>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    <!-- SECTION 01: 프로젝트 소개 -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">01 — 프로젝트 소개</div>
-      <h2 class="sf-section__title">건강 데이터의 직관적 표현</h2>
-      <p class="sf-section__body" style="max-width:680px;">체성분 측정 결과를 일반 사용자도 쉽게 이해할 수 있도록 복잡한 수치를 시각화하고, 맞춤형 건강 인사이트를 제공하는 UI를 설계했습니다.</p>
-      <div class="sf-img-group">
-        <div class="sf-img-block reveal">
-          <img src="images/other/inbody/3.jpg" alt="InBody UX 디자인" loading="lazy" />
+    <div class="container pb-project-cover">
+      <div class="sf-cover">
+        <img src="images/other/inbody/home-1.jpg" alt="InBody 홈 화면 1" loading="lazy">
+      </div>
+    </div>
+
+    <div class="sf-meta">
+      <div class="container">
+        <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">클라이언트</div>
+            <div class="sf-meta__value">InBody</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">기간</div>
+            <div class="sf-meta__value">2개월</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">역할</div>
+            <div class="sf-meta__value">UX/UI Designer</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">사용 툴</div>
+            <div class="sf-meta__value">Figma · Principle</div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+
+    <div class="container">
+      <section class="sf-section reveal">
+        <div class="sf-section__label">01 — 홈 화면 디자인</div>
+        <h2 class="sf-section__title">건강 데이터의 직관적 표현</h2>
+        <p class="sf-section__body" style="max-width:680px;">체성분 측정 결과를 일반 사용자도 쉽게 이해할 수 있도록 복잡한 수치를 시각화하고, 맞춤형 건강 인사이트를
+          제공하는 홈 화면 UI를 설계했습니다.</p>
+        <div class="sf-img-group">
+          <div class="sf-img-grid sf-img-grid--2">
+            <div class="sf-img-block reveal"><img src="images/other/inbody/home-2.jpg" alt="InBody 홈 화면 1"
+                loading="lazy" /></div>
+            <div class="sf-img-block reveal"><img src="images/other/inbody/home-3.jpg" alt="InBody 홈 화면 2"
+                loading="lazy" /></div>
+          </div>
+          <div class="sf-img-grid sf-img-grid--1">
+            <div class="sf-img-block reveal"><img src="images/other/inbody/home-4.jpg" alt="InBody 홈 화면 3"
+                loading="lazy" /></div>
+
+          </div>
+          <div class="sf-img-grid ">
+            <div class="sf-img-block reveal"><img src="images/other/inbody/home-6.jpg" alt="InBody 홈 화면 5"
+                loading="lazy" /></div>
+            <div class="sf-img-block reveal"><img src="images/other/inbody/home-7.jpg" alt="InBody 홈 화면 6"
+                loading="lazy" /></div>
+          </div>
+          <div class="sf-img-grid sf-img-grid--1">
+            <div class="sf-img-block reveal"><img src="images/other/inbody/home-8.jpg" alt="InBody 홈 화면 7"
+                loading="lazy" /></div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="sf-section reveal">
+        <div class="sf-section__label">02 — 앱 디자인</div>
+        <h2 class="sf-section__title">모바일 앱 경험</h2>
+        <p class="sf-section__body" style="max-width:680px;">InBody 모바일 앱 UX/UI를 설계했습니다. 측정 결과를 한눈에 파악할 수 있는 대시보드와 트렌드
+          시각화를 중점적으로 다뤘습니다.</p>
+        <div class="sf-img-group">
+          <div class="sf-img-grid sf-img-grid--1">
+            <div class="sf-img-block reveal"><img src="images/other/inbody/app-1.jpg" alt="InBody 앱 1" loading="lazy" />
+            </div>
+
+          </div>
+
+          <div class="sf-img-grid sf-img-grid--2">
+
+            <div class="sf-img-block reveal"><img src="images/other/inbody/app-2.jpg" alt="InBody 앱 2" loading="lazy" />
+            </div>
+            <div class="sf-img-block reveal"><img src="images/other/inbody/app-3.jpg" alt="InBody 앱 3" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <div class="pb-divider"></div>
+
+  <!-- ══════════════════════════════════
+       PROJECT 02: Bodykey
+  ══════════════════════════════════ -->
+  <div id="bodykey" class="pb-project">
+
+    <div class="pb-project-header">
+      <div class="container">
+        <p class="sf-hero__kicker">브랜드 디자인</p>
+        <h2
+          style="font-size:clamp(var(--text-2xl),2.5vw,var(--text-4xl));font-weight:var(--weight-extrabold);letter-spacing:var(--tracking-tight);color:var(--color-text-primary);margin-bottom:var(--space-4);">
+          Bodykey</h2>
+        <p
+          style="font-size:var(--text-lg);color:var(--color-text-secondary);max-width:620px;line-height:var(--leading-relaxed);margin-bottom:var(--space-6);">
+          건강한 라이프스타일을 위한 Bodykey 브랜드 비주얼 아이덴티티 디자인. 건강·웰니스 브랜드의 정체성을 명확하게 전달하는 시각 시스템을 구축했습니다.</p>
+        <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;">
+          <span class="badge">브랜드 디자인</span>
+          <span class="badge">비주얼 아이덴티티</span>
+          <span class="badge">Illustrator</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="container pb-project-cover">
+      <div class="sf-cover">
+        <img src="images/other/inbody/bodykey-1.jpg" alt="Bodykey 커버" loading="lazy" />
+      </div>
+    </div>
+
+    <div class="sf-meta">
+      <div class="container">
+        <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">클라이언트</div>
+            <div class="sf-meta__value">Bodykey</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">기간</div>
+            <div class="sf-meta__value">6주</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">역할</div>
+            <div class="sf-meta__value">Brand Designer</div>
+          </div>
+          <div class="sf-meta__item">
+            <div class="sf-meta__label">사용 툴</div>
+            <div class="sf-meta__value">Figma · Illustrator</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <section class="sf-section reveal">
+        <div class="sf-section__label">01 — 브랜드 아이덴티티</div>
+        <h2 class="sf-section__title">건강을 담은 브랜드 아이덴티티</h2>
+        <p class="sf-section__body" style="max-width:680px;">건강과 활력을 상징하는 컬러 시스템과 모던한 타이포그래피를 기반으로 신뢰감 있고 활동적인 브랜드 이미지를
+          구축했습니다. 디지털·인쇄 매체 모두에서 일관된 브랜드 경험을 제공합니다.</p>
+        <div class="sf-img-group">
+          <div class="sf-img-grid sf-img-grid--2">
+            <div class="sf-img-block reveal"><img src="images/other/inbody/bodykey-2.jpg" alt="Bodykey 브랜드 2"
+                loading="lazy" /></div>
+            <div class="sf-img-block reveal"><img src="images/other/inbody/bodykey-3.jpg" alt="Bodykey 브랜드 3"
+                loading="lazy" /></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
   </div>
 
   <!-- PROJECT NAV -->
@@ -100,7 +314,8 @@
         </div>
         <div class="cv-section__action">
           <a href="index.html#contact" class="btn btn--primary btn--lg">연락하기</a>
-          <a href="index.html" class="btn btn--outline btn--lg" style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">포트폴리오 보기</a>
+          <a href="index.html" class="btn btn--outline btn--lg"
+            style="border-color:rgba(255,255,255,0.25);color:var(--color-text-inverse);">포트폴리오 보기</a>
         </div>
       </div>
     </div>
@@ -110,4 +325,5 @@
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
 </body>
+
 </html>

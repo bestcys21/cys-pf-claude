@@ -35,6 +35,7 @@ function initNav() {
 
   const hero = qs('#hero');
   if (hero) nav.classList.add('nav--over-dark');
+  else      nav.classList.add('is-scrolled');   // 상세페이지: 처음부터 solid nav
 
   let isScrolled = false;
 
@@ -153,6 +154,7 @@ function initParallax() {
    Page content tilts slightly with scroll speed
 ────────────────────────────────────────── */
 function initScrollSkew() {
+  return; // 스크롤 skew 효과 제거
   if (prefersReduced() || isTouch()) return;
 
   const targets = qsa('.project-card, .skill-card, .other-work-card');
@@ -315,21 +317,7 @@ function initCursorGlow() {
    CARD 3D TILT (desktop)
 ────────────────────────────────────────── */
 function initCardTilt() {
-  if (isTouch()) return;
-  const MAX = 4;
-  qsa('[data-tilt]').forEach(card => {
-    card.addEventListener('mouseenter', e => {
-      const r  = card.getBoundingClientRect();
-      const dx = (e.clientX - r.left - r.width  / 2) / (r.width  / 2);
-      const dy = (e.clientY - r.top  - r.height / 2) / (r.height / 2);
-      card.style.transform  = `translateY(-4px) perspective(900px) rotateY(${dx*MAX}deg) rotateX(${-dy*MAX}deg)`;
-      card.style.transition = 'transform 0.3s ease';
-    });
-    card.addEventListener('mouseleave', () => {
-      card.style.transform  = '';
-      card.style.transition = 'transform 0.55s cubic-bezier(0.34,1.56,0.64,1)';
-    });
-  });
+  // tilt 효과 제거 — 이미지 zoom으로 대체 (CSS)
 }
 
 /* ──────────────────────────────────────────
