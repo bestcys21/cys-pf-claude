@@ -955,20 +955,26 @@ select {
   transform: translate(-50%, -50%);
   width: var(--orbit-center);
   height: var(--orbit-center);
-  background-color: var(--color-surface-inverse);
+  background: radial-gradient(circle at 35% 35%, #A78BFA, #6D28D9 55%, #4C1D95);
   border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: var(--z-raised);
-  box-shadow: var(--shadow-xl);
+  box-shadow:
+    0 0 0 6px rgba(139, 92, 246, 0.2),
+    0 0 0 14px rgba(139, 92, 246, 0.08),
+    0 8px 32px rgba(109, 40, 217, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25);
   animation: orbit-center-pulse 3s var(--ease-in-out) infinite;
 }
 
 .orbit-center__icon {
-  font-size: var(--text-3xl);
+  font-size: var(--text-2xl);
   line-height: 1;
   user-select: none;
+  color: #fff;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
 }
 
 /* Orbit chips (items that fly around) */
@@ -1015,14 +1021,19 @@ select {
 }
 
 @keyframes orbit-center-pulse {
-
-  0%,
-  100% {
-    box-shadow: var(--shadow-xl), 0 0 0 0 rgba(255, 59, 59, 0);
+  0%, 100% {
+    box-shadow:
+      0 0 0 6px rgba(139, 92, 246, 0.2),
+      0 0 0 14px rgba(139, 92, 246, 0.08),
+      0 8px 32px rgba(109, 40, 217, 0.6),
+      inset 0 1px 2px rgba(255, 255, 255, 0.25);
   }
-
   50% {
-    box-shadow: var(--shadow-xl), 0 0 0 12px rgba(255, 59, 59, 0.08);
+    box-shadow:
+      0 0 0 10px rgba(139, 92, 246, 0.25),
+      0 0 0 22px rgba(139, 92, 246, 0.1),
+      0 8px 40px rgba(109, 40, 217, 0.75),
+      inset 0 1px 2px rgba(255, 255, 255, 0.25);
   }
 }
 
@@ -1076,7 +1087,7 @@ select {
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
   gap: 0;
   border-radius: var(--card-radius);
   background-color: var(--color-surface-secondary);
@@ -1097,6 +1108,7 @@ select {
   transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   will-change: transform;
 }
+
 .project-card:hover .project-card__visual img {
   transform: scale(1.04);
 }
@@ -1112,6 +1124,9 @@ select {
 /* Project text side */
 .project-card__info {
   padding: var(--space-14) var(--space-12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .project-card__category {
@@ -1163,6 +1178,7 @@ select {
   position: relative;
   z-index: 1;
   display: inline-flex;
+  align-self: flex-start;
   align-items: center;
   gap: var(--space-2);
   font-size: var(--text-base);
@@ -1587,6 +1603,14 @@ select {
   background-color: #FFF4E6;
 }
 
+.skill-card__icon--plan {
+  background-color: #E0F0FF;
+}
+
+.skill-card__icon--web {
+  background-color: #E8F8F2;
+}
+
 .skill-card__title {
   font-size: var(--text-xl);
   font-weight: var(--weight-bold);
@@ -1629,6 +1653,156 @@ select {
 .skill-card:hover .skill-item::before {
   background-color: var(--color-accent);
 }
+
+/* ──────────────────────────────────────────
+   SKILLS DARK MODE
+────────────────────────────────────────── */
+.skills--dark {
+  background-color: #0B0B18;
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle radial glow */
+.skills--dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(99, 60, 220, 0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(40, 120, 220, 0.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.skills--dark .section-header .eyebrow {
+  color: rgba(180, 160, 255, 0.8);
+}
+
+.skills--dark .section-title,
+.skills--dark .section-header p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.skills--dark .section-header p {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Dark skill cards */
+.skills--dark .skill-card {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.skills--dark .skill-card:hover {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.skills--dark .skill-card__title {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.skills--dark .skill-card__icon--design {
+  background: radial-gradient(circle at 30% 30%, rgba(196, 160, 255, 0.3), rgba(124, 58, 237, 0.15));
+  border: 1px solid rgba(160, 120, 255, 0.25);
+}
+
+.skills--dark .skill-card__icon--plan {
+  background: radial-gradient(circle at 30% 30%, rgba(125, 211, 252, 0.3), rgba(37, 99, 235, 0.15));
+  border: 1px solid rgba(60, 140, 255, 0.25);
+}
+
+.skills--dark .skill-card__icon--web {
+  background: radial-gradient(circle at 30% 30%, rgba(110, 231, 183, 0.3), rgba(5, 150, 105, 0.15));
+  border: 1px solid rgba(40, 200, 140, 0.25);
+}
+
+.skills--dark .skills__cards .skill-item {
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.skills--dark .skill-item {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.skills--dark .skill-item::before {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Dark orbit */
+.skills--dark .orbit-track--1 {
+  border-color: rgba(160, 120, 255, 0.35);
+}
+
+.skills--dark .orbit-track--2 {
+  border-color: rgba(60, 140, 255, 0.25);
+}
+
+.skills--dark .orbit-track--3 {
+  border-color: rgba(40, 200, 140, 0.2);
+}
+
+/* Chip: design (purple) */
+.orbit-chip--design {
+  background-color: rgba(160, 120, 255, 0.15);
+  border-color: rgba(160, 120, 255, 0.4);
+  color: rgba(200, 170, 255, 0.95);
+}
+
+.orbit-chip--design.orbit-chip--accent {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+/* Chip: plan (blue) */
+.orbit-chip--plan {
+  background-color: rgba(60, 140, 255, 0.12);
+  border-color: rgba(60, 140, 255, 0.35);
+  color: rgba(130, 185, 255, 0.95);
+}
+
+/* Chip: web (teal) */
+.orbit-chip--web {
+  background-color: rgba(40, 200, 140, 0.1);
+  border-color: rgba(40, 200, 140, 0.3);
+  color: rgba(80, 220, 170, 0.95);
+}
+
+.skills--dark .orbit-chip:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Orbit legend */
+.orbit-legend {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.04em;
+}
+
+.orbit-legend span {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.orbit-legend__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.orbit-legend__dot--design { background-color: rgba(160, 120, 255, 0.8); }
+.orbit-legend__dot--plan   { background-color: rgba(60, 140, 255, 0.8); }
+.orbit-legend__dot--web    { background-color: rgba(40, 200, 140, 0.8); }
 
 /* ──────────────────────────────────────────
    TESTIMONIALS
@@ -1847,7 +2021,7 @@ select {
 
 .about__photo {
   width: 100px;
-  height: 100px;
+  height: 120px;
   border-radius: var(--radius-xl);
   background: linear-gradient(145deg, #1A1A2E 0%, #16213E 100%);
   display: flex;

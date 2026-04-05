@@ -40,14 +40,16 @@ function initNav() {
   let isScrolled = false;
 
   function onScroll() {
-    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    if (!hero) return;  // 상세페이지: is-scrolled 항상 유지 (제거 안 함)
+
+    const heroBottom = hero.getBoundingClientRect().bottom;
     const scrolled   = window.scrollY > 20;
 
     if (scrolled !== isScrolled) {
       isScrolled = scrolled;
       nav.classList.toggle('is-scrolled', scrolled);
     }
-    if (hero) nav.classList.toggle('nav--over-dark', heroBottom > 80);
+    nav.classList.toggle('nav--over-dark', heroBottom > 80);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });

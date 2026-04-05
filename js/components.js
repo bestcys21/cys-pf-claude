@@ -15,12 +15,12 @@ class CommonHeader extends HTMLElement {
     this.innerHTML = `
       <nav class="nav" role="navigation" aria-label="메인 네비게이션">
         <div class="nav__inner">
-          <a href="index.html" class="nav__logo">logo<span>.</span></a>
+          <a href="index.html" class="nav__logo">CYS <span>Portfolio</span></a>
           <div class="nav__menu" id="nav-menu">
-            <a href="${base}#hero"    class="nav__link">홈</a>
-            <a href="${base}#works"   class="nav__link">작업물</a>
-            <a href="${base}#skills"  class="nav__link">스킬</a>
-            <a href="${base}#about"   class="nav__link">소개</a>
+            <a href="${base}#hero"    class="nav__link">HOME</a>
+            <a href="${base}#works"   class="nav__link">WORKS</a>
+            <a href="${base}#skills"  class="nav__link">SKILLS</a>
+            <a href="${base}#about"   class="nav__link">ABOUT</a>
           </div>
           <button class="nav__toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="메뉴 열기">
             <span></span><span></span><span></span>

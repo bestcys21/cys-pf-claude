@@ -481,24 +481,24 @@
 .sf-scroll-item img { width: 100%; display: block; }
 
 /* ── Project nav ── */
-.sf-nav { padding-block: var(--space-16); }
+.sf-nav { padding-block: var(--space-8); }
 .sf-nav__inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-4);
+  gap: var(--space-3);
 }
 .sf-nav__item {
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
-  padding: var(--space-8);
+  gap: var(--space-1);
+  padding: var(--space-4) var(--space-6);
   background-color: var(--color-surface-secondary);
   border: 1px solid var(--color-border-default);
-  border-radius: var(--radius-2xl);
+  border-radius: var(--radius-xl);
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
 }
 .sf-nav__item:hover {
-  transform: translateY(-3px);
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
   border-color: var(--color-border-strong);
 }
@@ -511,8 +511,8 @@
   color: var(--color-text-tertiary);
 }
 .sf-nav__name {
-  font-size: var(--text-xl);
-  font-weight: var(--weight-extrabold);
+  font-size: var(--text-base);
+  font-weight: var(--weight-bold);
   color: var(--color-text-primary);
   letter-spacing: var(--tracking-tight);
 }
