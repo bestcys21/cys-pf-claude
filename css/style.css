@@ -1138,7 +1138,9 @@ select {
   gap: var(--space-6);
   padding: var(--space-5) var(--space-8);
   min-height: 84px;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
   border-bottom: 1px solid transparent;
   transition:
     border-color 0.35s ease,
@@ -1243,7 +1245,7 @@ select {
 }
 
 .project-card:hover .project-card__body {
-  max-height: 520px;
+  max-height: 360px;
 }
 
 /* 이미지 zoom — 카드 hover 시 이미지만 살짝 확대 */
@@ -1266,7 +1268,7 @@ select {
 
 /* Project text side */
 .project-card__info {
-  padding: var(--space-10) var(--space-10);
+  padding: var(--space-6) var(--space-8);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1307,14 +1309,14 @@ select {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-5);
 }
 
 .project-card__tags {
   display: flex;
   gap: var(--space-2);
   flex-wrap: wrap;
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-5);
 }
 
 .project-card__cta {
@@ -1324,15 +1326,17 @@ select {
   align-self: flex-start;
   align-items: center;
   gap: var(--space-2);
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
-  color: var(--color-text-primary);
-  border-bottom: 2px solid var(--color-text-primary);
-  padding: var(--space-2) 0 var(--space-2);
+  color: var(--color-text-inverse);
+  background-color: var(--color-surface-inverse);
+  border-radius: 999px;
+  padding: var(--space-3) var(--space-5);
+  letter-spacing: 0.02em;
   transition:
-    color var(--transition-fast),
-    border-color var(--transition-fast),
-    gap var(--transition-fast);
+    background-color var(--transition-fast),
+    gap var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 /* stretched-link: 카드 전체를 클릭 가능하게 (이미지 영역 포함) */
@@ -1344,9 +1348,9 @@ select {
 }
 
 .project-card__cta:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  background-color: var(--color-accent);
   gap: var(--space-3);
+  transform: translateY(-1px);
 }
 
 .project-card__cta svg {
@@ -1360,7 +1364,7 @@ select {
 /* Project visual side */
 .project-card__visual {
   height: 100%;
-  min-height: 420px;
+  min-height: 280px;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -2919,6 +2923,15 @@ select {
   font-size: var(--text-xl);
   flex-shrink: 0;
   margin-top: 2px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.insight-icon-img {
+  width: 22px;
+  height: 22px;
+  opacity: 0.7;
+  filter: invert(0);
 }
 
 .insight-item__title {

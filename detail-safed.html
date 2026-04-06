@@ -4,24 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="js/head.js"></script>
-  <meta name="description" content="Safed 케이스 스터디" />
-  <title>Safed 케이스 스터디 — 차윤수</title>
+  <meta name="description" content="Safed — 안전 관리 서비스 UX/UI 디자인" />
+  <title>Safed</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/detail.css" />
 </head>
 <body class="other-detail">
   <common-header></common-header>
 
-  <!-- HERO -->
+  <!-- ════════════════ HERO ════════════════ -->
   <section class="sf-hero">
     <div class="container sf-hero__top">
-            <p class="sf-hero__kicker anim-enter anim-enter-1">서비스 UX 디자인</p>
+      <p class="sf-hero__kicker anim-enter anim-enter-1">안전 관리 서비스 · UX/UI 디자인</p>
       <h1 class="sf-hero__title anim-enter anim-enter-2">Safed</h1>
-      <p class="sf-hero__desc anim-enter anim-enter-3">안전 관리 서비스 Safed의 UX/UI 디자인 프로젝트. 안전이라는 중요한 가치를 직관적이고 신속하게 전달하는 서비스 경험을 설계했습니다.</p>
+      <p class="sf-hero__desc anim-enter anim-enter-3">
+        사업장 안전 관리 서비스 Safed의 UX/UI 디자인 프로젝트.<br />
+        긴급 상황에서도 빠르고 정확하게 작동해야 하는 안전 서비스의 특성을 반영해
+        복잡한 안전 프로세스를 단순하고 명확한 플로우로 재설계했습니다.
+      </p>
       <div class="sf-hero__tags anim-enter anim-enter-4">
-        <span class="badge">서비스 UX</span>
-        <span class="badge">안전 관리</span>
-        <span class="badge">Figma</span>
+        <span class="badge badge--accent">안전 관리</span>
+        <span class="badge badge--default">서비스 UX</span>
+        <span class="badge badge--default">PC 웹</span>
+        <span class="badge badge--default">Figma</span>
       </div>
     </div>
     <div class="container">
@@ -31,7 +36,7 @@
     </div>
   </section>
 
-  <!-- META BAR -->
+  <!-- ════════════════ META BAR ════════════════ -->
   <div class="sf-meta">
     <div class="container">
       <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
@@ -45,7 +50,7 @@
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">역할</div>
-          <div class="sf-meta__value">Lead UX Designer</div>
+          <div class="sf-meta__value">Lead UX Designer<br>화면 기획 · UI 설계</div>
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">사용 툴</div>
@@ -56,29 +61,72 @@
   </div>
 
   <div class="container">
-    <!-- SECTION 01: 프로젝트 소개 -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">01 — 프로젝트 소개</div>
-      <h2 class="sf-section__title">안전을 위한 직관적 UX</h2>
-      <p class="sf-section__body" style="max-width:680px;">안전 관리 서비스는 긴급 상황에서도 빠르고 정확하게 작동해야 합니다. 사용자 리서치와 현장 관찰을 통해 실제 사용 맥락을 파악하고, 복잡한 안전 프로세스를 단순하고 명확한 플로우로 재설계했습니다.</p>
-      <div class="sf-img-group">
-        <div class="sf-img-block reveal">
-          <img src="images/other/safed/2.jpg" alt="Safed UX 설계 1" loading="lazy" />
+
+    <!-- ════════════════ 01 서비스 소개 ════════════════ -->
+    <section id="sec-01" class="sf-section reveal">
+      <div class="sf-section__label">01 — 서비스 소개</div>
+      <h2 class="sf-section__title">사업장 안전 관리를 디지털로 전환했어요</h2>
+      <p class="sf-section__body" style="max-width:680px;">
+        Safed는 사업장의 안전 점검, 위험 요소 보고, 사고 대응 프로세스를
+        하나의 플랫폼으로 통합한 안전 관리 서비스입니다.
+        현장 안전 담당자와 관리자를 대상으로 실제 사용 맥락을 파악하고,
+        긴급 상황에서도 즉시 작동할 수 있는 직관적인 UX를 설계했습니다.
+      </p>
+
+      <div class="sf-cards" style="margin-bottom: var(--space-10);">
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/shield-check.svg" alt="안전 점검" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">현장 안전 점검</div>
+          <div class="sf-card__desc">체크리스트 기반의 정기 안전 점검을 모바일로 빠르게 수행하고 결과를 즉시 공유합니다.</div>
         </div>
-        <div class="sf-img-block reveal">
-          <img src="images/other/safed/3.jpg" alt="Safed UX 설계 2" loading="lazy" />
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/alert-triangle.svg" alt="위험 보고" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">위험 요소 보고</div>
+          <div class="sf-card__desc">현장에서 발견된 위험 요소를 사진과 함께 즉시 보고하고 처리 현황을 실시간으로 추적합니다.</div>
         </div>
-        <div class="sf-img-block reveal">
-          <img src="images/other/safed/4.jpg" alt="Safed UX 설계 3" loading="lazy" />
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/bar-chart-2.svg" alt="현황 모니터링" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">안전 현황 모니터링</div>
+          <div class="sf-card__desc">사업장 전체의 안전 지표를 대시보드로 한눈에 파악하고 미처리 항목을 우선 관리합니다.</div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 02: 상세 화면 설계 -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">02 — 디자인 결과물</div>
-      <h2 class="sf-section__title">상세 화면 설계</h2>
-      <p class="sf-section__body" style="max-width:680px;">경보 알림, 현황 모니터링, 보고서 작성 등 핵심 기능을 중심으로 각 화면을 상세하게 설계하고, 실제 담당자들과의 사용성 테스트를 통해 지속적으로 개선했습니다.</p>
+    <!-- ════════════════ 02 UX 설계 ════════════════ -->
+    <section id="sec-02" class="sf-section reveal">
+      <div class="sf-section__label">02 — UX 설계</div>
+      <h2 class="sf-section__title">현장 맥락을 반영한 UX를 설계했어요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        안전 담당자 인터뷰와 현장 관찰을 통해 실제 사용 환경을 파악했습니다.
+        장갑을 낀 상태에서도 조작 가능한 큰 터치 타겟, 네트워크 불안정 환경을 고려한 오프라인 모드,
+        긴급 상황에서 3탭 이내 완료 가능한 보고 플로우를 핵심 설계 원칙으로 삼았습니다.
+      </p>
+      <div class="sf-img-block reveal">
+        <img src="images/other/safed/2.jpg" alt="Safed UX 설계" loading="lazy" />
+      </div>
+      <div class="sf-img-block reveal" style="margin-top:var(--space-4);">
+        <img src="images/other/safed/3.jpg" alt="Safed 유저 플로우" loading="lazy" />
+      </div>
+      <div class="sf-img-block reveal" style="margin-top:var(--space-4);">
+        <img src="images/other/safed/4.jpg" alt="Safed 와이어프레임" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- ════════════════ 03 화면 설계 ════════════════ -->
+    <section id="sec-03" class="sf-section reveal">
+      <div class="sf-section__label">03 — 화면 설계</div>
+      <h2 class="sf-section__title">주요 화면을 설계했어요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        안전 점검 체크리스트, 위험 요소 보고, 대시보드 모니터링 등
+        핵심 화면을 중심으로 설계하고, 현장 담당자와의 사용성 테스트를 통해 반복 개선했습니다.
+        빨강·노랑·초록의 명확한 상태 색상 체계로 위험 수준을 즉시 인지할 수 있도록 했습니다.
+      </p>
       <div class="sf-img-group">
         <div class="sf-img-block reveal">
           <img src="images/other/safed/5.jpg" alt="Safed 화면 설계 1" loading="lazy" />
@@ -91,9 +139,10 @@
         </div>
       </div>
     </section>
+
   </div>
 
-  <!-- PROJECT NAV -->
+  <!-- ════════════════ PROJECT NAV ════════════════ -->
   <div class="sf-nav">
     <div class="container">
       <div class="sf-nav__inner" style="grid-template-columns: 1fr;">
@@ -106,11 +155,55 @@
     </div>
   </div>
 
-  <!-- CTA -->
-  
-
   <common-footer></common-footer>
+
+  <!-- ════════════════ SECTION NAVIGATOR ════════════════ -->
+  <nav class="snav" id="sectionNav" aria-label="섹션 네비게이션">
+    <ul class="snav__list">
+      <li class="snav__item" data-target="sec-01">
+        <button class="snav__btn" aria-label="01 — 서비스 소개">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">01</span>서비스 소개</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-02">
+        <button class="snav__btn" aria-label="02 — UX 설계">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">02</span>UX 설계</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-03">
+        <button class="snav__btn" aria-label="03 — 화면 설계">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">03</span>화면 설계</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    (function () {
+      var nav = document.getElementById('sectionNav');
+      var items = Array.from(nav.querySelectorAll('.snav__item'));
+      var sections = items.map(function (item) { return document.getElementById(item.dataset.target); });
+      items.forEach(function (item) {
+        item.querySelector('.snav__btn').addEventListener('click', function () {
+          var target = document.getElementById(item.dataset.target);
+          if (!target) return;
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        });
+      });
+      var current = -1;
+      function update() {
+        var mid = window.innerHeight * 0.4; var next = -1;
+        sections.forEach(function (sec, i) { if (!sec) return; if (sec.getBoundingClientRect().top <= mid) next = i; });
+        if (next === current) return; current = next;
+        items.forEach(function (item, i) { item.classList.toggle('snav__item--active', i === current); item.classList.toggle('snav__item--done', i < current); });
+      }
+      window.addEventListener('scroll', update, { passive: true }); update();
+    })();
+  </script>
 </body>
 </html>

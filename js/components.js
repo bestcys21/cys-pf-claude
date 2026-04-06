@@ -6,10 +6,9 @@
 
 class CommonHeader extends HTMLElement {
   connectedCallback() {
-    // Use relative hash links on index page, full path on other pages
-    const isIndex = ['/', '/index.html', ''].some(p =>
-      window.location.pathname.endsWith(p)
-    ) || window.location.pathname === '/';
+    // 상세 페이지에서는 index.html#섹션 으로, 메인에서는 #섹션 으로
+    const filename = window.location.pathname.split('/').pop();
+    const isIndex = filename === 'index.html' || filename === '' || filename === '/';
     const base = isIndex ? '' : 'index.html';
 
     this.innerHTML = `

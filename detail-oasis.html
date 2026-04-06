@@ -5,9 +5,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="js/head.js"></script>
-  <meta name="description" content="ClubD Oasis 케이스 스터디 — 웰니스 스파 예약 앱" />
-  <title>ClubD Oasis 케이스 스터디 — 차윤수</title>
-
+  <meta name="description" content="ClubD Oasis — 프리미엄 스파·웰니스 예약 앱 UX/UI 디자인" />
+  <title>ClubD Oasis</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/detail.css" />
 </head>
@@ -17,39 +16,39 @@
   <!-- ════════════════ NAVIGATION ════════════════ -->
   <common-header></common-header>
 
+
   <!-- ════════════════ HERO ════════════════ -->
   <section class="sf-hero">
     <div class="container sf-hero__top">
 
-
-      <p class="sf-hero__kicker anim-enter anim-enter-1">웰니스 앱</p>
+      <p class="sf-hero__kicker anim-enter anim-enter-1">웰니스 앱 · iOS / Android</p>
 
       <h1 class="sf-hero__title anim-enter anim-enter-2">
-        ClubD Oasis
+        클럽디 오아시스
       </h1>
 
       <p class="sf-hero__desc anim-enter anim-enter-3">
-        프리미엄 스파·웰니스 클럽을 위한 예약 앱.<br>
+        프리미엄 스파·웰니스 클럽을 위한 예약 앱.<br />
         몸과 마음의 휴식을 위한 공간에 걸맞는 고급스럽고 편안한
         예약 경험을 설계한 모바일 앱 프로젝트를 담당했습니다.
       </p>
 
       <div class="sf-hero__tags anim-enter anim-enter-4">
         <span class="badge badge--accent">모바일 앱</span>
+        <span class="badge badge--default">iOS · Android</span>
         <span class="badge badge--default">웰니스 · 스파</span>
-        <span class="badge badge--default">예약 서비스</span>
         <span class="badge badge--default">프리미엄 UX</span>
       </div>
 
     </div>
 
-    <!-- Hero cover image -->
     <div class="container">
       <div class="sf-cover anim-enter anim-enter-5">
         <img src="images/main/oasis/1.jpg" alt="ClubD Oasis 앱 전체 화면" loading="eager" />
       </div>
     </div>
   </section>
+
 
   <!-- ════════════════ META BAR ════════════════ -->
   <div class="sf-meta">
@@ -65,7 +64,7 @@
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">역할</div>
-          <div class="sf-meta__value">UX/UI Designer<br>Visual Design</div>
+          <div class="sf-meta__value">UX/UI 디자인<br>비주얼 디자인</div>
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">플랫폼</div>
@@ -79,165 +78,254 @@
     </div>
   </div>
 
+
   <div class="container">
 
-    <!-- ════════════════ CHALLENGE ════════════════ -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">01 — 문제 정의</div>
-      <h2 class="sf-section__title">해결해야 할 문제</h2>
-      <p class="sf-section__body" style="max-width:680px;">
-        고급 웰니스 공간의 예약 경험이 브랜드 이미지와 맞지 않는다는 점이
-        핵심 문제였습니다. 회원 인터뷰를 통해 예약 과정의 불편함과
-        서비스 정보의 불충분함이 재방문 의지를 낮추고 있다는 사실을 발견했습니다.
+    <!-- ════════════════ 01 서비스 소개 ════════════════ -->
+    <section id="sec-01" class="sf-section reveal">
+      <div class="sf-section__label">01 — 서비스 소개</div>
+      <h2 class="sf-section__title">몸과 마음의 휴식을 위한 프리미엄 웰니스 앱이에요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        ClubD Oasis는 프리미엄 스파·웰니스 클럽의 예약과 케어 여정을 하나로 연결하는 모바일 앱입니다.
+        서비스 탐색부터 테라피스트 선택, 예약, 방문 후 홈케어 연결까지
+        완결된 웰니스 경험을 설계했습니다.
       </p>
 
-      <div class="sf-challenge-grid">
-        <div class="sf-challenge-item sf-challenge-item--problem">
-          <div class="sf-challenge-item__badge">😩 문제</div>
-          <div class="sf-challenge-item__title">서비스 정보를<br>미리 확인하기 어렵다</div>
-          <div class="sf-challenge-item__desc">
-            어떤 프로그램이 있는지, 어떤 경험을 받게 되는지
-            예약 전에 충분한 정보를 제공하지 않아 결정을 미루게 됩니다.
+      <div class="sf-cards">
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/layout-list.svg" alt="큐레이션" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">맞춤 웰니스 큐레이션</div>
+          <div class="sf-card__desc">
+            컨디션과 목적에 맞는 프로그램을 추천하고, 공간과 서비스를
+            충분히 탐색한 뒤 예약 결정을 내릴 수 있도록 안내합니다.
           </div>
         </div>
-        <div class="sf-challenge-item sf-challenge-item--solution">
-          <div class="sf-challenge-item__badge">✦ 해결</div>
-          <div class="sf-challenge-item__title">풍부한 비주얼과<br>상세 서비스 안내</div>
-          <div class="sf-challenge-item__desc">
-            고품질 이미지와 영상, 테라피스트 소개, 예상 경험 흐름을
-            상세히 제공하여 예약 결정을 자신 있게 내릴 수 있도록 했습니다.
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/calendar-check.svg" alt="예약" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">테라피스트 선택 예약</div>
+          <div class="sf-card__desc">
+            원하는 테라피스트와 시간을 직접 선택해 실시간 예약을 완료할 수 있는
+            맞춤형 예약 플로우를 제공합니다.
           </div>
         </div>
-        <div class="sf-challenge-item sf-challenge-item--problem">
-          <div class="sf-challenge-item__badge">😩 문제</div>
-          <div class="sf-challenge-item__title">원하는 시간과<br>테라피스트 선택 불가</div>
-          <div class="sf-challenge-item__desc">
-            희망 시간대나 선호하는 담당자를 선택할 수 없어
-            만족도 높은 예약 경험이 어렵고 취소율이 높았습니다.
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/heart.svg" alt="케어" class="sf-card-icon-img" />
           </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--solution">
-          <div class="sf-challenge-item__badge">✦ 해결</div>
-          <div class="sf-challenge-item__title">테라피스트 선택 &<br>실시간 예약</div>
-          <div class="sf-challenge-item__desc">
-            테라피스트 프로필과 가능 시간을 동시에 확인하고
-            원하는 조합으로 예약하는 맞춤형 예약 플로우를 설계했습니다.
+          <div class="sf-card__title">방문 전·후 통합 케어</div>
+          <div class="sf-card__desc">
+            예약 전 서비스 안내부터 방문 후 홈케어 루틴 추천까지
+            앱 안에서 연속된 웰니스 여정을 경험할 수 있습니다.
           </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--problem">
-          <div class="sf-challenge-item__badge">😩 문제</div>
-          <div class="sf-challenge-item__title">방문 전·후 케어가<br>단절된다</div>
-          <div class="sf-challenge-item__desc">
-            방문 전 준비 안내와 방문 후 관리 팁이 없어
-            서비스의 효과가 반감되고 재방문 동기가 생기지 않습니다.
-          </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--solution">
-          <div class="sf-challenge-item__badge">✦ 해결</div>
-          <div class="sf-challenge-item__title">방문 전·후<br>통합 케어 여정</div>
-          <div class="sf-challenge-item__desc">
-            예약 확정 후 방문 준비 가이드, 방문 후 홈케어 루틴 추천까지
-            앱을 통해 연속적인 웰니스 경험을 제공했습니다.
-          </div>
-        </div>
-      </div>
-
-      <div class="sf-img-group">
-        <div class="sf-img-block reveal">
-          <img src="images/main/oasis/2.jpg" alt="ClubD Oasis 리서치 및 인사이트" loading="lazy" />
-        </div>
-        <div class="sf-img-block reveal">
-          <img src="images/main/oasis/3.jpg" alt="ClubD Oasis 와이어프레임 및 플로우" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <!-- ════════════════ DESIGN ════════════════ -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">02 — 디자인</div>
-      <h2 class="sf-section__title">감각적인 웰니스 경험</h2>
-      <p class="sf-section__body" style="max-width:680px;margin-bottom:var(--space-10);">
-        Oasis라는 이름에 걸맞게, 앱 자체가 하나의 휴식 공간이 되도록 설계했습니다.
-        부드러운 톤의 컬러 팔레트, 여유로운 여백, 느리게 전환되는 애니메이션으로
-        화면을 보는 것만으로도 안정감을 주는 경험을 만들었습니다.
+
+    <!-- ════════════════ 02 기획 & 리서치 ════════════════ -->
+    <section id="sec-02" class="sf-section reveal">
+      <div class="sf-section__label">02 — 기획 & 리서치</div>
+      <h2 class="sf-section__title">웰니스 유저를 이해하고 예약 플로우를 설계했어요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        고급 스파·웰니스 앱 벤치마킹과 회원 인터뷰를 통해
+        핵심 페인포인트를 도출했습니다.
+        예약 · 테라피스트 선택 · 방문 전후 케어를 중심으로
+        정보구조(IA)와 유저 플로우를 설계했습니다.
+      </p>
+
+      <div class="sf-img-block reveal">
+        <img src="images/main/oasis/2.jpg" alt="ClubD Oasis 리서치 및 인사이트" loading="lazy" />
+      </div>
+      <div class="sf-img-block reveal" style="margin-top:var(--space-4);">
+        <img src="images/main/oasis/3.jpg" alt="ClubD Oasis 와이어프레임 및 플로우" loading="lazy" />
+      </div>
+    </section>
+
+
+    <!-- ════════════════ 03 디자인 시스템 ════════════════ -->
+    <section id="sec-03" class="sf-section reveal">
+      <div class="sf-section__label">03 — 디자인 시스템</div>
+      <h2 class="sf-section__title">앱 자체가 하나의 휴식 공간이 되도록 설계했어요</h2>
+
+      <p class="sf-section__body" style="margin-bottom:var(--space-6);">
+            Oasis라는 이름에 걸맞게, 앱 자체가 하나의 휴식 공간이 되도록 설계했습니다.
+            부드러운 베이지·세이지·딥블루 컬러 팔레트, 여유로운 여백,
+            느리게 전환되는 애니메이션으로 화면을 보는 것만으로도 안정감을 주는 경험을 만들었습니다.<br /><br />
+            iOS · Android 양 플랫폼 네이티브 가이드라인을 준수하면서도
+            웰니스 브랜드의 감성을 일관되게 유지했습니다.
+          </p>
+          <div class="insight-list" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:var(--space-4); margin-bottom:var(--space-12);">
+            <div class="insight-item">
+              <div class="insight-item__icon">
+                <img src="https://unpkg.com/lucide-static@latest/icons/palette.svg" alt="컬러" class="insight-icon-img" />
+              </div>
+              <div>
+                <div class="insight-item__title">힐링 컬러 팔레트</div>
+                <div class="insight-item__desc">
+                  베이지·세이지·딥블루 조합으로<br />
+                  자연스러운 웰니스 분위기 연출
+                </div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item__icon">
+                <img src="https://unpkg.com/lucide-static@latest/icons/image.svg" alt="비주얼" class="insight-icon-img" />
+              </div>
+              <div>
+                <div class="insight-item__title">풀블리드 이미지 레이아웃</div>
+                <div class="insight-item__desc">
+                  고품질 공간·서비스 이미지 중심의<br />
+                  몰입감 있는 화면 구성
+                </div>
+              </div>
+            </div>
+            <div class="insight-item">
+              <div class="insight-item__icon">
+                <img src="https://unpkg.com/lucide-static@latest/icons/wind.svg" alt="모션" class="insight-icon-img" />
+              </div>
+              <div>
+                <div class="insight-item__title">슬로우 트랜지션</div>
+                <div class="insight-item__desc">
+                  느린 화면 전환과 부드러운 이징으로<br />
+                  심리적 안정감을 유도하는 모션 설계
+                </div>
+              </div>
+            </div>
+          </div>
+
+      <div class="sf-img-block reveal">
+        <img src="images/main/oasis/4.jpg" alt="ClubD Oasis 디자인 시스템" loading="lazy" />
+      </div>
+    </section>
+
+
+    <!-- ════════════════ 04 주요 기능 ════════════════ -->
+    <section id="sec-04" class="sf-section reveal">
+      <div class="sf-section__label">04 — 주요 기능</div>
+      <h2 class="sf-section__title">웰니스 여정을 완성하는 핵심 기능을 설계했어요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        서비스 큐레이션, 테라피스트 선택 예약, 방문 후 케어 연결 —
+        세 가지 기능이 하나의 여정으로 이어지는 통합 경험을 구현했습니다.
       </p>
 
       <div class="sf-cards" style="margin-bottom:var(--space-10);">
-        <div class="sf-card reveal reveal-delay-1">
-          <div class="sf-card__icon">🌿</div>
-          <div class="sf-card__title">힐링 무드 비주얼</div>
-          <div class="sf-card__desc">
-            베이지·세이지·딥블루 팔레트와 고품질 이미지로
-            앱에 접속하는 순간부터 웰니스 분위기에 몰입되도록 설계했습니다.
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/layout-list.svg" alt="큐레이션" class="sf-card-icon-img" />
           </div>
-        </div>
-        <div class="sf-card reveal reveal-delay-2">
-          <div class="sf-card__icon">🛁</div>
-          <div class="sf-card__title">서비스 큐레이션</div>
+          <div class="sf-card__title">맞춤 서비스 큐레이션</div>
           <div class="sf-card__desc">
-            컨디션과 목적(스트레스 해소·피로 회복·스킨케어 등)에 따라
+            컨디션과 목적(스트레스 해소·피로 회복·스킨케어)에 따라
             맞춤 프로그램을 추천하는 개인화 큐레이션을 제공합니다.
           </div>
         </div>
-        <div class="sf-card reveal reveal-delay-3">
-          <div class="sf-card__icon">⭐</div>
-          <div class="sf-card__title">리뷰 & 재방문 유도</div>
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/calendar-check.svg" alt="예약" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">테라피스트 선택 예약</div>
           <div class="sf-card__desc">
-            방문 후 간편 후기 작성과 다음 방문 혜택 제공으로
-            자연스러운 리텐션 사이클을 설계했습니다.
+            테라피스트 프로필과 가능 시간을 동시에 확인하고
+            원하는 조합으로 실시간 예약을 완료할 수 있습니다.
+          </div>
+        </div>
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/heart.svg" alt="케어" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">방문 후 홈케어 연결</div>
+          <div class="sf-card__desc">
+            방문 후 맞춤 홈케어 루틴 추천과 간편 후기 작성,
+            다음 방문 혜택 제공으로 자연스러운 재방문을 유도합니다.
           </div>
         </div>
       </div>
 
+      <div class="sf-img-block reveal">
+        <img src="images/main/oasis/5.jpg" alt="ClubD Oasis 예약 플로우 화면" loading="lazy" />
+      </div>
+    </section>
+
+
+    <!-- ════════════════ 05 화면 디자인 ════════════════ -->
+    <section id="sec-05" class="sf-section reveal">
+      <div class="sf-section__label">05 — 화면 디자인</div>
+      <h2 class="sf-section__title">주요 화면을 설계했어요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        홈·서비스 탐색·예약·마이페이지·방문 후 케어까지
+        웰니스 여정의 모든 접점에서 일관된 브랜드 무드를 유지하면서
+        사용자가 편안하게 목적을 달성할 수 있도록 설계했습니다.
+      </p>
+
       <div class="sf-img-group">
         <div class="sf-img-block reveal">
-          <img src="images/main/oasis/4.jpg" alt="ClubD Oasis 홈 및 서비스 탐색 화면" loading="lazy" />
+          <img src="images/main/oasis/6.jpg" alt="ClubD Oasis 홈 및 서비스 탐색 화면" loading="lazy" />
         </div>
         <div class="sf-img-block reveal">
-          <img src="images/main/oasis/5.jpg" alt="ClubD Oasis 예약 플로우 화면" loading="lazy" />
+          <img src="images/main/oasis/7.jpg" alt="ClubD Oasis 테라피스트 선택 화면" loading="lazy" />
         </div>
         <div class="sf-img-block reveal">
-          <img src="images/main/oasis/6.jpg" alt="ClubD Oasis 마이페이지 및 후기 화면" loading="lazy" />
+          <img src="images/main/oasis/8.jpg" alt="ClubD Oasis 예약 확정 화면" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/oasis/9.jpg" alt="ClubD Oasis 마이페이지 화면" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/oasis/10.jpg" alt="ClubD Oasis 방문 후 케어 화면" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/main/oasis/11.jpg" alt="ClubD Oasis 최종 결과물" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <!-- ════════════════ RETROSPECTIVE ════════════════ -->
-    <section class="sf-section reveal">
-      <div class="sf-2col">
-        <div>
-          <div class="sf-section__label">회고</div>
-          <h2 class="sf-section__title">프로젝트 회고</h2>
-        </div>
-        <div>
-          <p class="sf-section__body" style="margin-bottom:var(--space-8);">
-            Oasis 프로젝트에서는 UX가 단순히 기능의 흐름을 설계하는 것을 넘어
-            감정과 분위기를 디자인하는 일임을 깊이 깨달았습니다.
-            비주얼과 모션, 카피 하나까지 브랜드의 감성을 담아야 했습니다.
-          </p>
-          <div class="sf-cards" style="grid-template-columns:1fr 1fr;margin-top:0;">
-            <div class="sf-card">
-              <div class="sf-card__icon">🎨</div>
-              <div class="sf-card__title">감성 디자인</div>
-              <div class="sf-card__desc">기능성과 감성을 동시에 충족하는 UX 설계가 브랜드 충성도를 높인다는 것을 배웠습니다.</div>
-            </div>
-            <div class="sf-card">
-              <div class="sf-card__icon">🌊</div>
-              <div class="sf-card__title">모션의 힘</div>
-              <div class="sf-card__desc">섬세한 전환 애니메이션이 사용자의 감정 상태에 실질적인 영향을 미친다는 점을 확인했습니다.</div>
-            </div>
+
+    <!-- ════════════════ 06 회고 ════════════════ -->
+    <section id="sec-06" class="sf-section reveal">
+      <div class="sf-section__label">06 — 회고</div>
+      <h2 class="sf-section__title">프로젝트 회고</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        Oasis 프로젝트에서는 UX가 단순히 기능의 흐름을 설계하는 것을 넘어
+        감정과 분위기를 디자인하는 일임을 깊이 깨달았습니다.
+        비주얼과 모션, 카피 하나까지 브랜드의 감성을 담아야 했습니다.
+      </p>
+      <div class="sf-cards">
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/heart-handshake.svg" alt="감성 디자인" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">감성 디자인</div>
+          <div class="sf-card__desc">
+            기능성과 감성을 동시에 충족하는 UX 설계가 브랜드 충성도를 높인다는 것을 배웠습니다.
           </div>
         </div>
-      </div>
-
-      <div class="sf-img-group">
-        <div class="sf-img-block reveal">
-          <img src="images/main/oasis/7.jpg" alt="ClubD Oasis 최종 결과물" loading="lazy" />
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/waves.svg" alt="모션" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">모션의 힘</div>
+          <div class="sf-card__desc">
+            섬세한 전환 애니메이션이 사용자의 감정 상태에 실질적인 영향을 미친다는 점을 확인했습니다.
+          </div>
+        </div>
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/repeat-2.svg" alt="리텐션" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">재방문 설계</div>
+          <div class="sf-card__desc">
+            방문 후 케어 연결과 혜택 제공으로 자연스러운 재방문 사이클을 만드는 것이 핵심임을 배웠습니다.
+          </div>
         </div>
       </div>
     </section>
 
   </div><!-- /container -->
+
 
   <!-- ════════════════ PROJECT NAV ════════════════ -->
   <div class="sf-nav">
@@ -257,11 +345,98 @@
     </div>
   </div>
 
+
   <!-- ════════════════ FOOTER ════════════════ -->
   <common-footer></common-footer>
 
+
+  <!-- ════════════════ SECTION NAVIGATOR ════════════════ -->
+  <nav class="snav" id="sectionNav" aria-label="섹션 네비게이션">
+    <ul class="snav__list">
+      <li class="snav__item" data-target="sec-01">
+        <button class="snav__btn" aria-label="01 — 서비스 소개">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">01</span>서비스 소개</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-02">
+        <button class="snav__btn" aria-label="02 — 기획 & 리서치">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">02</span>기획 & 리서치</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-03">
+        <button class="snav__btn" aria-label="03 — 디자인 시스템">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">03</span>디자인 시스템</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-04">
+        <button class="snav__btn" aria-label="04 — 주요 기능">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">04</span>주요 기능</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-05">
+        <button class="snav__btn" aria-label="05 — 화면 디자인">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">05</span>화면 디자인</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-06">
+        <button class="snav__btn" aria-label="06 — 프로젝트 회고">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">06</span>프로젝트 회고</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    (function () {
+      var nav = document.getElementById('sectionNav');
+      var items = Array.from(nav.querySelectorAll('.snav__item'));
+      var sections = items.map(function (item) {
+        return document.getElementById(item.dataset.target);
+      });
+
+      items.forEach(function (item) {
+        item.querySelector('.snav__btn').addEventListener('click', function () {
+          var target = document.getElementById(item.dataset.target);
+          if (!target) return;
+          var offset = 80;
+          var top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+      });
+
+      var current = -1;
+
+      function update() {
+        var mid = window.innerHeight * 0.4;
+        var next = -1;
+        sections.forEach(function (sec, i) {
+          if (!sec) return;
+          var rect = sec.getBoundingClientRect();
+          if (rect.top <= mid) next = i;
+        });
+
+        if (next === current) return;
+        current = next;
+
+        items.forEach(function (item, i) {
+          item.classList.toggle('snav__item--active', i === current);
+          item.classList.toggle('snav__item--done', i < current);
+        });
+      }
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+  </script>
+
 </body>
 
 </html>

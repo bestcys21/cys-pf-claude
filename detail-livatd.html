@@ -4,24 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="js/head.js"></script>
-  <meta name="description" content="Livatd 케이스 스터디" />
-  <title>Livatd 케이스 스터디 — 차윤수</title>
+  <meta name="description" content="Livatd — 부동산 중개 서비스 UX/UI 디자인" />
+  <title>Livatd</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/detail.css" />
 </head>
 <body class="other-detail">
   <common-header></common-header>
 
-  <!-- HERO -->
+  <!-- ════════════════ HERO ════════════════ -->
   <section class="sf-hero">
     <div class="container sf-hero__top">
-            <p class="sf-hero__kicker anim-enter anim-enter-1">서비스 UX 디자인</p>
+      <p class="sf-hero__kicker anim-enter anim-enter-1">부동산 중개 서비스 · UX/UI 디자인</p>
       <h1 class="sf-hero__title anim-enter anim-enter-2">Livatd</h1>
-      <p class="sf-hero__desc anim-enter anim-enter-3">Livatd 서비스의 사용자 경험 설계 프로젝트. 사용자의 니즈를 깊이 이해하고 직관적이고 매력적인 디지털 서비스 경험을 구축했습니다.</p>
+      <p class="sf-hero__desc anim-enter anim-enter-3">
+        부동산 중개 플랫폼 Livatd의 UX/UI 디자인 프로젝트.<br />
+        매물 탐색부터 계약까지의 복잡한 부동산 프로세스를 간소화하고,
+        신뢰 기반의 중개 경험을 설계했습니다.
+      </p>
       <div class="sf-hero__tags anim-enter anim-enter-4">
-        <span class="badge">서비스 UX</span>
-        <span class="badge">UI 디자인</span>
-        <span class="badge">Figma</span>
+        <span class="badge badge--accent">부동산</span>
+        <span class="badge badge--default">서비스 UX</span>
+        <span class="badge badge--default">모바일 앱</span>
+        <span class="badge badge--default">Figma</span>
       </div>
     </div>
     <div class="container">
@@ -31,7 +36,7 @@
     </div>
   </section>
 
-  <!-- META BAR -->
+  <!-- ════════════════ META BAR ════════════════ -->
   <div class="sf-meta">
     <div class="container">
       <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
@@ -45,49 +50,92 @@
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">역할</div>
-          <div class="sf-meta__value">UX/UI Designer</div>
+          <div class="sf-meta__value">UX/UI Designer<br>화면 기획</div>
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">사용 툴</div>
-          <div class="sf-meta__value">Figma · FigJam · Principle</div>
+          <div class="sf-meta__value">Figma · FigJam<br>Principle</div>
         </div>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <!-- SECTION 01: 프로젝트 소개 -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">01 — 프로젝트 소개</div>
-      <h2 class="sf-section__title">사용자 중심의 서비스 설계</h2>
-      <p class="sf-section__body" style="max-width:680px;">타겟 사용자의 행동 패턴과 니즈를 리서치 기반으로 분석하고, 핵심 사용 시나리오를 중심으로 정보 구조와 인터랙션을 설계했습니다.</p>
-      <div class="sf-img-group">
-        <div class="sf-img-block reveal">
-          <img src="images/other/livatd/2.jpg" alt="Livatd 서비스 설계 1" loading="lazy" />
+
+    <!-- ════════════════ 01 서비스 소개 ════════════════ -->
+    <section id="sec-01" class="sf-section reveal">
+      <div class="sf-section__label">01 — 서비스 소개</div>
+      <h2 class="sf-section__title">부동산 중개의 복잡함을 간소화했어요</h2>
+      <p class="sf-section__body" style="max-width:680px;">
+        Livatd는 매물 검색부터 중개사 연결, 계약까지 부동산 거래의 전 과정을
+        하나의 앱에서 처리할 수 있는 중개 플랫폼입니다.
+        정보 비대칭이 심한 부동산 시장에서 사용자가 신뢰를 가지고
+        의사결정을 내릴 수 있도록 투명하고 명확한 UX를 설계했습니다.
+      </p>
+
+      <div class="sf-cards" style="margin-bottom: var(--space-10);">
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/search.svg" alt="매물 탐색" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">스마트 매물 탐색</div>
+          <div class="sf-card__desc">지도 기반 탐색과 조건 필터로 원하는 매물을 빠르게 찾고, 상세 정보를 한눈에 파악합니다.</div>
         </div>
-        <div class="sf-img-block reveal">
-          <img src="images/other/livatd/3.jpg" alt="Livatd 서비스 설계 2" loading="lazy" />
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/user-check.svg" alt="중개사 연결" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">검증된 중개사 연결</div>
+          <div class="sf-card__desc">리뷰와 거래 이력 기반으로 신뢰할 수 있는 중개사를 선택하고 채팅으로 즉시 연결됩니다.</div>
+        </div>
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/file-signature.svg" alt="계약" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">간편 계약 프로세스</div>
+          <div class="sf-card__desc">계약서 검토부터 서명까지 앱 안에서 완결하고, 주요 일정과 서류를 체계적으로 관리합니다.</div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 02: 디자인 구현 및 프로토타이핑 -->
-    <section class="sf-section reveal">
-      <div class="sf-section__label">02 — 디자인 결과물</div>
-      <h2 class="sf-section__title">디자인 구현 및 프로토타이핑</h2>
-      <p class="sf-section__body" style="max-width:680px;">와이어프레임에서 고화질 프로토타입까지 단계적으로 완성하며 실제 사용 흐름을 검증하고 최적화했습니다.</p>
+    <!-- ════════════════ 02 UX 설계 ════════════════ -->
+    <section id="sec-02" class="sf-section reveal">
+      <div class="sf-section__label">02 — UX 설계</div>
+      <h2 class="sf-section__title">리서치 기반으로 핵심 플로우를 설계했어요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        임차인·임대인·중개사 세 유형의 사용자를 인터뷰하고 각 역할별 핵심 시나리오를 도출했습니다.
+        정보 구조(IA)와 유저 플로우를 설계한 후 와이어프레임으로 검증하며
+        복잡한 부동산 프로세스를 최대한 단순화했습니다.
+      </p>
+      <div class="sf-img-block reveal">
+        <img src="images/other/livatd/2.jpg" alt="Livatd 리서치 및 IA 설계" loading="lazy" />
+      </div>
+      <div class="sf-img-block reveal" style="margin-top:var(--space-4);">
+        <img src="images/other/livatd/3.jpg" alt="Livatd 유저 플로우 및 와이어프레임" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- ════════════════ 03 화면 디자인 ════════════════ -->
+    <section id="sec-03" class="sf-section reveal">
+      <div class="sf-section__label">03 — 화면 디자인</div>
+      <h2 class="sf-section__title">주요 화면을 설계했어요</h2>
+      <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
+        매물 탐색, 중개사 프로필, 채팅, 계약 관리 등 핵심 화면을 고화질 UI로 완성하고
+        Principle을 활용한 인터랙티브 프로토타입으로 실제 사용 흐름을 검증했습니다.
+      </p>
       <div class="sf-img-group">
         <div class="sf-img-block reveal">
-          <img src="images/other/livatd/4.jpg" alt="Livatd 프로토타입 1" loading="lazy" />
+          <img src="images/other/livatd/4.jpg" alt="Livatd 화면 디자인 1" loading="lazy" />
         </div>
         <div class="sf-img-block reveal">
-          <img src="images/other/livatd/5.jpg" alt="Livatd 프로토타입 2" loading="lazy" />
+          <img src="images/other/livatd/5.jpg" alt="Livatd 화면 디자인 2" loading="lazy" />
         </div>
       </div>
     </section>
+
   </div>
 
-  <!-- PROJECT NAV -->
+  <!-- ════════════════ PROJECT NAV ════════════════ -->
   <div class="sf-nav">
     <div class="container">
       <div class="sf-nav__inner" style="grid-template-columns: 1fr;">
@@ -100,11 +148,55 @@
     </div>
   </div>
 
-  <!-- CTA -->
-  
-
   <common-footer></common-footer>
+
+  <!-- ════════════════ SECTION NAVIGATOR ════════════════ -->
+  <nav class="snav" id="sectionNav" aria-label="섹션 네비게이션">
+    <ul class="snav__list">
+      <li class="snav__item" data-target="sec-01">
+        <button class="snav__btn" aria-label="01 — 서비스 소개">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">01</span>서비스 소개</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-02">
+        <button class="snav__btn" aria-label="02 — UX 설계">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">02</span>UX 설계</span>
+        </button>
+      </li>
+      <li class="snav__item" data-target="sec-03">
+        <button class="snav__btn" aria-label="03 — 화면 디자인">
+          <span class="snav__dot"></span>
+          <span class="snav__label"><span class="snav__num">03</span>화면 디자인</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+
   <script src="js/components.js"></script>
   <script src="js/app.js"></script>
+  <script>
+    (function () {
+      var nav = document.getElementById('sectionNav');
+      var items = Array.from(nav.querySelectorAll('.snav__item'));
+      var sections = items.map(function (item) { return document.getElementById(item.dataset.target); });
+      items.forEach(function (item) {
+        item.querySelector('.snav__btn').addEventListener('click', function () {
+          var target = document.getElementById(item.dataset.target);
+          if (!target) return;
+          window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        });
+      });
+      var current = -1;
+      function update() {
+        var mid = window.innerHeight * 0.4; var next = -1;
+        sections.forEach(function (sec, i) { if (!sec) return; if (sec.getBoundingClientRect().top <= mid) next = i; });
+        if (next === current) return; current = next;
+        items.forEach(function (item, i) { item.classList.toggle('snav__item--active', i === current); item.classList.toggle('snav__item--done', i < current); });
+      }
+      window.addEventListener('scroll', update, { passive: true }); update();
+    })();
+  </script>
 </body>
 </html>
