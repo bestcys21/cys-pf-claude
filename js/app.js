@@ -418,6 +418,7 @@ function initOrbitalAnimation() {
     { sel: '[data-ring="1"]', r: pv('--orbit-r1') || 115, dur: 18 },
     { sel: '[data-ring="2"]', r: pv('--orbit-r2') || 178, dur: 28 },
     { sel: '[data-ring="3"]', r: pv('--orbit-r3') || 238, dur: 42 },
+    { sel: '[data-ring="4"]', r: pv('--orbit-r4') || 300, dur: 58 },
   ].forEach(({ sel, r, dur }) => {
     const chips = qsa(sel, system);
     chips.forEach((chip, i) => {

@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="js/head.js"></script>
-  <meta name="description" content="Livatd — 부동산 중개 서비스 UX/UI 디자인" />
-  <title>Livatd</title>
+  <meta name="description" content="하이돔 — 기숙사 입출입관리 앱 디자인" />
+  <title>하이돔 — 기숙사 출입관리 앱</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/detail.css" />
 </head>
+
 <body class="other-detail">
   <common-header></common-header>
 
   <!-- ════════════════ HERO ════════════════ -->
   <section class="sf-hero">
     <div class="container sf-hero__top">
-      <p class="sf-hero__kicker anim-enter anim-enter-1">부동산 중개 서비스 · UX/UI 디자인</p>
-      <h1 class="sf-hero__title anim-enter anim-enter-2">Livatd</h1>
+      <p class="sf-hero__kicker anim-enter anim-enter-1">기숙사 입출입관리 · 앱 디자인</p>
+      <h1 class="sf-hero__title anim-enter anim-enter-2">리브앳디 하이돔</h1>
       <p class="sf-hero__desc anim-enter anim-enter-3">
-        부동산 중개 플랫폼 Livatd의 UX/UI 디자인 프로젝트.<br />
-        매물 탐색부터 계약까지의 복잡한 부동산 프로세스를 간소화하고,
-        신뢰 기반의 중개 경험을 설계했습니다.
+        YIDO의 기숙사 운영 브랜드 리브앳디(Live@D)를 기반으로,<br />
+        학생용 앱 '하이돔'을 기획·디자인했습니다.<br />
+        QR 출입 체크를 핵심으로, 상벌점·점호·물품 대여·커뮤니티까지
+        기숙사 운영 전반을 아우르는 통합 앱입니다.
       </p>
       <div class="sf-hero__tags anim-enter anim-enter-4">
-        <span class="badge badge--accent">부동산</span>
-        <span class="badge badge--default">서비스 UX</span>
-        <span class="badge badge--default">모바일 앱</span>
-        <span class="badge badge--default">Figma</span>
+        <span class="badge badge--accent">출입관리</span>
+        <span class="badge badge--default">iOS · Android</span>
+        <span class="badge badge--default">UX/UI 디자인</span>
+        <span class="badge badge--default">하이브리드 앱</span>
       </div>
     </div>
     <div class="container">
       <div class="sf-cover anim-enter anim-enter-5">
-        <img src="images/other/livatd/1.jpg" alt="Livatd 커버" loading="eager" />
+        <img src="images/other/livatd/1.jpg" alt="하이돔 커버" loading="eager" />
       </div>
     </div>
   </section>
@@ -42,19 +45,19 @@
       <div class="sf-meta__grid" style="grid-template-columns: repeat(4, 1fr);">
         <div class="sf-meta__item">
           <div class="sf-meta__label">클라이언트</div>
-          <div class="sf-meta__value">Livatd</div>
+          <div class="sf-meta__value">YIDO (리브앳디)</div>
         </div>
         <div class="sf-meta__item">
-          <div class="sf-meta__label">기간</div>
-          <div class="sf-meta__value">3개월</div>
+          <div class="sf-meta__label">플랫폼</div>
+          <div class="sf-meta__value">iOS · Android<br>(HTML/CSS 하이브리드)</div>
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">역할</div>
-          <div class="sf-meta__value">UX/UI Designer<br>화면 기획</div>
+          <div class="sf-meta__value">UX/UI 디자인<br>서비스 기획</div>
         </div>
         <div class="sf-meta__item">
           <div class="sf-meta__label">사용 툴</div>
-          <div class="sf-meta__value">Figma · FigJam<br>Principle</div>
+          <div class="sf-meta__value">Figma · FigJam</div>
         </div>
       </div>
     </div>
@@ -65,53 +68,72 @@
     <!-- ════════════════ 01 서비스 소개 ════════════════ -->
     <section id="sec-01" class="sf-section reveal">
       <div class="sf-section__label">01 — 서비스 소개</div>
-      <h2 class="sf-section__title">부동산 중개의 복잡함을 간소화했어요</h2>
+      <h2 class="sf-section__title">기숙사 생활의 모든 것을 하나의 앱으로 담았어요</h2>
       <p class="sf-section__body" style="max-width:680px;">
-        Livatd는 매물 검색부터 중개사 연결, 계약까지 부동산 거래의 전 과정을
-        하나의 앱에서 처리할 수 있는 중개 플랫폼입니다.
-        정보 비대칭이 심한 부동산 시장에서 사용자가 신뢰를 가지고
-        의사결정을 내릴 수 있도록 투명하고 명확한 UX를 설계했습니다.
+        메인 기능인 QR 출입 체크를 고려해, 첫 화면 구성을 직관적으로 설계했습니다.
+        기숙사 입퇴실 시 빠른 QR 스캔이 가능하도록 앱 진입 즉시 QR코드에 접근할 수 있게 했습니다.
       </p>
 
       <div class="sf-cards" style="margin-bottom: var(--space-10);">
         <div class="sf-card">
           <div class="sf-card__icon">
-            <img src="https://unpkg.com/lucide-static@latest/icons/search.svg" alt="매물 탐색" class="sf-card-icon-img" />
+            <img src="https://unpkg.com/lucide-static@latest/icons/qr-code.svg" alt="QR 출입" class="sf-card-icon-img" />
           </div>
-          <div class="sf-card__title">스마트 매물 탐색</div>
-          <div class="sf-card__desc">지도 기반 탐색과 조건 필터로 원하는 매물을 빠르게 찾고, 상세 정보를 한눈에 파악합니다.</div>
+          <div class="sf-card__title">QR 출입 체크</div>
+          <div class="sf-card__desc">기숙사 입퇴실을 QR코드로 간편하게 체크합니다. 첫 화면에서 바로 접근할 수 있도록 최우선 배치했습니다.</div>
         </div>
         <div class="sf-card">
           <div class="sf-card__icon">
-            <img src="https://unpkg.com/lucide-static@latest/icons/user-check.svg" alt="중개사 연결" class="sf-card-icon-img" />
+            <img src="https://unpkg.com/lucide-static@latest/icons/star.svg" alt="상벌점" class="sf-card-icon-img" />
           </div>
-          <div class="sf-card__title">검증된 중개사 연결</div>
-          <div class="sf-card__desc">리뷰와 거래 이력 기반으로 신뢰할 수 있는 중개사를 선택하고 채팅으로 즉시 연결됩니다.</div>
+          <div class="sf-card__title">상벌점 관리</div>
+          <div class="sf-card__desc">학생별 상벌점 내역을 앱에서 바로 확인할 수 있어 규정 준수와 자기 관리를 돕습니다.</div>
         </div>
         <div class="sf-card">
           <div class="sf-card__icon">
-            <img src="https://unpkg.com/lucide-static@latest/icons/file-signature.svg" alt="계약" class="sf-card-icon-img" />
+            <img src="https://unpkg.com/lucide-static@latest/icons/check-square.svg" alt="점호 관리"
+              class="sf-card-icon-img" />
           </div>
-          <div class="sf-card__title">간편 계약 프로세스</div>
-          <div class="sf-card__desc">계약서 검토부터 서명까지 앱 안에서 완결하고, 주요 일정과 서류를 체계적으로 관리합니다.</div>
+          <div class="sf-card__title">점호 관리</div>
+          <div class="sf-card__desc">점호 일정과 결과를 앱으로 관리합니다. 미참석 시 알림으로 학생과 관리자에게 즉시 전달됩니다.</div>
         </div>
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/package.svg" alt="물품 대여" class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">물품 대여</div>
+          <div class="sf-card__desc">기숙사 비품·물품 대여 신청과 반납 현황을 앱에서 간편하게 처리할 수 있습니다.</div>
+        </div>
+        <div class="sf-card">
+          <div class="sf-card__icon">
+            <img src="https://unpkg.com/lucide-static@latest/icons/message-circle.svg" alt="커뮤니티"
+              class="sf-card-icon-img" />
+          </div>
+          <div class="sf-card__title">커뮤니티 게시판</div>
+          <div class="sf-card__desc">기숙사 공지사항과 학생 게시판을 통해 원활한 소통 환경을 제공합니다.</div>
+        </div>
+      </div>
+
+      <div class="sf-img-block reveal">
+        <img src="images/other/livatd/2.jpg" alt="하이돔 주요 기능" loading="lazy" />
       </div>
     </section>
 
-    <!-- ════════════════ 02 UX 설계 ════════════════ -->
+    <!-- ════════════════ 02 시스템 확장 ════════════════ -->
     <section id="sec-02" class="sf-section reveal">
-      <div class="sf-section__label">02 — UX 설계</div>
-      <h2 class="sf-section__title">리서치 기반으로 핵심 플로우를 설계했어요</h2>
+      <div class="sf-section__label">02 — 시스템 확장</div>
+      <h2 class="sf-section__title">학생에서 학부모·관리자까지 확장됐어요</h2>
       <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
-        임차인·임대인·중개사 세 유형의 사용자를 인터뷰하고 각 역할별 핵심 시나리오를 도출했습니다.
-        정보 구조(IA)와 유저 플로우를 설계한 후 와이어프레임으로 검증하며
-        복잡한 부동산 프로세스를 최대한 단순화했습니다.
+        단순 출입 관리로 시작한 하이돔은 학부모 조회 기능과 관리자 웹 기능까지 확장됐습니다.
+        학생·학부모·관리자를 모두 아우르는 통합 시스템으로 발전하여
+        기숙사 운영 효율성과 사용자 편의성이 크게 개선되었습니다.
+        HTML/CSS 기반 하이브리드 앱으로 iOS와 Android를 동시에 지원합니다.
       </p>
       <div class="sf-img-block reveal">
-        <img src="images/other/livatd/2.jpg" alt="Livatd 리서치 및 IA 설계" loading="lazy" />
+        <img src="images/other/livatd/3.jpg" alt="하이돔 시스템 확장" loading="lazy" />
       </div>
       <div class="sf-img-block reveal" style="margin-top:var(--space-4);">
-        <img src="images/other/livatd/3.jpg" alt="Livatd 유저 플로우 및 와이어프레임" loading="lazy" />
+        <img src="images/other/livatd/4.jpg" alt="하이돔 학부모·관리자 기능" loading="lazy" />
       </div>
     </section>
 
@@ -120,15 +142,18 @@
       <div class="sf-section__label">03 — 화면 디자인</div>
       <h2 class="sf-section__title">주요 화면을 설계했어요</h2>
       <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
-        매물 탐색, 중개사 프로필, 채팅, 계약 관리 등 핵심 화면을 고화질 UI로 완성하고
-        Principle을 활용한 인터랙티브 프로토타입으로 실제 사용 흐름을 검증했습니다.
+        QR 출입, 상벌점, 점호, 물품 대여, 커뮤니티 등 핵심 화면을 설계하고
+        실제 기숙사 운영 환경을 반영해 사용성을 다듬었습니다.
       </p>
       <div class="sf-img-group">
         <div class="sf-img-block reveal">
-          <img src="images/other/livatd/4.jpg" alt="Livatd 화면 디자인 1" loading="lazy" />
+          <img src="images/other/livatd/5.jpg" alt="하이돔 화면 디자인 1" loading="lazy" />
         </div>
         <div class="sf-img-block reveal">
-          <img src="images/other/livatd/5.jpg" alt="Livatd 화면 디자인 2" loading="lazy" />
+          <img src="images/other/livatd/6.jpg" alt="하이돔 화면 디자인 2" loading="lazy" />
+        </div>
+        <div class="sf-img-block reveal">
+          <img src="images/other/livatd/7.jpg" alt="하이돔 화면 디자인 3" loading="lazy" />
         </div>
       </div>
     </section>
@@ -160,9 +185,9 @@
         </button>
       </li>
       <li class="snav__item" data-target="sec-02">
-        <button class="snav__btn" aria-label="02 — UX 설계">
+        <button class="snav__btn" aria-label="02 — 시스템 확장">
           <span class="snav__dot"></span>
-          <span class="snav__label"><span class="snav__num">02</span>UX 설계</span>
+          <span class="snav__label"><span class="snav__num">02</span>시스템 확장</span>
         </button>
       </li>
       <li class="snav__item" data-target="sec-03">
@@ -199,4 +224,5 @@
     })();
   </script>
 </body>
+
 </html>

@@ -947,6 +947,13 @@ select {
   border-style: dashed;
 }
 
+.orbit-track--4 {
+  width: calc(var(--orbit-r4) * 2);
+  height: calc(var(--orbit-r4) * 2);
+  border-color: rgba(252, 211, 77, 0.12);
+  border-style: dotted;
+}
+
 /* Orbit center */
 .orbit-center {
   position: absolute;
@@ -1864,6 +1871,15 @@ select {
   border: 1px solid rgba(40, 200, 140, 0.25);
 }
 
+.skill-card__icon--ai {
+  background-color: #FEF3C7;
+}
+
+.skills--dark .skill-card__icon--ai {
+  background: radial-gradient(circle at 30% 30%, rgba(252, 211, 77, 0.3), rgba(217, 119, 6, 0.15));
+  border: 1px solid rgba(252, 211, 77, 0.25);
+}
+
 .skills--dark .skills__cards .skill-item {
   background: rgba(255, 255, 255, 0.07);
   color: rgba(255, 255, 255, 0.6);
@@ -1888,6 +1904,10 @@ select {
 
 .skills--dark .orbit-track--3 {
   border-color: rgba(40, 200, 140, 0.2);
+}
+
+.skills--dark .orbit-track--4 {
+  border-color: rgba(252, 211, 77, 0.18);
 }
 
 /* Chip: design (purple) */
@@ -1915,6 +1935,19 @@ select {
   background-color: rgba(40, 200, 140, 0.1);
   border-color: rgba(40, 200, 140, 0.3);
   color: rgba(80, 220, 170, 0.95);
+}
+
+/* Chip: ai (amber) */
+.orbit-chip--ai {
+  background-color: rgba(252, 211, 77, 0.1);
+  border-color: rgba(252, 211, 77, 0.35);
+  color: rgba(253, 224, 71, 0.95);
+}
+
+.orbit-chip--accent-ai {
+  background-color: rgba(217, 119, 6, 0.85);
+  border-color: #D97706;
+  color: #fff;
 }
 
 .skills--dark .orbit-chip:hover {
@@ -3183,6 +3216,44 @@ select {
     order: -1;
   }
 
+  /* 모바일: bar 썸네일 숨기기 (body에 이미지 있음) */
+  .project-card__bar-thumb {
+    display: none;
+  }
+
+  /* 모바일: 터치 hover 오작동 방지 — 모든 hover 효과 제거 */
+  .project-card:hover {
+    box-shadow: none;
+    border-color: var(--color-border-default);
+    transform: none;
+  }
+
+  .project-card:hover .project-card__bar {
+    border-bottom-color: var(--color-border-default);
+    background: none;
+  }
+
+  .project-card:hover .project-card__bar-num {
+    color: var(--color-text-tertiary);
+  }
+
+  .project-card:hover .project-card__bar-title {
+    letter-spacing: normal;
+  }
+
+  .project-card:hover .project-card__bar-arrow {
+    transform: none;
+    color: var(--color-text-tertiary);
+  }
+
+  .project-card:hover .project-card__body {
+    max-height: none;
+  }
+
+  .project-card:hover .project-card__visual img {
+    transform: none;
+  }
+
   /* About: 모바일 레이아웃 */
   .about__profile {
     grid-template-columns: 1fr;
@@ -3294,6 +3365,16 @@ select {
 
   .other-works__grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* 모바일: other-work-card hover 제거 */
+  .other-work-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .other-work-card:hover .other-work-card__thumb::after {
+    background: rgba(0, 0, 0, 0);
   }
 
   .skills__grid {

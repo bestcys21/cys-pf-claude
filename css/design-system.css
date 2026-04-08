@@ -239,6 +239,7 @@
   --orbit-r1:       115px;
   --orbit-r2:       178px;
   --orbit-r3:       238px;
+  --orbit-r4:       300px;
   --orbit-dur-1:    18s;
   --orbit-dur-2:    28s;
   --orbit-dur-3:    42s;
@@ -253,6 +254,7 @@
     --orbit-r1:             75px;
     --orbit-r2:            115px;
     --orbit-r3:            154px;
+    --orbit-r4:            192px;
     --nav-height:           64px;
   }
 }
