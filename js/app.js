@@ -119,6 +119,14 @@ function initScrollReveal() {
     entries.forEach(e => {
       if (e.isIntersecting) {
         e.target.classList.add('is-visible');
+
+        // orbit 배지 순차 등장
+        if (e.target.classList.contains('skills__orbital')) {
+          qsa('.orbit-chip', e.target).forEach((chip, i) => {
+            chip.style.transitionDelay = `${0.1 + i * 0.12}s`;
+          });
+        }
+
         io.unobserve(e.target);
       }
     });

@@ -587,6 +587,13 @@ select {
 
 .hero-dark__title strong {
   font-weight: var(--weight-bold);
+  background: linear-gradient(90deg, #40e0ff, #d946ef, #818cf8, #40e0ff);
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: neon-gradient-flow 4s linear infinite;
+  animation-delay: 1.2s;
 }
 
 /* Subtitle */
@@ -1045,6 +1052,11 @@ select {
       0 8px 40px rgba(109, 40, 217, 0.75),
       inset 0 1px 2px rgba(255, 255, 255, 0.25);
   }
+}
+
+@keyframes neon-gradient-flow {
+  0%   { background-position: 0% center; }
+  100% { background-position: 250% center; }
 }
 
 @keyframes hero-fade-up {
@@ -1607,6 +1619,18 @@ select {
   overflow: hidden;
 }
 
+.other-work-card__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.other-work-card:hover .other-work-card__thumb img {
+  transform: scale(1.07);
+}
+
 .other-work-card__thumb::after {
   content: '';
   position: absolute;
@@ -1638,6 +1662,28 @@ select {
 /* ──────────────────────────────────────────
    SKILLS SECTION
 ────────────────────────────────────────── */
+
+/* 스킬 카드: reveal 등장 시 scale도 함께 */
+.skills__cards .skill-card.reveal {
+  transform: translateY(32px) scale(0.96);
+}
+.skills__cards .skill-card.reveal.is-visible {
+  transform: translateY(0) scale(1);
+}
+.skills__cards .skill-card.reveal-delay-1 { transition-delay: 0.05s; }
+.skills__cards .skill-card.reveal-delay-2 { transition-delay: 0.18s; }
+.skills__cards .skill-card.reveal-delay-3 { transition-delay: 0.31s; }
+.skills__cards .skill-card.reveal-delay-4 { transition-delay: 0.44s; }
+
+/* orbit 배지: 처음엔 숨김, 부모 is-visible 후 순차 등장 */
+.orbit-chip {
+  opacity: 0;
+  transition: opacity 0.4s ease, box-shadow var(--transition-fast), background-color var(--transition-fast);
+}
+.skills__orbital.is-visible .orbit-chip {
+  opacity: 1;
+}
+/* orbit 배지 딜레이는 JS(initScrollReveal)에서 인라인으로 설정 */
 .skills {
   padding-block: var(--section-padding-y);
 }
@@ -2405,6 +2451,7 @@ select {
   /* 게이지 애니메이션 초기 상태 */
   clip-path: inset(0 100% 0 0);
   transition: none;
+  position: relative;
 }
 
 .tl-h__bar span {
@@ -2430,6 +2477,37 @@ select {
   to {
     clip-path: inset(0 0% 0 0);
   }
+}
+
+/* shimmer: 채워진 후 빛이 흐르는 효과 */
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap) .tl-h__bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 45%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,255,255,0.16) 50%,
+    transparent 100%);
+  transform: translateX(-120%);
+  animation: bar-shimmer 2.8s ease-in-out infinite;
+}
+
+/* 각 아이템마다 shimmer 시작 타이밍 분산 */
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(1) .tl-h__bar::after { animation-delay: 1.0s; }
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(2) .tl-h__bar::after { animation-delay: 1.4s; }
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(3) .tl-h__bar::after { animation-delay: 0.8s; }
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(4) .tl-h__bar::after { animation-delay: 1.7s; }
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(5) .tl-h__bar::after { animation-delay: 1.2s; }
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(6) .tl-h__bar::after { animation-delay: 2.0s; }
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(7) .tl-h__bar::after { animation-delay: 0.6s; }
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(8) .tl-h__bar::after { animation-delay: 1.5s; }
+
+@keyframes bar-shimmer {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(280%); }
 }
 
 .tl-h__item--current .tl-h__bar {
