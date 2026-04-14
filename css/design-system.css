@@ -14,6 +14,9 @@
   --primitive-red-600: #3D29D4;
   --primitive-red-700: #3020B0;
 
+  --primitive-true-red-300: #fca5a5;
+  --primitive-true-red-400: #f87171;
+
   --primitive-black:    #0E0E0E;
   --primitive-gray-900: #1A1A1A;
   --primitive-gray-800: #2D2D2D;
@@ -51,6 +54,7 @@
   --color-text-tertiary:  var(--primitive-gray-400);
   --color-text-inverse:   var(--primitive-white);
   --color-text-accent:    var(--primitive-red-500);
+  --color-text-danger:    var(--primitive-true-red-400);
   --color-text-disabled:  var(--primitive-gray-300);
 
   /* Border */

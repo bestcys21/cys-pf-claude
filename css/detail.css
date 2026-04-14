@@ -3,6 +3,8 @@
    Used by: detail.html and future detail pages with project-hero layout
    ============================================================ */
 
+.text-danger { color: var(--color-text-danger); }
+
 /* ── Entry animations ── */
 .project-hero__kicker,
 .project-hero__title,
@@ -371,6 +373,7 @@
 }
 
 .sf-section__body {
+  word-break: keep-all;
   font-size: var(--text-base);
   line-height: var(--leading-loose);
   color: var(--color-text-secondary);
