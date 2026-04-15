@@ -718,39 +718,36 @@ select {
 
 /* ──────────────────────────────────────────
    NAV — DESKTOP GLASS PILL  ≥ 769 px
+   Apple glass: 얇고 섬세한 처리
 ────────────────────────────────────────── */
 @media (min-width: 769px) {
   .nav {
-    top: 18px;
+    top: 14px;
     left: 50%;
     right: auto;
     transform: translateX(-50%);
     width: calc(100% - 48px);
     max-width: 1200px;
-    border-radius: 100px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow:
-      0 4px 32px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.18);
   }
 
   .nav:not(.is-scrolled) {
-    background: rgba(8, 8, 24, 0.52);
-    backdrop-filter: blur(24px) saturate(160%);
-    -webkit-backdrop-filter: blur(24px) saturate(160%);
-    border-color: rgba(255, 255, 255, 0.11);
-    box-shadow:
-      0 4px 32px rgba(0, 0, 0, 0.28),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    background: rgba(10, 10, 28, 0.28);
+    backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.04);
   }
 
   .nav.is-scrolled {
-    top: 18px;
-    background: rgba(255, 255, 255, 0.88);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border-color: rgba(0, 0, 0, 0.08);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+    top: 14px;
+    background: rgba(255, 255, 255, 0.82);
+    backdrop-filter: blur(28px) saturate(180%);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    border-color: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07);
   }
 
   .nav__inner {
@@ -759,7 +756,7 @@ select {
   }
 
   .hero-dark__content {
-    padding-top: calc(var(--nav-height) + 24px);
+    padding-top: calc(var(--nav-height) + 20px);
   }
 }
 
@@ -1910,24 +1907,52 @@ select {
    SKILLS DARK MODE
 ────────────────────────────────────────── */
 .skills--dark {
-  background-color: #0B0B18;
+  background-color: #07071A;
   position: relative;
   overflow: hidden;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
   background-size: 52px 52px;
 }
 
-/* subtle radial glow */
+/* 메인 오로라 글로우 — 숨쉬며 이동 */
 .skills--dark::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(99, 60, 220, 0.12) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(40, 120, 220, 0.07) 0%, transparent 60%);
+    radial-gradient(ellipse 70% 60% at 72% 50%, rgba(99, 60, 220, 0.28) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 18% 80%, rgba(40, 120, 220, 0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 10%, rgba(200, 80, 255, 0.1) 0%, transparent 60%);
   pointer-events: none;
+  animation: skills-aurora 10s ease-in-out infinite;
+}
+
+/* 유동하는 청색 오브 */
+.skills--dark::after {
+  content: '';
+  position: absolute;
+  width: 480px;
+  height: 480px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.13) 0%, transparent 70%);
+  top: 5%;
+  left: -5%;
+  pointer-events: none;
+  animation: skills-orb-drift 16s ease-in-out infinite alternate;
+}
+
+@keyframes skills-aurora {
+  0%, 100% { opacity: 0.75; transform: scale(1) translate(0, 0); }
+  33%       { opacity: 1;    transform: scale(1.06) translate(2%, -2%); }
+  66%       { opacity: 0.85; transform: scale(0.97) translate(-2%, 2%); }
+}
+
+@keyframes skills-orb-drift {
+  0%   { transform: translate(0, 0)       scale(1);    opacity: 0.5; }
+  50%  { transform: translate(140px, 80px) scale(1.35); opacity: 0.9; }
+  100% { transform: translate(60px, 160px) scale(0.85); opacity: 0.45; }
 }
 
 .skills--dark .section-header .eyebrow {
@@ -1998,26 +2023,31 @@ select {
 
 /* Dark orbit */
 .skills--dark .orbit-track--1 {
-  border-color: rgba(160, 120, 255, 0.35);
+  border-color: rgba(160, 120, 255, 0.55);
+  box-shadow: 0 0 14px rgba(160, 120, 255, 0.18), inset 0 0 14px rgba(160, 120, 255, 0.06);
 }
 
 .skills--dark .orbit-track--2 {
-  border-color: rgba(60, 140, 255, 0.25);
+  border-color: rgba(60, 140, 255, 0.42);
+  box-shadow: 0 0 12px rgba(60, 140, 255, 0.15), inset 0 0 12px rgba(60, 140, 255, 0.05);
 }
 
 .skills--dark .orbit-track--3 {
-  border-color: rgba(40, 200, 140, 0.2);
+  border-color: rgba(40, 200, 140, 0.35);
+  box-shadow: 0 0 10px rgba(40, 200, 140, 0.12), inset 0 0 10px rgba(40, 200, 140, 0.04);
 }
 
 .skills--dark .orbit-track--4 {
-  border-color: rgba(252, 211, 77, 0.18);
+  border-color: rgba(252, 211, 77, 0.32);
+  box-shadow: 0 0 10px rgba(252, 211, 77, 0.1), inset 0 0 10px rgba(252, 211, 77, 0.04);
 }
 
 /* Chip: design (purple) */
 .orbit-chip--design {
-  background-color: rgba(160, 120, 255, 0.15);
-  border-color: rgba(160, 120, 255, 0.4);
-  color: rgba(200, 170, 255, 0.95);
+  background-color: rgba(160, 120, 255, 0.18);
+  border-color: rgba(160, 120, 255, 0.5);
+  color: rgba(210, 185, 255, 0.95);
+  box-shadow: 0 0 10px rgba(160, 120, 255, 0.2);
 }
 
 .orbit-chip--design.orbit-chip--accent {
@@ -2028,23 +2058,26 @@ select {
 
 /* Chip: plan (blue) */
 .orbit-chip--plan {
-  background-color: rgba(60, 140, 255, 0.12);
-  border-color: rgba(60, 140, 255, 0.35);
-  color: rgba(130, 185, 255, 0.95);
+  background-color: rgba(60, 140, 255, 0.16);
+  border-color: rgba(60, 140, 255, 0.48);
+  color: rgba(140, 190, 255, 0.95);
+  box-shadow: 0 0 10px rgba(60, 140, 255, 0.18);
 }
 
 /* Chip: web (teal) */
 .orbit-chip--web {
-  background-color: rgba(40, 200, 140, 0.1);
-  border-color: rgba(40, 200, 140, 0.3);
-  color: rgba(80, 220, 170, 0.95);
+  background-color: rgba(40, 200, 140, 0.14);
+  border-color: rgba(40, 200, 140, 0.42);
+  color: rgba(90, 230, 180, 0.95);
+  box-shadow: 0 0 10px rgba(40, 200, 140, 0.15);
 }
 
 /* Chip: ai (amber) */
 .orbit-chip--ai {
-  background-color: rgba(252, 211, 77, 0.1);
-  border-color: rgba(252, 211, 77, 0.35);
-  color: rgba(253, 224, 71, 0.95);
+  background-color: rgba(252, 211, 77, 0.14);
+  border-color: rgba(252, 211, 77, 0.45);
+  color: rgba(253, 228, 100, 0.95);
+  box-shadow: 0 0 10px rgba(252, 211, 77, 0.14);
 }
 
 .orbit-chip--accent-ai {
@@ -3675,50 +3708,29 @@ select {
   will-change: transform;
 }
 
-/* Stagger children */
-.stagger>* {
+/* Stagger children — 더 역동적인 진입 */
+.stagger > * {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(56px) scale(0.96);
+  filter: blur(6px);
   transition:
-    opacity var(--duration-slow) var(--ease-out),
-    transform var(--duration-slow) var(--ease-out);
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.75s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.stagger.is-visible>*:nth-child(1) {
+.stagger.is-visible > * {
   opacity: 1;
   transform: none;
-  transition-delay: 0.05s;
+  filter: blur(0);
 }
 
-.stagger.is-visible>*:nth-child(2) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.12s;
-}
-
-.stagger.is-visible>*:nth-child(3) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.19s;
-}
-
-.stagger.is-visible>*:nth-child(4) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.26s;
-}
-
-.stagger.is-visible>*:nth-child(5) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.33s;
-}
-
-.stagger.is-visible>*:nth-child(6) {
-  opacity: 1;
-  transform: none;
-  transition-delay: 0.40s;
-}
+.stagger.is-visible > *:nth-child(1) { transition-delay: 0.04s; }
+.stagger.is-visible > *:nth-child(2) { transition-delay: 0.14s; }
+.stagger.is-visible > *:nth-child(3) { transition-delay: 0.24s; }
+.stagger.is-visible > *:nth-child(4) { transition-delay: 0.34s; }
+.stagger.is-visible > *:nth-child(5) { transition-delay: 0.44s; }
+.stagger.is-visible > *:nth-child(6) { transition-delay: 0.54s; }
 
 /* ──────────────────────────────────────────
    MOBILE NAV — ANIMATED OVERLAY
@@ -4010,6 +4022,24 @@ select {
   .project-card {
     scroll-snap-align: start;
   }
+}
+
+/* ──────────────────────────────────────────
+   OTHER WORKS — 개별 카드 강화 reveal
+────────────────────────────────────────── */
+.other-works__grid .other-work-card.reveal {
+  transform: translateY(48px) scale(0.95);
+  filter: blur(5px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--transition-base);
+}
+
+.other-works__grid .other-work-card.reveal.is-visible {
+  transform: translateY(0) scale(1);
+  filter: blur(0);
 }
 
 /* ============================================================
