@@ -9,7 +9,7 @@
 vercel --token [VERCEL_TOKEN] --prod --yes --scope bestcys-9902s-projects
 ```
 - Vercel CLI 한글 유저명 버그로 로그인 불가 → 토큰 방식 사용
-- 프로젝트: `pf-claude` / URL: https://pf-claude-indol.vercel.app
+- 프로젝트: `cys-design` / URL: https://cys-design.vercel.app
 
 ## 배포 (집 PC)
 ```
