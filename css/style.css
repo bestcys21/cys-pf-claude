@@ -358,6 +358,10 @@ select {
   color: #fff;
 }
 
+.nav--over-dark .nav__link.is-active::after {
+  background-color: #fff;
+}
+
 .nav--over-dark .nav__toggle span {
   background-color: rgba(255, 255, 255, 0.85);
 }
@@ -434,7 +438,21 @@ select {
   font-weight: var(--weight-medium);
   color: var(--color-text-secondary);
   border-radius: var(--radius-md);
+  position: relative;
   transition: color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-accent);
+  border-radius: 2px;
+  transform: translateX(-50%);
+  transition: width 0.35s cubic-bezier(0.65, 0.05, 0.35, 1);
 }
 
 .nav__link:hover {
@@ -445,6 +463,10 @@ select {
 .nav__link.is-active {
   color: var(--color-text-primary);
   font-weight: var(--weight-semibold);
+}
+
+.nav__link.is-active::after {
+  width: calc(100% - var(--space-6));
 }
 
 .nav__cta {
@@ -522,6 +544,112 @@ select {
   z-index: var(--z-raised);
 }
 
+/* Floating project mockups */
+.hero-dark__mockups {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero-dark__mockup {
+  position: absolute;
+  will-change: transform;
+  --px: 0px;
+  --py: 0px;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-dark__mockup img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 30px 60px -20px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+  filter: saturate(0.78) brightness(0.82);
+  opacity: 0;
+  transform: translateY(24px);
+  animation: hero-mockup-in 1.6s var(--ease-out) forwards;
+}
+
+.hero-dark__mockup--1 {
+  top: 17%;
+  left: -5%;
+  width: clamp(220px, 26vw, 340px);
+  transform: translate(var(--px), var(--py)) rotate(-8deg);
+}
+
+.hero-dark__mockup--2 {
+  top: 21%;
+  right: -4%;
+  width: clamp(220px, 26vw, 340px);
+  transform: translate(var(--px), var(--py)) rotate(7deg);
+}
+
+.hero-dark__mockup--3 {
+  bottom: 14%;
+  right: 4%;
+  width: clamp(160px, 18vw, 240px);
+  transform: translate(var(--px), var(--py)) rotate(-5deg);
+}
+
+.hero-dark__mockup--4 {
+  bottom: 14%;
+  left: 3%;
+  width: clamp(150px, 17vw, 230px);
+  transform: translate(var(--px), var(--py)) rotate(5deg);
+}
+
+.hero-dark__mockup--5 {
+  top: 47%;
+  right: 13%;
+  width: clamp(110px, 12vw, 160px);
+  transform: translate(var(--px), var(--py)) rotate(9deg);
+}
+
+.hero-dark__mockup--1 img { animation-delay: 0.85s; }
+.hero-dark__mockup--2 img { animation-delay: 1.0s; }
+.hero-dark__mockup--3 img { animation-delay: 1.15s; }
+.hero-dark__mockup--4 img { animation-delay: 1.3s; }
+.hero-dark__mockup--5 img {
+  animation-delay: 1.45s;
+  animation-name: hero-mockup-in-far;
+  filter: saturate(0.6) brightness(0.65) blur(1.2px);
+}
+
+@keyframes hero-mockup-in {
+  to {
+    opacity: 0.55;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-mockup-in-far {
+  to {
+    opacity: 0.32;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-dark__mockups {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dark__mockup img {
+    animation: none;
+    opacity: 0.5;
+    transform: translateY(0);
+  }
+}
+
 .hero-dark__content {
   position: relative;
   z-index: var(--z-float);
@@ -577,7 +705,7 @@ select {
 
 /* Title */
 .hero-dark__title {
-  font-size: clamp(var(--text-4xl), 8.5vw, var(--text-8xl));
+  font-size: clamp(var(--text-4xl), 8.5vw, var(--text-7xl));
   font-weight: var(--weight-semibold);
   letter-spacing: var(--tracking-tighter);
   line-height: var(--leading-tight);
@@ -601,9 +729,14 @@ select {
 /* Subtitle */
 .hero-dark__sub {
   font-size: clamp(var(--text-base), 2vw, var(--text-xl));
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.97);
   line-height: var(--leading-relaxed);
   margin-bottom: var(--space-10);
+  text-shadow:
+    0 0 8px  rgba(4, 4, 20, 1),
+    0 0 20px rgba(4, 4, 20, 0.95),
+    0 0 40px rgba(4, 4, 20, 0.85),
+    0 2px 4px rgba(4, 4, 20, 1);
   opacity: 0;
   animation: hero-fade-up var(--duration-slowest) var(--ease-out) 0.5s forwards;
 }
@@ -2524,6 +2657,35 @@ select {
 .tl-h__item--current .tl-h__dot {
   background: currentColor;
   box-shadow: 0 0 0 4px color-mix(in srgb, currentColor 20%, transparent);
+  position: relative;
+}
+
+.tl-h__item--current .tl-h__dot::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  animation: tl-current-pulse 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes tl-current-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-h__item--current .tl-h__dot::after {
+    animation: none;
+    display: none;
+  }
 }
 
 /* ── 하단: 기간 바 ── */
@@ -4383,4 +4545,367 @@ select {
 
 .mk-mt-auto {
   margin-top: auto;
+}
+
+/* ──────────────────────────────────────────
+   GLASS SHINE — Main Works project cards
+────────────────────────────────────────── */
+.project-card {
+  isolation: isolate;
+}
+
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(115deg,
+    transparent 0%,
+    rgba(120, 80, 240, 0.10) 45%,
+    rgba(255, 255, 255, 0.18) 50%,
+    rgba(120, 80, 240, 0.10) 55%,
+    transparent 100%);
+  transform: skewX(-12deg);
+  transition: left 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.project-card:hover::after {
+  left: 160%;
+}
+
+/* ──────────────────────────────────────────
+   GLASS SHINE — Other Works thumbnails
+────────────────────────────────────────── */
+.other-work-card__thumb::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(110deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%);
+  transform: skewX(-14deg);
+  transition: left 0.85s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.other-work-card:hover .other-work-card__thumb::before {
+  left: 160%;
+}
+
+/* ──────────────────────────────────────────
+   GLASS GLOW BORDER — Skill cards
+────────────────────────────────────────── */
+.skill-card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: conic-gradient(
+    from 0deg,
+    rgba(200, 170, 255, 0.55),
+    rgba(125, 211, 252, 0.5),
+    rgba(110, 231, 183, 0.5),
+    rgba(252, 211, 77, 0.55),
+    rgba(200, 170, 255, 0.55));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 1px;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  pointer-events: none;
+  z-index: 1;
+  animation: skill-glow-spin 5s linear infinite;
+  animation-play-state: paused;
+}
+
+.skill-card:hover::after {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes skill-glow-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* enhance existing skill-card shine — make it slightly more visible */
+.skill-card::before {
+  background: linear-gradient(105deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 65%) !important;
+}
+
+/* ──────────────────────────────────────────
+   CONIC RING — Profile photo
+────────────────────────────────────────── */
+.about__photo {
+  position: relative;
+  overflow: visible;
+}
+
+.about__photo::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: calc(var(--radius-xl) + 4px);
+  background: conic-gradient(
+    from 0deg,
+    rgba(74, 52, 245, 0.55),
+    rgba(217, 70, 239, 0.45),
+    rgba(64, 224, 255, 0.55),
+    rgba(74, 52, 245, 0.55));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  padding: 2px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+  animation: about-photo-ring-spin 6s linear infinite;
+  animation-play-state: paused;
+}
+
+.about__photo:hover::before,
+.about__profile:hover .about__photo::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@keyframes about-photo-ring-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* keep ring fully visible while img stays clipped — img already has overflow on parent.
+   Since we changed to overflow:visible, ensure the img keeps its rounded clip. */
+.about__photo img {
+  border-radius: var(--radius-xl);
+}
+
+/* ──────────────────────────────────────────
+   TIMELINE BAR — subtle sheen on entrance
+────────────────────────────────────────── */
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap) .tl-h__bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 30%;
+  height: 100%;
+  background: linear-gradient(105deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%);
+  transform: skewX(-14deg);
+  animation: tl-bar-sheen 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+  pointer-events: none;
+}
+
+@keyframes tl-bar-sheen {
+  0% { left: -40%; opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { left: 130%; opacity: 0; }
+}
+
+/* ──────────────────────────────────────────
+   REDUCED MOTION
+────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .project-card::after,
+  .other-work-card__thumb::before,
+  .skill-card::after,
+  .about__photo::before,
+  .tl-h--animated .tl-h__item:not(.tl-h__item--gap) .tl-h__bar::after {
+    transition: none;
+    animation: none;
+  }
+}
+
+/* ──────────────────────────────────────────
+   1. CYS LOGO — gradient flow on hover
+────────────────────────────────────────── */
+.nav__logo {
+  background: linear-gradient(90deg,
+    #40e0ff 0%,
+    #d946ef 25%,
+    #818cf8 50%,
+    #40e0ff 75%,
+    #d946ef 100%);
+  background-size: 250% 100%;
+  background-position: 0% 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: var(--color-text-primary);
+  transition: -webkit-text-fill-color 0.35s ease;
+}
+
+.nav__logo span {
+  -webkit-text-fill-color: var(--color-accent);
+  transition: -webkit-text-fill-color 0.35s ease;
+}
+
+.nav__logo:hover {
+  -webkit-text-fill-color: transparent;
+  animation: logo-gradient-flow 3s linear infinite;
+}
+
+.nav__logo:hover span {
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes logo-gradient-flow {
+  to { background-position: 250% 0%; }
+}
+
+.nav--over-dark .nav__logo {
+  -webkit-text-fill-color: #fff;
+}
+
+.nav--over-dark .nav__logo:hover {
+  -webkit-text-fill-color: transparent;
+}
+
+/* ──────────────────────────────────────────
+   2. PROJECT CARD NUMBER — hover transform
+────────────────────────────────────────── */
+.project-card__bar-num {
+  transition: color 0.3s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+
+.project-card:hover .project-card__bar-num {
+  transform: rotate(-12deg) scale(1.25);
+}
+
+/* ──────────────────────────────────────────
+   3. SKILL ICON — bounce on card hover
+────────────────────────────────────────── */
+.skill-card__icon {
+  transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.skill-card:hover .skill-card__icon {
+  transform: translateY(-6px) scale(1.08);
+}
+
+/* ──────────────────────────────────────────
+   4. HERO TEXT — mouse 3D tilt + scroll parallax (combined)
+────────────────────────────────────────── */
+@property --rx {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@property --ry {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.hero-dark__content {
+  --rx: 0deg;
+  --ry: 0deg;
+  --scroll-y: 0px;
+  transform: translateY(var(--scroll-y)) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  perspective: 1200px;
+  transition:
+    --rx 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    --ry 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ──────────────────────────────────────────
+   5. HERO TITLE — letter-by-letter entrance
+   (JS splits letters into .char spans)
+────────────────────────────────────────── */
+.hero-dark__title.has-chars {
+  animation: none;
+  opacity: 1;
+}
+
+.hero-dark__title .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-dark__title .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.6em);
+  animation: hero-char-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+@keyframes hero-char-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ──────────────────────────────────────────
+   6. EYEBROW — letter-by-letter on view
+   (JS splits .eyebrow into .char spans)
+────────────────────────────────────────── */
+.eyebrow.has-chars .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.eyebrow.has-chars .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.3em);
+  transition: opacity 0.35s ease, transform 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.eyebrow.has-chars.is-visible .char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ──────────────────────────────────────────
+   7. DARK SECTIONS — subtle noise grain
+────────────────────────────────────────── */
+.hero-dark .hero-dark__overlay,
+.skills--dark::before {
+  /* keep existing — add noise via stacked layer below */
+}
+
+.hero-dark .hero-noise,
+.skills--dark .skills-noise {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  background-size: 160px 160px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dark__title .char {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .eyebrow.has-chars .char {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 }

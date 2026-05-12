@@ -70,18 +70,33 @@ function initNav() {
     });
   }
 
-  // Active link
+  // Active link (scroll-based detection)
   const sections = qsa('section[id]');
   const links    = qsa('.nav__link[href^="#"]');
-  if (sections.length && links.length) {
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting)
-          links.forEach(l => l.classList.toggle('is-active', l.getAttribute('href') === `#${e.target.id}`));
-      });
-    }, { threshold: 0.3 });
-    sections.forEach(s => io.observe(s));
-  }
+
+  const updateActive = () => {
+    if (!sections.length || !links.length) return;
+    const navH = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
+    ) || 72;
+    const triggerY = navH + 80;
+    let activeSection = sections[0];
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top - triggerY <= 0) activeSection = s;
+    }
+    links.forEach(l => {
+      l.classList.toggle('is-active', l.getAttribute('href') === `#${activeSection.id}`);
+    });
+  };
+
+  let scrollScheduled = false;
+  window.addEventListener('scroll', () => {
+    if (scrollScheduled) return;
+    scrollScheduled = true;
+    requestAnimationFrame(() => { updateActive(); scrollScheduled = false; });
+  }, { passive: true });
+
+  requestAnimationFrame(() => requestAnimationFrame(updateActive));
 }
 
 /* ──────────────────────────────────────────
@@ -149,14 +164,225 @@ function initParallax() {
     const y = window.scrollY;
     if (y > window.innerHeight) { ticking = false; return; }
     const pct = y / window.innerHeight;
-    heroContent.style.transform = `translateY(${y * 0.25}px)`;
-    heroContent.style.opacity   = `${clamp(1 - pct * 1.4, 0, 1)}`;
-    if (heroScroll) heroScroll.style.opacity = `${clamp(1 - y / 160, 0, 1)}`;
+    heroContent.style.setProperty('--scroll-y', `${y * 0.15}px`);
+    heroContent.style.opacity = `${clamp(1 - pct * 0.45, 0, 1)}`;
+    if (heroScroll) heroScroll.style.opacity = `${clamp(1 - y / 240, 0, 1)}`;
     ticking = false;
   };
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
+}
+
+/* ──────────────────────────────────────────
+   HERO TITLE LETTER SPLIT — char-by-char entrance
+   Splits the h1 into individual letter spans with staggered delays
+────────────────────────────────────────── */
+function initHeroTitleChars() {
+  const title = qs('.hero-dark__title');
+  if (!title || title.classList.contains('has-chars')) return;
+
+  // Split text into word wrappers, each containing char spans.
+  // Preserve <br> and <strong>. Words wrap as units so they don't break mid-letter.
+  const wrapWord = (text, isStrong) => {
+    const word = document.createElement('span');
+    word.className = 'word';
+    for (const ch of text) {
+      const sp = document.createElement('span');
+      sp.className = 'char';
+      if (isStrong) sp.classList.add('char--strong');
+      sp.textContent = ch;
+      word.appendChild(sp);
+    }
+    return word;
+  };
+
+  const splitNode = (node, isStrong) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const frag = document.createDocumentFragment();
+      const parts = node.textContent.split(/(\s+)/);
+      parts.forEach(part => {
+        if (!part) return;
+        if (/^\s+$/.test(part)) {
+          frag.appendChild(document.createTextNode(' '));
+        } else {
+          frag.appendChild(wrapWord(part, isStrong));
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+      return;
+    }
+    if (node.nodeName === 'STRONG') {
+      // leave STRONG untouched so its gradient text renders normally
+      return;
+    }
+    // BR or other: keep as-is
+  };
+  /* DEAD_BEGIN
+  */ /*
+      const frag = document.createDocumentFragment();
+      const text = node.textContent;
+      for (const ch of text) {
+        if (ch === ' ' || ch === ' ') {
+          const sp = document.createElement('span');
+          sp.className = 'char char--space';
+          frag.appendChild(sp);
+        } else {
+          const sp = document.createElement('span');
+          sp.className = 'char';
+          if (isStrong) sp.classList.add('char--strong');
+          sp.textContent = ch;
+          frag.appendChild(sp);
+        }
+      }
+      node.parentNode.replaceChild(frag, node);
+    } else if (node.nodeName === 'STRONG') {
+      Array.from(node.childNodes).forEach(c => splitNode(c, true));
+    } else if (node.nodeName === 'BR') {
+      // keep as-is
+    }
+  };
+  */
+
+  Array.from(title.childNodes).forEach(n => splitNode(n, false));
+  title.classList.add('has-chars');
+
+  // Stagger delays
+  const chars = qsa('.char', title);
+  chars.forEach((c, i) => {
+    c.style.animationDelay = `${0.25 + i * 0.035}s`;
+  });
+}
+
+/* ──────────────────────────────────────────
+   EYEBROW LETTER SPLIT — char-by-char on viewport entry
+────────────────────────────────────────── */
+function initEyebrowChars() {
+  qsa('.eyebrow').forEach(el => {
+    if (el.classList.contains('has-chars')) return;
+    const text = el.textContent;
+    el.innerHTML = '';
+    const parts = text.split(/(\s+)/);
+    parts.forEach(part => {
+      if (!part) return;
+      if (/^\s+$/.test(part)) {
+        el.appendChild(document.createTextNode(' '));
+        return;
+      }
+      const word = document.createElement('span');
+      word.className = 'word';
+      for (const ch of part) {
+        const sp = document.createElement('span');
+        sp.className = 'char';
+        sp.textContent = ch;
+        word.appendChild(sp);
+      }
+      el.appendChild(word);
+    });
+    if (false) [...text].forEach(ch => {
+      const sp = document.createElement('span');
+      sp.className = 'char' + ((ch === ' ' || ch === ' ') ? ' char--space' : '');
+      if (!sp.classList.contains('char--space')) sp.textContent = ch;
+      el.appendChild(sp);
+    });
+    el.classList.add('has-chars');
+    qsa('.char', el).forEach((c, i) => {
+      c.style.transitionDelay = `${i * 0.04}s`;
+    });
+    // Add reveal class so existing IntersectionObserver picks it up
+    if (!el.classList.contains('reveal')) el.classList.add('reveal');
+  });
+}
+
+/* ──────────────────────────────────────────
+   HERO CONTENT 3D TILT — subtle mouse follow
+────────────────────────────────────────── */
+function initHeroTilt() {
+  if (prefersReduced() || isTouch()) return;
+  const hero = qs('.hero-dark');
+  const content = qs('.hero-dark__content');
+  if (!hero || !content) return;
+
+  let frame;
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    if (frame) cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      // y axis -> rotateX (inverted for natural tilt)
+      // x axis -> rotateY
+      content.style.setProperty('--rx', `${(-y * 2).toFixed(2)}deg`);
+      content.style.setProperty('--ry', `${(x * 2.5).toFixed(2)}deg`);
+    });
+  }, { passive: true });
+
+  hero.addEventListener('mouseleave', () => {
+    content.style.setProperty('--rx', '0deg');
+    content.style.setProperty('--ry', '0deg');
+  });
+}
+
+/* ──────────────────────────────────────────
+   DARK SECTION NOISE — inject grain overlay element
+────────────────────────────────────────── */
+function initDarkNoise() {
+  const hero = qs('.hero-dark');
+  if (hero && !qs('.hero-noise', hero)) {
+    const noise = document.createElement('div');
+    noise.className = 'hero-noise';
+    noise.setAttribute('aria-hidden', 'true');
+    hero.appendChild(noise);
+  }
+  const skills = qs('.skills--dark');
+  if (skills && !qs('.skills-noise', skills)) {
+    const noise = document.createElement('div');
+    noise.className = 'skills-noise';
+    noise.setAttribute('aria-hidden', 'true');
+    skills.appendChild(noise);
+  }
+}
+
+/* ──────────────────────────────────────────
+   HERO MOCKUP MOUSE PARALLAX
+   Mockups follow mouse subtly within the hero
+────────────────────────────────────────── */
+function initHeroMockupParallax() {
+  if (prefersReduced() || isTouch()) return;
+  const hero    = qs('.hero-dark');
+  const mockups = qsa('.hero-dark__mockup');
+  if (!hero || !mockups.length) return;
+
+  // Per-mockup sensitivity [px-x, px-y]
+  const factors = [
+    [14, 8],   // #1 top-left large
+    [-14, 8],  // #2 top-right large
+    [-8, -6],  // #3 bottom-right medium
+    [10, -6],  // #4 bottom-left medium
+    [6, 5],    // #5 back-layer small (subtle)
+  ];
+
+  let frame;
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width  - 0.5;
+    const y = (e.clientY - rect.top)  / rect.height - 0.5;
+    if (frame) cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      mockups.forEach((m, i) => {
+        const [fx, fy] = factors[i] || [0, 0];
+        m.style.setProperty('--px', `${(x * fx).toFixed(2)}px`);
+        m.style.setProperty('--py', `${(y * fy).toFixed(2)}px`);
+      });
+    });
+  }, { passive: true });
+
+  hero.addEventListener('mouseleave', () => {
+    mockups.forEach(m => {
+      m.style.setProperty('--px', '0px');
+      m.style.setProperty('--py', '0px');
+    });
+  });
 }
 
 /* ──────────────────────────────────────────
@@ -474,12 +700,17 @@ function initSectionLines() {
 ────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   initPageTransition();
+  initHeroTitleChars();     // must run before initScrollReveal
+  initEyebrowChars();       // must run before initScrollReveal
   initSplitText();          // must run before initScrollReveal
   initSectionLines();
+  initDarkNoise();
   initNav();
   initScrollProgress();
   initScrollReveal();
   initParallax();
+  initHeroMockupParallax();
+  initHeroTilt();
   initVisualParallax();
   initScrollSkew();
   initMagnetic();
