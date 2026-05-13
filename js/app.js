@@ -43,13 +43,15 @@ function initNav() {
     if (!hero) return;  // 상세페이지: is-scrolled 항상 유지 (제거 안 함)
 
     const heroBottom = hero.getBoundingClientRect().bottom;
+    const navBottom  = nav.getBoundingClientRect().bottom;
     const scrolled   = window.scrollY > 20;
 
     if (scrolled !== isScrolled) {
       isScrolled = scrolled;
       nav.classList.toggle('is-scrolled', scrolled);
     }
-    nav.classList.toggle('nav--over-dark', heroBottom > 80);
+    // hero가 nav 하단을 완전히 지나간 순간에 white→colored 전환 (미리 바뀌는 것 방지)
+    nav.classList.toggle('nav--over-dark', heroBottom > navBottom);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
