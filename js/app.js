@@ -76,6 +76,12 @@ function initNav() {
   const sections = qsa('section[id]');
   const links    = qsa('.nav__link[href^="#"]');
 
+  // 직접 매핑되는 nav 링크가 없는 섹션 → 어느 nav를 활성화시킬지 정의
+  const sectionToNav = {
+    'other-works': 'works',
+    'contact':     'about',
+  };
+
   const updateActive = () => {
     if (!sections.length || !links.length) return;
     const navH = parseFloat(
@@ -86,8 +92,9 @@ function initNav() {
     for (const s of sections) {
       if (s.getBoundingClientRect().top - triggerY <= 0) activeSection = s;
     }
+    const activeId = sectionToNav[activeSection.id] || activeSection.id;
     links.forEach(l => {
-      l.classList.toggle('is-active', l.getAttribute('href') === `#${activeSection.id}`);
+      l.classList.toggle('is-active', l.getAttribute('href') === `#${activeId}`);
     });
   };
 
