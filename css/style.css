@@ -713,17 +713,17 @@ select {
   margin-bottom: var(--space-6);
   opacity: 0;
   animation: hero-fade-up var(--duration-slowest) var(--ease-out) 0.35s forwards;
-}
-
-.hero-dark__title strong {
-  font-weight: var(--weight-bold);
+  /* Gradient moved to parent H1 for correct clipping with child spans */
   background: linear-gradient(90deg, #40e0ff, #d946ef, #818cf8, #40e0ff);
   background-size: 250% auto;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: neon-gradient-flow 4s linear infinite;
   animation-delay: 1.2s;
+}
+
+.hero-dark__title .hero-dark__title-solid {
+  -webkit-text-fill-color: var(--color-text-inverse);
 }
 
 /* Subtitle */
@@ -2742,13 +2742,14 @@ select {
   top: 0;
   left: 0;
   height: 100%;
-  width: 45%;
-  background: linear-gradient(90deg,
+  width: 50%;
+  background: linear-gradient(105deg,
     transparent 0%,
-    rgba(255,255,255,0.16) 50%,
+    rgba(255, 255, 255, 0.4) 50%,
     transparent 100%);
-  transform: translateX(-120%);
-  animation: bar-shimmer 2.8s ease-in-out infinite;
+  transform: skewX(-14deg) translateX(-150%);
+  animation: bar-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
 }
 
 /* 각 아이템마다 shimmer 시작 타이밍 분산 */
@@ -2762,8 +2763,8 @@ select {
 .tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(8) .tl-h__bar::after { animation-delay: 1.5s; }
 
 @keyframes bar-shimmer {
-  0%   { transform: translateX(-120%); }
-  100% { transform: translateX(280%); }
+  0%   { transform: skewX(-14deg) translateX(-150%); }
+  100% { transform: skewX(-14deg) translateX(350%); }
 }
 
 .tl-h__item--current .tl-h__bar {
@@ -4091,31 +4092,6 @@ select {
 ────────────────────────────────────────── */
 
 /* ──────────────────────────────────────────
-   SHIMMER — skill cards on hover
-────────────────────────────────────────── */
-.skill-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.skill-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(105deg,
-      transparent 40%,
-      rgba(255, 255, 255, 0.07) 50%,
-      transparent 60%);
-  transform: translateX(-100%);
-  transition: transform 0s;
-}
-
-.skill-card:hover::before {
-  transform: translateX(100%);
-  transition: transform 0.6s ease;
-}
-
-/* ──────────────────────────────────────────
    SECTION TRANSITION MARKER (ink line)
 ────────────────────────────────────────── */
 .section-line {
@@ -4602,52 +4578,6 @@ select {
 }
 
 /* ──────────────────────────────────────────
-   GLASS GLOW BORDER — Skill cards
-────────────────────────────────────────── */
-.skill-card::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: inherit;
-  background: conic-gradient(
-    from 0deg,
-    rgba(200, 170, 255, 0.55),
-    rgba(125, 211, 252, 0.5),
-    rgba(110, 231, 183, 0.5),
-    rgba(252, 211, 77, 0.55),
-    rgba(200, 170, 255, 0.55));
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  padding: 1px;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-  pointer-events: none;
-  z-index: 1;
-  animation: skill-glow-spin 5s linear infinite;
-  animation-play-state: paused;
-}
-
-.skill-card:hover::after {
-  opacity: 1;
-  animation-play-state: running;
-}
-
-@keyframes skill-glow-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* enhance existing skill-card shine — make it slightly more visible */
-.skill-card::before {
-  background: linear-gradient(105deg,
-    transparent 35%,
-    rgba(255, 255, 255, 0.12) 50%,
-    transparent 65%) !important;
-}
-
-/* ──────────────────────────────────────────
    CONIC RING — Profile photo
 ────────────────────────────────────────── */
 .about__photo {
@@ -4693,32 +4623,6 @@ select {
    Since we changed to overflow:visible, ensure the img keeps its rounded clip. */
 .about__photo img {
   border-radius: var(--radius-xl);
-}
-
-/* ──────────────────────────────────────────
-   TIMELINE BAR — subtle sheen on entrance
-────────────────────────────────────────── */
-.tl-h--animated .tl-h__item:not(.tl-h__item--gap) .tl-h__bar::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -40%;
-  width: 30%;
-  height: 100%;
-  background: linear-gradient(105deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.35) 50%,
-    transparent 100%);
-  transform: skewX(-14deg);
-  animation: tl-bar-sheen 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
-  pointer-events: none;
-}
-
-@keyframes tl-bar-sheen {
-  0% { left: -40%; opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { left: 130%; opacity: 0; }
 }
 
 /* ──────────────────────────────────────────

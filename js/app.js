@@ -212,37 +212,18 @@ function initHeroTitleChars() {
       node.parentNode.replaceChild(frag, node);
       return;
     }
-    if (node.nodeName === 'STRONG') {
-      // leave STRONG untouched so its gradient text renders normally
+    // Handle new structure: recursively split children of the solid text part
+    if (node.nodeName === 'SPAN' && node.classList.contains('hero-dark__title-solid')) {
+      Array.from(node.childNodes).forEach(c => splitNode(c, false));
+      return;
+    }
+    // Handle new structure: recursively split children of the gradient text part
+    if (node.nodeName === 'STRONG' && node.classList.contains('hero-dark__title-gradient')) {
+      Array.from(node.childNodes).forEach(c => splitNode(c, true));
       return;
     }
     // BR or other: keep as-is
   };
-  /* DEAD_BEGIN
-  */ /*
-      const frag = document.createDocumentFragment();
-      const text = node.textContent;
-      for (const ch of text) {
-        if (ch === ' ' || ch === ' ') {
-          const sp = document.createElement('span');
-          sp.className = 'char char--space';
-          frag.appendChild(sp);
-        } else {
-          const sp = document.createElement('span');
-          sp.className = 'char';
-          if (isStrong) sp.classList.add('char--strong');
-          sp.textContent = ch;
-          frag.appendChild(sp);
-        }
-      }
-      node.parentNode.replaceChild(frag, node);
-    } else if (node.nodeName === 'STRONG') {
-      Array.from(node.childNodes).forEach(c => splitNode(c, true));
-    } else if (node.nodeName === 'BR') {
-      // keep as-is
-    }
-  };
-  */
 
   Array.from(title.childNodes).forEach(n => splitNode(n, false));
   title.classList.add('has-chars');
