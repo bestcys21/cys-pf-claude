@@ -50,8 +50,8 @@ function initNav() {
       isScrolled = scrolled;
       nav.classList.toggle('is-scrolled', scrolled);
     }
-    // hero가 nav 하단을 완전히 지나간 순간에 white→colored 전환 (미리 바뀌는 것 방지)
-    nav.classList.toggle('nav--over-dark', heroBottom > navBottom);
+    // nav가 frosted-white로 바뀌는 순간(is-scrolled) 글자는 dark로 전환 — 흰배경+흰글자 가독성 문제 방지
+    nav.classList.toggle('nav--over-dark', !scrolled && heroBottom > navBottom);
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
