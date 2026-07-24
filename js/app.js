@@ -432,15 +432,16 @@ function initMagnetic() {
 function initVisualParallax() {
   if (prefersReduced()) return;
 
-  const visuals = qsa('.project-card__visual');
+  const cards = qsa('.project-card');
   let ticking   = false;
 
   const update = () => {
-    visuals.forEach(el => {
-      const rect   = el.getBoundingClientRect();
-      const center = rect.top + rect.height / 2 - window.innerHeight / 2;
-      const shift  = center * 0.08;
-      el.style.transform = `translateY(${shift.toFixed(2)}px)`;
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const viewportRange = window.innerHeight + rect.height;
+      const progress = clamp((window.innerHeight - rect.top) / viewportRange, 0, 1);
+      card.style.setProperty('--scroll-progress', progress.toFixed(3));
+      card.classList.toggle('is-scroll-active', progress > 0.2 && progress < 0.8);
     });
     ticking = false;
   };
@@ -448,6 +449,45 @@ function initVisualParallax() {
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
+  update();
+}
+
+/* ──────────────────────────────────────────
+   DETAIL PAGE — image depth and section focus
+────────────────────────────────────────── */
+function initDetailMotion() {
+  const detailRoot = qs('.sf-hero, .other-detail');
+  if (!detailRoot) return;
+
+  document.body.classList.add('is-detail-page');
+  if (prefersReduced()) return;
+
+  const images = qsa('.sf-img-block, .sf-cover');
+  const sections = qsa('.sf-section');
+  let ticking = false;
+
+  const update = () => {
+    images.forEach(block => {
+      const rect = block.getBoundingClientRect();
+      const range = window.innerHeight + rect.height;
+      const progress = clamp((window.innerHeight - rect.top) / range, 0, 1);
+      block.style.setProperty('--detail-progress', progress.toFixed(3));
+    });
+
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const active = rect.top < window.innerHeight * 0.62 && rect.bottom > window.innerHeight * 0.28;
+      section.classList.toggle('is-section-active', active);
+    });
+    ticking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
   update();
 }
 
@@ -676,6 +716,21 @@ function initSmoothScroll() {
   });
 }
 
+/* Keep direct section links aligned after web components and fonts settle */
+function initHashPosition() {
+  if (!window.location.hash) return;
+  const target = qs(window.location.hash);
+  if (!target) return;
+
+  window.setTimeout(() => {
+    const navH = parseInt(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-height'), 10
+    ) || 72;
+    const top = target.getBoundingClientRect().top + window.scrollY - navH - 16;
+    window.scrollTo({ top, behavior: 'auto' });
+  }, 180);
+}
+
 /* ──────────────────────────────────────────
    SECTION LINE DRAW
 ────────────────────────────────────────── */
@@ -702,6 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroMockupParallax();
   initHeroTilt();
   initVisualParallax();
+  initDetailMotion();
   initScrollSkew();
   initMagnetic();
   initCursorGlow();
@@ -712,6 +768,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAboutPulse();
   initFloatElements();
   initSmoothScroll();
+  initHashPosition();
 });
 
 /* bfcache 복원 시 재초기화 (뒤로가기 후 진입 시 이미지 안 보이는 문제 방지) */

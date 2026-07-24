@@ -853,3 +853,213 @@
     display: none;
   }
 }
+
+/* ============================================================
+   DETAIL PAGE REFINEMENT — hierarchy, navigation and motion
+   ============================================================ */
+
+/* Give the project header more presence without enlarging every heading */
+.sf-hero {
+  padding-top: calc(var(--nav-height) + 88px);
+}
+
+.sf-hero__top {
+  padding-bottom: clamp(48px, 6vw, 80px);
+}
+
+.sf-hero__kicker {
+  margin-bottom: 16px;
+}
+
+.sf-hero__title {
+  max-width: 980px;
+  font-size: clamp(2.75rem, 4.8vw, 4rem);
+  line-height: 1.05;
+  margin-bottom: 24px;
+}
+
+.sf-hero__desc {
+  max-width: 920px;
+  font-size: clamp(1.05rem, 1.65vw, 1.3rem);
+  line-height: 1.75;
+  margin-bottom: 34px;
+}
+
+/* Long Korean section titles now scale with the viewport */
+.sf-section {
+  position: relative;
+  padding-block: clamp(76px, 8vw, 112px);
+}
+
+.sf-section__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.sf-section__label::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0.45);
+  transform-origin: left;
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.3s ease;
+}
+
+.sf-section.is-section-active .sf-section__label {
+  color: var(--color-accent);
+}
+
+.sf-section.is-section-active .sf-section__label::before {
+  transform: scaleX(1);
+  background: var(--color-accent);
+}
+
+.sf-section__title {
+  max-width: 900px;
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  line-height: 1.24;
+  margin-bottom: 24px;
+  word-break: keep-all;
+}
+
+.sf-section__body {
+  max-width: 760px;
+  font-size: 1.0625rem;
+  line-height: 1.9;
+}
+
+/* Image reveal and scroll depth stay inside the frame */
+.sf-img-block,
+.sf-cover {
+  --detail-progress: 0.5;
+  box-shadow: 0 10px 32px rgba(18, 18, 28, 0.075);
+  transition:
+    opacity 0.75s ease,
+    transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
+    border-color 0.35s ease,
+    box-shadow 0.45s ease;
+}
+
+.sf-img-block.reveal {
+  transform: translateY(42px) scale(0.985);
+}
+
+.sf-img-block.reveal.is-visible {
+  transform: translateY(0) scale(1);
+}
+
+.sf-img-block img,
+.sf-cover img {
+  transform: translateY(calc((var(--detail-progress) - 0.5) * -28px)) scale(1.035);
+  transition:
+    transform 0.45s linear,
+    filter 0.55s ease;
+  will-change: transform;
+}
+
+.sf-img-block:hover {
+  border-color: rgba(74, 52, 245, 0.24);
+  box-shadow: 0 16px 42px rgba(18, 18, 28, 0.11);
+}
+
+.sf-img-block:hover img {
+  transform: translateY(calc((var(--detail-progress) - 0.5) * -28px)) scale(1.055);
+  filter: saturate(1.04);
+}
+
+/* The fixed section navigator should read as navigation, not tiny decoration */
+.snav {
+  right: 30px;
+}
+
+.snav__list {
+  gap: 2px;
+}
+
+.snav__list::before {
+  right: 5px;
+  background: rgba(18, 18, 28, 0.14);
+}
+
+.snav__btn {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 9px 0;
+}
+
+.snav__dot {
+  width: 12px;
+  height: 12px;
+  border-width: 2px;
+}
+
+.snav__label {
+  right: calc(100% + 8px);
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  box-shadow: 0 6px 20px rgba(18, 18, 28, 0.08);
+}
+
+.snav__num {
+  font-size: 10px;
+}
+
+.snav__item--active .snav__dot {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--color-accent) 12%, transparent);
+}
+
+/* Slightly larger top navigation only on project detail pages */
+@media (min-width: 851px) {
+  body.is-detail-page .nav {
+    height: 76px;
+  }
+
+  body.is-detail-page .nav__logo {
+    font-size: 1.35rem;
+  }
+
+  body.is-detail-page .nav__link {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 850px) {
+  .sf-hero {
+    padding-top: calc(var(--nav-height) + 52px);
+  }
+
+  .sf-hero__title {
+    font-size: clamp(2.25rem, 10vw, 3.25rem);
+  }
+
+  .sf-section__title {
+    font-size: clamp(1.7rem, 7vw, 2.2rem);
+  }
+
+  .sf-section__body {
+    font-size: 1rem;
+    line-height: 1.82;
+  }
+
+  .sf-img-block img,
+  .sf-cover img,
+  .sf-img-block:hover img {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-img-block,
+  .sf-img-block img,
+  .sf-cover img,
+  .sf-section__label::before {
+    transition: none;
+    transform: none;
+  }
+}
