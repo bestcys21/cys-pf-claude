@@ -5233,17 +5233,17 @@ select {
   }
 }
 
-/* Logo wordmark: a restrained serif contrast against the UI sans-serif */
+/* Logo wordmark */
 .nav__logo {
-  font-family: Georgia, "Times New Roman", serif;
-  font-weight: 700;
-  letter-spacing: -0.035em;
+  font-family: var(--font-sans);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.025em;
 }
 
 .nav__logo span {
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: -0.02em;
+  font-style: normal;
+  font-weight: var(--weight-medium);
+  letter-spacing: -0.015em;
 }
 
 /* Desktop cursor: crisp ring instead of a diffuse gradient glow */
