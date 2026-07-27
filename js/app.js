@@ -128,10 +128,16 @@ function initScrollProgress() {
 ────────────────────────────────────────── */
 function initSplitText() {
   qsa('[data-split]').forEach(el => {
-    const words = el.textContent.trim().split(/\s+/);
-    el.innerHTML = words.map(w =>
-      `<span class="split-word"><span class="split-word__inner">${w}</span></span>`
-    ).join(' ');
+    const text = el.textContent.trim().replace(/\s+/g, ' ');
+    el.setAttribute('aria-label', text);
+    let charIndex = 0;
+    el.innerHTML = text.split(' ').map(word => {
+      const chars = Array.from(word).map(char =>
+        `<span class="split-char" aria-hidden="true" style="--char-i:${charIndex++}">${char}</span>`
+      ).join('');
+      charIndex += 1;
+      return `<span class="split-word">${chars}</span>`;
+    }).join(' ');
   });
 }
 
@@ -453,6 +459,26 @@ function initVisualParallax() {
 }
 
 /* ──────────────────────────────────────────
+   SKILLS SPOTLIGHT
+────────────────────────────────────────── */
+function initSkillsSpotlight() {
+  if (prefersReduced() || isTouch()) return;
+  const skills = qs('.skills--dark');
+  if (!skills) return;
+
+  skills.addEventListener('pointermove', e => {
+    const rect = skills.getBoundingClientRect();
+    skills.style.setProperty('--skills-x', `${e.clientX - rect.left}px`);
+    skills.style.setProperty('--skills-y', `${e.clientY - rect.top}px`);
+  }, { passive: true });
+
+  skills.addEventListener('pointerleave', () => {
+    skills.style.setProperty('--skills-x', '72%');
+    skills.style.setProperty('--skills-y', '42%');
+  });
+}
+
+/* ──────────────────────────────────────────
    DETAIL PAGE — image depth and section focus
 ────────────────────────────────────────── */
 function initDetailMotion() {
@@ -578,9 +604,7 @@ function initCursorGlow() {
     ring.classList.add('is-visible');
 
     const target = e.target.closest('a, button, [role="button"], .project-card, .other-work-card');
-    const project = e.target.closest('.project-card, .other-work-card');
     ring.classList.toggle('is-interactive', Boolean(target));
-    ring.classList.toggle('is-view', Boolean(project));
     ring.classList.toggle(
       'is-over-dark',
       Boolean(e.target.closest('.hero-dark, .skills--dark, .section--dark'))
@@ -765,6 +789,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSplitText();          // must run before initScrollReveal
   initSectionLines();
   initDarkNoise();
+  initSkillsSpotlight();
   initNav();
   initScrollProgress();
   initScrollReveal();

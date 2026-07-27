@@ -931,6 +931,46 @@
   line-height: 1.9;
 }
 
+/* Editorial text entrance: title opens first, description follows */
+.sf-section.reveal .sf-section__title {
+  opacity: 0;
+  transform: translateY(18px);
+  clip-path: inset(0 100% 0 0);
+  transition:
+    opacity 0.45s ease 0.08s,
+    transform 0.72s cubic-bezier(0.16, 1, 0.3, 1) 0.08s,
+    clip-path 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.08s;
+}
+
+.sf-section.reveal .sf-section__body {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.65s ease 0.32s,
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1) 0.32s;
+}
+
+.sf-section.reveal.is-visible .sf-section__title {
+  opacity: 1;
+  transform: translateY(0);
+  clip-path: inset(0 0 0 0);
+}
+
+.sf-section.reveal.is-visible .sf-section__body {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-section.reveal .sf-section__title,
+  .sf-section.reveal .sf-section__body {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+    transition: none;
+  }
+}
+
 /* Image reveal and scroll depth stay inside the frame */
 .sf-img-block,
 .sf-cover {
