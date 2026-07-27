@@ -970,6 +970,34 @@
   filter: saturate(1.04);
 }
 
+/* SyncFlo retrospective: a quiet cinematic ending visual */
+.sf-ending-visual {
+  margin-top: clamp(44px, 6vw, 76px);
+}
+
+.sf-ending-visual .sf-img-block {
+  border-radius: 28px;
+  background: #f7f8fb;
+}
+
+.sf-ending-visual .sf-img-block img {
+  transform: none;
+}
+
+.sf-ending-visual .sf-img-block:hover img {
+  transform: scale(1.018);
+}
+
+.sf-ending-visual figcaption {
+  max-width: 720px;
+  margin: 18px auto 0;
+  color: var(--color-text-tertiary);
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  text-align: center;
+  word-break: keep-all;
+}
+
 /* The fixed section navigator should read as navigation, not tiny decoration */
 .snav {
   right: 30px;

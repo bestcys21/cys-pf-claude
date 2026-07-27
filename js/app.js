@@ -551,31 +551,46 @@ function initFloatElements() {
 }
 
 /* ──────────────────────────────────────────
-   CURSOR GLOW (desktop)
+   CURSOR RING (desktop)
 ────────────────────────────────────────── */
 function initCursorGlow() {
-  if (isTouch()) return;
-  const glow = document.createElement('div');
-  glow.id = 'cursor-glow';
-  Object.assign(glow.style, {
-    position: 'fixed', pointerEvents: 'none', zIndex: '9999',
-    width: '320px', height: '320px', borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(100,60,220,0.07) 0%, transparent 70%)',
-    transform: 'translate(-50%, -50%)',
-    transition: 'opacity 0.3s ease',
-    mixBlendMode: 'multiply',
-  });
-  document.body.appendChild(glow);
+  if (isTouch() || prefersReduced()) return;
 
-  let mx = -999, my = -999;
+  const ring = document.createElement('div');
+  ring.id = 'cursor-ring';
+  ring.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(ring);
+
+  let mx = -100, my = -100;
+  let cx = mx, cy = my;
+
   const tick = () => {
-    glow.style.left = `${mx}px`;
-    glow.style.top  = `${my}px`;
+    cx = lerp(cx, mx, 0.2);
+    cy = lerp(cy, my, 0.2);
+    ring.style.left = `${cx}px`;
+    ring.style.top = `${cy}px`;
     requestAnimationFrame(tick);
   };
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; }, { passive: true });
-  document.addEventListener('mouseleave', () => { glow.style.opacity = '0'; });
-  document.addEventListener('mouseenter', () => { glow.style.opacity = '1'; });
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
+    ring.classList.add('is-visible');
+
+    const target = e.target.closest('a, button, [role="button"], .project-card, .other-work-card');
+    const project = e.target.closest('.project-card, .other-work-card');
+    ring.classList.toggle('is-interactive', Boolean(target));
+    ring.classList.toggle('is-view', Boolean(project));
+    ring.classList.toggle(
+      'is-over-dark',
+      Boolean(e.target.closest('.hero-dark, .skills--dark, .section--dark'))
+    );
+  }, { passive: true });
+
+  document.addEventListener('mousedown', () => ring.classList.add('is-pressed'));
+  document.addEventListener('mouseup', () => ring.classList.remove('is-pressed'));
+  document.addEventListener('mouseleave', () => ring.classList.remove('is-visible'));
+  document.addEventListener('mouseenter', () => ring.classList.add('is-visible'));
   requestAnimationFrame(tick);
 }
 
