@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/detail.css" />
 </head>
 
-<body>
+<body class="iljin-detail">
 
   <!-- ════════════════ NAVIGATION ════════════════ -->
   <common-header></common-header>
@@ -85,7 +85,7 @@
     <!-- ════════════════ 01 문제 정의 ════════════════ -->
     <section id="sec-01" class="sf-section reveal">
       <div class="sf-section__label">01 — 프로젝트 배경</div>
-      <h2 class="sf-section__title">분산된 웹사이트를 하나로 통합했습니다</h2>
+      <h2 class="sf-section__title">통합이 필요했던 세 가지 이유</h2>
       <p class="sf-section__body" style="max-width:680px;">
         회사 홈페이지와 개별 솔루션으로 분산되어 있던 3개의 웹사이트가
         트래픽 분산과 정보 비일관성 문제를 일으키고 있었습니다.
@@ -93,55 +93,43 @@
         하나의 도메인으로 통합하는 방향을 설정했습니다.
       </p>
 
-      <div class="sf-challenge-grid">
-        <div class="sf-challenge-item sf-challenge-item--problem">
-          <div class="sf-challenge-item__badge">😩 문제</div>
-          <div class="sf-challenge-item__title">파편화된 웹사이트 구조</div>
-          <div class="sf-challenge-item__desc">
-            회사 홈페이지와 솔루션 사이트가 따로 운영되어
-            정보 일관성이 떨어지고 고객이 원하는 정보를 찾기 어려웠습니다.
+      <div class="iljin-story">
+        <article class="iljin-story__item">
+          <div class="iljin-story__problem">
+            <span class="iljin-story__tag">Problem 01</span>
+            <h3>파편화된 웹사이트 구조</h3>
+            <p>회사 홈페이지와 솔루션 사이트가 따로 운영되어 정보 일관성이 떨어지고 고객이 원하는 정보를 찾기 어려웠습니다.</p>
           </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--solution">
-          <div class="sf-challenge-item__badge">✦ 해결</div>
-          <div class="sf-challenge-item__title">하나의 도메인으로 통합</div>
-          <div class="sf-challenge-item__desc">
-            기업 정보와 솔루션을 하나의 도메인으로 통합하여
-            고객이 자연스럽게 탐색하고 문의로 이어지는 흐름을 구성했습니다.
+          <div class="iljin-story__decision">
+            <span class="iljin-story__tag">Design decision</span>
+            <h3>하나의 도메인으로 통합</h3>
+            <p>기업 정보와 솔루션을 하나의 정보 구조로 연결해 탐색이 자연스럽게 문의까지 이어지도록 구성했습니다.</p>
           </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--problem">
-          <div class="sf-challenge-item__badge">😩 문제</div>
-          <div class="sf-challenge-item__title">손 못 대는 워드프레스 구조</div>
-          <div class="sf-challenge-item__desc">
-            기존 홈페이지가 워드프레스로 개발되어 커스터마이징과
-            유지보수에 어려움이 있었고 업데이트가 거의 이루어지지 않았습니다.
+        </article>
+        <article class="iljin-story__item">
+          <div class="iljin-story__problem">
+            <span class="iljin-story__tag">Problem 02</span>
+            <h3>유지보수가 어려운 구조</h3>
+            <p>기존 워드프레스 구조는 커스터마이징과 유지보수가 어려워 콘텐츠와 비주얼 업데이트가 거의 이루어지지 않았습니다.</p>
           </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--solution">
-          <div class="sf-challenge-item__badge">✦ 해결</div>
-          <div class="sf-challenge-item__title">코드 기반으로 전면 개편</div>
-          <div class="sf-challenge-item__desc">
-            워드프레스 방식에서 탈피하여 전체 개편을 진행하고
-            노후화된 비주얼과 콘텐츠를 전면 최신화했습니다.
+          <div class="iljin-story__decision">
+            <span class="iljin-story__tag">Design decision</span>
+            <h3>코드 기반으로 전면 개편</h3>
+            <p>워드프레스 방식에서 벗어나 구조를 다시 설계하고, 노후화된 비주얼과 콘텐츠를 함께 최신화했습니다.</p>
           </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--problem">
-          <div class="sf-challenge-item__badge">😩 문제</div>
-          <div class="sf-challenge-item__title">뿔뿔이 흩어진 문의 채널</div>
-          <div class="sf-challenge-item__desc">
-            각 사이트마다 문의 채널이 달라 고객이 혼란을 느끼고
-            담당자도 문의를 놓치는 상황이 발생했습니다.
+        </article>
+        <article class="iljin-story__item">
+          <div class="iljin-story__problem">
+            <span class="iljin-story__tag">Problem 03</span>
+            <h3>분산된 문의 채널</h3>
+            <p>사이트마다 문의 방식과 담당 창구가 달라 고객이 혼란을 느끼고 담당자도 문의를 놓치는 상황이 발생했습니다.</p>
           </div>
-        </div>
-        <div class="sf-challenge-item sf-challenge-item--solution">
-          <div class="sf-challenge-item__badge">✦ 해결</div>
-          <div class="sf-challenge-item__title">문의 창구를 하나로 통합</div>
-          <div class="sf-challenge-item__desc">
-            흩어져 있던 문의 채널을 하나로 통합하여
-            고객 접근성을 높이고 운영 효율을 개선했습니다.
+          <div class="iljin-story__decision">
+            <span class="iljin-story__tag">Design decision</span>
+            <h3>문의 흐름을 하나로 연결</h3>
+            <p>문의 유형은 구체화하되 접수 창구는 하나로 통합해 고객 접근성과 운영 효율을 함께 개선했습니다.</p>
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -149,7 +137,7 @@
     <!-- ════════════════ 02 리서치 & 기획 ════════════════ -->
     <section id="sec-02" class="sf-section reveal">
       <div class="sf-section__label">02 — 프로젝트 목표</div>
-      <h2 class="sf-section__title">운영 도메인 통합 방향성을 정의했습니다</h2>
+      <h2 class="sf-section__title">운영 구조를 하나의 정보 체계로 재설계했습니다</h2>
       <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
         단순한 디자인 개선이 아닌, 운영 구조 자체를 바꾸는 작업이었습니다.
         워드프레스 탈피, 콘텐츠 최신화, 인터랙션 개선, 고객 문의채널 통합, 디자인 개선을
@@ -277,7 +265,7 @@
     <!-- ════════════════ 05 화면 디자인 ════════════════ -->
     <section id="sec-05" class="sf-section reveal">
       <div class="sf-section__label">05 — 화면 디자인</div>
-      <h2 class="sf-section__title">주요 화면을 설계했어요</h2>
+      <h2 class="sf-section__title">하나의 비주얼 시스템으로 연결한 주요 화면</h2>
       <p class="sf-section__body" style="max-width:680px; margin-bottom:var(--space-10);">
         기업 홈페이지부터 솔루션 랜딩 페이지까지 일관된 비주얼 시스템을 적용했습니다.
         회사 정체성이 자연스럽게 드러나면서 방문자가 원하는 정보에 빠르게 도달하도록

@@ -1515,7 +1515,7 @@ select {
   grid-template-columns: 1fr 1fr;
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: max-height 0.82s cubic-bezier(0.16, 0.82, 0.22, 1);
 }
 
 .project-card:hover .project-card__body {
@@ -5240,15 +5240,15 @@ select {
 }
 
 .project-card__visual img {
-  transform: translateY(calc((var(--scroll-progress) - 0.5) * -34px)) scale(1.1);
+  transform: translateY(calc((var(--scroll-progress) - 0.5) * -34px)) scale(1.14);
   filter: saturate(0.92);
   transition:
-    transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1),
-    filter 0.6s ease;
+    transform 1.65s cubic-bezier(0.16, 0.82, 0.22, 1),
+    filter 1.05s ease;
 }
 
 .project-card:hover .project-card__visual img {
-  transform: translateY(calc((var(--scroll-progress) - 0.5) * -34px)) scale(1.035);
+  transform: translateY(calc((var(--scroll-progress) - 0.5) * -34px)) scale(1.025);
   filter: saturate(1.08);
 }
 
@@ -5579,67 +5579,6 @@ select {
   letter-spacing: -0.015em;
 }
 
-/* Desktop cursor: crisp ring instead of a diffuse gradient glow */
-#cursor-ring {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 9999;
-  width: 22px;
-  height: 22px;
-  border: 1px solid rgba(78, 54, 210, 0.72);
-  border-radius: 50%;
-  opacity: 0;
-  pointer-events: none;
-  transform: translate(-50%, -50%) scale(1);
-  transition:
-    width 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    height 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    border-color 0.2s ease,
-    background-color 0.2s ease,
-    opacity 0.18s ease,
-    transform 0.12s ease;
-}
-
-#cursor-ring.is-visible {
-  opacity: 1;
-}
-
-#cursor-ring.is-interactive {
-  width: 38px;
-  height: 38px;
-  border-color: rgba(78, 54, 210, 0.9);
-  background: rgba(78, 54, 210, 0.06);
-}
-
-#cursor-ring.is-over-dark {
-  border-color: rgba(186, 169, 255, 0.88);
-  background: rgba(159, 132, 255, 0.06);
-}
-
-#cursor-ring.is-pressed {
-  transform: translate(-50%, -50%) scale(0.78);
-}
-
-#cursor-ring::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  color: #fff;
-  font-family: var(--font-sans);
-  font-size: 8px;
-  font-weight: var(--weight-bold);
-  letter-spacing: 0.08em;
-}
-
-@media (pointer: coarse), (prefers-reduced-motion: reduce) {
-  #cursor-ring {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .split-char,
   .section-header > p {
@@ -5739,5 +5678,25 @@ select {
 @media (max-width: 768px) {
   .skills--dark .skills__cards .skill-card {
     padding: 24px;
+  }
+}
+
+/* Skills chapter transition: compact panel expands to the viewport on entry */
+.skills--dark {
+  --skills-inset: 0px;
+  --skills-inset-y: 0px;
+  --skills-radius: 0px;
+  overflow: hidden;
+  clip-path: inset(var(--skills-inset-y) var(--skills-inset) round var(--skills-radius));
+  transform: translateZ(0);
+  will-change: clip-path;
+}
+
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .skills--dark {
+    --skills-inset: 0px !important;
+    --skills-inset-y: 0px !important;
+    --skills-radius: 0px !important;
+    will-change: auto;
   }
 }

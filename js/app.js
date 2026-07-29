@@ -461,6 +461,44 @@ function initVisualParallax() {
 /* ──────────────────────────────────────────
    SKILLS SPOTLIGHT
 ────────────────────────────────────────── */
+function initSkillsExpand() {
+  const skills = qs('.skills--dark');
+  if (!skills) return;
+
+  if (prefersReduced() || window.matchMedia('(max-width: 768px)').matches) {
+    skills.style.setProperty('--skills-inset', '0px');
+    skills.style.setProperty('--skills-inset-y', '0px');
+    skills.style.setProperty('--skills-radius', '0px');
+    return;
+  }
+
+  let ticking = false;
+
+  const update = () => {
+    const rect = skills.getBoundingClientRect();
+    const viewport = window.innerHeight;
+    const start = viewport * 0.92;
+    const raw = Math.max(0, Math.min(1, (start - rect.top) / (viewport * 0.78)));
+    const progress = raw * raw * (3 - 2 * raw);
+    const maxInset = Math.min(window.innerWidth * 0.18, 300);
+
+    skills.style.setProperty('--skills-inset', `${maxInset * (1 - progress)}px`);
+    skills.style.setProperty('--skills-inset-y', `${64 * (1 - progress)}px`);
+    skills.style.setProperty('--skills-radius', `${38 * (1 - progress)}px`);
+    ticking = false;
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  update();
+}
+
 function initSkillsSpotlight() {
   if (prefersReduced() || isTouch()) return;
   const skills = qs('.skills--dark');
@@ -574,48 +612,6 @@ function initFloatElements() {
 
   const emoji = qs('.about__photo-emoji');
   if (emoji) emoji.classList.add('float-emoji');
-}
-
-/* ──────────────────────────────────────────
-   CURSOR RING (desktop)
-────────────────────────────────────────── */
-function initCursorGlow() {
-  if (isTouch() || prefersReduced()) return;
-
-  const ring = document.createElement('div');
-  ring.id = 'cursor-ring';
-  ring.setAttribute('aria-hidden', 'true');
-  document.body.appendChild(ring);
-
-  let mx = -100, my = -100;
-  let cx = mx, cy = my;
-
-  const tick = () => {
-    cx = lerp(cx, mx, 0.2);
-    cy = lerp(cy, my, 0.2);
-    ring.style.left = `${cx}px`;
-    ring.style.top = `${cy}px`;
-    requestAnimationFrame(tick);
-  };
-
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX;
-    my = e.clientY;
-    ring.classList.add('is-visible');
-
-    const target = e.target.closest('a, button, [role="button"], .project-card, .other-work-card');
-    ring.classList.toggle('is-interactive', Boolean(target));
-    ring.classList.toggle(
-      'is-over-dark',
-      Boolean(e.target.closest('.hero-dark, .skills--dark, .section--dark'))
-    );
-  }, { passive: true });
-
-  document.addEventListener('mousedown', () => ring.classList.add('is-pressed'));
-  document.addEventListener('mouseup', () => ring.classList.remove('is-pressed'));
-  document.addEventListener('mouseleave', () => ring.classList.remove('is-visible'));
-  document.addEventListener('mouseenter', () => ring.classList.add('is-visible'));
-  requestAnimationFrame(tick);
 }
 
 /* ──────────────────────────────────────────
@@ -789,6 +785,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSplitText();          // must run before initScrollReveal
   initSectionLines();
   initDarkNoise();
+  initSkillsExpand();
   initSkillsSpotlight();
   initNav();
   initScrollProgress();
@@ -800,7 +797,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initDetailMotion();
   initScrollSkew();
   initMagnetic();
-  initCursorGlow();
   initCardTilt();
   initHeroWebGL();
   initOrbitalAnimation();
