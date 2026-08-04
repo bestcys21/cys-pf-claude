@@ -1426,20 +1426,6 @@ select {
   background: linear-gradient(90deg, rgba(var(--primitive-red-500-rgb, 220, 38, 38), 0.03) 0%, transparent 60%);
 }
 
-.project-card__bar-num {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-bold);
-  color: var(--color-text-tertiary);
-  letter-spacing: var(--tracking-wider);
-  font-feature-settings: 'tnum';
-  min-width: 28px;
-  transition: color 0.3s ease;
-}
-
-.project-card:hover .project-card__bar-num {
-  color: var(--color-accent);
-}
-
 .project-card__bar-thumb {
   width: 96px;
   height: 64px;
@@ -3640,10 +3626,6 @@ select {
     background: none;
   }
 
-  .project-card:hover .project-card__bar-num {
-    color: var(--color-text-tertiary);
-  }
-
   .project-card:hover .project-card__bar-title {
     letter-spacing: normal;
   }
@@ -4775,19 +4757,7 @@ select {
 }
 
 /* ──────────────────────────────────────────
-   2. PROJECT CARD NUMBER — hover transform
-────────────────────────────────────────── */
-.project-card__bar-num {
-  transition: color 0.3s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform-origin: center;
-}
-
-.project-card:hover .project-card__bar-num {
-  transform: rotate(-12deg) scale(1.25);
-}
-
-/* ──────────────────────────────────────────
-   3. SKILL ICON — bounce on card hover
+   SKILL ICON — bounce on card hover
 ────────────────────────────────────────── */
 .skill-card__icon {
   transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -4968,20 +4938,7 @@ select {
 .skills__cards .skill-card:nth-child(4) { --skill-accent: #efc35e; }
 
 .skills__cards .skill-card::before {
-  content: attr(data-index);
-  position: absolute;
-  top: 25px;
-  right: 28px;
-  width: auto;
-  height: auto;
-  color: rgba(255, 255, 255, 0.28);
-  background: none;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  opacity: 1;
-  z-index: 2;
-  transition: color 0.35s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  content: none;
 }
 
 .skills__cards .skill-card::after {
@@ -5013,12 +4970,6 @@ select {
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.32),
     0 0 0 1px color-mix(in srgb, var(--skill-accent) 8%, transparent) inset;
-}
-
-.skills__cards .skill-card:hover::before,
-.skills__cards .skill-card:focus-visible::before {
-  color: var(--skill-accent);
-  transform: translateY(-2px);
 }
 
 .skills__cards .skill-card:hover::after,
@@ -5068,9 +5019,9 @@ select {
   transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.skills__cards .skill-card__title::before {
-  display: block;
-  margin-bottom: 8px;
+.skills__cards .skill-card__title::after {
+  display: inline;
+  margin-left: 10px;
   color: var(--skill-accent);
   font-size: 10px;
   font-weight: 700;
@@ -5078,20 +5029,20 @@ select {
   line-height: 1;
 }
 
-.skills__cards .skill-card:nth-child(1) .skill-card__title::before {
-  content: 'VISUAL DESIGN';
+.skills__cards .skill-card:nth-child(1) .skill-card__title::after {
+  content: 'Visual Design';
 }
 
-.skills__cards .skill-card:nth-child(2) .skill-card__title::before {
-  content: 'SERVICE PLANNING';
+.skills__cards .skill-card:nth-child(2) .skill-card__title::after {
+  content: 'Service Planning';
 }
 
-.skills__cards .skill-card:nth-child(3) .skill-card__title::before {
-  content: 'WEB PUBLISHING';
+.skills__cards .skill-card:nth-child(3) .skill-card__title::after {
+  content: 'Web Publishing';
 }
 
-.skills__cards .skill-card:nth-child(4) .skill-card__title::before {
-  content: 'WORK TOOLS';
+.skills__cards .skill-card:nth-child(4) .skill-card__title::after {
+  content: 'Work Tools';
 }
 
 .skills__cards .skill-card__list {
@@ -5617,8 +5568,10 @@ select {
 
 .skills--dark .skills__cards .skill-card {
   position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr);
+  column-gap: 18px;
+  align-items: center;
   min-height: 0;
   padding: 30px;
   overflow: hidden;
@@ -5626,18 +5579,7 @@ select {
 }
 
 .skills--dark .skills__cards .skill-card::before {
-  content: attr(data-index);
-  top: 25px;
-  right: 28px;
-  left: auto;
-  width: auto;
-  height: auto;
-  color: rgba(255, 255, 255, 0.28);
-  background: none;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  opacity: 1;
+  content: none;
 }
 
 .skills--dark .skills__cards .skill-card__icon {
@@ -5652,15 +5594,15 @@ select {
 }
 
 .skills--dark .skills__cards .skill-card__title {
-  margin: 28px 0 0;
+  margin: 0;
   font-size: clamp(1.35rem, 2vw, 1.75rem);
 }
 
 .skills--dark .skills__cards .skill-card__list {
-  grid-column: auto;
+  grid-column: 1 / -1;
   display: flex;
   max-height: none;
-  margin-top: 17px;
+  margin-top: 18px;
   overflow: visible;
   opacity: 1;
   transform: none;

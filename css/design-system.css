@@ -1,3 +1,11 @@
+@font-face {
+  font-family: 'Pretendard Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 45 920;
+  src: url('../fonts/PretendardVariable.woff2') format('woff2-variations');
+}
+
 /* ============================================================
    DESIGN SYSTEM — CSS Custom Properties (Design Tokens)
    All values are tokenized — no hardcoding in component styles
