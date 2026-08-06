@@ -354,6 +354,14 @@
   border-bottom: none;
 }
 
+/* Give project retrospectives a quiet closing chapter before project navigation. */
+.sf-section--retrospective {
+  background: #f7f8fb;
+  box-shadow: 0 0 0 100vmax #f7f8fb;
+  clip-path: inset(0 -100vmax);
+  border-bottom: 0;
+}
+
 .sf-section__label {
   font-size: var(--text-xs);
   font-weight: var(--weight-bold);
