@@ -790,39 +790,6 @@ function initSmoothScroll() {
   });
 }
 
-function initCopyEmail() {
-  qsa('[data-copy-email]').forEach(button => {
-    const label = qs('span', button);
-    const original = label?.textContent || 'Copy email';
-
-    button.addEventListener('click', async () => {
-      const email = button.dataset.copyEmail;
-      if (!email) return;
-
-      try {
-        await navigator.clipboard.writeText(email);
-      } catch (_) {
-        const input = document.createElement('textarea');
-        input.value = email;
-        input.setAttribute('readonly', '');
-        input.style.position = 'fixed';
-        input.style.opacity = '0';
-        document.body.appendChild(input);
-        input.select();
-        document.execCommand('copy');
-        input.remove();
-      }
-
-      button.classList.add('is-copied');
-      if (label) label.textContent = 'Copied';
-      window.setTimeout(() => {
-        button.classList.remove('is-copied');
-        if (label) label.textContent = original;
-      }, 1600);
-    });
-  });
-}
-
 /* Keep direct section links aligned after web components and fonts settle */
 function initHashPosition() {
   if (!window.location.hash) return;
@@ -876,7 +843,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initAboutPulse();
   initFloatElements();
   initSmoothScroll();
-  initCopyEmail();
   initHashPosition();
 
   // Start the first Hero frame only after its text split and WebGL scene are ready.

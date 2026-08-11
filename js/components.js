@@ -40,7 +40,6 @@ class CommonFooter extends HTMLElement {
     this.innerHTML = `
       <footer class="site-footer">
         <div class="site-footer__inner">
-          <a href="index.html" class="site-footer__brand">CYS <span>Portfolio</span></a>
           <nav class="site-footer__nav" aria-label="푸터 네비게이션">
             <a href="${base}#works">Works</a>
             <a href="${base}#skills">Skills</a>
