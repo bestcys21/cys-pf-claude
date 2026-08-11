@@ -362,6 +362,11 @@
   border-bottom: 0;
 }
 
+.sf-section--retrospective .sf-card {
+  background-color: #fff;
+  border-color: rgba(18, 18, 28, 0.08);
+}
+
 .sf-section__label {
   font-size: var(--text-xs);
   font-weight: var(--weight-bold);

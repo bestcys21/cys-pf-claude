@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>document.documentElement.classList.add('motion-pending');</script>
   <script src="js/head.js"></script>
   <meta name="description" content="차윤수 - UI/UX 디자이너 포트폴리오. 사용자 중심의 디지털 경험을 설계합니다." />
   <title>CYS - UI/UX Design Portfolio</title>
@@ -844,9 +845,17 @@
         <!-- <p class="contact__sub">
           새로운 프로젝트, 협업 제안, 언제든지 연락주세요!
         </p> -->
-        <a href="mailto:bestcys@gmail.com" class="contact__email-link">
-          bestcys@gmail.com
-        </a>
+        <div class="contact__email-row">
+          <a href="mailto:bestcys@gmail.com" class="contact__email-link">
+            <span>bestcys@gmail.com</span>
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" aria-hidden="true">
+              <path d="M8 22 22 8M11 8h11v11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <button type="button" class="contact__copy" data-copy-email="bestcys@gmail.com">
+            <span>Copy email</span>
+          </button>
+        </div>
         <!-- <div class="contact__links">
           <a href="#" class="contact__social">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -878,7 +887,6 @@
         </div> -->
       </div>
 
-      <div class="contact__email-bg" aria-hidden="true"> bestcys@gmail.com</div>
     </div>
   </section>
 

@@ -10,7 +10,8 @@ const qs  = (sel, ctx = document) => ctx.querySelector(sel);
 const qsa = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 const lerp = (a, b, t) => a + (b - a) * t;
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-const prefersReduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+// This portfolio intentionally keeps its motion direction regardless of the OS setting.
+const prefersReduced = () => false;
 const isTouch        = () => window.matchMedia('(pointer: coarse)').matches;
 
 /* ──────────────────────────────────────────
@@ -172,21 +173,38 @@ function initParallax() {
   const hero        = qs('#hero');
   const heroContent = qs('.hero-dark__content');
   const heroScroll  = qs('.hero-dark__scroll');
+  const works       = qs('#works');
   if (!hero || !heroContent || prefersReduced()) return;
 
   let ticking = false;
   const update = () => {
     const y = window.scrollY;
-    if (y > window.innerHeight) { ticking = false; return; }
-    const pct = y / window.innerHeight;
-    heroContent.style.setProperty('--scroll-y', `${y * 0.15}px`);
+    const pct = clamp(y / window.innerHeight, 0, 1);
+    heroContent.style.setProperty('--scroll-y', `${Math.min(y, window.innerHeight) * 0.15}px`);
     heroContent.style.opacity = `${clamp(1 - pct * 0.45, 0, 1)}`;
     if (heroScroll) heroScroll.style.opacity = `${clamp(1 - y / 240, 0, 1)}`;
+
+    // Only shape the final Hero boundary. The section keeps its natural height
+    // and scroll position, so it cannot disappear before the user reaches it.
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    const start = window.innerHeight * 0.58;
+    const end = window.innerHeight * 0.06;
+    const rawExit = clamp((start - heroBottom) / Math.max(start - end, 1), 0, 1);
+    const exit = rawExit * rawExit * (3 - 2 * rawExit);
+    const compact = window.matchMedia('(max-width: 768px)').matches;
+    const maxInset = compact ? 16 : Math.min(window.innerWidth * 0.06, 82);
+    const maxRadius = compact ? 18 : 34;
+
+    hero.style.setProperty('--hero-exit-inset', `${(maxInset * exit).toFixed(2)}px`);
+    hero.style.setProperty('--hero-exit-radius', `${(maxRadius * exit).toFixed(2)}px`);
+    if (works) works.style.setProperty('--works-boundary-progress', exit.toFixed(4));
     ticking = false;
   };
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
 }
 
 /* ──────────────────────────────────────────
@@ -248,6 +266,12 @@ function initHeroTitleChars() {
   chars.forEach((c, i) => {
     c.style.animationDelay = `${0.25 + i * 0.035}s`;
   });
+
+  const content = title.closest('.hero-dark__content');
+  if (content && chars.length) {
+    const titleEnd = 0.25 + (chars.length - 1) * 0.035 + 0.7;
+    content.style.setProperty('--hero-title-end', `${titleEnd.toFixed(3)}s`);
+  }
 }
 
 /* ──────────────────────────────────────────
@@ -438,15 +462,23 @@ function initMagnetic() {
 function initVisualParallax() {
   if (prefersReduced()) return;
 
-  const cards = qsa('.project-card');
+  const cards = qsa('.project-card, .other-work-card');
   let ticking   = false;
 
   const update = () => {
-    cards.forEach(card => {
+    const compact = window.matchMedia('(max-width: 768px)').matches;
+    cards.forEach((card, index) => {
       const rect = card.getBoundingClientRect();
       const viewportRange = window.innerHeight + rect.height;
       const progress = clamp((window.innerHeight - rect.top) / viewportRange, 0, 1);
+      const isOther = card.classList.contains('other-work-card');
+      const depth = isOther ? 18 + (index % 3) * 5 : 10 + (index % 3) * 3;
+      const scrollY = (0.5 - progress) * depth * 2 * (compact ? 0.58 : 1);
+      const edge = Math.abs(progress - 0.5) * 2;
+      const scrollScale = 1 - edge * (isOther ? 0.014 : 0.009);
       card.style.setProperty('--scroll-progress', progress.toFixed(3));
+      card.style.setProperty('--card-scroll-y', `${scrollY.toFixed(2)}px`);
+      card.style.setProperty('--card-scroll-scale', scrollScale.toFixed(4));
       card.classList.toggle('is-scroll-active', progress > 0.2 && progress < 0.8);
     });
     ticking = false;
@@ -455,6 +487,7 @@ function initVisualParallax() {
   window.addEventListener('scroll', () => {
     if (!ticking) { requestAnimationFrame(update); ticking = true; }
   }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
   update();
 }
 
@@ -469,6 +502,7 @@ function initSkillsExpand() {
     skills.style.setProperty('--skills-inset', '0px');
     skills.style.setProperty('--skills-inset-y', '0px');
     skills.style.setProperty('--skills-radius', '0px');
+    skills.style.setProperty('--skills-progress', '1');
     return;
   }
 
@@ -478,13 +512,18 @@ function initSkillsExpand() {
     const rect = skills.getBoundingClientRect();
     const viewport = window.innerHeight;
     const start = viewport * 0.92;
-    const raw = Math.max(0, Math.min(1, (start - rect.top) / (viewport * 0.78)));
-    const progress = raw * raw * (3 - 2 * raw);
+    const entryRaw = clamp((start - rect.top) / (viewport * 0.78), 0, 1);
+    const entry = entryRaw * entryRaw * (3 - 2 * entryRaw);
+    const exitStart = viewport * 0.76;
+    const exitRaw = clamp((exitStart - rect.bottom) / (viewport * 0.62), 0, 1);
+    const exit = exitRaw * exitRaw * (3 - 2 * exitRaw);
+    const progress = Math.min(entry, 1 - exit);
     const maxInset = Math.min(window.innerWidth * 0.18, 300);
 
     skills.style.setProperty('--skills-inset', `${maxInset * (1 - progress)}px`);
     skills.style.setProperty('--skills-inset-y', `${64 * (1 - progress)}px`);
     skills.style.setProperty('--skills-radius', `${38 * (1 - progress)}px`);
+    skills.style.setProperty('--skills-progress', progress.toFixed(4));
     ticking = false;
   };
 
@@ -751,6 +790,39 @@ function initSmoothScroll() {
   });
 }
 
+function initCopyEmail() {
+  qsa('[data-copy-email]').forEach(button => {
+    const label = qs('span', button);
+    const original = label?.textContent || 'Copy email';
+
+    button.addEventListener('click', async () => {
+      const email = button.dataset.copyEmail;
+      if (!email) return;
+
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch (_) {
+        const input = document.createElement('textarea');
+        input.value = email;
+        input.setAttribute('readonly', '');
+        input.style.position = 'fixed';
+        input.style.opacity = '0';
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
+      }
+
+      button.classList.add('is-copied');
+      if (label) label.textContent = 'Copied';
+      window.setTimeout(() => {
+        button.classList.remove('is-copied');
+        if (label) label.textContent = original;
+      }, 1600);
+    });
+  });
+}
+
 /* Keep direct section links aligned after web components and fonts settle */
 function initHashPosition() {
   if (!window.location.hash) return;
@@ -804,7 +876,14 @@ document.addEventListener('DOMContentLoaded', () => {
   initAboutPulse();
   initFloatElements();
   initSmoothScroll();
+  initCopyEmail();
   initHashPosition();
+
+  // Start the first Hero frame only after its text split and WebGL scene are ready.
+  requestAnimationFrame(() => {
+    document.documentElement.classList.remove('motion-pending');
+    document.documentElement.classList.add('motion-ready');
+  });
 });
 
 /* bfcache 복원 시 재초기화 (뒤로가기 후 진입 시 이미지 안 보이는 문제 방지) */

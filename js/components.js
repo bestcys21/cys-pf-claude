@@ -32,9 +32,31 @@ class CommonHeader extends HTMLElement {
 
 class CommonFooter extends HTMLElement {
   connectedCallback() {
+    const filename = window.location.pathname.split('/').pop();
+    const isIndex = filename === 'index.html' || filename === '' || filename === '/';
+    const base = isIndex ? '' : 'index.html';
+    const year = new Date().getFullYear();
+
     this.innerHTML = `
-   
+      <footer class="site-footer">
+        <div class="site-footer__inner">
+          <a href="index.html" class="site-footer__brand">CYS <span>Portfolio</span></a>
+          <nav class="site-footer__nav" aria-label="푸터 네비게이션">
+            <a href="${base}#works">Works</a>
+            <a href="${base}#skills">Skills</a>
+            <a href="${base}#about">About</a>
+          </nav>
+          <div class="site-footer__meta">
+            <span>© ${year} CYS</span>
+            <button type="button" class="site-footer__top" aria-label="맨 위로 이동">TOP <span>↑</span></button>
+          </div>
+        </div>
+      </footer>
     `;
+
+    this.querySelector('.site-footer__top')?.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
   }
 }
 
