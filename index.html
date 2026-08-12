@@ -103,7 +103,13 @@
   <!-- ════════════════════════════════════════
        MAIN WORKS
   ════════════════════════════════════════ -->
-  <section class="works section" id="works">
+  <!--
+    MAIN WORKS DISPLAY MODE
+    Current: sticky stacking (`works--stack`)
+    Restore the original hover accordion at any time by removing `works--stack`.
+    The original accordion markup and CSS are intentionally preserved.
+  -->
+  <section class="works works--stack section" id="works">
     <div class="container">
 
       <div class="section-header reveal">
@@ -899,6 +905,11 @@
     (function () {
       const track = document.querySelector('.tl-h__track');
       if (!track) return;
+      const items = track.querySelectorAll('.tl-h__item:not(.tl-h__item--gap)');
+      items.forEach(function (item, index) {
+        item.tabIndex = 0;
+        item.style.setProperty('--tl-order', index);
+      });
       const observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {

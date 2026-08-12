@@ -492,6 +492,75 @@ function initVisualParallax() {
 }
 
 /* ──────────────────────────────────────────
+   MAIN WORKS — STICKY PROJECT STACK
+   The original hover accordion remains the base style. Removing
+   `.works--stack` from #works restores it without a markup rewrite.
+────────────────────────────────────────── */
+function initMainWorksStack() {
+  const works = qs('.works--stack');
+  if (!works) return;
+
+  const list = qs('.project-list', works);
+  const cards = list ? qsa('.project-card', list) : [];
+  if (!list || !cards.length) return;
+
+  let ticking = false;
+  const desktopQuery = window.matchMedia('(min-width: 901px)');
+
+  const reset = () => {
+    cards.forEach(card => {
+      card.style.removeProperty('--stack-top');
+      card.style.removeProperty('--stack-scale');
+      card.style.removeProperty('--stack-progress');
+    });
+  };
+
+  const update = () => {
+    if (!desktopQuery.matches) {
+      reset();
+      ticking = false;
+      return;
+    }
+
+    const navHeight = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
+    ) || 72;
+    const baseTop = navHeight + 20;
+    const listTop = list.getBoundingClientRect().top + window.scrollY;
+
+    cards.forEach((card, index) => {
+      const stackTop = baseTop + index * 12;
+      const nextCard = cards[index + 1];
+      const nextTop = nextCard
+        ? listTop + nextCard.offsetTop - window.scrollY
+        : Number.POSITIVE_INFINITY;
+      const cardBottom = stackTop + card.offsetHeight;
+      const overlap = Math.max(0, cardBottom - nextTop);
+      const distance = Math.max(card.offsetHeight * 0.68, window.innerHeight * 0.42);
+      const raw = nextCard ? clamp(overlap / distance, 0, 1) : 0;
+      const progress = raw * raw * (3 - 2 * raw);
+
+      card.style.setProperty('--stack-top', `${stackTop.toFixed(1)}px`);
+      card.style.setProperty('--stack-scale', (1 - progress * 0.06).toFixed(4));
+      card.style.setProperty('--stack-progress', progress.toFixed(4));
+    });
+
+    ticking = false;
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  desktopQuery.addEventListener?.('change', requestUpdate);
+  update();
+}
+
+/* ──────────────────────────────────────────
    SKILLS SPOTLIGHT
 ────────────────────────────────────────── */
 function initSkillsExpand() {
@@ -833,6 +902,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroMockupParallax();
   initHeroTilt();
   initVisualParallax();
+  initMainWorksStack();
   initDetailMotion();
   initScrollSkew();
   initMagnetic();

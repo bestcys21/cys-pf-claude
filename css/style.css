@@ -2665,6 +2665,13 @@ html.motion-pending .hero-dark__mockup img {
   background: var(--color-border-strong);
   pointer-events: none;
   z-index: 0;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tl-h--animated .tl-h__track::after {
+  transform: scaleX(1);
 }
 
 /* ── 아이템 공통 ── */
@@ -2696,6 +2703,17 @@ html.motion-pending .hero-dark__mockup img {
   padding-bottom: 10px;
   overflow: visible;
   white-space: nowrap;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(0.12s + var(--tl-order, 0) * 0.07s);
+}
+
+.tl-h--animated .tl-h__info {
+  opacity: 1;
+  transform: none;
 }
 
 .tl-h__logo {
@@ -2851,6 +2869,53 @@ html.motion-pending .hero-dark__mockup img {
 .tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(6) .tl-h__bar::after { animation-delay: 2.0s; }
 .tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(7) .tl-h__bar::after { animation-delay: 0.6s; }
 .tl-h--animated .tl-h__item:not(.tl-h__item--gap):nth-child(8) .tl-h__bar::after { animation-delay: 1.5s; }
+
+/* Hover/focus clarifies the selected period without adding more content. */
+.tl-h__item:not(.tl-h__item--gap) {
+  border-radius: 8px;
+  transition: opacity 0.25s ease;
+}
+
+.tl-h__track:is(:hover, :focus-within) .tl-h__item:not(.tl-h__item--gap) {
+  opacity: 0.68;
+}
+
+.tl-h__track .tl-h__item:not(.tl-h__item--gap):is(:hover, :focus-visible) {
+  opacity: 1;
+}
+
+.tl-h__item:not(.tl-h__item--gap):is(:hover, :focus-visible) .tl-h__info {
+  transform: translateY(-4px);
+}
+
+.tl-h__item:not(.tl-h__item--gap):is(:hover, :focus-visible) .tl-h__dot {
+  background: currentColor;
+  transform: scale(1.35);
+}
+
+.tl-h__item:not(.tl-h__item--gap):is(:hover, :focus-visible) .tl-h__bar {
+  filter: saturate(1.06) brightness(1.03);
+  transform: translateY(-2px);
+  box-shadow: 0 7px 18px color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.tl-h__item:not(.tl-h__item--gap):focus-visible {
+  outline: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  outline-offset: 6px;
+}
+
+.tl-h__dot,
+.tl-h__bar {
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s ease,
+    filter 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+.tl-h--animated .tl-h__item:not(.tl-h__item--gap) .tl-h__bar::after {
+  display: none;
+}
 
 @keyframes bar-shimmer {
   0%   { transform: skewX(-14deg) translateX(-150%); }
@@ -5089,6 +5154,8 @@ html.motion-pending .hero-dark__mockup img {
 .skills__cards .skill-card > * {
   position: relative;
   z-index: 1;
+  opacity: 1;
+  transform: none;
 }
 
 .skills--dark .skills__cards .skill-card:hover,
@@ -5748,6 +5815,224 @@ html.motion-pending .hero-dark__mockup img {
   clip-path: inset(var(--skills-inset-y) var(--skills-inset) round var(--skills-radius));
   transform: translateZ(0);
   will-change: clip-path;
+}
+
+/* ──────────────────────────────────────────
+   MAIN WORKS — STICKY STACK MODE
+   The accordion rules above remain untouched. Remove `works--stack`
+   from #works in index.html to restore the original hover accordion.
+────────────────────────────────────────── */
+@media (min-width: 901px) {
+  .works--stack {
+    padding-bottom: clamp(110px, 12vw, 190px);
+  }
+
+  .works--stack .section-header {
+    margin-bottom: clamp(56px, 7vw, 92px);
+  }
+
+  .works--stack .project-list {
+    display: block;
+  }
+
+  .works--stack .project-card {
+    --stack-top: 92px;
+    --stack-scale: 1;
+    position: sticky;
+    top: var(--stack-top);
+    z-index: 1;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr);
+    width: 100%;
+    min-height: clamp(540px, 70vh, 720px);
+    margin-bottom: clamp(260px, 38vh, 400px);
+    overflow: hidden;
+    translate: none;
+    scale: var(--stack-scale);
+    opacity: 1;
+    transform: none;
+    transform-origin: 50% 0;
+    border-radius: 26px;
+    border-color: rgba(18, 18, 28, 0.13);
+    background: #fff;
+    box-shadow: 0 16px 42px rgba(22, 20, 36, 0.075);
+    transition: border-color 0.35s ease, box-shadow 0.45s ease;
+    will-change: scale;
+  }
+
+  .works--stack .project-card:nth-child(1) { z-index: 1; }
+  .works--stack .project-card:nth-child(2) { z-index: 2; }
+  .works--stack .project-card:nth-child(3) { z-index: 3; }
+  .works--stack .project-card:nth-child(4) { z-index: 4; }
+  .works--stack .project-card:nth-child(5) { z-index: 5; }
+  .works--stack .project-card:nth-child(6) { z-index: 6; }
+
+  .works--stack .project-card.reveal,
+  .works--stack .project-card.reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition:
+      border-color 0.35s ease,
+      box-shadow 0.45s ease;
+  }
+
+  .works--stack .project-card:hover {
+    transform: none;
+    border-color: rgba(74, 52, 245, 0.26);
+    box-shadow: 0 22px 56px rgba(22, 20, 36, 0.12);
+  }
+
+  .works--stack .project-card__bar {
+    min-height: 108px;
+    padding: 24px clamp(26px, 3vw, 44px);
+    gap: 20px;
+    border-bottom: 1px solid rgba(18, 18, 28, 0.1);
+    background: #fff;
+  }
+
+  .works--stack .project-card:hover .project-card__bar {
+    border-bottom-color: rgba(18, 18, 28, 0.1);
+    background: #fff;
+  }
+
+  .works--stack .project-card__bar-thumb {
+    display: none;
+  }
+
+  .works--stack .project-card__bar-title {
+    font-size: clamp(1.75rem, 2.4vw, 2.65rem);
+    line-height: 1.08;
+    letter-spacing: -0.045em;
+    transition: color 0.25s ease;
+  }
+
+  .works--stack .project-card:hover .project-card__bar-title {
+    letter-spacing: -0.045em;
+  }
+
+  .works--stack .project-card__bar-sub {
+    max-width: 52ch;
+    margin-top: 8px;
+    font-size: 0.9rem;
+    white-space: normal;
+    text-wrap: pretty;
+  }
+
+  .works--stack .project-card__bar-badges {
+    max-width: 32%;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .works--stack .project-card__bar-arrow {
+    width: 42px;
+    height: 42px;
+    justify-content: center;
+    border: 1px solid rgba(18, 18, 28, 0.14);
+    border-radius: 50%;
+    color: var(--color-text-primary);
+  }
+
+  .works--stack .project-card:hover .project-card__bar-arrow {
+    transform: translate(2px, -2px) rotate(-45deg);
+  }
+
+  .works--stack .project-card__body,
+  .works--stack .project-card:hover .project-card__body,
+  .works--stack .project-card--syncflo .project-card__body,
+  .works--stack .project-card--syncflo:hover .project-card__body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.58fr) minmax(280px, 0.72fr);
+    min-height: 0;
+    max-height: none;
+    overflow: hidden;
+  }
+
+  .works--stack .project-card__visual,
+  .works--stack .project-card--syncflo .project-card__visual {
+    min-height: 0;
+    background: #e8e9ee;
+  }
+
+  .works--stack .project-card__visual img,
+  .works--stack .project-card--syncflo .project-card__visual img {
+    transform: translateY(calc((var(--scroll-progress) - 0.5) * -18px)) scale(1.075);
+    filter: none;
+    transition: transform 0.2s linear;
+  }
+
+  .works--stack .project-card:hover .project-card__visual img,
+  .works--stack .project-card--syncflo:hover .project-card__visual img {
+    transform: translateY(calc((var(--scroll-progress) - 0.5) * -18px)) scale(1.075);
+    filter: none;
+  }
+
+  .works--stack .project-card__visual::after {
+    opacity: 0.1;
+    background: linear-gradient(105deg, rgba(12, 12, 22, 0.08), transparent 58%);
+  }
+
+  .works--stack .project-card:hover .project-card__visual::after {
+    opacity: 0.1;
+  }
+
+  .works--stack .project-card__info {
+    position: relative;
+    align-items: flex-start;
+    justify-content: center;
+    padding: clamp(28px, 3.2vw, 48px);
+    border-left: 1px solid rgba(18, 18, 28, 0.09);
+    background: #fff;
+  }
+
+  .works--stack .project-card__info::before {
+    content: '프로젝트 개요';
+    position: static;
+    display: block;
+    margin-bottom: clamp(28px, 3vw, 42px);
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.14em;
+    color: var(--color-accent);
+  }
+
+  .works--stack .project-card__desc {
+    max-width: 34ch;
+    margin-bottom: 28px;
+    font-size: clamp(0.94rem, 1.08vw, 1.08rem);
+    line-height: 1.78;
+    text-wrap: pretty;
+  }
+
+  .works--stack .project-card__cta {
+    padding: 12px 18px;
+    background: #17171f;
+  }
+
+  .works--stack .project-card:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1120px) {
+  .works--stack .project-card__bar-badges {
+    display: none;
+  }
+
+  .works--stack .project-card__body,
+  .works--stack .project-card:hover .project-card__body {
+    grid-template-columns: minmax(0, 1.45fr) minmax(270px, 0.72fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .works--stack .project-card {
+    position: relative;
+    top: auto;
+    opacity: 1 !important;
+    scale: 1 !important;
+  }
 }
 
 .skills--dark::after {
