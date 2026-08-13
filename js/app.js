@@ -264,12 +264,14 @@ function initHeroTitleChars() {
   // Stagger delays
   const chars = qsa('.char', title);
   chars.forEach((c, i) => {
-    c.style.animationDelay = `${0.25 + i * 0.035}s`;
+    c.style.animationDelay = `${0.22 + i * 0.028}s`;
   });
 
   const content = title.closest('.hero-dark__content');
   if (content && chars.length) {
-    const titleEnd = 0.25 + (chars.length - 1) * 0.035 + 0.7;
+    // Start the supporting copy as the last character settles. Waiting for the
+    // full character transition made the completed headline feel idle.
+    const titleEnd = 0.22 + (chars.length - 1) * 0.028 + 0.16;
     content.style.setProperty('--hero-title-end', `${titleEnd.toFixed(3)}s`);
   }
 }
@@ -512,7 +514,9 @@ function initMainWorksStack() {
       card.style.removeProperty('--stack-top');
       card.style.removeProperty('--stack-scale');
       card.style.removeProperty('--stack-progress');
+      card.classList.remove('is-stack-current');
     });
+    list.removeAttribute('data-stack-depth');
   };
 
   const update = () => {
@@ -525,22 +529,32 @@ function initMainWorksStack() {
     const navHeight = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
     ) || 72;
-    const baseTop = navHeight + 20;
-    const listTop = list.getBoundingClientRect().top + window.scrollY;
+    // Reserve one fixed strip above every active card. This keeps the content
+    // viewport identical while leaving room for up to two visible bookmarks.
+    const baseTop = navHeight + 54;
+    let activeIndex = 0;
 
     cards.forEach((card, index) => {
-      const stackTop = baseTop + index * 12;
+      if (card.getBoundingClientRect().top <= baseTop + 2) activeIndex = index;
+    });
+
+    list.dataset.stackDepth = String(Math.min(activeIndex, 2));
+    cards.forEach((card, index) => {
+      card.classList.toggle('is-stack-current', index === activeIndex);
+    });
+
+    cards.forEach((card, index) => {
       const nextCard = cards[index + 1];
       const nextTop = nextCard
-        ? listTop + nextCard.offsetTop - window.scrollY
+        ? nextCard.getBoundingClientRect().top
         : Number.POSITIVE_INFINITY;
-      const cardBottom = stackTop + card.offsetHeight;
+      const cardBottom = baseTop + card.offsetHeight;
       const overlap = Math.max(0, cardBottom - nextTop);
       const distance = Math.max(card.offsetHeight * 0.68, window.innerHeight * 0.42);
       const raw = nextCard ? clamp(overlap / distance, 0, 1) : 0;
       const progress = raw * raw * (3 - 2 * raw);
 
-      card.style.setProperty('--stack-top', `${stackTop.toFixed(1)}px`);
+      card.style.setProperty('--stack-top', `${baseTop.toFixed(1)}px`);
       card.style.setProperty('--stack-scale', (1 - progress * 0.06).toFixed(4));
       card.style.setProperty('--stack-progress', progress.toFixed(4));
     });
@@ -593,6 +607,45 @@ function initSkillsExpand() {
     skills.style.setProperty('--skills-inset-y', `${64 * (1 - progress)}px`);
     skills.style.setProperty('--skills-radius', `${38 * (1 - progress)}px`);
     skills.style.setProperty('--skills-progress', progress.toFixed(4));
+    ticking = false;
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  update();
+}
+
+/* ──────────────────────────────────────────
+   OTHER WORKS — SECTION ENTRY
+────────────────────────────────────────── */
+function initOtherWorksEntry() {
+  const section = qs('#other-works');
+  if (!section) return;
+
+  if (prefersReduced() || window.matchMedia('(max-width: 768px)').matches) {
+    section.style.setProperty('--other-inset', '0px');
+    section.style.setProperty('--other-radius', '0px');
+    section.style.setProperty('--other-scale', '1');
+    return;
+  }
+
+  let ticking = false;
+  const update = () => {
+    const rect = section.getBoundingClientRect();
+    const viewport = window.innerHeight;
+    const raw = clamp((viewport * 0.96 - rect.top) / (viewport * 0.64), 0, 1);
+    const progress = raw * raw * (3 - 2 * raw);
+    const maxInset = Math.min(window.innerWidth * 0.065, 104);
+
+    section.style.setProperty('--other-inset', `${maxInset * (1 - progress)}px`);
+    section.style.setProperty('--other-radius', `${26 * (1 - progress)}px`);
+    section.style.setProperty('--other-scale', (0.982 + progress * 0.018).toFixed(4));
     ticking = false;
   };
 
@@ -894,6 +947,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSectionLines();
   initDarkNoise();
   initSkillsExpand();
+  initOtherWorksEntry();
   initSkillsSpotlight();
   initNav();
   initScrollProgress();

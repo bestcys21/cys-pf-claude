@@ -828,7 +828,7 @@ html.motion-pending .hero-dark__mockup img {
     0 0 40px rgba(4, 4, 20, 0.85),
     0 2px 4px rgba(4, 4, 20, 1);
   opacity: 0;
-  animation: hero-fade-up var(--duration-slowest) var(--ease-out) calc(var(--hero-title-end) + 0.12s) forwards;
+  animation: hero-fade-up 520ms var(--ease-out) var(--hero-title-end) forwards;
 }
 
 /* CTA buttons */
@@ -838,7 +838,7 @@ html.motion-pending .hero-dark__mockup img {
   justify-content: center;
   gap: var(--space-4);
   opacity: 0;
-  animation: hero-fade-up var(--duration-slowest) var(--ease-out) calc(var(--hero-title-end) + 0.58s) forwards;
+  animation: hero-fade-up 560ms var(--ease-out) calc(var(--hero-title-end) + 0.42s) forwards;
 }
 
 .btn-hero {
@@ -1494,6 +1494,10 @@ html.motion-pending .hero-dark__mockup img {
   min-width: 0;
 }
 
+.project-card__index {
+  display: none;
+}
+
 .project-card__bar-title {
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
@@ -1609,6 +1613,16 @@ html.motion-pending .hero-dark__mockup img {
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-5);
+}
+
+.project-card__lead {
+  margin: 0 0 12px;
+  color: var(--color-text-primary);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: 1.55;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
 }
 
 .project-card__tags {
@@ -1869,6 +1883,14 @@ html.motion-pending .hero-dark__mockup img {
 ────────────────────────────────────────── */
 .other-works {
   padding-block: var(--section-padding-y);
+  padding-top: clamp(76px, 8vw, 108px);
+  --other-inset: 0px;
+  --other-radius: 0px;
+  --other-scale: 1;
+  clip-path: inset(0 var(--other-inset) round var(--other-radius));
+  transform: translateZ(0) scale(var(--other-scale));
+  transform-origin: 50% 0;
+  will-change: clip-path, transform;
 }
 
 .other-works__grid {
@@ -2518,6 +2540,10 @@ html.motion-pending .hero-dark__mockup img {
 
 .about {
   padding-block: var(--section-padding-y);
+  padding-bottom: clamp(56px, 6vw, 84px);
+  position: relative;
+  z-index: 2;
+  overflow: visible;
   background-image:
     linear-gradient(rgba(0, 0, 0, 0.022) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.022) 1px, transparent 1px);
@@ -2644,6 +2670,8 @@ html.motion-pending .hero-dark__mockup img {
 ════════════════════════════════════════ */
 .tl-h {
   display: block;
+  position: relative;
+  isolation: isolate;
 }
 
 .tl-h__track {
@@ -2973,6 +3001,159 @@ html.motion-pending .hero-dark__mockup img {
   color: var(--color-text-tertiary);
   flex-shrink: 0;
   overflow: visible;
+}
+
+/* Current-company work summary: revealed only from the Iljin C&S timeline item. */
+.career-detail {
+  --career-brand: var(--color-accent);
+  position: absolute;
+  z-index: 12;
+  top: calc(100% + 18px);
+  right: 0;
+  bottom: auto;
+  width: min(760px, 100%);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px) scale(0.99);
+  transform-origin: 88% 0;
+  transition:
+    opacity 0.22s ease,
+    transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.48s;
+}
+
+#career-detail-inbody { --career-brand: var(--tl-crimson); }
+#career-detail-yido { --career-brand: var(--tl-navy); }
+#career-detail-iljin { --career-brand: var(--tl-blue); }
+
+.career-detail::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 30px;
+  width: 42px;
+  height: 2px;
+  background: color-mix(in srgb, var(--career-brand) 64%, transparent);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1) 0.04s;
+}
+
+.career-detail.is-active::before {
+  transform: scaleX(1);
+}
+
+.career-detail__inner {
+  display: grid;
+  grid-template-columns: minmax(140px, 0.32fr) 1fr;
+  gap: clamp(26px, 4vw, 52px);
+  padding: 25px 30px 26px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--career-brand) 18%, var(--color-border-default));
+  border-radius: 16px;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--career-brand) 5%, transparent) 0,
+      color-mix(in srgb, var(--career-brand) 1.5%, transparent) 29%, transparent 52%),
+    rgba(255, 255, 255, 0.98);
+  box-shadow: 0 26px 62px rgba(30, 28, 58, 0.13), 0 2px 8px rgba(30, 28, 58, 0.04);
+  backdrop-filter: blur(12px);
+}
+
+.career-detail.is-active {
+  pointer-events: auto;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+  transition-delay: 0s;
+}
+
+.career-detail__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease 0.08s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
+}
+
+.career-detail.is-active .career-detail__heading {
+  opacity: 1;
+  transform: none;
+}
+
+.career-detail__heading strong {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--color-text-primary);
+  font-size: var(--text-lg);
+  letter-spacing: -0.025em;
+}
+
+.career-detail__heading strong::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--career-brand);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--career-brand) 11%, transparent);
+}
+
+.career-detail__heading > span:last-child {
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.career-detail__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.career-detail__list li {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 14px;
+  align-items: baseline;
+  padding: 7px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-border-default) 72%, transparent);
+  color: var(--color-text-secondary);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.28s ease calc(0.08s + var(--detail-order) * 0.055s),
+    transform 0.44s cubic-bezier(0.22, 1, 0.36, 1) calc(0.08s + var(--detail-order) * 0.055s);
+}
+
+.career-detail__list li:last-child {
+  border-bottom: 0;
+}
+
+.career-detail__list li:nth-child(1) { --detail-order: 0; }
+.career-detail__list li:nth-child(2) { --detail-order: 1; }
+.career-detail__list li:nth-child(3) { --detail-order: 2; }
+.career-detail__list li:nth-child(4) { --detail-order: 3; }
+.career-detail__list li:nth-child(5) { --detail-order: 4; }
+
+.career-detail.is-active .career-detail__list li {
+  opacity: 1;
+  transform: none;
+}
+
+.career-detail__list time {
+  color: var(--career-brand);
+  font-size: 12px;
+  font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.career-detail__list span {
+  font-size: 14px;
+  line-height: 1.5;
+  word-break: keep-all;
 }
 
 /* ════════════════════════════════════════
@@ -5018,7 +5199,7 @@ html.motion-pending .hero-dark__mockup img {
   display: inline-block;
   opacity: 0;
   transform: translateY(0.6em);
-  animation: hero-char-in 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: hero-char-in 0.58s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 @keyframes hero-char-in {
@@ -5291,7 +5472,7 @@ html.motion-pending .hero-dark__mockup img {
   font-weight: var(--weight-bold);
   letter-spacing: 0.16em;
   opacity: 0;
-  animation: hero-fade-up var(--duration-slowest) var(--ease-out) calc(var(--hero-title-end) + 0.34s) forwards;
+  animation: hero-fade-up 540ms var(--ease-out) calc(var(--hero-title-end) + 0.24s) forwards;
 }
 
 .hero-dark__proof span {
@@ -5824,7 +6005,7 @@ html.motion-pending .hero-dark__mockup img {
 ────────────────────────────────────────── */
 @media (min-width: 901px) {
   .works--stack {
-    padding-bottom: clamp(110px, 12vw, 190px);
+    padding-bottom: clamp(76px, 7vw, 104px);
   }
 
   .works--stack .section-header {
@@ -5832,7 +6013,16 @@ html.motion-pending .hero-dark__mockup img {
   }
 
   .works--stack .project-list {
+    --stack-card-top: 126px;
     display: block;
+    padding-bottom: 0;
+    position: relative;
+  }
+
+  .works--stack .project-stack-tail {
+    /* A short reading hold for the final card without a blank trailing screen. */
+    height: clamp(44px, 6vh, 72px);
+    pointer-events: none;
   }
 
   .works--stack .project-card {
@@ -5855,17 +6045,39 @@ html.motion-pending .hero-dark__mockup img {
     border-radius: 26px;
     border-color: rgba(18, 18, 28, 0.13);
     background: #fff;
-    box-shadow: 0 16px 42px rgba(22, 20, 36, 0.075);
-    transition: border-color 0.35s ease, box-shadow 0.45s ease;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 16px 42px rgba(22, 20, 36, 0.075);
+    transition:
+      border-color 0.35s ease,
+      box-shadow 0.45s ease;
     will-change: scale;
   }
 
-  .works--stack .project-card:nth-child(1) { z-index: 1; }
-  .works--stack .project-card:nth-child(2) { z-index: 2; }
-  .works--stack .project-card:nth-child(3) { z-index: 3; }
-  .works--stack .project-card:nth-child(4) { z-index: 4; }
-  .works--stack .project-card:nth-child(5) { z-index: 5; }
-  .works--stack .project-card:nth-child(6) { z-index: 6; }
+  /* The stack cue belongs to the active card, so it exits with the card. */
+  .works--stack .project-list[data-stack-depth="1"] .project-card.is-stack-current {
+    box-shadow:
+      0 -12px 0 -1px #fafafd,
+      0 -12px 0 0 rgba(18, 18, 28, 0.13),
+      0 16px 42px rgba(22, 20, 36, 0.075);
+  }
+
+  .works--stack .project-list[data-stack-depth="2"] .project-card.is-stack-current {
+    box-shadow:
+      0 -12px 0 -1px #fcfcfe,
+      0 -12px 0 0 rgba(18, 18, 28, 0.13),
+      0 -24px 0 -1px #f8f8fb,
+      0 -24px 0 0 rgba(18, 18, 28, 0.11),
+      0 16px 42px rgba(22, 20, 36, 0.075);
+  }
+
+  /* Count only project articles. The separate bookmark layer must not shift stacking order. */
+  .works--stack .project-card:nth-of-type(1) { z-index: 1; }
+  .works--stack .project-card:nth-of-type(2) { z-index: 2; }
+  .works--stack .project-card:nth-of-type(3) { z-index: 3; }
+  .works--stack .project-card:nth-of-type(4) { z-index: 4; }
+  .works--stack .project-card:nth-of-type(5) { z-index: 5; }
+  .works--stack .project-card:nth-of-type(6) { z-index: 6; }
 
   .works--stack .project-card.reveal,
   .works--stack .project-card.reveal.is-visible {
@@ -5884,8 +6096,8 @@ html.motion-pending .hero-dark__mockup img {
   }
 
   .works--stack .project-card__bar {
-    min-height: 108px;
-    padding: 24px clamp(26px, 3vw, 44px);
+    min-height: 124px;
+    padding: 32px clamp(30px, 3.5vw, 54px);
     gap: 20px;
     border-bottom: 1px solid rgba(18, 18, 28, 0.1);
     background: #fff;
@@ -5907,16 +6119,35 @@ html.motion-pending .hero-dark__mockup img {
     transition: color 0.25s ease;
   }
 
+  .works--stack .project-card__bar-main {
+    display: grid;
+    grid-template-columns: 32px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 14px;
+  }
+
+  .works--stack .project-card__index {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid color-mix(in srgb, var(--color-accent) 20%, var(--color-border-default));
+    border-radius: 8px;
+    background: color-mix(in srgb, var(--color-accent) 6%, #fff);
+    color: color-mix(in srgb, var(--color-accent) 78%, var(--color-text-secondary));
+    font-size: 0.67rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.04em;
+    font-variant-numeric: tabular-nums;
+  }
+
   .works--stack .project-card:hover .project-card__bar-title {
     letter-spacing: -0.045em;
   }
 
   .works--stack .project-card__bar-sub {
-    max-width: 52ch;
-    margin-top: 8px;
-    font-size: 0.9rem;
-    white-space: normal;
-    text-wrap: pretty;
+    display: none;
   }
 
   .works--stack .project-card__bar-badges {
@@ -5981,7 +6212,7 @@ html.motion-pending .hero-dark__mockup img {
     position: relative;
     align-items: flex-start;
     justify-content: center;
-    padding: clamp(28px, 3.2vw, 48px);
+    padding: clamp(34px, 3.8vw, 56px);
     border-left: 1px solid rgba(18, 18, 28, 0.09);
     background: #fff;
   }
@@ -5990,11 +6221,20 @@ html.motion-pending .hero-dark__mockup img {
     content: '프로젝트 개요';
     position: static;
     display: block;
-    margin-bottom: clamp(28px, 3vw, 42px);
+    margin-bottom: clamp(18px, 2vw, 26px);
     font-size: 0.68rem;
     font-weight: 650;
     letter-spacing: 0.14em;
     color: var(--color-accent);
+  }
+
+  .works--stack .project-card__lead {
+    max-width: 30ch;
+    margin-bottom: 18px;
+    font-size: clamp(1.08rem, 1.35vw, 1.28rem);
+    line-height: 1.55;
+    letter-spacing: -0.025em;
+    text-wrap: pretty;
   }
 
   .works--stack .project-card__desc {
@@ -6010,8 +6250,17 @@ html.motion-pending .hero-dark__mockup img {
     background: #17171f;
   }
 
-  .works--stack .project-card:last-child {
+  .works--stack .project-card:last-of-type {
     margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .other-works {
+    --other-inset: 0px !important;
+    --other-radius: 0px !important;
+    --other-scale: 1 !important;
+    will-change: auto;
   }
 }
 
