@@ -3013,14 +3013,15 @@ html.motion-pending .hero-dark__mockup img {
   bottom: auto;
   width: min(760px, 100%);
   pointer-events: none;
-  opacity: 0;
   visibility: hidden;
-  transform: translateY(-10px) scale(0.99);
-  transform-origin: 88% 0;
+  clip-path: inset(0 0 100% 0 round 16px);
+  transform: translateY(-4px);
+  transform-origin: 50% 0;
   transition:
-    opacity 0.22s ease,
-    transform 0.48s cubic-bezier(0.22, 1, 0.36, 1),
-    visibility 0s linear 0.48s;
+    clip-path 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.68s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0s linear 0.68s;
+  will-change: clip-path, transform;
 }
 
 #career-detail-inbody { --career-brand: var(--tl-crimson); }
@@ -3062,9 +3063,9 @@ html.motion-pending .hero-dark__mockup img {
 
 .career-detail.is-active {
   pointer-events: auto;
-  opacity: 1;
   visibility: visible;
-  transform: translateY(0) scale(1);
+  clip-path: inset(0 0 0 0 round 16px);
+  transform: translateY(0);
   transition-delay: 0s;
 }
 
@@ -3073,12 +3074,6 @@ html.motion-pending .hero-dark__mockup img {
   flex-direction: column;
   align-items: flex-start;
   gap: 4px;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.35s ease 0.08s, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.08s;
-}
-
-.career-detail.is-active .career-detail__heading {
   opacity: 1;
   transform: none;
 }
@@ -3121,26 +3116,12 @@ html.motion-pending .hero-dark__mockup img {
   padding: 7px 0;
   border-bottom: 1px solid color-mix(in srgb, var(--color-border-default) 72%, transparent);
   color: var(--color-text-secondary);
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 0.28s ease calc(0.08s + var(--detail-order) * 0.055s),
-    transform 0.44s cubic-bezier(0.22, 1, 0.36, 1) calc(0.08s + var(--detail-order) * 0.055s);
+  opacity: 1;
+  transform: none;
 }
 
 .career-detail__list li:last-child {
   border-bottom: 0;
-}
-
-.career-detail__list li:nth-child(1) { --detail-order: 0; }
-.career-detail__list li:nth-child(2) { --detail-order: 1; }
-.career-detail__list li:nth-child(3) { --detail-order: 2; }
-.career-detail__list li:nth-child(4) { --detail-order: 3; }
-.career-detail__list li:nth-child(5) { --detail-order: 4; }
-
-.career-detail.is-active .career-detail__list li {
-  opacity: 1;
-  transform: none;
 }
 
 .career-detail__list time {
@@ -6020,8 +6001,9 @@ html.motion-pending .hero-dark__mockup img {
   }
 
   .works--stack .project-stack-tail {
-    /* A short reading hold for the final card without a blank trailing screen. */
-    height: clamp(44px, 6vh, 72px);
+    /* Keep the final card pinned long enough to survive a normal wheel step.
+       The sticky card covers this runway, so it does not render as blank space. */
+    height: clamp(280px, 48vh, 460px);
     pointer-events: none;
   }
 

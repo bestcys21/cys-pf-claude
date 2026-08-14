@@ -529,9 +529,10 @@ function initMainWorksStack() {
     const navHeight = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue('--nav-height')
     ) || 72;
-    // Reserve one fixed strip above every active card. This keeps the content
-    // viewport identical while leaving room for up to two visible bookmarks.
-    const baseTop = navHeight + 54;
+    // The active card's two -12px stack shadows need exactly 24px above it.
+    // Keeping a larger gap exposes the previous project's image/content,
+    // especially when the final Cheongdam card covers the Oasis card.
+    const baseTop = navHeight + 24;
     let activeIndex = 0;
 
     cards.forEach((card, index) => {
