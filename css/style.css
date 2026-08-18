@@ -4381,58 +4381,28 @@ html.motion-pending .hero-dark__mockup img {
    INTERACTION SYSTEM v2
    ============================================================ */
 
-/* Character-by-character title reveal */
-.split-word,
-.split-char {
-  display: inline-block;
-  vertical-align: baseline;
-}
-
-.split-word {
-  white-space: nowrap;
-}
-
-.split-char {
-  opacity: 0;
-  transform: translateY(0.72em);
-  filter: blur(5px);
-  transition:
-    opacity 0.32s ease,
-    transform 0.62s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.5s ease;
-  transition-delay: calc(var(--char-i) * 0.045s);
-  will-change: transform, opacity, filter;
-}
-
-.is-visible .split-char {
+/* Section-title mask reveal */
+.section-header.reveal {
   opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
+  transform: none;
+  transition: none;
 }
 
 .section-title[data-split] {
   display: block;
   max-width: 100%;
+  opacity: 1;
+  clip-path: inset(100% 0 0 0);
+  transform: translateY(0.82em);
+  transition:
+    clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s,
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.1s;
+  will-change: clip-path, transform;
 }
 
-.section-title[data-split]::after {
-  content: '';
-  display: inline-block;
-  width: 2px;
-  height: 0.78em;
-  margin-left: 0.1em;
-  background: currentColor;
-  opacity: 0;
-  vertical-align: -0.04em;
-}
-
-.section-header.is-visible .section-title[data-split]::after {
-  animation: title-caret 0.56s step-end 2 forwards;
-}
-
-@keyframes title-caret {
-  0%, 100% { opacity: 0; }
-  50% { opacity: 0.62; }
+.section-header.is-visible .section-title[data-split] {
+  clip-path: inset(0 0 0 0);
+  transform: translateY(0);
 }
 
 .section-header > p {
@@ -4446,6 +4416,14 @@ html.motion-pending .hero-dark__mockup img {
 .section-header.is-visible > p {
   opacity: 1;
   transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-title[data-split] {
+    clip-path: none;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ──────────────────────────────────────────

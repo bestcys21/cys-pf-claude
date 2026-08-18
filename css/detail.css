@@ -252,6 +252,30 @@
   animation-delay: 0.58s;
 }
 
+/* Project title: a focused masked rise instead of the generic fade-up. */
+.sf-hero__title.anim-enter {
+  opacity: 1;
+  transform: translateY(0.88em);
+  clip-path: inset(100% 0 0 0);
+  animation: sf-title-mask-up 1.3s cubic-bezier(0.16, 1, 0.3, 1) 0.24s forwards;
+  will-change: clip-path, transform;
+}
+
+@keyframes sf-title-mask-up {
+  to {
+    transform: translateY(0);
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-hero__title.anim-enter {
+    transform: none;
+    clip-path: none;
+    animation: none;
+  }
+}
+
 /* ── Hero ── */
 .sf-hero {
   padding-top: calc(var(--nav-height) + var(--space-16));

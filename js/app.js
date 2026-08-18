@@ -124,21 +124,13 @@ function initScrollProgress() {
 }
 
 /* ──────────────────────────────────────────
-   SPLIT TEXT — word-by-word reveal
+   MASKED TITLE REVEAL
    Usage: add data-split to h2.section-title
 ────────────────────────────────────────── */
-function initSplitText() {
+function initMaskedTitles() {
   qsa('[data-split]').forEach(el => {
-    const text = el.textContent.trim().replace(/\s+/g, ' ');
-    el.setAttribute('aria-label', text);
-    let charIndex = 0;
-    el.innerHTML = text.split(' ').map(word => {
-      const chars = Array.from(word).map(char =>
-        `<span class="split-char" aria-hidden="true" style="--char-i:${charIndex++}">${char}</span>`
-      ).join('');
-      charIndex += 1;
-      return `<span class="split-word">${chars}</span>`;
-    }).join(' ');
+    // Keep the title intact so Korean/English wrapping remains natural.
+    el.classList.add('mask-title-reveal');
   });
 }
 
@@ -148,6 +140,9 @@ function initSplitText() {
 function initScrollReveal() {
   const io = new IntersectionObserver(entries => {
     entries.forEach(e => {
+      const replayTitle = e.target.matches('.section-header')
+        && e.target.querySelector('.section-title[data-split]');
+
       if (e.isIntersecting) {
         e.target.classList.add('is-visible');
 
@@ -158,7 +153,11 @@ function initScrollReveal() {
           });
         }
 
-        io.unobserve(e.target);
+        // Main section titles reset only after leaving the viewport completely,
+        // so they can replay on a deliberate return without flickering mid-scroll.
+        if (!replayTitle) io.unobserve(e.target);
+      } else if (replayTitle) {
+        e.target.classList.remove('is-visible');
       }
     });
   }, { threshold: 0.02, rootMargin: '0px 0px -40px 0px' });
@@ -944,7 +943,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initPageTransition();
   initHeroTitleChars();     // must run before initScrollReveal
   initEyebrowChars();       // must run before initScrollReveal
-  initSplitText();          // must run before initScrollReveal
+  initMaskedTitles();       // must run before initScrollReveal
   initSectionLines();
   initDarkNoise();
   initSkillsExpand();
