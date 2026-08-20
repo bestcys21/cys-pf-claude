@@ -126,6 +126,24 @@
 .serveone-related__grid h3 { margin-top: var(--space-2); font-size: var(--text-xl); }
 .serveone-related__grid p { margin-top: var(--space-2); color: var(--color-text-secondary); font-size: var(--text-sm); }
 
+.serveone-dashboard-case { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(320px, .65fr); gap: clamp(28px, 4vw, 64px); align-items: center; }
+.serveone-dashboard-case figure { overflow: hidden; border: 1px solid var(--color-border-default); border-radius: var(--radius-2xl); background: var(--color-surface-primary); }
+.serveone-dashboard-case img { display: block; width: 100%; height: min(46vh, 470px); object-fit: contain; }
+.serveone-dashboard-case span, .serveone-clubd-grid span { color: var(--color-accent); font-size: var(--text-xs); font-weight: var(--weight-bold); }
+.serveone-dashboard-case h3 { margin-top: var(--space-3); font-size: var(--text-xl); }
+.serveone-dashboard-case ul { display: grid; gap: var(--space-3); margin-top: var(--space-6); color: var(--color-text-secondary); font-size: var(--text-sm); }
+.serveone-dashboard-case li { position: relative; padding-left: 18px; }
+.serveone-dashboard-case li::before { position: absolute; top: .65em; left: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--color-accent); content: ''; }
+.serveone-dashboard-case div > p { margin-top: var(--space-6); padding-top: var(--space-5); border-top: 1px solid var(--color-border-default); color: var(--color-text-primary); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.serveone-clubd-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+.serveone-clubd-grid article { overflow: hidden; border: 1px solid var(--color-border-default); border-radius: var(--radius-2xl); background: var(--color-surface-primary); }
+.serveone-clubd-grid figure { height: min(31vh, 300px); overflow: hidden; background: var(--color-surface-secondary); }
+.serveone-clubd-grid img { width: 100%; height: 100%; object-fit: contain; }
+.serveone-clubd-grid article > div { padding: clamp(18px, 2vw, 28px); }
+.serveone-clubd-grid h3 { margin-top: var(--space-2); font-size: var(--text-xl); }
+.serveone-clubd-grid p { margin-top: var(--space-2); color: var(--color-text-secondary); font-size: var(--text-sm); }
+.serveone-clubd-link { margin-top: var(--space-5); text-align: center; color: var(--color-text-primary); font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+
 .serveone-why .serveone-slide__inner { padding-block: clamp(28px, 3.4vh, 50px); }
 .serveone-why .serveone-heading { margin-bottom: clamp(18px, 2.4vh, 30px); }
 .serveone-convergence { display: grid; grid-template-columns: 1fr 100px .8fr; align-items: center; }
@@ -353,9 +371,10 @@
   .serveone-quality-points { grid-template-columns: 1fr 1fr; }
   .serveone-quality-points li:nth-child(2) { border-right: 0; }
   .serveone-pc-layout .serveone-screen { max-height: none; }
-  .serveone-syncflo__content, .serveone-expansion__layout, .serveone-related__grid { grid-template-columns: 1fr; }
+  .serveone-syncflo__content, .serveone-expansion__layout, .serveone-related__grid, .serveone-dashboard-case, .serveone-clubd-grid { grid-template-columns: 1fr; }
   .serveone-expansion__visual { min-height: 55vw; }
   .serveone-related__grid article { min-height: 480px; }
+  .serveone-clubd-grid figure { height: 300px; }
   .serveone-convergence { grid-template-columns: 1fr; }
   .serveone-convergence__sources article { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-5) 0; }
   .serveone-convergence__lines { height: 60px; align-items: center; }
