@@ -90,10 +90,8 @@
 .serveone-intro__skills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-7); }
 .serveone-intro__skills li { padding: 7px 11px; border: 1px solid var(--color-border-inverse); border-radius: 999px; color: var(--primitive-gray-300); font-size: var(--text-xs); }
 .serveone-agenda { position: absolute; right: max(var(--container-padding-x), calc((100vw - var(--container-max)) / 2 + var(--container-padding-x))); bottom: 10vh; z-index: 1; width: min(37vw, 460px); }
-.serveone-agenda > p { margin-bottom: var(--space-4); color: var(--color-accent-muted); font-size: var(--text-sm); font-weight: var(--weight-semibold); letter-spacing: var(--tracking-wider); text-transform: uppercase; }
 .serveone-agenda ol { border-top: 1px solid var(--color-border-inverse); }
-.serveone-agenda li { display: grid; grid-template-columns: 42px 1fr; align-items: center; gap: var(--space-3); padding-block: clamp(11px, 1.7vh, 16px); border-bottom: 1px solid var(--color-border-inverse); }
-.serveone-agenda span { color: var(--color-accent-muted); font-size: var(--text-xs); }
+.serveone-agenda li { padding-block: clamp(10px, 1.45vh, 14px); border-bottom: 1px solid var(--color-border-inverse); }
 .serveone-agenda strong { color: var(--primitive-gray-100); font-size: clamp(.88rem, 1.15vw, 1rem); font-weight: var(--weight-medium); }
 .serveone-hint { position: absolute; bottom: var(--space-8); left: var(--container-padding-x); color: var(--primitive-gray-500); font-size: var(--text-xs); letter-spacing: var(--tracking-wider); text-transform: uppercase; }
 
@@ -281,28 +279,14 @@
 .serveone-career-path__top { display: flex; align-items: center; justify-content: space-between; gap: var(--space-5); min-height: 34px; }
 .serveone-career-path__top img { width: auto; max-width: 92px; max-height: 25px; object-fit: contain; object-position: left center; }
 .serveone-career-path__top time { color: var(--color-text-tertiary); font-size: var(--text-xs); font-variant-numeric: tabular-nums; }
+.serveone-career-path__types { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
+.serveone-career-path__types span { padding: 6px 9px; border: 1px solid var(--color-border-default); color: var(--color-text-secondary); font-size: var(--text-2xs); font-weight: var(--weight-semibold); }
 .serveone-career-path h3 { margin-top: clamp(38px, 5vh, 62px); font-size: clamp(1.2rem, 1.65vw, 1.5rem); line-height: var(--leading-snug); letter-spacing: var(--tracking-tight); word-break: keep-all; }
 .serveone-career-path ul { margin-top: var(--space-6); padding-top: var(--space-4); border-top: 1px solid var(--color-border-default); }
 .serveone-career-path li { position: relative; margin-top: var(--space-2); padding-left: 12px; color: var(--color-text-secondary); font-size: var(--text-sm); }
 .serveone-career-path li::before { position: absolute; top: .65em; left: 0; width: 4px; height: 4px; border-radius: 50%; background: var(--color-accent); content: ""; }
 .serveone-career-path article > p { margin-top: var(--space-7); color: var(--color-accent); font-size: var(--text-xs); font-weight: var(--weight-bold); }
 
-.serveone-skills { background: var(--color-surface-inverse); color: var(--color-text-inverse); }
-.serveone-skills .serveone-heading__title .section-title { color: var(--color-text-inverse); }
-.serveone-skills .serveone-heading__title .eyebrow { color: var(--primitive-gray-400); }
-.serveone-skills .serveone-heading > p:last-child { color: var(--primitive-gray-400); }
-.serveone-experience-map { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-block: 1px solid var(--color-border-inverse); }
-.serveone-experience-map article { min-width: 0; padding: clamp(20px, 2.4vw, 34px); border-right: 1px solid var(--color-border-inverse); }
-.serveone-experience-map article:first-child { padding-left: 0; }
-.serveone-experience-map article:last-child { padding-right: 0; border-right: 0; }
-.serveone-experience-map article > span { color: var(--primitive-gray-400); font-size: var(--text-xs); font-weight: var(--weight-bold); }
-.serveone-experience-map h3 { margin-top: var(--space-3); font-size: var(--text-xl); }
-.serveone-experience-map p { min-height: 2.8em; margin-top: var(--space-3); color: var(--primitive-gray-400); font-size: var(--text-xs); line-height: var(--leading-relaxed); word-break: keep-all; }
-.serveone-experience-map ul { margin-top: var(--space-4); padding-top: var(--space-3); border-top: 1px solid var(--color-border-inverse); }
-.serveone-experience-map li { margin-top: var(--space-2); color: var(--primitive-gray-200); font-size: var(--text-sm); }
-.serveone-experience-process { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-3); margin-top: var(--space-5); color: var(--primitive-gray-300); font-size: var(--text-xs); }
-.serveone-experience-process i { width: 14px; height: 1px; background: var(--primitive-gray-600); }
-.serveone-experience-process strong { margin-left: auto; color: var(--color-accent-muted); font-size: var(--text-xs); font-weight: var(--weight-semibold); }
 
 .serveone-project-intro .serveone-slide__inner {
   display: grid;
@@ -482,6 +466,26 @@
 .serveone-viewer__close { position: absolute; top: var(--space-4); right: var(--space-4); z-index: 1; padding: 9px 14px; border: 1px solid rgba(255,255,255,.25); border-radius: 999px; background: rgba(0,0,0,.72); color: #fff; font-size: var(--text-xs); }
 .serveone-viewer__close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
+@media (min-width: 901px) and (max-height: 820px) {
+  .serveone-slide__inner { padding-block: 26px; }
+  .serveone-heading { margin-bottom: 18px; }
+  .serveone-heading__title { margin-bottom: 12px; }
+  .serveone-heading__title .section-title { font-size: clamp(2.35rem, 3.35vw, 3rem); }
+  .serveone-heading__message { font-size: clamp(1.25rem, 1.65vw, 1.5rem); }
+  .serveone-heading > p:not(.eyebrow):not(.serveone-heading__message) { font-size: var(--text-base); }
+  .serveone-about { padding-top: 24px; padding-bottom: 24px; }
+  .serveone-about .section-header, .serveone-about .about__profile { margin-bottom: 22px; }
+  .serveone-about .tl-h__track { height: 132px; }
+  .serveone-career-path article { padding-top: 24px; padding-bottom: 24px; }
+  .serveone-career-path__types { margin-top: var(--space-3); }
+  .serveone-career-path h3 { margin-top: 24px; }
+  .serveone-gallery__stage > img { height: min(36vh, 340px); }
+  .serveone-dashboard-case > .serveone-gallery .serveone-gallery__stage img,
+  .serveone-related > .serveone-slide__inner > .serveone-gallery .serveone-gallery__stage img { height: min(35vh, 340px); }
+  .serveone-other-grid article { min-height: 130px; }
+  .serveone-leadership { padding: 24px; }
+}
+
 @media (max-width: 900px) {
   .serveone-deck { height: auto; overflow-x: clip; overflow-y: visible; scroll-snap-type: none; }
   .serveone-slide { min-height: auto; overflow: visible; scroll-snap-align: none; }
@@ -504,10 +508,6 @@
   .serveone-career-path article, .serveone-career-path article:first-child, .serveone-career-path article:last-child { padding: var(--space-7) 0; border-right: 0; border-bottom: 1px solid var(--color-border-default); }
   .serveone-career-path article::after { display: none; }
   .serveone-career-path h3 { margin-top: var(--space-7); }
-  .serveone-experience-map { grid-template-columns: 1fr; }
-  .serveone-experience-map article, .serveone-experience-map article:first-child, .serveone-experience-map article:last-child { padding: var(--space-6) 0; border-right: 0; border-bottom: 1px solid var(--color-border-inverse); }
-  .serveone-experience-map p { min-height: 0; }
-  .serveone-experience-process strong { width: 100%; margin: var(--space-3) 0 0; }
   .serveone-project-intro .serveone-slide__inner, .serveone-case-grid, .serveone-pc-layout, .serveone-system-layout { display: grid; grid-template-columns: 1fr; }
   #syncflo-flow .serveone-slide__inner, #syncflo-quality .serveone-slide__inner { display: grid; grid-template-columns: 1fr; }
   #syncflo-flow .serveone-heading, #syncflo-quality .serveone-heading, #syncflo-flow .serveone-flowline, #syncflo-flow .serveone-gallery, #syncflo-quality .serveone-quality-points, #syncflo-quality .serveone-gallery { grid-column: 1; grid-row: auto; }
