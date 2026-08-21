@@ -153,7 +153,7 @@
     if (label) label.hidden = true;
     const logo = document.createElement('img');
     logo.className = 'serveone-convergence__logo';
-    logo.src = 'images/logo/logo-serveone.jpg';
+    logo.src = 'images/logo/logo-serveone-transparent.png';
     logo.alt = 'SERVEONE';
     serveoneCenter.prepend(logo);
   }
