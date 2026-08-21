@@ -4,6 +4,12 @@
     const target = document.getElementById(section.dataset.moveAfter);
     if (target) target.insertAdjacentElement('afterend', section);
   });
+  ['clubd-brand', 'clubd-commerce', 'clubd-service'].reduce((previousId, id) => {
+    const section = document.getElementById(id);
+    const previous = document.getElementById(previousId);
+    if (section && previous) previous.insertAdjacentElement('afterend', section);
+    return id;
+  }, 'syncflo-quality');
   const headingHierarchy = {
     'syncflo-problem': ['01', '문제 정의'],
     'syncflo-direction': ['02', '제품 방향 설정'],
@@ -11,8 +17,10 @@
     'syncflo-pc': ['04', 'PC 핵심 UX'],
     'syncflo-system': ['05', '모바일과 개발 협업'],
     'syncflo-quality': ['06', '디자인 시스템과 QA'],
+    'clubd-brand': ['Related Experience', 'ClubD Brand'],
+    'clubd-commerce': ['Commerce Experience', 'B2C 예약·결제 UX'],
     'yido-dashboard': ['Related Experience', 'YIDO Dashboard'],
-    'clubd-service': ['Related Experience', 'ClubD'],
+    'clubd-service': ['ClubD Case', '실제 서비스 화면'],
     'other-leadership': ['Experience', 'Other Works & Leadership'],
     'why-serveone': ['Conclusion', 'Why SERVEONE']
   };
@@ -22,18 +30,22 @@
     const eyebrow = heading.querySelector('.eyebrow');
     const sectionTitle = heading.querySelector('.section-title');
     if (!eyebrow || !sectionTitle) return;
-    const message = document.createElement('p');
-    message.className = 'serveone-heading__message';
-    message.innerHTML = sectionTitle.innerHTML;
+    const existingMessage = heading.querySelector(':scope > .serveone-heading__message');
+    const message = existingMessage || document.createElement('p');
+    if (!existingMessage) {
+      message.className = 'serveone-heading__message';
+      message.innerHTML = sectionTitle.innerHTML;
+    }
     eyebrow.textContent = kicker;
     sectionTitle.textContent = title;
     sectionTitle.setAttribute('data-split', '');
-    sectionTitle.insertAdjacentElement('afterend', message);
+    if (!existingMessage) sectionTitle.insertAdjacentElement('afterend', message);
   });
   document.querySelectorAll('.serveone-heading').forEach((heading) => {
     const eyebrow = heading.querySelector(':scope > .eyebrow');
     const sectionTitle = heading.querySelector(':scope > .section-title');
     if (!eyebrow || !sectionTitle) return;
+    sectionTitle.setAttribute('data-split', '');
     const titleGroup = document.createElement('div');
     titleGroup.className = 'section-header serveone-heading__title';
     eyebrow.before(titleGroup);
