@@ -134,14 +134,12 @@
       target: '.serveone-clubd-grid',
       images: [
         ['main/golf/1.jpg', 'ClubD 골프', '골프장 브랜드와 예약 서비스를 PC와 모바일 환경으로 연결했습니다.'],
-        ['main/golf/clubd_1.jpg', '골프장 탐색', '지역과 골프장 정보를 비교하고 원하는 서비스를 찾도록 구성했습니다.'],
-        ['main/golf/clubd_3.jpg', '골프 예약', '티타임과 옵션을 확인하고 예약을 완료하는 화면입니다.'],
+        ['main/golf/4.jpg', '골프 서비스 구축', '골프장 브랜드와 예약 웹사이트가 확장되는 과정을 정리했습니다.'],
+        ['main/golf/5.jpg', 'PC 디자인', '브랜드 정보와 코스·예약 정보를 가로 화면에 맞게 구성했습니다.'],
         ['main/oasis/1.jpg', 'ClubD 오아시스', '이용권 탐색부터 예약·결제까지 이어지는 서비스를 설계했습니다.'],
         ['main/oasis/5.jpg', '이용권 선택', '상품 구성과 옵션을 비교한 뒤 필요한 이용권을 고르도록 했습니다.'],
         ['main/oasis/7.jpg', '오아시스 예약', '선택한 상품을 확인하고 결제까지 이어지는 흐름입니다.'],
-        ['main/chuengdam/clubd-chungdam-2.png', 'ClubD 청담', '공간과 프로그램을 살펴보는 프리미엄 서비스 화면입니다.'],
-        ['main/chuengdam/clubd-chungdam-3.png', '프로그램 탐색', '프로그램 정보와 이용 조건을 확인하고 선택하도록 구성했습니다.'],
-        ['main/chuengdam/clubd-chungdam-4.jpg', '신청과 확인', '선택한 서비스를 신청하고 결과를 확인하는 흐름입니다.']
+        ['thumb/thumb-screen.png', 'ClubD 청담', 'PC는 브랜드 경험, 모바일은 스크린골프·다이닝 예약에 집중했습니다.']
       ]
     }
   };

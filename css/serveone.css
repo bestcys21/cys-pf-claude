@@ -178,7 +178,7 @@
 .serveone-clubd-map article span { color: var(--color-text-secondary); font-size: var(--text-xs); font-weight: var(--weight-bold); }
 .serveone-clubd-map article strong { display: block; margin-top: var(--space-2); font-size: var(--text-base); }
 .serveone-clubd-map article p { margin-top: var(--space-2); color: var(--color-text-tertiary); font-size: var(--text-xs); line-height: var(--leading-relaxed); word-break: keep-all; }
-.serveone-clubd-map .serveone-clubd-map__extension { display: flex; align-items: flex-end; background: var(--color-surface-secondary); }
+.serveone-clubd-map .serveone-clubd-map__extension { background: var(--color-surface-secondary); }
 .serveone-clubd-commerce__body { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr); gap: clamp(32px, 4vw, 60px); align-items: stretch; }
 .serveone-clubd-journey { display: grid; grid-template-columns: repeat(5, 1fr); border-block: 1px solid var(--color-border-strong); }
 .serveone-clubd-journey li { display: grid; align-content: center; min-height: 230px; padding: var(--space-5); border-right: 1px solid var(--color-border-default); }
