@@ -17,12 +17,12 @@
     'syncflo-pc': ['04', 'PC 핵심 UX'],
     'syncflo-system': ['05', '모바일과 개발 협업'],
     'syncflo-quality': ['06', '디자인 시스템과 QA'],
-    'clubd-brand': ['Related Experience', 'ClubD Brand'],
-    'clubd-commerce': ['Commerce Experience', 'B2C 예약·결제 UX'],
-    'yido-dashboard': ['Related Experience', 'YIDO Dashboard'],
+    'clubd-brand': ['Main Work · ClubD', 'ClubD 레저 서비스 구축'],
+    'clubd-commerce': ['Service Flow', '예약·결제 경험 설계'],
+    'yido-dashboard': ['Main Work · Dashboard', 'YIDO 경영 대시보드'],
     'clubd-service': ['ClubD Case', '실제 서비스 화면'],
-    'other-leadership': ['Experience', 'Other Works & Leadership'],
-    'why-serveone': ['Conclusion', 'Why SERVEONE']
+    'other-leadership': ['Additional Experience', '서브 프로젝트 & 운영 경험'],
+    'why-serveone': ['SERVEONE Fit', '서브원에서 발휘할 강점']
   };
   Object.entries(headingHierarchy).forEach(([id, [kicker, title]]) => {
     const heading = document.querySelector(`#${id} .serveone-heading`);
@@ -102,22 +102,20 @@
     'syncflo-system': {
       target: '.serveone-system-images',
       images: [
-        ['17.jpg', '모바일 홈', '외근 중 필요한 전표 업무와 승인 요청을 모았습니다.'],
-        ['18.jpg', '전표 작성과 승인', '작은 화면에서는 필수 입력과 행동에 집중했습니다.'],
-        ['19.jpg', '알림', '결재 요청과 처리 결과를 바로 확인하도록 구성했습니다.'],
-        ['20.jpg', '모바일 전체 흐름', '증빙 등록부터 상신·승인까지 PC와 이어지게 설계했습니다.']
+        ['19.jpg', '모바일 앱', '전표 작성과 결재 상신이 가능한 모바일 서비스를 구현했습니다.'],
+        ['20.jpg', '모바일 리뉴얼', '기존 앱의 문제를 분석하고 핵심 기능을 중심으로 재구성했습니다.'],
+        ['21.jpg', '모바일 주요 화면', '개인경비 작성부터 결재까지 필요한 화면을 하나의 흐름으로 연결했습니다.'],
+        ['22.jpg', '모바일 부가 기능', '알림·사진 저장함·퀵 메뉴를 모바일 업무 흐름에 맞게 구성했습니다.'],
+        ['23.jpg', '전표 처리 프로세스', '문서 선택부터 상신과 알림까지 모바일 처리 과정을 정리했습니다.'],
+        ['24.jpg', '모바일 온보딩', '앱의 주요 기능과 사용 방법을 처음부터 이해하도록 안내했습니다.']
       ]
     },
     'syncflo-quality': {
       target: '.serveone-quality-layout',
       images: [
-        ['21.jpg', 'Figma 컴포넌트', '반복되는 화면 요소와 상태를 공통 기준으로 정리했습니다.'],
-        ['22.jpg', '디자인 토큰', '색상과 화면 규칙을 문서화해 일관성을 맞췄습니다.'],
-        ['23.jpg', '최종 화면', '공통 기준을 실제 제품 화면에 적용했습니다.'],
-        ['24.jpg', '프로토타입', '개발 전 주요 흐름과 예외 상황을 확인했습니다.'],
-        ['25.jpg', 'UI UX QA', '개발 화면의 구현 차이와 사용성 문제를 검수했습니다.'],
-        ['26.jpg', '개선 전후', '검수 결과를 바탕으로 화면 품질을 개선했습니다.'],
-        ['27.jpg', '제품 고도화', '구축 이후에도 개선 항목을 정리하고 품질을 관리했습니다.']
+        ['25.jpg', 'SyncFlo 브랜딩', '제품의 연결성과 자동화 방향을 시각 언어와 로고로 정리했습니다.'],
+        ['26.jpg', '디자인 가이드', '프론트엔드 개발자와 공유할 컴포넌트 기준을 문서화했습니다.'],
+        ['27.jpg', '디자인 시스템', '타이포그래피·색상·디자인 토큰을 공통 기준으로 정리했습니다.']
       ]
     },
     'yido-dashboard': {
@@ -149,8 +147,10 @@
   imageViewer.setAttribute('aria-labelledby', 'serveone-viewer-title');
   imageViewer.innerHTML = `
     <button class="serveone-viewer__close" type="button" aria-label="확대 이미지 닫기">닫기</button>
+    <button class="serveone-viewer__nav serveone-viewer__nav--prev" type="button" aria-label="이전 이미지">‹</button>
+    <button class="serveone-viewer__nav serveone-viewer__nav--next" type="button" aria-label="다음 이미지">›</button>
     <figure>
-      <img src="" alt="" />
+      <img src="" alt="" draggable="false" />
       <figcaption><strong id="serveone-viewer-title"></strong><span></span></figcaption>
     </figure>`;
   document.body.appendChild(imageViewer);
@@ -159,13 +159,24 @@
   const viewerTitle = imageViewer.querySelector('figcaption strong');
   const viewerDescription = imageViewer.querySelector('figcaption span');
   let viewerTrigger = null;
+  let viewerItems = [];
+  let viewerIndex = 0;
+  let viewerDragStartX = null;
 
-  function openImageViewer(src, title, description, trigger) {
+  function showViewerImage(index) {
+    if (!viewerItems.length) return;
+    viewerIndex = (index + viewerItems.length) % viewerItems.length;
+    const [src, title, description] = viewerItems[viewerIndex];
     viewerImage.src = src;
     viewerImage.alt = title;
     viewerTitle.textContent = title;
     viewerDescription.textContent = description;
+  }
+
+  function openImageViewer(items, index, trigger) {
+    viewerItems = items;
     viewerTrigger = trigger;
+    showViewerImage(index);
     imageViewer.showModal();
     imageViewer.querySelector('.serveone-viewer__close').focus();
   }
@@ -176,6 +187,24 @@
   }
 
   imageViewer.querySelector('.serveone-viewer__close').addEventListener('click', closeImageViewer);
+  imageViewer.querySelector('.serveone-viewer__nav--prev').addEventListener('click', () => showViewerImage(viewerIndex - 1));
+  imageViewer.querySelector('.serveone-viewer__nav--next').addEventListener('click', () => showViewerImage(viewerIndex + 1));
+  imageViewer.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') showViewerImage(viewerIndex - 1);
+    if (event.key === 'ArrowRight') showViewerImage(viewerIndex + 1);
+  });
+  viewerImage.addEventListener('pointerdown', (event) => {
+    viewerDragStartX = event.clientX;
+    viewerImage.setPointerCapture?.(event.pointerId);
+  });
+  viewerImage.addEventListener('pointerup', (event) => {
+    if (viewerDragStartX === null) return;
+    const distance = event.clientX - viewerDragStartX;
+    viewerDragStartX = null;
+    if (Math.abs(distance) < 50) return;
+    showViewerImage(viewerIndex + (distance < 0 ? 1 : -1));
+  });
+  viewerImage.addEventListener('pointercancel', () => { viewerDragStartX = null; });
   imageViewer.addEventListener('click', (event) => {
     if (event.target === imageViewer) closeImageViewer();
   });
@@ -202,20 +231,23 @@
     const captionTitle = gallery.querySelector('figcaption strong');
     const captionBody = gallery.querySelector('figcaption span');
     const thumbs = gallery.querySelector('.serveone-gallery__thumbs');
+    const viewerGalleryItems = config.images.map(([file, title, description]) => [imagePath(file), title, description]);
+    let selectedIndex = 0;
 
     stage.tabIndex = 0;
     stage.setAttribute('role', 'button');
     stage.setAttribute('aria-label', '현재 이미지 크게 보기');
-    stage.addEventListener('click', () => openImageViewer(mainImage.src, captionTitle.textContent, captionBody.textContent, stage));
+    stage.addEventListener('click', () => openImageViewer(viewerGalleryItems, selectedIndex, stage));
     stage.addEventListener('keydown', (event) => {
       if (!['Enter', ' '].includes(event.key)) return;
       event.preventDefault();
       event.stopPropagation();
-      openImageViewer(mainImage.src, captionTitle.textContent, captionBody.textContent, stage);
+      openImageViewer(viewerGalleryItems, selectedIndex, stage);
     });
 
     function selectImage(index, focus = false) {
       const [file, title, description] = config.images[index];
+      selectedIndex = index;
       mainImage.src = imagePath(file);
       mainImage.alt = title;
       captionTitle.textContent = title;
