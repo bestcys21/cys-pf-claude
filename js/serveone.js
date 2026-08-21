@@ -4,21 +4,44 @@
     const target = document.getElementById(section.dataset.moveAfter);
     if (target) target.insertAdjacentElement('afterend', section);
   });
-  const syncfloLabels = {
-    'syncflo-problem': '01 · 문제 정의',
-    'syncflo-direction': '02 · 제품 방향 설정',
-    'syncflo-flow': '03 · 프로세스 설계',
-    'syncflo-pc': '04 · PC 핵심 UX',
-    'syncflo-system': '05 · 모바일과 개발 협업',
-    'syncflo-quality': '06 · 디자인 시스템과 QA'
+  const headingHierarchy = {
+    'syncflo-problem': ['01', '문제 정의'],
+    'syncflo-direction': ['02', '제품 방향 설정'],
+    'syncflo-flow': ['03', '프로세스 설계'],
+    'syncflo-pc': ['04', 'PC 핵심 UX'],
+    'syncflo-system': ['05', '모바일과 개발 협업'],
+    'syncflo-quality': ['06', '디자인 시스템과 QA'],
+    'yido-dashboard': ['Related Experience', 'YIDO Dashboard'],
+    'clubd-service': ['Related Experience', 'ClubD'],
+    'other-leadership': ['Experience', 'Other Works & Leadership'],
+    'why-serveone': ['Conclusion', 'Why SERVEONE']
   };
-  Object.entries(syncfloLabels).forEach(([id, label]) => {
-    const eyebrow = document.querySelector(`#${id} .eyebrow`);
-    if (eyebrow) eyebrow.textContent = label;
+  Object.entries(headingHierarchy).forEach(([id, [kicker, title]]) => {
+    const heading = document.querySelector(`#${id} .serveone-heading`);
+    if (!heading) return;
+    const eyebrow = heading.querySelector('.eyebrow');
+    const sectionTitle = heading.querySelector('.section-title');
+    if (!eyebrow || !sectionTitle) return;
+    const message = document.createElement('p');
+    message.className = 'serveone-heading__message';
+    message.innerHTML = sectionTitle.innerHTML;
+    eyebrow.textContent = kicker;
+    sectionTitle.textContent = title;
+    sectionTitle.setAttribute('data-split', '');
+    sectionTitle.insertAdjacentElement('afterend', message);
+  });
+  document.querySelectorAll('.serveone-heading').forEach((heading) => {
+    const eyebrow = heading.querySelector(':scope > .eyebrow');
+    const sectionTitle = heading.querySelector(':scope > .section-title');
+    if (!eyebrow || !sectionTitle) return;
+    const titleGroup = document.createElement('div');
+    titleGroup.className = 'section-header serveone-heading__title';
+    eyebrow.before(titleGroup);
+    titleGroup.append(eyebrow, sectionTitle);
   });
   const mobileSection = document.getElementById('syncflo-system');
   if (mobileSection) {
-    mobileSection.querySelector('.section-title').innerHTML = '외근 중에도 전표 흐름이<br />이어지도록 설계했습니다';
+    mobileSection.querySelector('.serveone-heading__message').innerHTML = '외근 중에도 전표 흐름이<br />이어지도록 설계했습니다';
     mobileSection.querySelector('.serveone-heading > p:last-child').textContent = 'PC의 모든 기능을 옮기지 않고 현장에서 필요한 작성·증빙·알림·승인 기능을 중심으로 모바일 흐름을 다시 구성했습니다.';
     const images = mobileSection.querySelectorAll('.serveone-system-images img');
     if (images[1]) {
@@ -258,7 +281,11 @@
 
   function setActive(index) {
     activeIndex = Math.max(0, Math.min(index, slides.length - 1));
-    slides.forEach((slide, slideIndex) => slide.classList.toggle('is-active', slideIndex === activeIndex));
+    slides.forEach((slide, slideIndex) => {
+      const active = slideIndex === activeIndex;
+      slide.classList.toggle('is-active', active);
+      slide.querySelector('.serveone-heading__title')?.classList.toggle('is-visible', active);
+    });
     buttons.forEach((button, buttonIndex) => {
       const active = buttonIndex === activeIndex;
       button.classList.toggle('is-active', active);

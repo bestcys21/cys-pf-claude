@@ -1,13 +1,11 @@
 /* SERVEONE interview presentation — layout and interaction only. */
 .serveone-page {
-  --serveone-nav-height: var(--nav-height);
+  --serveone-nav-height: 0px;
   background: var(--color-surface-primary);
 }
 
 .serveone-page .nav {
-  background: rgba(255, 255, 255, .9);
-  border-bottom: 1px solid color-mix(in srgb, var(--color-border-default) 75%, transparent);
-  backdrop-filter: var(--nav-backdrop);
+  display: none;
 }
 
 .serveone-page .nav__link { color: var(--color-text-secondary) !important; }
@@ -59,15 +57,18 @@
 
 .serveone-heading {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(280px, .7fr);
-  align-items: end;
-  gap: var(--space-10);
+  grid-template-columns: minmax(300px, 560px) minmax(0, 1fr);
+  align-items: start;
+  column-gap: clamp(20px, 2vw, 32px);
+  row-gap: var(--space-3);
   margin-bottom: clamp(28px, 4vh, 48px);
 }
 
-.serveone-heading .eyebrow { grid-column: 1 / -1; margin-bottom: calc(var(--space-10) * -1); font-size: clamp(1.85rem, 3vw, 3rem); font-weight: 650; line-height: 1.1; letter-spacing: var(--tracking-tight); text-transform: none; }
-.serveone-heading .section-title { font-size: clamp(1.35rem, 1.8vw, 1.75rem); font-weight: 600; line-height: 1.3; }
-.serveone-heading > p:last-child { color: var(--color-text-secondary); font-size: var(--text-lg); line-height: var(--leading-relaxed); word-break: keep-all; }
+.serveone-heading__title { grid-column: 1 / -1; margin-bottom: clamp(18px, 2.6vh, 30px); }
+.serveone-heading__title .eyebrow { margin-bottom: var(--space-3); color: var(--color-text-secondary); }
+.serveone-heading__title .section-title { margin-bottom: 0; color: var(--color-text-primary); font-size: clamp(2.5rem, 4.4vw, 4.5rem); font-weight: 700; line-height: 1.05; text-wrap: balance; }
+.serveone-heading__message { font-size: clamp(1.35rem, 2vw, 2rem); font-weight: 650; line-height: 1.25; word-break: keep-all; }
+.serveone-heading > p:not(.eyebrow):not(.serveone-heading__message) { color: var(--color-text-secondary); font-size: var(--text-lg); line-height: var(--leading-relaxed); word-break: keep-all; }
 
 .serveone-reveal {
   opacity: 0;
@@ -82,10 +83,10 @@
 .serveone-intro::after { position: absolute; inset: var(--serveone-nav-height) 0 0 52%; border-left: 1px solid var(--color-border-inverse); content: ""; }
 .serveone-intro__copy { position: relative; z-index: 1; width: 68%; }
 .serveone-intro .eyebrow { color: var(--color-accent-muted); }
-.serveone-intro h1 { max-width: 760px; font-size: clamp(2.65rem, 4.1vw, 4rem); font-weight: 580; line-height: 1.02; letter-spacing: -.035em; }
+.serveone-intro h1 { max-width: 820px; font-size: clamp(3.25rem, 5.4vw, 5.4rem); font-weight: 580; line-height: .98; letter-spacing: -.04em; }
 .serveone-brand-plate { width: fit-content; max-width: 100%; margin-top: var(--space-5); }
-.serveone-brand-plate img { width: clamp(240px, 27vw, 370px); max-width: 100%; height: auto; }
-.serveone-intro__career { margin-top: var(--space-8); color: var(--primitive-gray-300); font-size: clamp(1.25rem, 2vw, 1.75rem); }
+.serveone-brand-plate img { display: block; width: clamp(280px, 31vw, 440px); max-width: 100%; height: auto; }
+.serveone-intro__career { margin-top: var(--space-8); color: var(--primitive-gray-300); font-size: clamp(1.45rem, 2.3vw, 2rem); }
 .serveone-intro__skills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-7); }
 .serveone-intro__skills li { padding: 7px 11px; border: 1px solid var(--color-border-inverse); border-radius: 999px; color: var(--primitive-gray-300); font-size: var(--text-xs); }
 .serveone-agenda { position: absolute; right: max(var(--container-padding-x), calc((100vw - var(--container-max)) / 2 + var(--container-padding-x))); bottom: 10vh; z-index: 1; width: min(37vw, 460px); }
@@ -262,7 +263,8 @@
 .serveone-career-path article > p { margin-top: var(--space-7); color: var(--color-accent); font-size: var(--text-xs); font-weight: var(--weight-bold); }
 
 .serveone-skills { background: var(--color-surface-inverse); color: var(--color-text-inverse); }
-.serveone-skills .serveone-heading .section-title { color: var(--color-text-inverse); }
+.serveone-skills .serveone-heading__title .section-title { color: var(--color-text-inverse); }
+.serveone-skills .serveone-heading__title .eyebrow { color: var(--primitive-gray-400); }
 .serveone-skills .serveone-heading > p:last-child { color: var(--primitive-gray-400); }
 .serveone-skills .skills__cards { width: 100%; }
 .serveone-skills .skill-card { min-height: 310px; }
@@ -273,9 +275,10 @@
   align-items: center;
   gap: clamp(42px, 6vw, 88px);
 }
-.serveone-project-intro__copy .eyebrow { font-size: clamp(1.85rem, 3vw, 3rem); font-weight: 650; line-height: 1.1; letter-spacing: var(--tracking-tight); text-transform: none; }
-.serveone-project-intro__copy .section-title { margin-top: var(--space-4); font-size: clamp(1.35rem, 1.8vw, 1.75rem); font-weight: 600; line-height: 1.3; }
-.serveone-project-intro__copy > p:nth-of-type(2) { max-width: 560px; margin-top: var(--space-7); color: var(--color-text-secondary); font-size: var(--text-lg); line-height: var(--leading-relaxed); word-break: keep-all; }
+.serveone-project-intro__copy .eyebrow { margin-bottom: var(--space-3); }
+.serveone-project-intro__copy .section-title { font-size: clamp(2.8rem, 4.8vw, 4.8rem); font-weight: 700; line-height: 1.05; }
+.serveone-project-intro__copy .serveone-heading__message { margin-top: var(--space-6); }
+.serveone-project-intro__copy > p:not(.eyebrow):not(.serveone-heading__message) { max-width: 560px; margin-top: var(--space-5); color: var(--color-text-secondary); font-size: var(--text-lg); line-height: var(--leading-relaxed); word-break: keep-all; }
 .serveone-project-intro__copy dl { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: var(--space-10); border-block: 1px solid var(--color-border-default); }
 .serveone-project-intro__copy dl div { padding: var(--space-4) var(--space-3) var(--space-4) 0; }
 .serveone-project-intro__copy dt { color: var(--color-text-tertiary); font-size: var(--text-xs); }
@@ -289,11 +292,11 @@
 .serveone-case-grid { display: grid; grid-template-columns: .72fr 1.28fr; align-items: stretch; gap: clamp(34px, 5vw, 70px); }
 .serveone-pain-list { border-top: 1px solid var(--color-border-strong); }
 .serveone-pain-list article { padding: clamp(22px, 3vh, 34px) 0; border-bottom: 1px solid var(--color-border-default); }
-.serveone-pain-list span { color: var(--color-accent); font-size: var(--text-xs); font-weight: var(--weight-bold); }
+.serveone-pain-list span { color: var(--color-text-secondary); font-size: var(--text-sm); font-weight: var(--weight-bold); }
 .serveone-pain-list strong { display: block; max-width: 370px; margin-top: var(--space-3); font-size: var(--text-lg); line-height: var(--leading-snug); word-break: keep-all; }
 .serveone-pain-list p { margin-top: var(--space-2); color: var(--color-text-tertiary); font-size: var(--text-sm); }
 .serveone-pain-list .serveone-pain-list__decision { padding-block: var(--space-4); }
-.serveone-pain-list__decision strong { color: var(--color-accent); font-size: var(--text-sm); }
+.serveone-pain-list__decision strong { color: var(--color-text-primary); font-size: var(--text-base); }
 .serveone-case-images { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); align-items: center; }
 .serveone-case-images figure, .serveone-flow-visual figure, .serveone-system-images figure { overflow: hidden; margin: 0; border: 1px solid var(--color-border-default); border-radius: var(--radius-xl); background: var(--color-surface-primary); box-shadow: var(--shadow-sm); }
 .serveone-case-images figure, .serveone-flow-visual figure, .serveone-system-images figure { aspect-ratio: 16 / 9; }
@@ -307,6 +310,50 @@
 .serveone-flowline small { margin-top: 3px; color: var(--color-text-tertiary); font-size: var(--text-xs); }
 .serveone-flow-visual { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
 .serveone-flow-visual figure { max-height: 35vh; }
+
+/* Alternate SyncFlo story layouts: explanation and screen switch sides by slide. */
+#syncflo-flow .serveone-slide__inner,
+#syncflo-quality .serveone-slide__inner {
+  display: grid;
+  grid-template-columns: minmax(280px, .7fr) minmax(0, 1.3fr);
+  align-content: center;
+  column-gap: clamp(36px, 5vw, 72px);
+}
+#syncflo-flow .serveone-heading,
+#syncflo-quality .serveone-heading { grid-column: 1 / -1; }
+#syncflo-flow .serveone-flowline {
+  grid-column: 1;
+  display: block;
+  align-self: stretch;
+  margin: 0;
+  border-block: 1px solid var(--color-border-strong);
+}
+#syncflo-flow .serveone-flowline li {
+  grid-template-columns: 34px 1fr;
+  padding: clamp(13px, 1.8vh, 18px) 0;
+  border-right: 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+#syncflo-flow .serveone-flowline li:last-child { border-bottom: 0; }
+#syncflo-flow .serveone-gallery,
+#syncflo-quality .serveone-gallery { grid-column: 2; width: 100%; max-width: none; margin: 0; }
+#syncflo-flow .serveone-gallery__stage > img,
+#syncflo-quality .serveone-gallery__stage > img { height: min(43vh, 460px); }
+#syncflo-quality .serveone-quality-points {
+  grid-column: 1;
+  grid-row: 2;
+  display: block;
+  align-self: stretch;
+  margin: 0;
+  border-block: 1px solid var(--color-border-strong);
+}
+#syncflo-quality .serveone-quality-points li {
+  padding: clamp(13px, 1.8vh, 18px) 0;
+  border-right: 0;
+  border-bottom: 1px solid var(--color-border-default);
+}
+#syncflo-quality .serveone-quality-points li:last-child { border-bottom: 0; }
+#syncflo-quality .serveone-gallery { grid-row: 2; }
 
 .serveone-pc-layout { display: grid; grid-template-columns: 1.35fr .65fr; align-items: stretch; gap: clamp(36px, 5vw, 70px); }
 .serveone-pc-layout .serveone-screen { max-height: 43vh; }
@@ -364,12 +411,12 @@
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  padding: 10px 12px;
+  padding: 14px 16px;
   border-top: 1px solid var(--color-border-default);
   background: var(--color-surface-primary);
 }
-.serveone-gallery__stage figcaption strong { flex: 0 0 auto; color: var(--color-text-primary); font-size: var(--text-xs); }
-.serveone-gallery__stage figcaption span { overflow: hidden; color: var(--color-text-secondary); font-size: var(--text-2xs); text-overflow: ellipsis; white-space: nowrap; }
+.serveone-gallery__stage figcaption strong { flex: 0 0 auto; color: var(--color-text-primary); font-size: var(--text-base); }
+.serveone-gallery__stage figcaption span { color: var(--color-text-secondary); font-size: var(--text-sm); line-height: var(--leading-snug); white-space: normal; }
 .serveone-gallery__thumbs { display: flex; width: 100%; max-width: 100%; gap: var(--space-2); margin-top: var(--space-3); padding: 2px 0 4px; overflow-x: auto; overflow-y: hidden; overscroll-behavior-inline: contain; scrollbar-width: thin; }
 .serveone-gallery__thumbs button {
   position: relative;
@@ -404,8 +451,8 @@
   .serveone-deck { height: auto; overflow-x: clip; overflow-y: visible; scroll-snap-type: none; }
   .serveone-slide { min-height: auto; overflow: visible; scroll-snap-align: none; }
   .serveone-slide__inner { min-height: auto; padding-block: var(--space-20); }
-  .serveone-heading { grid-template-columns: 1fr; gap: var(--space-4); }
-  .serveone-heading .eyebrow { margin-bottom: 0; }
+  .serveone-heading { grid-template-columns: 1fr; gap: var(--space-3); }
+  .serveone-heading__title { margin-bottom: var(--space-4); }
   .serveone-intro { min-height: 100dvh; }
   .serveone-intro .serveone-slide__inner { min-height: calc(100dvh - var(--serveone-nav-height)); }
   .serveone-intro::after { display: none; }
@@ -424,6 +471,8 @@
   .serveone-career-path h3 { margin-top: var(--space-7); }
   .serveone-skills .skills__cards { grid-template-columns: 1fr 1fr; }
   .serveone-project-intro .serveone-slide__inner, .serveone-case-grid, .serveone-pc-layout, .serveone-system-layout { display: grid; grid-template-columns: 1fr; }
+  #syncflo-flow .serveone-slide__inner, #syncflo-quality .serveone-slide__inner { display: grid; grid-template-columns: 1fr; }
+  #syncflo-flow .serveone-heading, #syncflo-quality .serveone-heading, #syncflo-flow .serveone-flowline, #syncflo-flow .serveone-gallery, #syncflo-quality .serveone-quality-points, #syncflo-quality .serveone-gallery { grid-column: 1; grid-row: auto; }
   .serveone-direction-layout { grid-template-columns: 1fr; }
   .serveone-project-intro__visual img { height: auto; }
   .serveone-case-images, .serveone-system-images { height: 52vw; min-height: 320px; }
@@ -452,12 +501,12 @@
 }
 
 @media (max-width: 560px) {
-  .serveone-page { --serveone-nav-height: 64px; }
+  .serveone-page { --serveone-nav-height: 0px; }
   .serveone-slide__inner { padding-block: var(--space-16); }
   .serveone-heading { margin-bottom: var(--space-8); }
-  .serveone-heading .eyebrow, .serveone-project-intro__copy .eyebrow { font-size: clamp(1.65rem, 7.5vw, 2.15rem); }
-  .serveone-heading .section-title, .serveone-project-intro__copy .section-title { font-size: clamp(1.25rem, 5.5vw, 1.55rem); line-height: 1.3; }
-  .serveone-heading > p:last-child { font-size: var(--text-base); }
+  .serveone-heading__title .section-title, .serveone-project-intro__copy .section-title { font-size: clamp(2.3rem, 10vw, 3.4rem); line-height: 1.05; }
+  .serveone-heading__message { font-size: clamp(1.25rem, 5.5vw, 1.55rem); }
+  .serveone-heading > p:not(.eyebrow):not(.serveone-heading__message) { font-size: var(--text-base); }
   .serveone-intro .serveone-slide__inner { justify-content: flex-start; padding-top: clamp(72px, 13vh, 110px); }
   .serveone-intro h1 { font-size: clamp(2.45rem, 12vw, 3.25rem); }
   .serveone-brand-plate { width: min(88vw, 330px); margin-top: var(--space-4); }
@@ -510,6 +559,6 @@
   .serveone-gallery__thumbs { display: none !important; }
   .serveone-related__grid article { min-height: 43vh; }
   .serveone-intro h1 { font-size: 76px; }
-  .serveone-heading .section-title { font-size: 34px; }
+  .serveone-heading__title .section-title { font-size: 34px; }
   a { text-decoration: none; }
 }
