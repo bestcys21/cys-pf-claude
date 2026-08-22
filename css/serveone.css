@@ -87,8 +87,7 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(90deg, #0d0d0d 22%, rgba(13,13,13,.72) 58%, rgba(13,13,13,.42)), url('../images/serveone/hero-office-facade.jpg') center right / cover no-repeat;
-  opacity: .16;
-  filter: grayscale(1) contrast(.88);
+  opacity: .36;
   content: "";
   pointer-events: none;
 }
@@ -102,17 +101,18 @@
 .serveone-intro__skills { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-7); }
 .serveone-intro__skills li { padding: 7px 11px; border: 1px solid var(--color-border-inverse); border-radius: 999px; color: var(--primitive-gray-300); font-size: var(--text-xs); }
 .serveone-agenda { position: absolute; right: max(var(--container-padding-x), calc((100vw - var(--container-max)) / 2 + var(--container-padding-x))); bottom: 10vh; z-index: 1; width: min(37vw, 460px); }
-.serveone-agenda__title { margin-bottom: var(--space-5); color: var(--primitive-gray-200); font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+.serveone-agenda__title { margin-bottom: var(--space-5); color: var(--primitive-gray-200); font-size: clamp(1.2rem, 1.65vw, 1.5rem); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
 .serveone-agenda ol { counter-reset: serveone-agenda; }
 .serveone-agenda li { position: relative; display: grid; grid-template-columns: 38px 1fr; align-items: center; padding: clamp(10px, 1.45vh, 14px) 10px; counter-increment: serveone-agenda; }
-.serveone-agenda li::before { color: var(--color-accent-muted); font-size: var(--text-xs); font-weight: var(--weight-bold); content: counter(serveone-agenda, decimal-leading-zero); }
+.serveone-agenda li::before { color: var(--color-accent-muted); font-size: clamp(.8rem, .95vw, .9rem); font-weight: var(--weight-bold); content: counter(serveone-agenda, decimal-leading-zero); }
 .serveone-agenda li[data-group] { margin-top: 40px; border-top: 1px solid var(--color-border-inverse); }
-.serveone-agenda li[data-group]::after { position: absolute; bottom: calc(100% + 10px); left: 10px; color: var(--primitive-gray-300); font-size: var(--text-xs); font-weight: var(--weight-bold); letter-spacing: .1em; text-transform: uppercase; content: attr(data-group); }
-.serveone-agenda strong { color: var(--primitive-gray-100); font-size: clamp(.88rem, 1.15vw, 1rem); font-weight: var(--weight-medium); }
+.serveone-agenda li[data-group]::after { position: absolute; bottom: calc(100% + 10px); left: 10px; color: var(--primitive-gray-300); font-size: clamp(.78rem, .9vw, .88rem); font-weight: var(--weight-bold); letter-spacing: .1em; text-transform: uppercase; content: attr(data-group); }
+.serveone-agenda strong { color: var(--primitive-gray-100); font-size: clamp(1rem, 1.3vw, 1.15rem); font-weight: var(--weight-medium); }
 .serveone-hint { position: absolute; bottom: var(--space-8); left: var(--container-padding-x); color: var(--primitive-gray-500); font-size: var(--text-xs); letter-spacing: var(--tracking-wider); text-transform: uppercase; }
 
 .serveone-about { padding-top: calc(var(--serveone-nav-height) + clamp(28px, 3.5vh, 48px)); padding-bottom: clamp(26px, 3.5vh, 48px); }
 .serveone-about .section-header { margin-bottom: clamp(24px, 3vh, 36px); }
+.serveone-about .section-header > .serveone-heading { position: relative; top: clamp(42px, 5.5vh, 62px); }
 .serveone-about .about__profile { margin-bottom: clamp(30px, 4vh, 52px); }
 .serveone-about .about__headline { font-size: clamp(1.65rem, 2.4vw, 2.4rem); }
 .serveone-about .section-title { font-size: clamp(2.2rem, 3.5vw, 3.4rem); font-weight: 650; }
@@ -541,6 +541,7 @@
   .serveone-heading > p:not(.eyebrow):not(.serveone-heading__message) { font-size: var(--text-base); }
   .serveone-about { padding-top: 24px; padding-bottom: 24px; }
   .serveone-about .section-header, .serveone-about .about__profile { margin-bottom: 22px; }
+  .serveone-about .section-header > .serveone-heading { top: 22px; }
   .serveone-about .tl-h__track { height: 132px; }
   .serveone-career-path article { padding-top: 24px; padding-bottom: 24px; }
   .serveone-career-path__types { margin-top: var(--space-3); }
@@ -577,6 +578,7 @@
   .serveone-agenda { position: static; width: 100%; margin-top: var(--space-12); }
   .serveone-hint { display: none; }
   .serveone-about { padding-top: calc(var(--serveone-nav-height) + var(--space-12)); padding-bottom: var(--space-16); }
+  .serveone-about .section-header > .serveone-heading { top: 0; }
   .serveone-about .about__profile { margin-bottom: var(--space-12); }
   .serveone-career__grid { grid-template-columns: 1fr; }
   .serveone-career__grid article, .serveone-career__grid article:first-child { padding: var(--space-6) 0; border-right: 0; border-bottom: 1px solid var(--color-border-default); }
