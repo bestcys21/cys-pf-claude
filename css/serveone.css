@@ -83,6 +83,15 @@
 .serveone-slide.is-active .serveone-reveal:nth-child(2) { transition-delay: 90ms; }
 
 .serveone-intro { background: var(--color-surface-inverse); color: var(--color-text-inverse); }
+.serveone-intro::before {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #0d0d0d 22%, rgba(13,13,13,.72) 58%, rgba(13,13,13,.42)), url('../images/serveone/hero-office-facade.jpg') center right / cover no-repeat;
+  opacity: .16;
+  filter: grayscale(1) contrast(.88);
+  content: "";
+  pointer-events: none;
+}
 .serveone-intro::after { position: absolute; inset: var(--serveone-nav-height) 0 0 52%; border-left: 1px solid var(--color-border-inverse); content: ""; }
 .serveone-intro__copy { position: relative; z-index: 1; width: 68%; }
 .serveone-intro .eyebrow { color: var(--color-accent-muted); }
@@ -94,8 +103,8 @@
 .serveone-intro__skills li { padding: 7px 11px; border: 1px solid var(--color-border-inverse); border-radius: 999px; color: var(--primitive-gray-300); font-size: var(--text-xs); }
 .serveone-agenda { position: absolute; right: max(var(--container-padding-x), calc((100vw - var(--container-max)) / 2 + var(--container-padding-x))); bottom: 10vh; z-index: 1; width: min(37vw, 460px); }
 .serveone-agenda__title { margin-bottom: var(--space-5); color: var(--primitive-gray-200); font-size: clamp(1.1rem, 1.5vw, 1.35rem); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
-.serveone-agenda ol { counter-reset: serveone-agenda; border-top: 1px solid var(--color-border-inverse); }
-.serveone-agenda li { position: relative; display: grid; grid-template-columns: 38px 1fr; align-items: center; padding: clamp(10px, 1.45vh, 14px) 10px; border-bottom: 1px solid var(--color-border-inverse); counter-increment: serveone-agenda; }
+.serveone-agenda ol { counter-reset: serveone-agenda; }
+.serveone-agenda li { position: relative; display: grid; grid-template-columns: 38px 1fr; align-items: center; padding: clamp(10px, 1.45vh, 14px) 10px; counter-increment: serveone-agenda; }
 .serveone-agenda li::before { color: var(--color-accent-muted); font-size: var(--text-xs); font-weight: var(--weight-bold); content: counter(serveone-agenda, decimal-leading-zero); }
 .serveone-agenda li[data-group] { margin-top: 40px; border-top: 1px solid var(--color-border-inverse); }
 .serveone-agenda li[data-group]::after { position: absolute; bottom: calc(100% + 10px); left: 10px; color: var(--primitive-gray-300); font-size: var(--text-xs); font-weight: var(--weight-bold); letter-spacing: .1em; text-transform: uppercase; content: attr(data-group); }
