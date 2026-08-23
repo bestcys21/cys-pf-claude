@@ -15,7 +15,7 @@
     'syncflo-direction': ['02', '제품 방향 설정'],
     'syncflo-flow': ['03', '프로세스 설계'],
     'syncflo-pc': ['04', 'PC 핵심 UX'],
-    'syncflo-system': ['05', '모바일과 개발 협업'],
+    'syncflo-system': ['05', '모바일 핵심 UX'],
     'syncflo-quality': ['06', '디자인 시스템과 QA'],
     'clubd-brand': ['Main Work · ClubD', 'ClubD 레저 서비스 구축'],
     'yido-dashboard': ['Main Work · Dashboard', 'YIDO 경영 대시보드'],
@@ -52,14 +52,14 @@
   });
   const mobileSection = document.getElementById('syncflo-system');
   if (mobileSection) {
-    mobileSection.querySelector('.serveone-heading__message').innerHTML = '외근 중에도 전표 작성 및 상신이<br />가능하도록 설계했습니다';
-    mobileSection.querySelector('.serveone-heading > p:last-child').textContent = 'PC의 모든 기능을 옮기지 않고 현장에서 필요한 작성·증빙·알림·승인 기능을 중심으로 모바일 흐름을 다시 구성했습니다.';
+    mobileSection.querySelector('.serveone-heading__message').innerHTML = '외근 중에도 전표를 작성하고<br />상신할 수 있도록 설계했습니다';
+    mobileSection.querySelector('.serveone-heading > p:last-child').textContent = '현장에서 필요한 작성·증빙·알림·승인 기능만 모바일에 담았습니다.';
     const images = mobileSection.querySelectorAll('.serveone-system-images img');
     if (images[1]) {
       images[1].src = 'images/main/syncflo/18.jpg';
       images[1].alt = 'SyncFlo 모바일 전표 작성과 승인 화면';
     }
-    mobileSection.querySelector('.serveone-system-layout ol').innerHTML = '<li><strong>개인경비 입력</strong><span>영수증 · 법인카드 · 유류대 전표 간소화</span></li><li><strong>증빙 연결</strong><span>촬영한 영수증을 PC에서도 이어서 사용</span></li><li><strong>알림과 승인</strong><span>결재 요청을 확인하고 모바일에서 처리</span></li><li><strong>모바일 기준</strong><span>작은 화면에서는 필수 행동에 집중</span></li>';
+    mobileSection.querySelector('.serveone-system-layout ol').innerHTML = '<li><strong>경비 입력</strong><span>영수증 · 법인카드 · 유류대</span></li><li><strong>증빙 연결</strong><span>촬영 후 PC에서 이어서 사용</span></li><li><strong>알림·승인</strong><span>요청 확인과 승인 처리</span></li><li><strong>모바일 원칙</strong><span>필수 행동에 집중</span></li>';
   }
 
   const galleryData = {
