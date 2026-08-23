@@ -446,10 +446,10 @@
 .serveone-system-layout > .serveone-gallery .serveone-gallery__stage > img { height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
 .serveone-system-images { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-4); }
 .serveone-system-layout ol { border-top: 1px solid var(--color-border-strong); }
-.serveone-system-layout li { padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border-default); }
+.serveone-system-layout li { padding: clamp(18px, 2.2vh, 24px) 0; border-bottom: 1px solid var(--color-border-default); }
 .serveone-system-layout strong, .serveone-system-layout span { display: block; }
-.serveone-system-layout strong { font-size: var(--text-sm); }
-.serveone-system-layout span { margin-top: var(--space-1); color: var(--color-text-tertiary); font-size: var(--text-xs); }
+.serveone-system-layout strong { font-size: clamp(18px, 1.25vw, 21px); line-height: var(--leading-snug); }
+.serveone-system-layout span { margin-top: var(--space-2); color: var(--color-text-secondary); font-size: clamp(15px, 1vw, 17px); line-height: var(--leading-snug); }
 
 .serveone-page .serveone-why { background: var(--color-surface-secondary); }
 
