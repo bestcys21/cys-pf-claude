@@ -4,7 +4,7 @@
     const target = document.getElementById(section.dataset.moveAfter);
     if (target) target.insertAdjacentElement('afterend', section);
   });
-  ['clubd-brand', 'clubd-commerce', 'clubd-service'].reduce((previousId, id) => {
+  ['clubd-brand', 'clubd-service'].reduce((previousId, id) => {
     const section = document.getElementById(id);
     const previous = document.getElementById(previousId);
     if (section && previous) previous.insertAdjacentElement('afterend', section);
@@ -18,10 +18,9 @@
     'syncflo-system': ['05', '모바일과 개발 협업'],
     'syncflo-quality': ['06', '디자인 시스템과 QA'],
     'clubd-brand': ['Main Work · ClubD', 'ClubD 레저 서비스 구축'],
-    'clubd-commerce': ['Service Flow', '예약·결제 경험 설계'],
     'yido-dashboard': ['Main Work · Dashboard', 'YIDO 경영 대시보드'],
-    'clubd-service': ['ClubD Case', '실제 서비스 화면'],
-    'other-leadership': ['Additional Experience', '서브 프로젝트 & 운영 경험'],
+    'clubd-service': ['ClubD Services', '서비스 화면'],
+    'other-leadership': ['Additional Experience', '서브 프로젝트'],
     'why-serveone': ['SERVEONE Fit', '서브원에서 발휘할 강점']
   };
   Object.entries(headingHierarchy).forEach(([id, [kicker, title]]) => {
@@ -53,7 +52,7 @@
   });
   const mobileSection = document.getElementById('syncflo-system');
   if (mobileSection) {
-    mobileSection.querySelector('.serveone-heading__message').innerHTML = '외근 중에도 전표 흐름이<br />이어지도록 설계했습니다';
+    mobileSection.querySelector('.serveone-heading__message').innerHTML = '외근 중에도 전표 작성 및 상신이<br />가능하도록 설계했습니다';
     mobileSection.querySelector('.serveone-heading > p:last-child').textContent = 'PC의 모든 기능을 옮기지 않고 현장에서 필요한 작성·증빙·알림·승인 기능을 중심으로 모바일 흐름을 다시 구성했습니다.';
     const images = mobileSection.querySelectorAll('.serveone-system-images img');
     if (images[1]) {
