@@ -122,7 +122,7 @@
       target: '.serveone-dashboard-case figure',
       images: [
         ['1.jpg', '통합 경영 대시보드', '여러 사업장의 매출·이익·원가 지표를 한 화면에 모았습니다.'],
-        ['2.jpg', '사업장 실적 비교', '목표와 실적, 전년 대비 흐름을 빠르게 비교하도록 구성했습니다.'],
+        ['2.jpg', '사업장 실적 비교', '목표와 실적, 전년 대비 흐름을 빠르게 비교하도록 구성했습니다.', 'dashboard-focus'],
         ['3.png', '상세 데이터 조회', '요약 지표에서 세부 실적과 통계로 이어지는 탐색 구조를 설계했습니다.']
       ]
     },
@@ -165,9 +165,10 @@
   function showViewerImage(index) {
     if (!viewerItems.length) return;
     viewerIndex = (index + viewerItems.length) % viewerItems.length;
-    const [src, title, description] = viewerItems[viewerIndex];
+    const [src, title, description, displayMode] = viewerItems[viewerIndex];
     viewerImage.src = src;
     viewerImage.alt = title;
+    viewerImage.classList.toggle('is-dashboard-focus', displayMode === 'dashboard-focus');
     viewerTitle.textContent = title;
     viewerDescription.textContent = description;
   }
@@ -220,7 +221,7 @@
     gallery.setAttribute('aria-label', `${section.dataset.label} 이미지 갤러리`);
     gallery.innerHTML = `
       <figure class="serveone-gallery__stage">
-        <img src="${imagePath(config.images[0][0])}" alt="${config.images[0][1]}" />
+        <img src="${imagePath(config.images[0][0])}" alt="${config.images[0][1]}" draggable="false" />
         <figcaption><strong>${config.images[0][1]}</strong><span>${config.images[0][2]}</span></figcaption>
       </figure>
       <div class="serveone-gallery__thumbs" role="tablist" aria-label="이미지 선택"></div>`;
@@ -230,13 +231,21 @@
     const captionTitle = gallery.querySelector('figcaption strong');
     const captionBody = gallery.querySelector('figcaption span');
     const thumbs = gallery.querySelector('.serveone-gallery__thumbs');
-    const viewerGalleryItems = config.images.map(([file, title, description]) => [imagePath(file), title, description]);
+    const viewerGalleryItems = config.images.map(([file, title, description, displayMode]) => [imagePath(file), title, description, displayMode]);
     let selectedIndex = 0;
+    let stageDragStartX = null;
+    let stageWasDragged = false;
 
     stage.tabIndex = 0;
     stage.setAttribute('role', 'button');
     stage.setAttribute('aria-label', '현재 이미지 크게 보기');
-    stage.addEventListener('click', () => openImageViewer(viewerGalleryItems, selectedIndex, stage));
+    stage.addEventListener('click', () => {
+      if (stageWasDragged) {
+        stageWasDragged = false;
+        return;
+      }
+      openImageViewer(viewerGalleryItems, selectedIndex, stage);
+    });
     stage.addEventListener('keydown', (event) => {
       if (!['Enter', ' '].includes(event.key)) return;
       event.preventDefault();
@@ -245,10 +254,11 @@
     });
 
     function selectImage(index, focus = false) {
-      const [file, title, description] = config.images[index];
+      const [file, title, description, displayMode] = config.images[index];
       selectedIndex = index;
       mainImage.src = imagePath(file);
       mainImage.alt = title;
+      mainImage.classList.toggle('is-dashboard-focus', displayMode === 'dashboard-focus');
       captionTitle.textContent = title;
       captionBody.textContent = description;
       thumbs.querySelectorAll('button').forEach((button, buttonIndex) => {
@@ -259,6 +269,23 @@
       });
       if (focus) thumbs.children[index].focus();
     }
+
+    stage.addEventListener('pointerdown', (event) => {
+      if (event.button !== undefined && event.button !== 0) return;
+      stageDragStartX = event.clientX;
+      stageWasDragged = false;
+      stage.setPointerCapture?.(event.pointerId);
+    });
+    stage.addEventListener('pointerup', (event) => {
+      if (stageDragStartX === null) return;
+      const distance = event.clientX - stageDragStartX;
+      stageDragStartX = null;
+      if (Math.abs(distance) < 50) return;
+      stageWasDragged = true;
+      const direction = distance < 0 ? 1 : -1;
+      selectImage((selectedIndex + direction + config.images.length) % config.images.length);
+    });
+    stage.addEventListener('pointercancel', () => { stageDragStartX = null; });
 
     config.images.forEach(([file, title], index) => {
       const button = document.createElement('button');
