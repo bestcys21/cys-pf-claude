@@ -122,7 +122,7 @@
       target: '.serveone-dashboard-case figure',
       images: [
         ['1.jpg', '통합 경영 대시보드', '여러 사업장의 매출·이익·원가 지표를 한 화면에 모았습니다.'],
-        ['2.jpg', '사업장 실적 비교', '목표와 실적, 전년 대비 흐름을 빠르게 비교하도록 구성했습니다.', 'dashboard-focus'],
+        ['4.png', '경영 현황 시각화', '회사의 성장 목표와 사업 현황을 대형 화면에서 한눈에 확인하도록 구성했습니다.', 'dashboard-pair'],
         ['3.png', '상세 데이터 조회', '요약 지표에서 세부 실적과 통계로 이어지는 탐색 구조를 설계했습니다.']
       ]
     },
@@ -169,6 +169,7 @@
     viewerImage.src = src;
     viewerImage.alt = title;
     viewerImage.classList.toggle('is-dashboard-focus', displayMode === 'dashboard-focus');
+    viewerImage.classList.toggle('is-dashboard-pair', displayMode === 'dashboard-pair');
     viewerTitle.textContent = title;
     viewerDescription.textContent = description;
   }
@@ -259,6 +260,7 @@
       mainImage.src = imagePath(file);
       mainImage.alt = title;
       mainImage.classList.toggle('is-dashboard-focus', displayMode === 'dashboard-focus');
+      mainImage.classList.toggle('is-dashboard-pair', displayMode === 'dashboard-pair');
       captionTitle.textContent = title;
       captionBody.textContent = description;
       thumbs.querySelectorAll('button').forEach((button, buttonIndex) => {

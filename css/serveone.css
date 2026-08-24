@@ -262,10 +262,9 @@
 .serveone-why .serveone-slide__inner { padding-block: clamp(28px, 3.4vh, 50px); }
 .serveone-why .serveone-heading { margin-bottom: clamp(18px, 2.4vh, 30px); }
 .serveone-convergence { display: grid; grid-template-columns: 1.02fr 72px .92fr; align-items: center; }
-.serveone-convergence__sources { display: grid; gap: var(--space-3); }
-.serveone-convergence__sources article { position: relative; display: grid; grid-template-columns: 28px minmax(190px, .92fr) 1.35fr; align-items: center; gap: var(--space-2); min-height: 82px; padding: var(--space-4) var(--space-5); border: 1px solid var(--color-border-default); border-radius: var(--radius-xl); background: var(--color-surface-primary); box-shadow: var(--shadow-sm); }
-.serveone-convergence__sources article::before { position: absolute; top: 18px; bottom: 18px; left: 0; width: 4px; border-radius: 0 3px 3px 0; background: var(--color-accent); content: ""; }
-.serveone-convergence__sources span { color: var(--color-accent); font-size: var(--text-xs); font-weight: var(--weight-bold); }
+.serveone-convergence__sources { display: grid; border-top: 1px solid var(--color-border-strong); }
+.serveone-convergence__sources article { display: grid; grid-template-columns: 34px minmax(190px, .92fr) 1.35fr; align-items: center; gap: var(--space-2); min-height: 82px; padding: var(--space-4) 0; border-bottom: 1px solid var(--color-border-default); }
+.serveone-convergence__sources span { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid var(--color-border-strong); border-radius: 50%; color: var(--color-text-secondary); font-size: var(--text-2xs); font-weight: var(--weight-bold); font-variant-numeric: tabular-nums; }
 .serveone-convergence__sources strong { font-size: var(--text-base); line-height: var(--leading-snug); }
 .serveone-convergence__sources p { color: var(--color-text-secondary); font-size: var(--text-sm); line-height: var(--leading-snug); word-break: keep-all; }
 .serveone-convergence__lines { position: relative; height: 364px; }
@@ -491,6 +490,7 @@
 .serveone-gallery__stage:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
 .serveone-gallery__stage > img { display: block; width: 100%; height: auto; object-fit: contain; object-position: center; }
 .serveone-gallery__stage > img.is-dashboard-focus { aspect-ratio: 12 / 5; object-fit: cover; object-position: center 54%; }
+.serveone-gallery__stage > img.is-dashboard-pair { aspect-ratio: 16 / 10; object-fit: cover; object-position: center; }
 .serveone-gallery__stage figcaption {
   display: flex;
   align-items: center;
@@ -526,6 +526,7 @@
 .serveone-viewer figure { display: grid; grid-template-rows: minmax(0, 1fr) auto; width: 100%; height: 100%; margin: 0; }
 .serveone-viewer img { width: 100%; height: 100%; min-height: 0; object-fit: contain; }
 .serveone-viewer img.is-dashboard-focus { justify-self: center; align-self: center; width: min(100%, 1400px); height: auto; max-height: 100%; aspect-ratio: 12 / 5; object-fit: cover; object-position: center 54%; }
+.serveone-viewer img.is-dashboard-pair { object-fit: contain; }
 .serveone-viewer img { cursor: grab; touch-action: pan-y; user-select: none; }
 .serveone-viewer img:active { cursor: grabbing; }
 .serveone-viewer figcaption { display: flex; gap: var(--space-4); align-items: baseline; padding: var(--space-4) var(--space-6); border-top: 1px solid rgba(255,255,255,.14); }
@@ -618,7 +619,8 @@
   .serveone-clubd-grid figure { height: 300px; }
   .serveone-other-grid { grid-template-columns: 1fr 1fr; }
   .serveone-convergence { grid-template-columns: 1fr; }
-  .serveone-convergence__sources article { grid-template-columns: 1fr; gap: var(--space-2); padding: var(--space-5) 0 var(--space-5) 18px; }
+  .serveone-convergence__sources article { grid-template-columns: 34px 1fr; gap: var(--space-2); padding: var(--space-5) 0; }
+  .serveone-convergence__sources article p { grid-column: 2; }
   .serveone-convergence__lines { height: 32px; }
   .serveone-convergence__lines i { display: none; }
   .serveone-convergence__lines::after { display: none; }
