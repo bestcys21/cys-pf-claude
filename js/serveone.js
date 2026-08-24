@@ -18,7 +18,7 @@
     'syncflo-system': ['05', '모바일 핵심 UX'],
     'syncflo-quality': ['06', '디자인 시스템과 QA'],
     'clubd-brand': ['Main Work · ClubD', 'ClubD 레저 서비스 구축'],
-    'yido-dashboard': ['Main Work · Dashboard', 'YIDO 경영 대시보드'],
+    'yido-dashboard': ['Main Work · Dashboard', '경영 대시보드'],
     'clubd-service': ['ClubD Services', '서비스 화면'],
     'other-leadership': ['Additional Experience', '서브 프로젝트'],
     'why-serveone': ['SERVEONE Fit', '서브원에서 발휘할 강점']
