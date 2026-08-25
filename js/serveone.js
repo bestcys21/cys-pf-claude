@@ -20,8 +20,7 @@
     'clubd-brand': ['Main Work · ClubD', 'ClubD 레저 서비스 구축'],
     'yido-dashboard': ['Main Work · Dashboard', '경영 대시보드'],
     'clubd-service': ['ClubD Services', '서비스 화면'],
-    'other-leadership': ['Other Works', '서브 프로젝트'],
-    'why-serveone': ['SERVEONE Fit', '서브원에서 발휘할 강점']
+    'other-leadership': ['Other Works', '서브 프로젝트']
   };
   Object.entries(headingHierarchy).forEach(([id, [kicker, title]]) => {
     const heading = document.querySelector(`#${id} .serveone-heading`);
