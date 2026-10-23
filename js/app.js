@@ -575,6 +575,67 @@ function initMainWorksStack() {
 }
 
 /* ──────────────────────────────────────────
+   CONTACT — SCATTERED WORK PARALLAX
+   Project images drift at different speeds while the contact message
+   remains fixed. Motion is disabled when the OS requests reduced motion.
+────────────────────────────────────────── */
+function initContactParallax() {
+  const section = qs('.contact');
+  const cards = section ? qsa('.contact__work', section) : [];
+  if (!section || !cards.length) return;
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let ticking = false;
+
+  const reset = () => {
+    cards.forEach(card => {
+      card.style.removeProperty('--contact-parallax-y');
+      card.style.removeProperty('opacity');
+    });
+  };
+
+  const update = () => {
+    if (reducedMotion.matches) {
+      reset();
+      ticking = false;
+      return;
+    }
+
+    const rect = section.getBoundingClientRect();
+    const scrollLength = Math.max(section.offsetHeight - window.innerHeight, 1);
+    const progress = clamp(-rect.top / scrollLength, 0, 1);
+    const isNearViewport = rect.bottom > -window.innerHeight * 0.2 && rect.top < window.innerHeight * 1.2;
+
+    if (isNearViewport) {
+      cards.forEach(card => {
+        const speed = parseFloat(card.dataset.contactSpeed) || 1;
+        const revealAt = parseFloat(card.dataset.contactReveal) || 0;
+        const localProgress = clamp((progress - revealAt) / Math.max(1 - revealAt, 0.01), 0, 1);
+        const y = (0.68 - localProgress) * 260 * speed;
+        const enterOpacity = clamp(localProgress * 4.5, 0, 1);
+        const exitFade = 1 - clamp((progress - 0.9) / 0.1, 0, 0.38);
+
+        card.style.setProperty('--contact-parallax-y', `${y.toFixed(2)}px`);
+        card.style.opacity = (enterOpacity * exitFade).toFixed(3);
+      });
+    }
+
+    ticking = false;
+  };
+
+  const requestUpdate = () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  };
+
+  window.addEventListener('scroll', requestUpdate, { passive: true });
+  window.addEventListener('resize', requestUpdate, { passive: true });
+  reducedMotion.addEventListener?.('change', requestUpdate);
+  update();
+}
+
+/* ──────────────────────────────────────────
    SKILLS SPOTLIGHT
 ────────────────────────────────────────── */
 function initSkillsExpand() {
@@ -957,6 +1018,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroTilt();
   initVisualParallax();
   initMainWorksStack();
+  initContactParallax();
   initDetailMotion();
   initScrollSkew();
   initMagnetic();
