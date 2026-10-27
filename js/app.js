@@ -746,6 +746,23 @@ function initDetailMotion() {
   if (!detailRoot) return;
 
   document.body.classList.add('is-detail-page');
+  // Keep the fixed section index away from the closing project links.
+  const projectNav = qs('.sf-nav');
+  if (projectNav) {
+    let navPending = false;
+    const updateNavVisibility = () => {
+      document.body.classList.toggle('is-project-nav-visible',
+        projectNav.getBoundingClientRect().top < window.innerHeight);
+      navPending = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (navPending) return;
+      navPending = true;
+      requestAnimationFrame(updateNavVisibility);
+    }, { passive: true });
+    window.addEventListener('resize', updateNavVisibility, { passive: true });
+    updateNavVisibility();
+  }
   if (prefersReduced()) return;
 
   const images = qsa('.sf-img-block, .sf-cover');

@@ -3,3 +3,6 @@
 .chrome-stack-profile
 .vercel
 CLAUDE.md
+.codex-cdp-profile
+.tmp-contact-*
+AGENTS.md

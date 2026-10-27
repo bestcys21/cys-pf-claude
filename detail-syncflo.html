@@ -9,6 +9,7 @@
   <title>전자전표(SyncFlo)</title>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/detail.css" />
+  <link rel="stylesheet" href="css/syncflo-ia.css" />
 </head>
 
 <body class="syncflo-detail">
@@ -218,10 +219,28 @@
           <img src="images/main/syncflo/8.jpg" alt="SyncFlo 필터 및 검색" loading="lazy" />
         </div>
         <div class="sf-img-block reveal">
-          <img src="images/main/syncflo/9.jpg" alt="SyncFlo 필터 및 검색" loading="lazy" />
+          <section class="sf-ia" id="syncflo-ia" aria-label="사용자 권한 및 역할 기반 메뉴 구성도">
+            <div class="sf-section__label">Information Architecture</div>
+            <h3 class="sf-section__title">사용자 권한 및 역할 기반의 메뉴 구성도</h3>
+            <p class="sf-section__body">메뉴별 권한으로 페이지 접근, 작성, 조회 범위를 설정했습니다.</p>
+            <div class="sf-ia__scroll">
+              <div class="sf-ia__board"><div class="sf-ia__root">대시보드</div>
+              <div class="sf-ia__branches"><div class="sf-ia__branch" style="--branch:0"><h4>전표처리</h4><ul><li>개인경비/법인카드</li><li>매입세금계산서작성</li><li>선급금신청</li><li>매출전표조회/확정</li><li>ERP 전표</li></ul></div>
+<div class="sf-ia__branch" style="--branch:1"><h4>전표관리</h4><ul><li>전표조회</li><li>전표검인/확정</li><li>전표확정현황</li></ul></div>
+<div class="sf-ia__branch" style="--branch:2"><h4>법인카드</h4><ul><li>법인카드정보관리</li><li>법인카드 사용현황</li><li>법인카드 불출 관리</li><li>카드 불출 신청내역</li></ul></div>
+<div class="sf-ia__branch" style="--branch:3"><h4>예산관리</h4><ul><li>기초예산현황</li><li>예산신청내역</li><li>예산실적내역</li></ul></div>
+<div class="sf-ia__branch" style="--branch:4"><h4>통계</h4><ul><li>개인사용통계</li><li>월별사용통계</li><li>누적사용통계</li></ul></div>
+<div class="sf-ia__branch" style="--branch:5"><h4>개인설정</h4><ul><li>내정보관리</li><li>개인결재선설정</li><li>출장경로관리</li><li>알림 설정</li></ul></div>
+<div class="sf-ia__branch" style="--branch:6"><h4>전자결재</h4><ul><li>전자결재 홈</li><li>결재진행</li><li>결재처리</li><li>참조</li><li>완료</li><li>반려/회수</li><li>임시저장</li><li>결재한 문서</li></ul></div>
+<div class="sf-ia__branch" style="--branch:7"><h4>기준정보관리</h4><ul><li>경비규정관리</li><li>회계기간관리</li><li>계정/비용항목관리</li><li>결재환경설정</li><li>검인/수신 라인관리</li><li>거래처관리</li><li>프로젝트 관리</li><li>출장기준관리</li><li>경조금기준관리</li></ul></div>
+              </div>
+              <div class="sf-ia__admin"><div class="sf-ia__admin-heading"><h4>시스템설정</h4><span>관리자 권한</span></div><ul><li>회사/사업장관리</li><li>부서관리</li><li>직위관리</li><li>직책관리</li><li>엑셀양식관리</li><li>권한관리</li><li>코스트센터관리</li><li>사용자관리</li><li>코드관리</li><li>메뉴관리</li></ul></div>
+              </div>
+            </div>
+          </section>
         </div>
         <div class="sf-img-block reveal">
-          <img src="images/main/syncflo/10.jpg" alt="SyncFlo 상세 화면 1" loading="lazy" />
+          <img id="syncflo-process" src="images/main/syncflo/10.jpg" alt="전자전표 작성부터 승인, 반려·재기안, 전표 확정과 ERP 전송까지의 유저 플로우" loading="lazy" />
         </div>
         <div class="sf-img-block reveal">
           <img src="images/main/syncflo/11.jpg" alt="SyncFlo 상세 화면 2" loading="lazy" />
@@ -437,9 +456,6 @@
               alt="증빙 수집부터 결재와 회계 연동까지 이어지는 SyncFlo 전자전표 업무 흐름"
               loading="lazy" />
           </div>
-          <figcaption>
-            증빙 수집부터 전표 작성, 결재와 회계 연동까지 — 하나의 흐름으로 연결한 SyncFlo
-          </figcaption>
         </figure>
       </div>
     </section>
@@ -564,6 +580,7 @@
       update();
     })();
   </script>
+  <script src="js/syncflo-ia.js"></script>
 </body>
 
 </html>
