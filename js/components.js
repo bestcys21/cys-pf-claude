@@ -10,11 +10,16 @@ class CommonHeader extends HTMLElement {
     const filename = window.location.pathname.split('/').pop();
     const isIndex = filename === 'index.html' || filename === '' || filename === '/';
     const base = isIndex ? '' : 'index.html';
+    // 로컬 작업 중에만 로고를 숨깁니다. 배포 주소에서는 자동으로 다시 표시됩니다.
+    const hideLocalLogo = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+    const logoMarkup = hideLocalLogo
+      ? '<span class="nav__logo nav__logo--local-hidden" aria-hidden="true"></span>'
+      : '<a href="index.html" class="nav__logo">CYS <span>Portfolio</span></a>';
 
     this.innerHTML = `
       <nav class="nav" role="navigation" aria-label="메인 네비게이션">
         <div class="nav__inner">
-          <a href="index.html" class="nav__logo">CYS <span>Portfolio</span></a>
+          ${logoMarkup}
           <div class="nav__menu" id="nav-menu">
             <a href="${base}#hero"    class="nav__link">HOME</a>
             <a href="${base}#works"   class="nav__link">WORKS</a>

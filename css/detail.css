@@ -2343,3 +2343,158 @@ body.is-detail-page:not(.syncflo-detail):not(.iljin-detail):not(.syncflo-ax-deta
   .ax-console__stage { min-height: auto; padding: 18px; }
   .ax-console__secondary { position: relative; right: auto; bottom: auto; width: 100%; margin-top: 18px; }
 }
+/* SyncFlo AX overview anchors clear the portfolio's fixed header. */
+.syncflo-ax-page .axp [id] {
+  scroll-margin-top: 88px;
+}
+
+/* AX 첫 화면은 제품 화면과 연결되는 어두운 톤으로 둡니다. */
+.syncflo-ax-page .axp .axp-hero__copy {
+  max-width: 1080px;
+  text-align: left;
+}
+.syncflo-ax-page .axp .axp-hero__title {
+  font-size: clamp(48px, 3.5vw, 64px);
+}
+.syncflo-ax-page .axp .axp-hero__title span {
+  background: none;
+  color: inherit;
+}
+.syncflo-ax-page .axp .axp-hero__bg { display: none; }
+.syncflo-ax-page .axp .axp-hero__video { display: none; }
+.syncflo-ax-page .axp .axp-hero.has-video .axp-hero__video {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: .4;
+  pointer-events: none;
+}
+.syncflo-ax-page .axp .axp-hero.has-video::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 21, 48, .52), rgba(11, 21, 48, .85));
+  pointer-events: none;
+}
+.syncflo-ax-page .axp .axp-hero.has-video > .axp-wrap { position: relative; z-index: 2; }
+@media (prefers-reduced-motion: reduce) {
+  .syncflo-ax-page .axp .axp-hero.has-video .axp-hero__video { display: none; }
+}
+.syncflo-ax-page .axp .axp-hero__lead {
+  max-width: 800px;
+}
+.syncflo-ax-page .axp .axp-hero {
+  padding-top: calc(var(--nav-height) + 40px);
+  padding-bottom: 64px;
+}
+.syncflo-ax-page .axp .axp-monitor {
+  position: relative;
+  max-width: 1120px;
+  margin: 28px auto 0;
+  padding: 13px 13px 19px;
+  border: 1px solid rgba(255, 255, 255, .17);
+  border-radius: 24px;
+  background: linear-gradient(145deg, #242b38, #10141c 72%);
+  box-shadow: 0 38px 90px -34px rgba(1, 7, 24, .9), inset 0 1px 0 rgba(255, 255, 255, .12);
+}
+.syncflo-ax-page .axp .axp-monitor__camera {
+  position: absolute;
+  z-index: 3;
+  top: 5px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #06080d;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, .08);
+  transform: translateX(-50%);
+}
+.syncflo-ax-page .axp .axp-monitor__stand {
+  position: absolute;
+  left: 50%;
+  bottom: -54px;
+  width: 104px;
+  height: 55px;
+  background: linear-gradient(90deg, #171c25, #343b48 50%, #151a22);
+  clip-path: polygon(20% 0, 80% 0, 100% 100%, 0 100%);
+  transform: translateX(-50%);
+}
+.syncflo-ax-page .axp .axp-monitor__foot {
+  position: absolute;
+  left: 50%;
+  bottom: -62px;
+  width: 250px;
+  height: 10px;
+  border-radius: 50% 50% 8px 8px;
+  background: linear-gradient(90deg, #11151c, #3a424f 50%, #11151c);
+  box-shadow: 0 12px 24px rgba(1, 7, 24, .5);
+  transform: translateX(-50%);
+}
+.syncflo-ax-page .axp .axp-app {
+  width: 100%;
+  max-width: none;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  margin: 0;
+  border-radius: 12px;
+  box-shadow: none;
+}
+.syncflo-ax-page .axp .sf-hero__tags { margin-top: 24px; }
+.syncflo-ax-page .axp .axp-sec { padding-block: 96px; }
+.syncflo-ax-page .axp .axp-ov__intro,
+.syncflo-ax-page .axp .axp-section-intro {
+  grid-template-columns: minmax(178px, 200px) minmax(0, 1fr);
+  column-gap: clamp(36px, 4vw, 60px);
+  margin-bottom: 56px;
+  text-align: left;
+}
+.syncflo-ax-page .axp .axp-ov__intro .sf-section__label,
+.syncflo-ax-page .axp .axp-section-intro .sf-section__label { color: var(--color-accent); }
+.syncflo-ax-page .axp .axp-ov__intro .sf-section__title,
+.syncflo-ax-page .axp .axp-section-intro .sf-section__title { margin-bottom: 24px; }
+.syncflo-ax-page .axp .axp-ov__intro .sf-section__body,
+.syncflo-ax-page .axp .axp-section-intro .sf-section__body { max-width: 880px; }
+.syncflo-ax-page .axp .axp-sec--navy .sf-section__label { color: #aebcff; }
+.syncflo-ax-page .axp .axp-sec--navy .sf-section__title { color: #fff; }
+.syncflo-ax-page .axp .axp-sec--navy .sf-section__body { color: rgba(255,255,255,.72); }
+.syncflo-ax-page .axp #axp-real .axp-section-intro { margin-bottom: 32px; }
+.syncflo-ax-page .axp #axp-real .axp-real { gap: 10px; }
+.syncflo-ax-page .axp #axp-real .axp-real__tabs,
+.syncflo-ax-page .axp #axp-real .axp-real__desc {
+  margin-left: calc(200px + clamp(36px, 4vw, 60px));
+}
+.syncflo-ax-page .axp #axp-real .axp-real__tabs { justify-content: flex-start; }
+.syncflo-ax-page .axp #axp-real .axp-real__desc { text-align: left; }
+.syncflo-ax-page .axp #axp-real .axp-real__frame { margin-top: 0; }
+@media (max-width: 850px) {
+  .syncflo-ax-page .axp .axp-ov__intro,
+  .syncflo-ax-page .axp .axp-section-intro { grid-template-columns: 1fr; gap: 10px; margin-bottom: 48px; }
+  .syncflo-ax-page .axp .axp-hero {
+    padding-top: calc(var(--nav-height) + 32px);
+    padding-bottom: 56px;
+  }
+  .syncflo-ax-page .axp .axp-monitor { margin: 22px auto 20px; padding: 7px; border-radius: 15px; }
+  .syncflo-ax-page .axp .axp-monitor__camera,
+  .syncflo-ax-page .axp .axp-monitor__stand,
+  .syncflo-ax-page .axp .axp-monitor__foot { display: none; }
+  .syncflo-ax-page .axp .axp-app { height: 560px; aspect-ratio: auto; border-radius: 10px; }
+  .syncflo-ax-page .axp .axp-sec { padding-block: 72px; }
+  .syncflo-ax-page .axp #axp-real .axp-real__tabs,
+  .syncflo-ax-page .axp #axp-real .axp-real__desc { margin-left: 0; }
+}
+.syncflo-ax-page .axp .sf-meta {
+  background: #182849;
+  border-top: 1px solid rgba(255, 255, 255, .16);
+}
+.syncflo-ax-page .axp .sf-meta__label { color: rgba(255, 255, 255, .62); }
+.syncflo-ax-page .axp .sf-meta__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 760px) {
+  .syncflo-ax-page .axp .sf-meta__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 460px) {
+  .syncflo-ax-page .axp .sf-meta__grid { grid-template-columns: 1fr; }
+}

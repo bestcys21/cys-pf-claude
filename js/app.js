@@ -1005,6 +1005,35 @@ function initHashPosition() {
   }, 180);
 }
 
+/* Main Works의 SyncFlo AX 화면은 보이는 동안에만 짧은 대화 연출을 재생합니다. */
+async function initAxWorkPreview() {
+  const card = qs('.project-card--ax');
+  if (!card) return;
+  try {
+    // 상세 Hero의 UI와 재생 코드를 공유하여 두 화면이 달라지지 않도록 합니다.
+    const response = await fetch('detail-syncflo-ax.html');
+    if (!response.ok) throw new Error('AX preview unavailable');
+    const page = new DOMParser().parseFromString(await response.text(), 'text/html');
+    const app = page.querySelector('#axpApp');
+    const icons = page.querySelector('.axp > svg');
+    if (!app || !icons) return;
+    const host = document.createElement('div');
+    host.className = 'project-card__ax-shared';
+    const frame = document.createElement('iframe');
+    frame.title = 'SyncFlo AX 질문 입력, 자료 확인 및 답변 생성';
+    frame.tabIndex = -1;
+    const base = new URL('.', location.href).href;
+    frame.srcdoc = `<!doctype html><html lang="ko"><head><base href="${base}"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/axp.css"><style>html,body{margin:0;overflow:hidden;background:white}.axp{margin:0;padding:0}.axp .axp-app{width:1000px;max-width:none;height:625px;margin:0;border-radius:0;box-shadow:none}.axp-app__scroll{overflow:auto}</style></head><body><div class="axp">${icons.outerHTML}${app.outerHTML}</div><script src="js/axp.js"><\/script></body></html>`;
+    host.append(frame);
+    qs('.project-card__ax-chat', card).replaceWith(host);
+    const resize = () => { frame.style.transform = `scale(${host.clientWidth / 1000})`; };
+    new ResizeObserver(resize).observe(host);
+    resize();
+  } catch (error) {
+    console.warn('AX preview:', error);
+  }
+}
+
 /* ──────────────────────────────────────────
    SECTION LINE DRAW
 ────────────────────────────────────────── */
@@ -1035,6 +1064,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroTilt();
   initVisualParallax();
   initMainWorksStack();
+  initAxWorkPreview();
   initContactParallax();
   initDetailMotion();
   initScrollSkew();

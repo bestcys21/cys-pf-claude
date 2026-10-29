@@ -1,363 +1,561 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>기업 업무 연결형 AI — SyncFlo AX</title>
   <script src="js/head.js"></script>
-  <meta name="description" content="사내 업무 도구를 AI로 연결하는 SyncFlo AX의 UI/UX 디자인 및 프론트엔드 프로토타입" />
-  <title>SyncFlo AX — Internal AI Work Assistant</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/detail.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="css/axp.css?v=20261029-brand">
 </head>
-<body class="syncflo-ax-detail syncflo-detail">
+<body class="syncflo-ax-page is-detail-page">
   <common-header></common-header>
+<!-- ===================== SyncFlo AX 섹션 시작 (여기부터 복사) ===================== -->
+<section class="axp" id="axp" aria-label="SyncFlo AX 프로젝트">
 
-  <main>
-    <section class="sf-hero">
-      <div class="container sf-hero__top">
-        <p class="sf-hero__kicker anim-enter anim-enter-1">사내 AI 업무 어시스턴트</p>
-        <h1 class="sf-hero__title anim-enter anim-enter-2">SyncFlo AX</h1>
-        <p class="sf-hero__desc anim-enter anim-enter-3">
-          외부 AI 사용 비용과 정보 유출 부담은 줄이고,<br />
-          회계·메일·일정 같은 사내 업무를 대화로 연결하는 AI 서비스입니다.
-        </p>
-        <div class="sf-hero__tags anim-enter anim-enter-4">
-          <span class="badge badge--accent">Internal Concept</span>
-          <span class="badge badge--default">UX/UI Design</span>
-          <span class="badge badge--default">Nuxt · Vue</span>
-          <span class="badge badge--default">Work in Progress</span>
+  <!-- 아이콘 모음 (이 섹션 안에서만 사용) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="axp-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="axp-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="axp-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="axp-book" viewBox="0 0 24 24"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></symbol>
+    <symbol id="axp-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+    <symbol id="axp-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
+    <symbol id="axp-image" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.09-3.09a2 2 0 0 0-2.82 0L6 21"/></symbol>
+    <symbol id="axp-calendar" viewBox="0 0 24 24"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+    <symbol id="axp-chart" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+    <symbol id="axp-bot" viewBox="0 0 24 24"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></symbol>
+    <symbol id="axp-user-check" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m16 11 2 2 4-4"/></symbol>
+    <symbol id="axp-stamp" viewBox="0 0 24 24"><path d="M5 22h14"/><path d="M19.27 13.73A2.5 2.5 0 0 0 17.5 13h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-1.5c0-.66-.26-1.3-.73-1.77Z"/><path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-6 0c0 2 1 2 1 3.5V13"/></symbol>
+    <symbol id="axp-circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="axp-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="axp-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+    <symbol id="axp-building" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/></symbol>
+    <symbol id="axp-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="axp-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></symbol>
+    <symbol id="axp-table" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></symbol>
+    <symbol id="axp-history" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M12 7v5l4 2"/></symbol>
+    <symbol id="axp-clip" viewBox="0 0 24 24"><path d="m21.44 11.05-9.19 9.19a6 6 0 0 1-8.49-8.49l8.57-8.57A4 4 0 1 1 18 8.84l-8.59 8.57a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+    <symbol id="axp-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="axp-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="axp-pen" viewBox="0 0 24 24"><path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.375 2.625a1 1 0 0 1 3 3l-9.013 9.014a2 2 0 0 1-.853.505l-2.873.84a.5.5 0 0 1-.62-.62l.84-2.873a2 2 0 0 1 .506-.852z"/></symbol>
+    <symbol id="axp-plug" viewBox="0 0 24 24"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></symbol>
+    <symbol id="axp-expand" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="m21 3-7 7"/><path d="m3 21 7-7"/></symbol>
+    <symbol id="axp-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="axp-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+    <symbol id="axp-chevrons" viewBox="0 0 24 24"><path d="m6 17 5-5-5-5"/><path d="m13 17 5-5-5-5"/></symbol>
+  </svg>
+
+  <!-- 0. 히어로 : 대표 화면 ======================================================= -->
+  <header class="axp-hero">
+    <video class="axp-hero__video" data-src="images/ax/hero-preview-compressed.mp4" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="axp-hero__bg" aria-hidden="true"></div>
+    <div class="axp-wrap">
+      <div class="axp-hero__copy">
+        <p class="axp-hero__eyebrow axp-rv">전자전표에서 시작한 AX 프로젝트</p>
+        <h1 class="axp-hero__title axp-rv">기업 업무 연결형 AI <span>- SyncFlo AX</span></h1>
+        <p class="axp-hero__lead axp-rv">기존 업무 시스템을 바꾸지 않고 SyncFlo와 사내 문서·업무 도구를 한곳에서 연결하는 프로젝트입니다. 현재는 전자전표 기반 회계 업무부터 구현하고 있습니다.</p>
+        <div class="sf-hero__tags axp-rv">
+          <span class="badge badge--accent">B2B 업무 AI</span>
+          <span class="badge badge--default">Web</span>
+          <span class="badge badge--default">UI 디자인</span>
+          <span class="badge badge--default">프로토타입</span>
         </div>
       </div>
-      <div class="container">
-        <div class="sf-cover ax-cover anim-enter anim-enter-5">
-          <img src="images/main/syncflo-ax/assistant-home.png"
-            alt="SyncFlo AI 업무 어시스턴트 시작 화면" loading="eager" />
+
+      <div class="axp-monitor axp-rv" aria-label="모니터에 표시된 SyncFlo AX 화면">
+        <span class="axp-monitor__camera" aria-hidden="true"></span>
+        <div class="axp-app" id="axpApp" aria-label="SyncFlo AX 대화 화면 예시">
+        <aside class="axp-app__side">
+          <div class="axp-app__brand"><span class="axp-app__logo">S</span><p>SyncFlo AX<small>온프레미스 업무 AI</small></p></div>
+          <ul class="axp-app__menu">
+            <li><svg class="axp-i"><use href="#axp-pen"/></svg>새 대화</li>
+            <li><svg class="axp-i"><use href="#axp-search"/></svg>대화 검색</li>
+          </ul>
+          <p class="axp-app__group">대화</p>
+          <ul class="axp-app__hist">
+            <li>9월 출장비 정산 문의</li>
+            <li>문구점 영수증 처리</li>
+            <li class="axp-step is-on" data-s="hist1">거래처 식사비 계정과목</li>
+          </ul>
+          <div class="axp-app__user"><span>김</span><p>김재무<small>재무팀</small></p></div>
+        </aside>
+        <div class="axp-app__main">
+          <div class="axp-app__top"><p><b>업무 챗</b><span class="axp-app__chip"><svg class="axp-i"><use href="#axp-plug"/></svg>MCP: 네이버웍스</span></p><span class="axp-app__chip axp-app__chip--safe"><svg class="axp-i"><use href="#axp-shield"/></svg>온프레미스 · 외부전송 없음</span></div>
+          <div class="axp-app__scroll">
+            <div class="axp-app__thread">
+              <div class="axp-app__welcome" aria-hidden="true"><strong>회계 업무, 무엇이 궁금하신가요?</strong><span>규정 확인 · 계정과목 · 전표 초안</span></div>
+              <!-- 질문 1 -->
+              <div class="axp-q axp-step" data-s="q1"><p class="axp-q__bubble">3월에 거래처 식사비 결제한 건, 계정과목 뭘로 잡아야 해?</p></div>
+              <!-- 답변 1 -->
+              <div class="axp-a axp-step" data-s="a1">
+                <span class="axp-a__av">AI</span>
+                <div class="axp-a__body">
+                  <ul class="axp-tools">
+                    <li class="axp-step"><i></i>사내 경비 규정 검색<em>사규 제12조</em></li>
+                    <li class="axp-step"><i></i>유사 과거 전표 조회<em>5건</em></li>
+                    <li class="axp-step"><i></i>계정과목 판단<em>전자전표 데이터</em></li>
+                  </ul>
+                  <p class="axp-a__text axp-step">거래처 식사비는 <b>접대비(판매비와관리비)</b>로 처리하면 돼요. 직원끼리 먹은 거라면 복리후생비인데, 이번 건은 거래처 접대라 접대비예요.</p>
+                  <div class="axp-rcard axp-step">
+                    <div class="axp-rcard__head"><b>계정과목 추천</b><span class="axp-rcard__badge">신뢰도 <em data-count="88">88</em>%</span></div>
+                    <dl><div><dt>추천 계정과목</dt><dd>접대비</dd></div><div><dt>구분</dt><dd>판매비와관리비</dd></div></dl>
+                    <p class="axp-rcard__ref"><svg class="axp-i"><use href="#axp-book"/></svg>근거: 사규 제12조 접대비 처리 기준 · 유사 과거 전표 5건</p>
+                  </div>
+                  <p class="axp-a__note axp-step"><svg class="axp-i"><use href="#axp-alert"/></svg>3만 원이 넘으면 세금계산서나 카드전표를 꼭 보관해야 해요.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="axp-app__input">
+            <div class="axp-app__field"><span class="axp-app__ph">메시지를 입력하세요</span><span class="axp-app__typed"></span></div>
+            <div class="axp-app__bar"><svg class="axp-i"><use href="#axp-clip"/></svg><span class="axp-app__send"><svg class="axp-i"><use href="#axp-arrow-up"/></svg></span></div>
+          </div>
+          <p class="axp-app__disc">AI가 만든 전표는 담당자 확인 후 최종 등록됩니다.</p>
+        </div>
         </div>
       </div>
-    </section>
-
-    <section class="sf-meta">
-      <div class="container">
-        <div class="sf-meta__grid">
-          <div class="sf-meta__item">
-            <div class="sf-meta__label">제품명</div>
-            <div class="sf-meta__value">SyncFlo AX<br />사내 AI 업무 어시스턴트</div>
-          </div>
-          <div class="sf-meta__item">
-            <div class="sf-meta__label">진행 상태</div>
-            <div class="sf-meta__value">화면 검토용<br />시안 구현</div>
-          </div>
-          <div class="sf-meta__item">
-            <div class="sf-meta__label">역할</div>
-            <div class="sf-meta__value">UX/UI 디자인<br />화면 설계 · 구현</div>
-          </div>
-          <div class="sf-meta__item">
-            <div class="sf-meta__label">플랫폼</div>
-            <div class="sf-meta__value">Web<br />User · Admin</div>
-          </div>
-          <div class="sf-meta__item">
-            <div class="sf-meta__label">사용 기술</div>
-            <div class="sf-meta__value">Nuxt 4 · Vue 3<br />Tailwind CSS</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container">
-      <section id="sec-01" class="ax-section reveal">
-        <div class="ax-section__content">
-          <p class="sf-section__label">01 — 프로젝트 배경</p>
-          <h2 class="sf-section__title">외부 AI 비용은 줄이고, 흩어진 사내 업무는 하나로 연결해야 했습니다</h2>
-          <p class="sf-section__body">
-            외부 AI 서비스를 계속 사용하면 비용이 커지고, 회사 자료를 외부로 보내기 어렵다는 문제가 있습니다.
-            동시에 직원들은 규정을 찾고 전표를 작성한 뒤, 다시 메일이나 일정 화면으로 이동하며 같은 내용을 반복해서 입력해야 했습니다.
-            이 프로젝트는 회사 내부에서 사용할 수 있는 AI 환경을 만들고, 여러 사내 도구를 하나의 대화 안에서 이어 쓰는 방식을 화면으로 구현한 작업입니다.
-          </p>
-
-          <div class="ax-friction" aria-label="기존 업무 흐름">
-            <span>외부 AI 비용</span><i></i>
-            <span>사내 자료 보호</span><i></i>
-            <span>시스템별 반복 입력</span><i></i>
-            <span>수작업 확인</span>
-          </div>
-
-          <div class="ax-question">
-            <span>프로젝트 목표</span>
-            <p>회사 안에서 안전하게 운영하면서, 필요한 업무 도구를 계속 연결해 나갈 수 있는 사내 AI 화면을 만드는 것</p>
-          </div>
-        </div>
-      </section>
-
-      <section id="sec-02" class="ax-section ax-section--tint reveal">
-        <div class="ax-section__content">
-          <p class="sf-section__label">02 — 화면 설계 원칙</p>
-          <h2 class="sf-section__title">AI의 답을 그대로 믿지 않아도 되도록 확인 과정을 화면에 담았습니다</h2>
-          <p class="sf-section__body">
-            익숙한 채팅 화면을 사용하되, AI가 어떤 자료를 참고했는지와 결과가 얼마나 확실한지 함께 보여줍니다.
-            전표 등록이나 메일 발송처럼 중요한 업무는 사용자가 내용을 확인한 뒤 최종 실행하도록 구성했습니다.
-          </p>
-
-          <div class="ax-principles">
-            <article>
-              <span class="ax-principles__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M7 3.5h7l3 3V20H7zM14 3.5V7h3M9.5 11h5M9.5 14.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <h3>참고한 자료 함께 보기</h3>
-              <p>답변과 함께 사내 규정이나 과거 전표를 보여주어 사용자가 직접 확인할 수 있습니다.</p>
-            </article>
-            <article>
-              <span class="ax-principles__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M5 16.5a7 7 0 1 1 14 0M12 12l3-3M8 18h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <h3>확실하지 않은 결과 표시</h3>
-              <p>영수증 인식이나 추천 결과가 불확실하면 자동 처리하지 않고 확인이 필요하다고 알려줍니다.</p>
-            </article>
-            <article>
-              <span class="ax-principles__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s7-3.5 7-9.5V5.7L12 3 5 5.7v5.8C5 17.5 12 21 12 21Z M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <h3>최종 결정은 사람이</h3>
-              <p>AI는 전표나 메일의 초안을 만들고, 실제 등록과 발송은 사용자가 결정합니다.</p>
-            </article>
-            <article>
-              <span class="ax-principles__icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M8.5 8.5 6.7 6.7a3 3 0 0 0-4.2 4.2l3 3a3 3 0 0 0 4.2 0l1.3-1.3M15.5 15.5l1.8 1.8a3 3 0 0 0 4.2-4.2l-3-3a3 3 0 0 0-4.2 0L13 11.4M8 16l8-8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <h3>다음 업무까지 이어서</h3>
-              <p>전표 처리 후 같은 내용으로 회의 일정을 만드는 등 업무를 다시 설명하는 과정을 줄입니다.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section id="sec-03" class="ax-section reveal">
-        <div class="ax-section__content">
-          <p class="sf-section__label">03 — 대표 시나리오</p>
-          <h2 class="sf-section__title">영수증 한 장에서 전표와 일정까지 이어집니다</h2>
-          <p class="sf-section__body">
-            한 번의 명령으로 모든 것을 자동 실행하지 않습니다. 단계마다 시스템의 상태와
-            판단 근거를 보여주고, 중요한 행동 전에는 사용자의 확인을 요청합니다.
-          </p>
-
-          <ol class="ax-flow">
-            <li><span>01</span><strong>영수증 첨부</strong><p>이미지를 대화창에 올립니다</p></li>
-            <li><span>02</span><strong>내용 자동 인식</strong><p>상호·날짜·금액을 읽습니다</p></li>
-            <li><span>03</span><strong>항목 추천</strong><p>알맞은 회계 항목을 제안합니다</p></li>
-            <li><span>04</span><strong>내용 확인</strong><p>사용자가 수정하고 확정합니다</p></li>
-            <li><span>05</span><strong>다음 업무 연결</strong><p>같은 내용으로 일정을 만듭니다</p></li>
-          </ol>
-
-          <article class="ax-feature reveal">
-            <div class="ax-feature__visual">
-              <div class="ax-browser">
-                <div class="ax-browser__bar"><i></i><i></i><i></i><span>SyncFlo AI · 영수증 처리</span></div>
-                <img src="images/main/syncflo-ax/receipt-flow.png"
-                  alt="영수증 인식 결과를 수정하고 전표 반영 여부를 확인하는 대화 화면" loading="lazy" />
-              </div>
-              <span class="ax-callout ax-callout--ocr">영수증 내용 자동 인식</span>
-              <span class="ax-callout ax-callout--confidence">결과의 정확도 표시</span>
-              <span class="ax-callout ax-callout--confirm">사용자 최종 확정</span>
-            </div>
-            <div class="ax-feature__copy">
-              <span>01 / 영수증에서 전표까지</span>
-              <h3>인식 결과를 확인하고 전표 초안으로 연결합니다</h3>
-              <p>AI가 영수증에서 정보를 추출해도 곧바로 등록하지 않습니다. 사용자는 대화 안에서 값을 수정하고, 신뢰도를 확인한 뒤 저장합니다.</p>
-              <ul>
-                <li>자동으로 읽은 내용을 직접 수정</li>
-                <li>확실하지 않은 항목을 따로 확인</li>
-                <li>확정 전 등록 결과 안내</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="ax-feature ax-feature--reverse reveal">
-            <div class="ax-feature__visual">
-              <div class="ax-browser">
-                <div class="ax-browser__bar"><i></i><i></i><i></i><span>SyncFlo AI · Account guide</span></div>
-                <img src="images/main/syncflo-ax/account-guide.png"
-                  alt="사내 규정 근거와 신뢰도를 포함한 계정과목 추천 화면" loading="lazy" />
-              </div>
-              <span class="ax-callout ax-callout--source">참고한 사내 자료</span>
-              <span class="ax-callout ax-callout--warning">증빙 유의사항</span>
-            </div>
-            <div class="ax-feature__copy">
-              <span>02 / 근거를 확인할 수 있는 답변</span>
-              <h3>추천 결과보다 판단 근거를 먼저 보여줍니다</h3>
-              <p>계정과목만 답하는 대신 어떤 사내 규정과 과거 전표를 참고했는지 표시해, 사용자가 결과를 검토할 수 있도록 구성했습니다.</p>
-              <ul>
-                <li>참고한 사내 자료 표시</li>
-                <li>추천 결과의 정확도 제공</li>
-                <li>필요 증빙과 예외 조건 안내</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section id="sec-04" class="ax-section ax-section--dark reveal">
-        <div class="ax-section__content">
-          <p class="sf-section__label">04 — 확장 구조</p>
-          <h2 class="sf-section__title">회계에서 시작해 메일·일정·개발 업무까지 연결할 수 있습니다</h2>
-          <p class="sf-section__body">
-            SyncFlo AX는 하나의 기능만 사용하는 AI가 아니라, 회사에서 이미 쓰고 있는 여러 서비스를 계속 연결할 수 있도록 만든 구조입니다.
-            현재는 회계와 네이버웍스 업무를 중심으로 구성했고, 이후 ERP나 Jira처럼 연결 기능을 제공하는 서비스도 추가할 수 있습니다.
-            화면에서는 사용자가 어떤 도구를 이용하고 있는지와 실행 전 확인할 내용을 쉽게 알 수 있도록 정리했습니다.
-          </p>
-
-          <div class="ax-architecture">
-            <div class="ax-architecture__user">사용자 요청</div>
-            <div class="ax-architecture__core">
-              <small>사내 AI 업무 연결</small>
-              <strong>SyncFlo AX</strong>
-              <span>사내 자료 찾기 · 업무 연결 · 결과 확인</span>
-            </div>
-            <div class="ax-architecture__services">
-              <div><span>현재 연결</span><strong>회계</strong><small>전표 · 규정 · 영수증 인식</small></div>
-              <div><span>현재 연결</span><strong>네이버웍스</strong><small>메일 · 일정 · 게시판</small></div>
-              <div><span>연결 예정</span><strong>ERP</strong><small>회사 정보 · 업무 조회</small></div>
-              <div><span>연결 예정</span><strong>Jira</strong><small>개발 요청 · 검토 · 배포</small></div>
-            </div>
-            <div class="ax-architecture__confirm">사용자 최종 확정</div>
-          </div>
-        </div>
-      </section>
-
-      <section id="sec-05" class="ax-section reveal">
-        <div class="ax-section__content">
-          <p class="sf-section__label">05 — 관리자 경험</p>
-          <h2 class="sf-section__title">AI가 처리한 업무와 확인이 필요한 내용을 관리자가 한눈에 봅니다</h2>
-          <p class="sf-section__body">
-            일반 직원은 대화 화면에서 업무를 처리하고, 관리자는 별도 화면에서 처리 현황과 확인이 필요한 결과를 살펴봅니다.
-            어떤 사내 도구가 연결되어 있는지, AI가 참고할 회사 자료가 준비되어 있는지도 같은 화면에서 관리할 수 있도록 구분했습니다.
-          </p>
-
-          <div class="ax-console reveal">
-            <div class="ax-console__stage">
-              <div class="ax-console__primary">
-                <div class="ax-browser__bar"><i></i><i></i><i></i><span>Admin · Overview</span></div>
-                <img src="images/main/syncflo-ax/admin-dashboard.png"
-                  alt="AI 처리 현황과 확인이 필요한 업무를 보여주는 관리자 대시보드" loading="lazy" />
-              </div>
-              <div class="ax-console__secondary">
-                <div class="ax-browser__bar"><i></i><i></i><i></i><span>AI & company data</span></div>
-                <img src="images/main/syncflo-ax/admin-settings.png"
-                  alt="사용할 AI와 사내 참고 자료를 관리하는 관리자 화면" loading="lazy" />
-              </div>
-              <span class="ax-console__tag ax-console__tag--queue">확인이 필요한 업무</span>
-              <span class="ax-console__tag ax-console__tag--model">AI·사내 자료 설정</span>
-            </div>
-            <div class="ax-console__notes">
-              <div><span>01</span><strong>확인할 업무</strong><p>AI가 확신하지 못한 결과를 담당자가 다시 확인합니다.</p></div>
-              <div><span>02</span><strong>AI와 사내 자료</strong><p>사용 중인 AI와 참고할 회사 자료의 준비 상태를 확인합니다.</p></div>
-              <div><span>03</span><strong>연결된 업무 도구</strong><p>회계·그룹웨어 등 현재 사용할 수 있는 도구를 관리합니다.</p></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="sec-06" class="ax-section ax-section--build reveal">
-        <div class="ax-section__content">
-          <p class="sf-section__label">06 — 프로토타이핑</p>
-          <h2 class="sf-section__title">요구사항을 실제로 확인할 수 있는 화면으로 구현했습니다</h2>
-          <p class="sf-section__body">
-            전달받은 요구사항을 바탕으로 일반 사용자와 관리자가 필요한 화면을 나누고, 각 기능의 배치와 사용 흐름을 설계했습니다.
-            디자인한 화면은 AI 개발 도구를 활용해 Nuxt·Vue 기반의 반응형 프로토타입으로 구현했으며,
-            생성된 코드를 직접 확인하고 수정하면서 실제 화면에서 동작을 검토했습니다.
-          </p>
-
-          <div class="ax-build-list">
-            <span>요구사항 기반 화면 구성</span>
-            <span>사용자·관리자 화면 설계</span>
-            <span>사내 디자인 시스템 활용</span>
-            <span>Nuxt · Vue 화면 구현</span>
-            <span>AI 생성 코드 검토·수정</span>
-          </div>
-
-          <figure class="ax-screen ax-screen--wide reveal">
-            <img src="images/main/syncflo-ax/assistant-home.png"
-              alt="업무 예시 질문과 연결된 사내 도구를 보여주는 SyncFlo AI 시작 화면" loading="lazy" />
-            <figcaption>
-              <span>현재 화면 시안</span>
-              <p>익숙한 진입 경험은 유지하되, 연결 도구와 업무 범위를 명확히 안내합니다.</p>
-            </figcaption>
-          </figure>
-        </div>
-      </section>
-
-      <section id="sec-07" class="ax-section ax-section--closing reveal">
-        <div class="ax-section__content">
-          <p class="sf-section__label">07 — 현재 상태</p>
-          <h2 class="sf-section__title">사내 AI를 실제 업무에 적용하기 위한 화면을 검토하고 있습니다</h2>
-          <p class="sf-section__body">
-            현재는 실제 업무 자료 대신 예시 데이터로 화면과 사용 흐름을 확인하는 단계입니다.
-            회사 내부에서 AI를 운영하는 환경과 각 업무 도구의 연결 작업은 개발팀에서 별도로 진행하고 있으며,
-            연결 범위와 화면은 검토 결과에 따라 달라질 수 있습니다.
-          </p>
-          <div class="ax-next">
-            <div><span>현재</span><strong>회계 + 그룹웨어</strong><p>전표 처리와 일정 연결 화면 검토</p></div>
-            <div><span>향후</span><strong>ERP + 개발 업무</strong><p>연결할 사내 도구와 사용자별 화면 확대</p></div>
-          </div>
-        </div>
-      </section>
     </div>
-  </main>
+  </header>
 
-  <div class="sf-nav">
+  <div class="sf-meta" aria-label="SyncFlo AX 프로젝트 정보">
     <div class="container">
-      <div class="sf-nav__inner">
-        <a href="index.html#works" class="sf-nav__item">
-          <div class="sf-nav__dir">← 목록으로</div>
-          <div class="sf-nav__name">작업물 전체 보기</div>
-          <div class="sf-nav__type">포트폴리오 메인</div>
-        </a>
-        <a href="detail-syncflo.html" class="sf-nav__item sf-nav__item--next">
-          <div class="sf-nav__dir">관련 프로젝트 →</div>
-          <div class="sf-nav__name">SyncFlo Accounting</div>
-          <div class="sf-nav__type">전자전표 솔루션 · Web/Mobile</div>
-        </a>
+      <div class="sf-meta__grid">
+        <div class="sf-meta__item"><div class="sf-meta__label">제품명</div><div class="sf-meta__value">기업 업무 연결형 AI<br>SyncFlo AX</div></div>
+        <div class="sf-meta__item"><div class="sf-meta__label">역할</div><div class="sf-meta__value">UI 디자인<br>화면 프로토타입</div></div>
+        <div class="sf-meta__item"><div class="sf-meta__label">플랫폼</div><div class="sf-meta__value">Web</div></div>
+        <div class="sf-meta__item"><div class="sf-meta__label">진행 상태</div><div class="sf-meta__value">회계 영역 우선 구현<br>다른 솔루션 연계 검토</div></div>
       </div>
     </div>
   </div>
 
-  <common-footer></common-footer>
+  <!-- 개요 : 처음 보는 사람을 위한 안내 (배경 · 인사이트 · 방향 · 역할 · 용어 · 목차) ================================== -->
+  <section class="axp-sec axp-ov" id="axp-overview" aria-label="프로젝트 개요">
+    <div class="axp-wrap">
+      <div class="sf-2col axp-ov__intro axp-rv">
+        <div class="sf-section__label">프로젝트 개요</div>
+        <div>
+          <h2 class="sf-section__title">전자전표에서 시작한 업무 연결 프로젝트</h2>
+          <p class="sf-section__body">SyncFlo의 카드 내역, 세금계산서, 전표 업무에서 반복되는 확인과 입력을 먼저 줄이고, 검증한 방식을 다른 사내 업무로 넓히는 프로젝트입니다.</p>
+          <a class="axp-ov__related" href="detail-syncflo.html"> 전자전표 솔루션 먼저 보기<svg class="axp-i" aria-hidden="true"><use href="#axp-arrow-right"/></svg></a>
+        </div>
+      </div>
+      <div class="axp-ov__flow">
+        <article class="axp-ov__card axp-rv">
+          <p class="axp-ov__k">BACKGROUND · 배경</p>
+          <h3>SyncFlo 전자전표</h3>
+          <p>전표와 증빙은 SyncFlo에, 규정과 문의 내역은 다른 문서와 도구에 나뉘어 있었습니다.</p>
+        </article>
+        <span class="axp-ov__arrow" aria-hidden="true"><svg class="axp-i"><use href="#axp-arrow-right"/></svg></span>
+        <article class="axp-ov__card axp-rv">
+          <p class="axp-ov__k">TEAM INSIGHT · 인사이트</p>
+          <h3>업무마다 화면을 오갔다</h3>
+          <p>규정 찾기, 영수증 입력, 계정과목 판단을 위해 여러 자료와 담당자를 확인해야 했습니다.</p>
+        </article>
+        <span class="axp-ov__arrow" aria-hidden="true"><svg class="axp-i"><use href="#axp-arrow-right"/></svg></span>
+        <article class="axp-ov__card axp-rv">
+          <p class="axp-ov__k">DIRECTION · 방향</p>
+          <h3>회계부터 연결</h3>
+          <p>범위가 명확한 회계 업무로 먼저 검증하고, 같은 방식을 다른 사내 업무로 확장합니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-  <nav class="snav" id="sectionNav" aria-label="프로젝트 섹션">
-    <div class="snav__track"></div>
-    <ul>
-      <li class="snav__item" data-target="sec-01"><button class="snav__btn" aria-label="01 프로젝트 배경"><span class="snav__dot"></span><span class="snav__label"><span class="snav__num">01</span>배경</span></button></li>
-      <li class="snav__item" data-target="sec-02"><button class="snav__btn" aria-label="02 UX 원칙"><span class="snav__dot"></span><span class="snav__label"><span class="snav__num">02</span>UX 원칙</span></button></li>
-      <li class="snav__item" data-target="sec-03"><button class="snav__btn" aria-label="03 대표 흐름"><span class="snav__dot"></span><span class="snav__label"><span class="snav__num">03</span>대표 흐름</span></button></li>
-      <li class="snav__item" data-target="sec-04"><button class="snav__btn" aria-label="04 확장 구조"><span class="snav__dot"></span><span class="snav__label"><span class="snav__num">04</span>확장 구조</span></button></li>
-      <li class="snav__item" data-target="sec-05"><button class="snav__btn" aria-label="05 관리자 경험"><span class="snav__dot"></span><span class="snav__label"><span class="snav__num">05</span>관리자 경험</span></button></li>
-      <li class="snav__item" data-target="sec-06"><button class="snav__btn" aria-label="06 프로토타이핑"><span class="snav__dot"></span><span class="snav__label"><span class="snav__num">06</span>프로토타이핑</span></button></li>
-      <li class="snav__item" data-target="sec-07"><button class="snav__btn" aria-label="07 현재 상태"><span class="snav__dot"></span><span class="snav__label"><span class="snav__num">07</span>현재 상태</span></button></li>
+  <!-- 출발점 =================================================================== -->
+  <section class="axp-sec axp-sec--paper" id="axp-c1" aria-label="출발점">
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">출발점</div>
+        <div>
+          <h2 class="sf-section__title">전자전표를 써도 남아 있던 일</h2>
+          <p class="sf-section__body">규정은 문서에서 찾고, 전표는 SyncFlo에서 확인하고, 모르는 내용은 담당자에게 물어야 했습니다. 같은 업무 안에서도 여러 화면과 자료를 오가는 시간이 반복됐습니다.</p>
+        </div>
+      </div>
+      <div class="axp-pains">
+        <article class="axp-pain axp-rv">
+          <span class="axp-pain__ic"><svg class="axp-i"><use href="#axp-book"/></svg></span>
+          <h3>규정 찾기</h3>
+          <p>출장비 한도나 접대비 기준을 보려면 사규 문서를 직접 찾아봐야 했습니다.</p>
+          <dl class="axp-pain__ba"><div><dt>AS-IS</dt><dd>사규 PDF 검색, 회계팀 문의</dd></div><div><dt>TO-BE</dt><dd>물어보면 조항까지 알려 줌</dd></div></dl>
+        </article>
+        <article class="axp-pain axp-rv">
+          <span class="axp-pain__ic"><svg class="axp-i"><use href="#axp-receipt"/></svg></span>
+          <h3>영수증 입력</h3>
+          <p>영수증의 상호, 날짜, 금액을 전표 화면에 하나씩 옮겨 적었습니다.</p>
+          <dl class="axp-pain__ba"><div><dt>AS-IS</dt><dd>직접 입력</dd></div><div><dt>TO-BE</dt><dd>사진을 올리면 전표 초안 작성</dd></div></dl>
+        </article>
+        <article class="axp-pain axp-rv">
+          <span class="axp-pain__ic"><svg class="axp-i"><use href="#axp-table"/></svg></span>
+          <h3>계정과목 판단</h3>
+          <p>접대비인지 복리후생비인지 헷갈릴 때마다 회계팀에 묻거나 예전 전표를 찾아봤습니다.</p>
+          <dl class="axp-pain__ba"><div><dt>AS-IS</dt><dd>담당자 경험에 의존</dd></div><div><dt>TO-BE</dt><dd>근거와 함께 추천</dd></div></dl>
+        </article>
+      </div>
+      <p class="axp-statement" id="axpStatement">첫 적용 범위는 회계로 좁히고, <span class="acc">해결 방식은 기존 시스템과 자료를 연결하는 구조로 잡았습니다.</span></p>
+    </div>
+  </section>
+
+  <!-- 접근 : 연결 ========================================================= -->
+  <section class="axp-sec axp-sec--navy" id="axp-c2" aria-label="접근">
+    <div class="axp-connect__bg" aria-hidden="true"><i class="g1"></i><i class="g2"></i></div>
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">접근</div>
+        <div>
+          <h2 class="sf-section__title">기존 시스템을 유지한 채 하나의 업무창구로 연결</h2>
+          <p class="sf-section__body">새 시스템으로 교체하는 대신 SyncFlo와 사내 자료를 연결했습니다. 사용자는 한 화면에서 필요한 정보를 묻고, 자신의 권한 안에서 다음 업무의 초안을 만들 수 있습니다.</p>
+        </div>
+      </div>
+      <div class="axp-dia" id="axpDia">
+        <ul class="axp-dia__sys">
+          <li><span class="axp-dia__ic"><svg class="axp-i"><use href="#axp-receipt"/></svg></span>전자전표<small>전표 · 증빙</small></li>
+          <li><span class="axp-dia__ic"><svg class="axp-i"><use href="#axp-history"/></svg></span>과거 전표<small>학습 데이터</small></li>
+          <li><span class="axp-dia__ic"><svg class="axp-i"><use href="#axp-book"/></svg></span>사내 규정<small>사규 · 매뉴얼</small></li>
+          <li><span class="axp-dia__ic"><svg class="axp-i"><use href="#axp-msg"/></svg></span>네이버웍스<small>MCP · 메신저</small></li>
+          <li><span class="axp-dia__ic"><svg class="axp-i"><use href="#axp-building"/></svg></span>ERP<small>구매 · 재무 데이터</small></li>
+          <li><span class="axp-dia__ic"><svg class="axp-i"><use href="#axp-table"/></svg></span>MES<small>생산 · 품질 데이터</small></li>
+        </ul>
+        <svg class="axp-dia__svg" viewBox="0 0 600 384" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <linearGradient id="axpLinkGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="600" y2="0">
+              <stop offset="0" stop-color="#2F6BFF" stop-opacity=".35"/>
+              <stop offset=".55" stop-color="#2F6BFF"/>
+              <stop offset="1" stop-color="#6E4BEA"/>
+            </linearGradient>
+          </defs>
+          <g class="axp-dia__base"></g>
+          <g class="axp-dia__line"></g>
+          <g class="axp-dia__flow"></g>
+          <circle class="axp-dia__dot" cx="596" cy="192" r="6"/>
+        </svg>
+        <div class="axp-dia__hub">
+          <img class="axp-dia__logo" src="images/ax/logo-ax-white.png" alt="SyncFlo AX">
+          <p>사내 자료 조회 · 업무 초안 작성 · 시스템 연결</p>
+          <ul><li>사내 자료 참고</li><li>문서 인식</li><li>MCP 연결</li><li>권한 기반 처리</li></ul>
+        </div>
+      </div>
+      <p class="sf-section__body axp-dia__note axp-rv">현재 프로토타입은 전자전표와 사내 규정을 중심으로 구현했습니다. 그룹웨어와 ERP·MES 연결은 이 구조를 확장할 다음 단계입니다.</p>
+    </div>
+  </section>
+
+  <!-- 주요 화면 : SyncFlo AX 화면 캡처 (개인정보 · 내부 주소 흐림 처리) ================= -->
+  <section class="axp-sec axp-sec--paper" id="axp-real" aria-label="주요 화면">
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">주요 화면</div>
+        <div>
+          <h2 class="sf-section__title">SyncFlo AX 주요 화면</h2>
+          <p class="sf-section__body">현재 작업 중인 화면입니다. 이름과 내부 주소는 가렸습니다.</p>
+        </div>
+      </div>
+      <div class="axp-real axp-rv" id="axpReal">
+        <div class="axp-real__tabs" role="tablist" aria-label="주요 화면 선택">
+          <button type="button" role="tab" data-desc="회계 · 전표 질문을 채팅으로 처리하는 메인 화면입니다. 자주 하는 질문은 버튼으로 바로 시작합니다."><svg class="axp-i"><use href="#axp-msg"/></svg><span>업무 챗</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button>
+          <button type="button" role="tab" data-desc="지금까지 추가한 기능 목록입니다. 운영 중인 것과 개발 중인 것을 나눠 보여 줍니다."><svg class="axp-i"><use href="#axp-chart"/></svg><span>업무 자동화 확장</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button>
+          <button type="button" role="tab" data-desc="AI가 네이버웍스 같은 사내 도구를 쓸 수 있게 연결하는 화면입니다."><svg class="axp-i"><use href="#axp-plug"/></svg><span>MCP 연동</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button>
+          <button type="button" role="tab" data-desc="AI 사용량, 차단된 요청, 외부 전송 여부를 보는 화면입니다."><svg class="axp-i"><use href="#axp-table"/></svg><span>대시보드</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button>
+        </div>
+        <p class="axp-real__desc" aria-live="polite"></p>
+        <div class="axp-real__frame">
+          <div class="axp-demo__bar"><i></i><i></i><i></i><span class="axp-real__label">SyncFlo AX</span></div>
+          <div class="axp-real__shots">
+            <figure class="axp-real__shot"><img src="images/screens/01-chat.jpg" alt="SyncFlo AX 업무 챗 첫 화면. 자주 묻는 회계 질문 버튼과 입력창" width="1600" height="958" loading="lazy"></figure>
+            <figure class="axp-real__shot"><img src="images/screens/02-automation.jpg" alt="업무 자동화 확장 화면. 회계 AI 대화, 계정과목 자동 추천, 증빙 OCR, 네이버웍스 봇 등 기능 카드" width="1600" height="959" loading="lazy"></figure>
+            <figure class="axp-real__shot"><img src="images/screens/03-mcp.jpg" alt="MCP 연동 화면. 회계와 네이버웍스 MCP 서버 연결 상태" width="1600" height="512" loading="lazy"></figure>
+            <figure class="axp-real__shot"><img src="images/screens/04-dashboard.jpg" alt="대시보드 화면. 이번 달 AI 호출, 토큰 사용, 차단 건수, 외부 전송 0건" width="1600" height="839" loading="lazy"></figure>
+          </div>
+          <button type="button" class="axp-real__zoom"><svg class="axp-i"><use href="#axp-expand"/></svg>크게 보기</button>
+        </div>
+      </div>
+      <div class="axp-lb" id="axpLb" hidden>
+        <button type="button" class="axp-lb__close" aria-label="닫기"><svg class="axp-i"><use href="#axp-x"/></svg></button>
+        <img alt="">
+      </div>
+    </div>
+  </section>
+
+  <!-- 주요 AI 처리 기능 (재현 데모) =============================================================== -->
+  <section class="axp-sec" id="axp-c3" aria-label="주요 AI 처리 기능">
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">AI 처리 기능</div>
+        <div>
+          <h2 class="sf-section__title">주요 AI 처리 기능</h2>
+          <p class="sf-section__body">연결 범위를 한 번에 넓히지 않고, 데이터와 규정이 모여 있는 회계 업무를 첫 범위로 정했습니다. 아래는 현재 화면 프로토타입으로 구현한 기능입니다.</p>
+        </div>
+      </div>
+      <div class="axp-feats">
+        <article class="axp-feat" data-demo="ocr">
+          <div class="axp-feat__txt axp-rv">
+            <span class="axp-feat__tag"><svg class="axp-i"><use href="#axp-receipt"/></svg>영수증 인식</span>
+            <h3>영수증 사진으로 전표 초안 만들기</h3>
+            <p>영수증을 올리면 상호, 날짜, 금액을 읽고 계정과목까지 넣은 전표 초안을 만듭니다. 잘못 읽은 부분은 바로 고칠 수 있습니다.</p>
+            <ul class="axp-checks"><li><svg class="axp-i"><use href="#axp-check"/></svg>상호 · 일자 · 금액 자동 인식</li><li><svg class="axp-i"><use href="#axp-check"/></svg>계정과목까지 채운 초안</li><li><svg class="axp-i"><use href="#axp-check"/></svg>확인 후 저장</li></ul>
+          </div>
+          <div class="axp-feat__viz axp-rv">
+            <div class="axp-ocr">
+              <div class="axp-receipt"><b>○○식당</b><span>2026.03.21 19:42</span><i></i><i class="s"></i><i></i><i class="s"></i><strong>합계 48,000</strong><em class="axp-scan"></em></div>
+              <div class="axp-ocr__arrow"><svg class="axp-i"><use href="#axp-chevrons"/></svg></div>
+              <div class="axp-slipcard">
+                <p class="axp-slipcard__t">전표 초안 <span>AI 작성</span></p>
+                <dl><div><dt>가맹점</dt><dd>○○식당</dd></div><div><dt>일자</dt><dd>2026.03.21</dd></div><div><dt>금액</dt><dd>48,000원</dd></div><div><dt>계정과목</dt><dd class="hl">접대비</dd></div></dl>
+                <span class="axp-save">저장</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="axp-feat is-rev" data-demo="rec">
+          <div class="axp-feat__txt axp-rv">
+            <span class="axp-feat__tag"><svg class="axp-i"><use href="#axp-table"/></svg>계정과목 추천</span>
+            <h3>계정과목을 근거와 함께 추천</h3>
+            <p>사규와 예전 전표를 보고 계정과목을 추천합니다. 왜 그런지, 얼마나 확실한지, 어떤 증빙이 필요한지도 같이 알려 줍니다.</p>
+            <ul class="axp-checks"><li><svg class="axp-i"><use href="#axp-check"/></svg>사규 · 과거 전표 기반 추천</li><li><svg class="axp-i"><use href="#axp-check"/></svg>추천 이유와 신뢰도 표시</li><li><svg class="axp-i"><use href="#axp-check"/></svg>증빙 유의사항 안내</li></ul>
+          </div>
+          <div class="axp-feat__viz axp-rv">
+            <div class="axp-rec">
+              <p class="axp-rec__q">3월에 거래처 식사비 결제한 건, 계정과목 뭘로 잡아야 해?</p>
+              <div class="axp-rcard">
+                <div class="axp-rcard__head"><b>계정과목 추천</b><span class="axp-rcard__badge">신뢰도 <em data-to="88">0</em>%</span></div>
+                <div class="axp-meter"><i style="--w:88%"></i></div>
+                <dl><div><dt>추천 계정과목</dt><dd>접대비</dd></div><div><dt>구분</dt><dd>판매비와관리비</dd></div></dl>
+                <p class="axp-rcard__ref"><svg class="axp-i"><use href="#axp-book"/></svg>근거: 사규 제12조 · 유사 과거 전표 5건</p>
+              </div>
+              <p class="axp-a__note"><svg class="axp-i"><use href="#axp-alert"/></svg>3만 원이 넘으면 적격증빙을 보관해야 해요.</p>
+            </div>
+          </div>
+        </article>
+        <article class="axp-feat" data-demo="sum">
+          <div class="axp-feat__txt axp-rv">
+            <span class="axp-feat__tag"><svg class="axp-i"><use href="#axp-book"/></svg>규정 · 지출 요약</span>
+            <h3>규정 확인과 지출 요약</h3>
+            <p>출장비, 접대비 규정을 바로 찾아 주고 부서별 · 계정별 지출도 요약합니다. 마감 전에 처리 안 된 전표도 알려 줍니다.</p>
+            <ul class="axp-checks"><li><svg class="axp-i"><use href="#axp-check"/></svg>회계 규정 즉시 확인</li><li><svg class="axp-i"><use href="#axp-check"/></svg>부서별 · 계정별 지출 요약</li><li><svg class="axp-i"><use href="#axp-check"/></svg>마감 일정 · 미처리 건 안내</li></ul>
+          </div>
+          <div class="axp-feat__viz axp-rv">
+            <div class="axp-sum">
+              <div class="axp-sum__head"><b>3분기 지출 요약</b><span>전 분기 대비 -6%</span></div>
+              <p class="axp-sum__total">4억 2,300만 원</p>
+              <ul class="axp-bars">
+                <li><span>출장비</span><em><i style="--w:82%"></i></em><b>1억 1,200만</b></li>
+                <li><span>접대비</span><em><i style="--w:58%"></i></em><b>7,900만</b></li>
+                <li><span>복리후생비</span><em><i style="--w:46%"></i></em><b>6,300만</b></li>
+                <li><span>소모품비</span><em><i style="--w:24%"></i></em><b>3,300만</b></li>
+              </ul>
+              <p class="axp-sum__due"><svg class="axp-i"><use href="#axp-calendar"/></svg>10월 전표 마감 <b>D-3</b> · 미처리 3건</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 사용해 보기 ============================================================ -->
+  <section class="axp-sec axp-sec--paper" id="axp-c4" aria-label="사용해 보기">
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">사용해 보기</div>
+        <div>
+          <h2 class="sf-section__title">자연어로 아래와 같은 질문을 할 수 있습니다</h2>
+          <p class="sf-section__body">질문을 누르면 답변 예시가 나옵니다.</p>
+        </div>
+      </div>
+      <div class="axp-ask axp-rv" id="axpAsk">
+        <ul class="axp-ask__list">
+          <li><button type="button"><svg class="axp-i"><use href="#axp-msg"/></svg><span>“이번 달 접대비 계정과목 뭘로 잡아야 해?”</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button"><svg class="axp-i"><use href="#axp-msg"/></svg><span>“영수증 사진으로 전표 만들어줘”</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button"><svg class="axp-i"><use href="#axp-msg"/></svg><span>“출장비 처리 규정 알려줘”</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button"><svg class="axp-i"><use href="#axp-msg"/></svg><span>“전표 마감일 언제야?”</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button"><svg class="axp-i"><use href="#axp-msg"/></svg><span>“이번 분기 지출 요약해줘”</span><em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+        </ul>
+        <div class="axp-demo">
+          <div class="axp-demo__bar"><i></i><i></i><i></i><span>SyncFlo AX</span></div>
+          <div class="axp-demo__chat" aria-live="polite"></div>
+        </div>
+        <template><div class="axp-msg axp-msg--me">이번 달 접대비 계정과목 뭘로 잡아야 해?</div><div class="axp-msg axp-msg--ai">거래처 접대면 <b>접대비(판매비와관리비)</b>예요. 직원끼리 먹은 거면 복리후생비고요.<span class="axp-chip"><svg class="axp-i"><use href="#axp-book"/></svg>사규 제12조 접대비 처리 기준</span></div></template>
+        <template><div class="axp-msg axp-msg--me">영수증 사진으로 전표 만들어줘</div><div class="axp-msg axp-msg--ai">○○식당 48,000원으로 읽었어요. 계정과목은 <b>접대비</b>로 넣어서 전표 초안을 만들었어요.<span class="axp-chip"><svg class="axp-i"><use href="#axp-file"/></svg>전표 초안 1건 · 확인 대기</span></div></template>
+        <template><div class="axp-msg axp-msg--me">출장비 처리 규정 알려줘</div><div class="axp-msg axp-msg--ai">숙박비는 1박 <b>10만 원</b>, 일비는 하루 3만 원까지예요. 서울 · 부산은 숙박비 12만 원까지 돼요.<span class="axp-chip"><svg class="axp-i"><use href="#axp-book"/></svg>출장비 규정 제3조</span></div></template>
+        <template><div class="axp-msg axp-msg--me">전표 마감일 언제야?</div><div class="axp-msg axp-msg--ai">이번 달 마감은 <b>10월 28일(화)</b>이에요. 아직 처리 안 한 전표가 3건 있어요.<span class="axp-chip"><svg class="axp-i"><use href="#axp-calendar"/></svg>미처리 전표 3건</span></div></template>
+        <template><div class="axp-msg axp-msg--me">이번 분기 지출 요약해줘</div><div class="axp-msg axp-msg--ai">3분기 지출은 <b>4억 2,300만 원</b>이에요. 지난 분기보다 6% 줄었고, 제일 많이 쓴 건 출장비예요.<span class="axp-chip"><svg class="axp-i"><use href="#axp-chart"/></svg>3분기 지출 리포트</span></div></template>
+      </div>
+    </div>
+  </section>
+
+  <!-- 신뢰 설계 =============================================================== -->
+  <section class="axp-sec axp-sec--navy" id="axp-c5" aria-label="신뢰 설계">
+    <div class="axp-trust__bg" aria-hidden="true"></div>
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">신뢰 설계</div>
+        <div>
+          <h2 class="sf-section__title">AI가 만든 전표도 결재를 거칩니다</h2>
+          <p class="sf-section__body">AI는 사용자의 권한을 넘지 않습니다. 결과는 초안으로 저장되고, 최종 등록은 기존 확인과 결재 절차를 따릅니다.</p>
+        </div>
+      </div>
+      <ol class="axp-flow" id="axpFlow">
+        <li><span><svg class="axp-i"><use href="#axp-bot"/></svg></span><b>AI 초안 작성</b><small>영수증 · 규정 기반</small></li>
+        <li><span><svg class="axp-i"><use href="#axp-user-check"/></svg></span><b>담당자 확인</b><small>수정 · 승인</small></li>
+        <li><span><svg class="axp-i"><use href="#axp-stamp"/></svg></span><b>결재</b><small>기존 결재선 그대로</small></li>
+        <li><span><svg class="axp-i"><use href="#axp-circle-check"/></svg></span><b>최종 등록</b><small>전표 · 증빙 반영</small></li>
+        <em class="axp-flow__line" aria-hidden="true"><i></i></em>
+      </ol>
+      <div class="axp-trust__cards">
+        <article class="axp-rv"><svg class="axp-i"><use href="#axp-user-check"/></svg><h3>담당자 확인 후 등록</h3><p>AI가 만든 전표는 ‘확인 대기’로 저장되고, 담당자가 승인해야 등록됩니다.</p></article>
+        <article class="axp-rv"><svg class="axp-i"><use href="#axp-shield"/></svg><h3>온프레미스로 동작</h3><p>AI 모델이 사내 서버에서만 돌아가서 재무 데이터가 밖으로 나가지 않습니다.</p></article>
+        <article class="axp-rv"><svg class="axp-i"><use href="#axp-link"/></svg><h3>근거를 함께 표시</h3><p>답변마다 참고한 규정과 예전 전표를 같이 보여 줍니다.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 다른 영역으로 확장 =============================================================== -->
+  <section class="axp-sec" id="axp-c6" aria-label="업무 영역 확장">
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">업무 영역 확장</div>
+        <div>
+          <h2 class="sf-section__title">여러 시스템을 하나의 AI 업무창구로</h2>
+          <p class="sf-section__body">각 시스템을 교체하는 방식이 아닙니다. SyncFlo와 사내 문서, 그룹웨어, ERP·MES의 정보를 연결해 조회·분석하고, 권한과 승인 범위 안에서 업무 초안을 만드는 방향입니다.</p>
+        </div>
+      </div>
+      <div class="axp-ext axp-rv">
+        <p class="axp-ext__t">현재 구현 · 연계 검토</p>
+        <div class="axp-ext__grid">
+          <article><span class="axp-ext__ic"><svg class="axp-i"><use href="#axp-msg"/></svg></span><em class="axp-pill axp-pill--live">프로토타입</em><h3>네이버웍스 봇</h3><p>메신저에서 회계 질문을 하거나 증빙을 보내는 화면을 구현</p></article>
+          <article><span class="axp-ext__ic"><svg class="axp-i"><use href="#axp-stamp"/></svg></span><em class="axp-pill axp-pill--live">프로토타입</em><h3>전표 확인 지원</h3><p>전표에서 확인할 항목과 주의할 내용을 먼저 안내하는 화면을 구현</p></article>
+          <article><span class="axp-ext__ic"><svg class="axp-i"><use href="#axp-file"/></svg></span><em class="axp-pill">연계 검토</em><h3>세금계산서 수집 · 전표 초안</h3><p>ERP·홈택스 정보를 연결해 계산서를 확인하고 전표 초안을 만드는 방향</p></article>
+          <article><span class="axp-ext__ic"><svg class="axp-i"><use href="#axp-calendar"/></svg></span><em class="axp-pill">연계 검토</em><h3>출장 · 경조사 업무 지원</h3><p>사내 규정을 확인하고 결재문서 초안과 담당자 알림까지 이어지는 흐름을 검토.</p></article>
+        </div>
+        <p class="axp-ext__t axp-ext__t--next">기업내 부서별 사용 예시</p>
+      </div>
+      <div class="axp-fields axp-rv" id="axpFields">
+        <ul class="axp-fields__nav" role="tablist">
+          <li><button type="button" role="tab">경영지원<em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button" role="tab">영업 · 고객<em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button" role="tab">생산 · 품질<em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button" role="tab">서비스 · AS<em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button" role="tab">IT · 개발<em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+          <li><button type="button" role="tab">전사 공통<em class="axp-gauge" aria-hidden="true"><i></i></em></button></li>
+        </ul>
+        <div class="axp-fields__view">
+          <div class="axp-fields__panel" role="tabpanel" style="--tint:#F1F5FF">
+            <figure class="axp-fields__photo"><img src="images/ax/field-management.jpg" alt="경영지원 업무 이미지" loading="lazy"><figcaption><b>경영지원</b><span>전표 · 경비 처리, 규정 문의</span></figcaption></figure>
+            <div class="axp-demo"><div class="axp-demo__bar"><i></i><i></i><i></i><span>경영지원</span></div><div class="axp-demo__chat">
+              <div class="axp-msg axp-msg--me">이번 달 접대비 한도 얼마나 남았어?</div>
+              <div class="axp-msg axp-msg--ai">300만 원 중 <b>212만 원</b> 썼고 88만 원 남았어요. 영업1팀이 제일 많이 썼어요.</div>
+              <div class="axp-msg axp-msg--file"><svg class="axp-i"><use href="#axp-file"/></svg>부서별 사용 현황.xlsx</div>
+            </div></div>
+            <div class="axp-uses"><p class="axp-uses__t">쓸 수 있는 업무</p><ul><li><svg class="axp-i"><use href="#axp-check"/></svg>전표 작성 · 계정과목 추천</li><li><svg class="axp-i"><use href="#axp-check"/></svg>증빙 문서 인식</li><li><svg class="axp-i"><use href="#axp-check"/></svg>재무 · 경영 리포트 작성</li><li><svg class="axp-i"><use href="#axp-check"/></svg>인사 · 총무 규정 질의응답</li></ul></div>
+          </div>
+          <div class="axp-fields__panel" role="tabpanel" style="--tint:#F3F2FF">
+            <figure class="axp-fields__photo"><img src="images/ax/field-sales.jpg" alt="영업과 고객 업무 이미지" loading="lazy"><figcaption><b>영업 · 고객</b><span>견적서 · 제안서 작성, 고객 문의 응대</span></figcaption></figure>
+            <div class="axp-demo"><div class="axp-demo__bar"><i></i><i></i><i></i><span>영업 · 고객</span></div><div class="axp-demo__chat">
+              <div class="axp-msg axp-msg--me">A사 견적서 초안 만들어줘</div>
+              <div class="axp-msg axp-msg--ai">최근 수주 3건 단가로 <b>견적서 초안</b>을 만들었어요. 할인율은 지난 계약처럼 5%로 넣었어요.</div>
+              <div class="axp-msg axp-msg--file"><svg class="axp-i"><use href="#axp-file"/></svg>A사_견적서_초안.docx</div>
+            </div></div>
+            <div class="axp-uses"><p class="axp-uses__t">쓸 수 있는 업무</p><ul><li><svg class="axp-i"><use href="#axp-check"/></svg>수주 · 견적 데이터 분석</li><li><svg class="axp-i"><use href="#axp-check"/></svg>제안서 · 견적서 초안</li><li><svg class="axp-i"><use href="#axp-check"/></svg>고객 문의 응대</li><li><svg class="axp-i"><use href="#axp-check"/></svg>VOC 분류 · 요약</li></ul></div>
+          </div>
+          <div class="axp-fields__panel" role="tabpanel" style="--tint:#EEF6FB">
+            <figure class="axp-fields__photo"><img src="images/ax/field-production.jpg" alt="생산과 품질 업무 이미지" loading="lazy"><figcaption><b>생산 · 품질</b><span>생산 실적 · 품질 데이터 조회</span></figcaption></figure>
+            <div class="axp-demo"><div class="axp-demo__bar"><i></i><i></i><i></i><span>생산 · 품질</span></div><div class="axp-demo__chat">
+              <div class="axp-msg axp-msg--me">이번 주 2라인 불량률 왜 올랐어?</div>
+              <div class="axp-msg axp-msg--ai">1.2%에서 <b>2.8%</b>로 올랐어요. 화요일 금형 교체 뒤로 치수 불량이 많아요.</div>
+              <div class="axp-msg axp-msg--file"><svg class="axp-i"><use href="#axp-file"/></svg>불량 원인 분석 리포트</div>
+            </div></div>
+            <div class="axp-uses"><p class="axp-uses__t">쓸 수 있는 업무</p><ul><li><svg class="axp-i"><use href="#axp-check"/></svg>생산 데이터 자연어 조회</li><li><svg class="axp-i"><use href="#axp-check"/></svg>품질 이상 징후 확인</li><li><svg class="axp-i"><use href="#axp-check"/></svg>설비 점검 이력 분석</li><li><svg class="axp-i"><use href="#axp-check"/></svg>자재 소요 검토</li></ul></div>
+          </div>
+          <div class="axp-fields__panel" role="tabpanel" style="--tint:#F1F5FF">
+            <figure class="axp-fields__photo"><img src="images/ax/field-service.jpg" alt="서비스와 AS 업무 이미지" loading="lazy"><figcaption><b>서비스 · AS</b><span>고장 이력 · 매뉴얼로 현장 지원</span></figcaption></figure>
+            <div class="axp-demo"><div class="axp-demo__bar"><i></i><i></i><i></i><span>서비스 · AS</span></div><div class="axp-demo__chat">
+              <div class="axp-msg axp-msg--me">E-203 에러 조치 방법 알려줘</div>
+              <div class="axp-msg axp-msg--ai">같은 에러 14건 중 <b>11건</b>은 센서 커넥터를 다시 꽂아서 해결됐어요. 매뉴얼 4.2절에 방법이 있어요.</div>
+              <div class="axp-msg axp-msg--file"><svg class="axp-i"><use href="#axp-file"/></svg>유사 조치 이력 14건</div>
+            </div></div>
+            <div class="axp-uses"><p class="axp-uses__t">쓸 수 있는 업무</p><ul><li><svg class="axp-i"><use href="#axp-check"/></svg>AS 접수 내용 분류</li><li><svg class="axp-i"><use href="#axp-check"/></svg>유사 고장 이력 · 조치 추천</li><li><svg class="axp-i"><use href="#axp-check"/></svg>매뉴얼 기반 현장 지원</li><li><svg class="axp-i"><use href="#axp-check"/></svg>처리 결과 보고 작성</li></ul></div>
+          </div>
+          <div class="axp-fields__panel" role="tabpanel" style="--tint:#F3F2FF">
+            <figure class="axp-fields__photo"><img src="images/ax/field-it.jpg" alt="IT와 개발 업무 이미지" loading="lazy"><figcaption><b>IT · 개발</b><span>코드 · 문서 작업, 사내 헬프데스크</span></figcaption></figure>
+            <div class="axp-demo"><div class="axp-demo__bar"><i></i><i></i><i></i><span>IT · 개발</span></div><div class="axp-demo__chat">
+              <div class="axp-msg axp-msg--me">주문 조회 화면이 왜 느려?</div>
+              <div class="axp-msg axp-msg--ai">주문일자 조건에 <b>인덱스가 없어서</b> 전체를 다 읽고 있어요. 인덱스 추가 스크립트를 만들어 둘게요.</div>
+              <div class="axp-msg axp-msg--file"><svg class="axp-i"><use href="#axp-file"/></svg>개선 스크립트.sql</div>
+            </div></div>
+            <div class="axp-uses"><p class="axp-uses__t">쓸 수 있는 업무</p><ul><li><svg class="axp-i"><use href="#axp-check"/></svg>코드 리뷰 보조</li><li><svg class="axp-i"><use href="#axp-check"/></svg>개발 산출물 작성</li><li><svg class="axp-i"><use href="#axp-check"/></svg>IT 헬프데스크 응대</li><li><svg class="axp-i"><use href="#axp-check"/></svg>레거시 시스템 분석</li></ul></div>
+          </div>
+          <div class="axp-fields__panel" role="tabpanel" style="--tint:#EEF6FB">
+            <figure class="axp-fields__photo"><img src="images/ax/field-company.jpg" alt="전사 공통 업무 이미지" loading="lazy"><figcaption><b>전사 공통</b><span>회의록 · 문서 정리, 시스템 연동</span></figcaption></figure>
+            <div class="axp-demo"><div class="axp-demo__bar"><i></i><i></i><i></i><span>전사 공통</span></div><div class="axp-demo__chat">
+              <div class="axp-msg axp-msg--me">어제 운영회의 회의록 요약해줘</div>
+              <div class="axp-msg axp-msg--ai">결정 사항 <b>3건</b>, 할 일 5건으로 정리했어요. 담당자한테 알림 보낼까요?</div>
+              <div class="axp-msg axp-msg--file"><svg class="axp-i"><use href="#axp-file"/></svg>운영회의 요약</div>
+            </div></div>
+            <div class="axp-uses"><p class="axp-uses__t">쓸 수 있는 업무</p><ul><li><svg class="axp-i"><use href="#axp-check"/></svg>사내 문서 기반 질의응답</li><li><svg class="axp-i"><use href="#axp-check"/></svg>회의록 · 보고서 요약</li><li><svg class="axp-i"><use href="#axp-check"/></svg>ERP · 그룹웨어 연동 업무</li><li><svg class="axp-i"><use href="#axp-check"/></svg>사내 전용 AI 환경</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 마무리 : 내가 한 일 ======================================================= -->
+  <section class="axp-sec axp-sec--navy axp-end" id="axp-end" aria-label="마무리">
+    <div class="axp-trust__bg" aria-hidden="true"></div>
+    <div class="axp-wrap">
+      <div class="sf-2col axp-section-intro axp-rv">
+        <div class="sf-section__label">마무리</div>
+        <div>
+          <h2 class="sf-section__title">기존 업무를 연결하는 하나의 AI 창구</h2>
+          <p class="sf-section__body">현재 구현 범위는 회계 업무 프로토타입입니다. 이후에는 기존 시스템을 유지하면서 다른 서비스와 사내 문서를 연결하는 방향으로 확장할 수 있습니다. 이 페이지에는 제가 참여한 UI 디자인과 화면 프로토타입을 정리했습니다.</p>
+        </div>
+      </div>
+      <div class="axp-trust__cards">
+        <article class="axp-rv"><svg class="axp-i"><use href="#axp-file"/></svg><h3>참여 범위</h3><p>개발팀이 기획한 AX 프로젝트에 참여해 사용자 화면의 디자인을 맡았습니다.</p></article>
+        <article class="axp-rv"><svg class="axp-i"><use href="#axp-image"/></svg><h3>UI 디자인</h3><p>회계 질문과 답변, 전표 초안처럼 사용자가 확인하는 화면을 정리했습니다.</p></article>
+        <article class="axp-rv"><svg class="axp-i"><use href="#axp-code"/></svg><h3>프로토타입</h3><p>화면 흐름과 주요 인터랙션을 검토할 수 있는 프로토타입을 작업했습니다.</p></article>
+      </div>
+      <a class="axp-top axp-rv" href="#axp"><svg class="axp-i"><use href="#axp-arrow-up"/></svg>처음으로</a>
+    </div>
+  </section>
+
+</section>
+<!-- ===================== SyncFlo AX 섹션 끝 ===================== -->
+  <nav class="snav" id="sectionNav" aria-label="AX 프로젝트 섹션">
+    <ul class="snav__list">
+      <li class="snav__item" data-target="axp-overview"><button class="snav__btn" aria-label="개요로 이동"><span class="snav__dot"></span><span class="snav__label">개요</span></button></li>
+      <li class="snav__item" data-target="axp-c1"><button class="snav__btn" aria-label="출발점으로 이동"><span class="snav__dot"></span><span class="snav__label">출발점</span></button></li>
+      <li class="snav__item" data-target="axp-c2"><button class="snav__btn" aria-label="접근으로 이동"><span class="snav__dot"></span><span class="snav__label">접근</span></button></li>
+      <li class="snav__item" data-target="axp-real"><button class="snav__btn" aria-label="주요 화면으로 이동"><span class="snav__dot"></span><span class="snav__label">주요 화면</span></button></li>
+      <li class="snav__item" data-target="axp-c3"><button class="snav__btn" aria-label="AI 처리 기능으로 이동"><span class="snav__dot"></span><span class="snav__label">AI 처리 기능</span></button></li>
+      <li class="snav__item" data-target="axp-c4"><button class="snav__btn" aria-label="질문 예시로 이동"><span class="snav__dot"></span><span class="snav__label">질문 예시</span></button></li>
+      <li class="snav__item" data-target="axp-c5"><button class="snav__btn" aria-label="신뢰 설계로 이동"><span class="snav__dot"></span><span class="snav__label">신뢰 설계</span></button></li>
+      <li class="snav__item" data-target="axp-c6"><button class="snav__btn" aria-label="확장으로 이동"><span class="snav__dot"></span><span class="snav__label">확장</span></button></li>
     </ul>
   </nav>
-
-  <script src="js/components.js"></script>
+  <nav class="sf-nav" aria-label="프로젝트 이동"><div class="container"><div class="sf-nav__inner"><a href="index.html#works" class="sf-nav__item"><div class="sf-nav__dir">← 목록으로</div><div class="sf-nav__name">작업물 전체 보기</div></a><a href="detail-syncflo.html" class="sf-nav__item sf-nav__item--next"><div class="sf-nav__dir">관련 프로젝트 →</div><div class="sf-nav__name">SyncFlo Accounting</div></a></div></div></nav>
+  <common-footer></common-footer>
+  <script src="js/components.js?v=20261029-logo"></script>
   <script src="js/app.js"></script>
+  <script src="js/axp.js"></script>
   <script>
-    (function () {
-      var nav = document.getElementById('sectionNav');
-      var items = Array.from(nav.querySelectorAll('.snav__item'));
-      var sections = items.map(function (item) { return document.getElementById(item.dataset.target); });
-      items.forEach(function (item) {
-        item.querySelector('.snav__btn').addEventListener('click', function () {
-          var target = document.getElementById(item.dataset.target);
-          if (target) window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
+    (() => {
+      const nav = document.getElementById('sectionNav');
+      const items = [...nav.querySelectorAll('.snav__item')];
+      const sections = items.map(item => document.getElementById(item.dataset.target));
+      items.forEach((item, index) => item.querySelector('button').addEventListener('click', () => {
+        sections[index].scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }));
+      const update = () => {
+        let current = -1;
+        sections.forEach((section, index) => {
+          if (section.getBoundingClientRect().top <= innerHeight * .42) current = index;
         });
-      });
-      function update() {
-        var current = -1;
-        sections.forEach(function (section, index) {
-          if (section && section.getBoundingClientRect().top <= window.innerHeight * 0.42) current = index;
-        });
-        items.forEach(function (item, index) {
+        items.forEach((item, index) => {
           item.classList.toggle('snav__item--active', index === current);
           item.classList.toggle('snav__item--done', index < current);
         });
-      }
-      window.addEventListener('scroll', update, { passive: true });
+      };
+      addEventListener('scroll', update, { passive: true });
       update();
     })();
   </script>
