@@ -2357,8 +2357,14 @@ body.is-detail-page:not(.syncflo-detail):not(.iljin-detail):not(.syncflo-ax-deta
   font-size: clamp(48px, 3.5vw, 64px);
 }
 .syncflo-ax-page .axp .axp-hero__title span {
+  display: inline-block;
+  white-space: nowrap;
   background: none;
   color: inherit;
+}
+.syncflo-ax-page .site-footer__top { display: none; }
+@media (max-width: 600px) {
+  .syncflo-ax-page .axp .axp-hero__title span { display: block; }
 }
 .syncflo-ax-page .axp .axp-hero__bg { display: none; }
 .syncflo-ax-page .axp .axp-hero__video { display: none; }
